@@ -1,0 +1,13 @@
+name: human-centric-ai-for-energy-labs
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - jupyterlab
+  - notebook
+  - ipykernel
+  - matplotlib
+  - numpy
+  - pandas
+  - scipy
+  - scikit-learn
