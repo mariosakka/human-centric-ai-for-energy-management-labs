@@ -29,8 +29,9 @@ def operative_temperature(t_a, t_mr, v):
     return a * t_a + (1 - a) * t_mr
 
 
-def calculate_pmv_ppd(t_a, t_mr, v=0.15, rh=60, i_clo=0.5, m_met=1.2):
-    """Return (pmv, ppd, t_o, n_iterations).
+def calculate_pmv_ppd(t_a, t_mr, v=0.15, rh=60, i_clo=0.5, m_met=1.2, details=False):
+    """Return (pmv, ppd, t_o, n_iterations); with details=True also a dict of
+    intermediate values (M, p_v, f_cl, h_c, t_cl, RL1..RL6, L, TS, t_cl history).
 
     t_a    air temperature [degC]
     t_mr   mean radiant temperature [degC] (average temperature of the room surfaces)
@@ -66,12 +67,14 @@ def calculate_pmv_ppd(t_a, t_mr, v=0.15, rh=60, i_clo=0.5, m_met=1.2):
     xn, xf = t_cl0 / 100, t_cl0 / 50                  # new / old value of T_cl/100
     h_c_forced = 12.1 * math.sqrt(v)                  # forced convection [W/m2.K]
     n_iter = 0
+    history = [100 * xn - 273.15]                     # t_cl after each pass [degC], for plotting
     while abs(xn - xf) > EPS and n_iter < 150:
         n_iter += 1
         xf = (xf + xn) / 2                            # averaging damps the oscillation
         h_c_natural = 2.38 * abs(100 * xf - t_a_k) ** 0.25  # natural convection [W/m2.K]
         h_c = max(h_c_forced, h_c_natural)            # dominant mode wins
         xn = (p5 + p4 * h_c - p2 * xf**4) / (100 + p3 * h_c)  # solved balance for T_cl/100
+        history.append(100 * xn - 273.15)
     t_cl = 100 * xn - 273.15                          # converged clothing temperature [degC]
 
     # --- Step 4: the six heat-loss paths [W/m2] -----------------------------
@@ -88,7 +91,11 @@ def calculate_pmv_ppd(t_a, t_mr, v=0.15, rh=60, i_clo=0.5, m_met=1.2):
     pmv = ts * load
     ppd = 100 - 95 * math.exp(-0.03353 * pmv**4 - 0.2179 * pmv**2)
 
-    return pmv, ppd, operative_temperature(t_a, t_mr, v), n_iter
+    out = (pmv, ppd, operative_temperature(t_a, t_mr, v), n_iter)
+    if details:
+        out += (dict(M=m, p_v=p_v, f_cl=f_cl, h_c=h_c, h_c_forced=h_c_forced, t_cl=t_cl, ts=ts, L=load,
+                     RL1=rl1, RL2=rl2, RL3=rl3, RL4=rl4, RL5=rl5, RL6=rl6, history=history),)
+    return out
 
 
 def show(label, t_a, t_mr, **kw):
