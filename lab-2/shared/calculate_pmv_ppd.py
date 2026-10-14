@@ -53,17 +53,24 @@ def calculate_pmv_ppd(t_a, t_mr, v=0.15, rh=60, i_clo=0.5, m_met=1.2, details=Fa
     f_cl = 1 + 1.29 * i_cl if i_cl < 0.078 else 1.05 + 0.645 * i_cl
 
     # --- Step 3: iterate for the clothing surface temperature t_cl ----------
+    # The sheet only says "balance the heat through the clothing against the radiation and
+    # convection losses" and gives no equation. The scheme below is the ISO 7730 reference
+    # routine (the standard the sheet is based on); the constants 308.7, 0.028 and the formula
+    # for the first estimate come from there, not from the sheet.
     # Energy balance of the clothing layer: heat through the clothes = heat lost outside,
     #   t_cl = 35.7 - 0.028*M - I_cl * (RL5 + RL6)       (35.7 degC ~ skin temperature)
-    # RL5 and RL6 themselves depend on t_cl -> successive approximation (ISO 7730 scheme).
+    # RL5 and RL6 themselves depend on t_cl -> successive approximation.
+    # Writing T_cl = 100*x and substituting RL5, RL6 (Step 4) gives, solved for x:
+    #   x = (p5 + p4*h_c - p2*x^4) / (100 + p3*h_c)
+    # with p1..p5 below as shorthand for the factors of that rearrangement.
     # Temperatures are kept in K divided by 100 (xn, xf) so the T^4 term stays well scaled.
     t_a_k, t_mr_k = t_a + 273.15, t_mr + 273.15
-    p1 = i_cl * f_cl
-    p2 = p1 * 3.96                                    # radiation coefficient * insulation * area factor
+    p1 = i_cl * f_cl                                  # insulation * area factor
+    p2 = p1 * 3.96                                    # radiation coefficient * p1
     p3 = p1 * 100
     p4 = p1 * t_a_k
-    p5 = 308.7 - 0.028 * m + p2 * (t_mr_k / 100) ** 4 # constant part of the balance (308.7 K = 35.7 degC + 273)
-    t_cl0 = t_a_k + (35.5 - t_a) / (3.5 * (6.45 * i_cl + 0.1))  # first estimate [K]
+    p5 = 308.7 - 0.028 * m + p2 * (t_mr_k / 100) ** 4 # constant part of the balance (308.7 = 35.7 + 273)
+    t_cl0 = t_a_k + (35.5 - t_a) / (3.5 * (6.45 * i_cl + 0.1))  # ISO 7730 first estimate [K]
     xn, xf = t_cl0 / 100, t_cl0 / 50                  # new / old value of T_cl/100
     h_c_forced = 12.1 * math.sqrt(v)                  # forced convection [W/m2.K]
     n_iter = 0
@@ -98,14 +105,22 @@ def calculate_pmv_ppd(t_a, t_mr, v=0.15, rh=60, i_clo=0.5, m_met=1.2, details=Fa
     return out
 
 
-def show(label, t_a, t_mr, **kw):
-    """Print the results in the format required by the lab sheet."""
-    pmv, ppd, t_o, n = calculate_pmv_ppd(t_a, t_mr, **kw)
-    print(f"{label} (t_a={t_a} degC, t_mr={t_mr} degC)")
-    print(f"PMV= {pmv:.3f}")
-    print(f"PPD= {ppd:.1f} %")
-    print(f"t_o= {t_o:.2f} degC")
-    print(f"n iterations= {n}")
+def show(label, t_a, t_mr, v=0.15, rh=60, i_clo=0.5, m_met=1.2):
+    """Print the inputs and the results in the format required by the lab sheet."""
+    pmv, ppd, t_o, n = calculate_pmv_ppd(t_a, t_mr, v, rh, i_clo, m_met)
+    print(f"{label}")
+    print("Inputs:")
+    print(f"  t_a= {t_a} degC")
+    print(f"  t_mr= {t_mr} degC")
+    print(f"  RH= {rh} %")
+    print(f"  v= {v} m/s")
+    print(f"  clo= {i_clo}")
+    print(f"  M_met= {m_met} met")
+    print("Outputs:")
+    print(f"  PMV= {pmv:.3f}")
+    print(f"  PPD= {ppd:.1f} %")
+    print(f"  t_o= {t_o:.2f} degC")
+    print(f"  n iterations= {n}")
     print()
 
 
