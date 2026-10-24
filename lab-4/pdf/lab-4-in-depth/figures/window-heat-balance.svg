@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500" font-family="Segoe UI, Arial, sans-serif" font-size="14">
+  <defs>
+    <marker id="ar" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#c53030"/></marker>
+    <marker id="ao" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#c05621"/></marker>
+  </defs>
+  <rect width="900" height="500" fill="#ffffff"/>
+  <text x="450" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="#4a5568">Window: conduction loses heat, the sun brings heat in</text>
+
+  <!-- outside / inside -->
+  <rect x="20" y="40" width="240" height="420" fill="#ebf4fb"/>
+  <rect x="300" y="40" width="270" height="420" fill="#fdecec"/>
+  <!-- wall bands and glazing -->
+  <rect x="250" y="40" width="60" height="100" fill="#a0aec0" stroke="#4a5568"/>
+  <rect x="250" y="350" width="60" height="110" fill="#a0aec0" stroke="#4a5568"/>
+  <rect x="262" y="140" width="36" height="210" fill="#bee3f8" stroke="#2b6cb0" stroke-width="2"/>
+  <line x1="274" y1="140" x2="274" y2="350" stroke="#2b6cb0" stroke-width="2"/>
+  <line x1="286" y1="140" x2="286" y2="350" stroke="#2b6cb0" stroke-width="2"/>
+
+  <!-- sun -->
+  <circle cx="60" cy="75" r="22" fill="#ed8936" stroke="#c05621" stroke-width="2"/>
+  <line x1="150" y1="95" x2="385" y2="210" stroke="#c05621" stroke-width="3" marker-end="url(#ao)"/>
+  <line x1="150" y1="135" x2="385" y2="250" stroke="#c05621" stroke-width="3" marker-end="url(#ao)"/>
+  <text x="30" y="190" fill="#c05621" font-weight="bold">Solar gain in:</text>
+  <text x="30" y="208" fill="#c05621" font-weight="bold">c1·c2·c3·m·A·I_T</text>
+
+  <!-- conduction loss through the glazing -->
+  <line x1="545" y1="310" x2="30" y2="310" stroke="#c53030" stroke-width="4" marker-end="url(#ar)"/>
+  <text x="430" y="292" text-anchor="middle" fill="#c53030" font-weight="bold">Conduction loss: k·A·(t_I − t_E)</text>
+  <text x="430" y="336" text-anchor="middle" fill="#c53030">k = 2.56 W/m²K</text>
+
+  <text x="140" y="445" text-anchor="middle" fill="#2b6cb0" font-weight="bold">Outside 5 °C</text>
+  <text x="435" y="445" text-anchor="middle" fill="#c53030" font-weight="bold">Inside 24 °C</text>
+
+  <!-- coefficients panel -->
+  <rect x="590" y="50" width="295" height="190" rx="8" fill="#f7fafc" stroke="#a0aec0"/>
+  <text x="602" y="74" font-weight="bold" fill="#4a5568">Coefficients from the sheet</text>
+  <text x="602" y="98" fill="#4a5568">c1 = 0.9   double glazing</text>
+  <text x="602" y="118" fill="#4a5568">c2 = 0.6   light interior blinds</text>
+  <text x="602" y="138" fill="#4a5568">c3 = 0.6   metallic window frame</text>
+  <text x="602" y="158" fill="#4a5568">m = 0.3 East,   0.7 South</text>
+  <text x="602" y="178" fill="#4a5568">I_T = 55 W/m² East,</text>
+  <text x="602" y="196" fill="#4a5568">        380 W/m² South</text>
+  <text x="602" y="220" fill="#4a5568">Window area A = 1 × 2 = 2 m²</text>
+
+  <!-- results panel -->
+  <rect x="590" y="255" width="295" height="130" rx="8" fill="#f7fafc" stroke="#a0aec0"/>
+  <text x="602" y="279" font-weight="bold" fill="#4a5568">Result at noon, t_I − t_E = 19 K</text>
+  <text x="602" y="303" fill="#4a5568">East: gain 10.7 W, loss 97.3 W</text>
+  <text x="602" y="321" fill="#c53030" font-weight="bold">net loss 86.6 W</text>
+  <text x="602" y="347" fill="#4a5568">South: gain 172.4 W, loss 97.3 W</text>
+  <text x="602" y="365" fill="#2f855a" font-weight="bold">net gain 75.1 W</text>
+
+  <rect x="590" y="400" width="295" height="60" rx="8" fill="#c6f6d5" stroke="#2f855a"/>
+  <text x="737" y="425" text-anchor="middle" fill="#276749" font-weight="bold">South window at noon can be</text>
+  <text x="737" y="445" text-anchor="middle" fill="#276749" font-weight="bold">a net heat gain</text>
+</svg>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500" font-family="Segoe UI, Arial, sans-serif" font-size="14">
+  <defs>
+    <marker id="ar" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#c53030"/></marker>
+    <marker id="ab" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#2b6cb0"/></marker>
+    <marker id="ag" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#4a5568"/></marker>
+  </defs>
+  <rect width="900" height="500" fill="#ffffff"/>
+  <text x="450" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="#4a5568">Exterior wall, from the outside (left) to the inside (right)</text>
+
+  <!-- air regions -->
+  <rect x="20" y="150" width="170" height="210" fill="#ebf4fb"/>
+  <rect x="694" y="150" width="190" height="210" fill="#fdecec"/>
+  <text x="105" y="180" text-anchor="middle" fill="#2b6cb0" font-weight="bold" font-size="16">Outside air</text>
+  <text x="105" y="204" text-anchor="middle" fill="#2b6cb0" font-weight="bold" font-size="16">t_E = 5 °C</text>
+  <text x="105" y="232" text-anchor="middle" fill="#2b6cb0">α_E = 24 W/m²K</text>
+  <text x="789" y="180" text-anchor="middle" fill="#c53030" font-weight="bold" font-size="16">Inside air</text>
+  <text x="789" y="204" text-anchor="middle" fill="#c53030" font-weight="bold" font-size="16">t_I = 24 °C</text>
+  <text x="789" y="232" text-anchor="middle" fill="#c53030">α_I = 8 W/m²K</text>
+
+  <!-- layers, 14 px per cm -->
+  <rect x="190" y="150" width="7" height="210" fill="#d69e2e" stroke="#4a5568"/>
+  <rect x="197" y="150" width="140" height="210" fill="#c6f6d5" stroke="#4a5568"/>
+  <rect x="337" y="150" width="4.2" height="210" fill="#a0aec0" stroke="#4a5568" stroke-width="0.8"/>
+  <rect x="341.2" y="150" width="350" height="210" fill="#e2e8f0" stroke="#4a5568"/>
+  <rect x="691.2" y="150" width="2.8" height="210" fill="#a0aec0" stroke="#4a5568" stroke-width="0.8"/>
+
+  <text x="267" y="244" text-anchor="middle" font-weight="bold" fill="#276749">Polystyrene EPS</text>
+  <text x="267" y="264" text-anchor="middle" fill="#276749">10 cm</text>
+  <text x="267" y="284" text-anchor="middle" fill="#276749">λ = 0.040 W/mK</text>
+  <text x="516" y="244" text-anchor="middle" font-weight="bold" fill="#4a5568">AAC masonry</text>
+  <text x="516" y="264" text-anchor="middle" fill="#4a5568">25 cm</text>
+  <text x="516" y="284" text-anchor="middle" fill="#4a5568">λ = 0.150 W/mK</text>
+
+  <!-- labels for thin layers -->
+  <polyline points="193,150 160,110 130,110" fill="none" stroke="#4a5568"/>
+  <text x="125" y="106" text-anchor="end" fill="#744210">Decorative plaster</text>
+  <text x="125" y="124" text-anchor="end" fill="#744210">0.5 cm, λ = 0.024</text>
+  <polyline points="339,360 339,400 300,400" fill="none" stroke="#4a5568"/>
+  <text x="295" y="396" text-anchor="end" fill="#4a5568">Mortar (cement)</text>
+  <text x="295" y="414" text-anchor="end" fill="#4a5568">0.3 cm, λ = 0.87</text>
+  <polyline points="692.6,360 692.6,400 735,400" fill="none" stroke="#4a5568"/>
+  <text x="740" y="396" fill="#4a5568">Mortar (cement)</text>
+  <text x="740" y="414" fill="#4a5568">0.2 cm, λ = 0.87</text>
+
+  <!-- heat flow -->
+  <line x1="860" y1="285" x2="720" y2="285" stroke="#c53030" stroke-width="4" marker-end="url(#ar)"/>
+  <text x="790" y="310" text-anchor="middle" fill="#c53030">heat flow q</text>
+  <line x1="180" y1="285" x2="40" y2="285" stroke="#c53030" stroke-width="4" marker-end="url(#ar)"/>
+  <text x="110" y="310" text-anchor="middle" fill="#c53030">q (same value)</text>
+
+  <!-- total thickness -->
+  <line x1="190" y1="450" x2="694" y2="450" stroke="#4a5568" marker-start="url(#ag)" marker-end="url(#ag)"/>
+  <text x="442" y="474" text-anchor="middle" fill="#4a5568">total thickness 36 cm: the heat flow q is the same in every layer</text>
+</svg>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500" font-family="Segoe UI, Arial, sans-serif" font-size="14">
+  <defs>
+    <marker id="ar" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#c53030"/></marker>
+  </defs>
+  <rect width="900" height="500" fill="#ffffff"/>
+  <text x="450" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="#4a5568">Ground floor of the house: where the heat escapes</text>
+
+  <!-- soil and floor slab -->
+  <rect x="60" y="340" width="600" height="130" fill="#e8dcc8"/>
+  <text x="80" y="460" fill="#4a5568">Soil under the house, about 11 °C</text>
+  <rect x="150" y="330" width="300" height="12" fill="#a0aec0" stroke="#4a5568"/>
+  <polygon points="450,330 560,270 560,282 450,342" fill="#8d99aa" stroke="#4a5568"/>
+
+  <!-- top = ceiling towards the upper floor, south wall, east wall -->
+  <polygon points="150,170 260,110 560,110 450,170" fill="#edf2f7" stroke="#4a5568" stroke-width="2"/>
+  <rect x="150" y="170" width="300" height="160" fill="#fed7d7" stroke="#4a5568" stroke-width="2"/>
+  <polygon points="450,170 560,110 560,270 450,330" fill="#feb2b2" stroke="#4a5568" stroke-width="2"/>
+  <!-- windows 1 x 2 m -->
+  <rect x="270" y="205" width="50" height="100" fill="#bee3f8" stroke="#2b6cb0" stroke-width="3"/>
+  <polygon points="495.8,280 514.2,270 514.2,170 495.8,180" fill="#bee3f8" stroke="#2b6cb0" stroke-width="3"/>
+
+  <text x="215" y="260" text-anchor="middle" fill="#c53030" font-weight="bold">Indoor</text>
+  <text x="215" y="278" text-anchor="middle" fill="#c53030" font-weight="bold">24 °C</text>
+  <text x="295" y="196" text-anchor="middle" fill="#2b6cb0">South window</text>
+  <text x="385" y="255" text-anchor="middle" fill="#4a5568">South</text>
+  <text x="385" y="273" text-anchor="middle" fill="#4a5568">wall</text>
+  <text x="473" y="232" text-anchor="middle" fill="#4a5568">East</text>
+  <text x="473" y="250" text-anchor="middle" fill="#4a5568">wall</text>
+
+  <text x="40" y="110" fill="#2b6cb0" font-weight="bold" font-size="16">Outdoor air 5 °C</text>
+
+  <!-- heat loss arrows -->
+  <line x1="165" y1="230" x2="95" y2="255" stroke="#c53030" stroke-width="3" marker-end="url(#ar)"/>
+  <text x="30" y="285" fill="#c53030">Opaque walls,</text>
+  <text x="30" y="303" fill="#c53030">68 m²</text>
+  <line x1="518" y1="225" x2="600" y2="200" stroke="#c53030" stroke-width="3" marker-end="url(#ar)"/>
+  <text x="606" y="196" fill="#c53030">East window 2 m²</text>
+  <text x="606" y="214" fill="#c53030">(1 × 2 m)</text>
+  <line x1="390" y1="345" x2="390" y2="420" stroke="#c53030" stroke-width="3" marker-end="url(#ar)"/>
+  <text x="418" y="385" fill="#c53030">Floor to soil</text>
+  <text x="418" y="403" fill="#c53030">36 m²</text>
+
+  <!-- ceiling: no heat flow -->
+  <line x1="355" y1="145" x2="355" y2="118" stroke="#4a5568" stroke-width="3" stroke-dasharray="5 4"/>
+  <text x="355" y="66" text-anchor="middle" fill="#4a5568" font-weight="bold">Ceiling: 0 W</text>
+  <text x="355" y="86" text-anchor="middle" fill="#4a5568">(upper floor is also at 24 °C)</text>
+
+  <!-- legend panel -->
+  <rect x="690" y="290" width="195" height="170" rx="8" fill="#f7fafc" stroke="#a0aec0"/>
+  <text x="702" y="314" font-weight="bold" fill="#4a5568">The study</text>
+  <text x="702" y="338" fill="#4a5568">Plan 6 × 6 m</text>
+  <text x="702" y="358" fill="#4a5568">Height 3 m</text>
+  <text x="702" y="378" fill="#4a5568">Windows 1 × 2 m,</text>
+  <text x="702" y="396" fill="#4a5568">East and South</text>
+  <text x="702" y="418" fill="#4a5568">Steady state, noon,</text>
+  <text x="702" y="436" fill="#4a5568">no air infiltration</text>
+</svg>

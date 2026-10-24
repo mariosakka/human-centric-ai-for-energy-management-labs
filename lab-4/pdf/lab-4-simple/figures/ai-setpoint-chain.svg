@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500" font-family="Segoe UI, Arial, sans-serif" font-size="14">
+  <defs>
+    <marker id="ag" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#4a5568"/></marker>
+  </defs>
+  <rect width="900" height="500" fill="#ffffff"/>
+  <text x="450" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="#4a5568">From the occupant to the kWh: how a lower setpoint saves energy</text>
+
+  <!-- brackets -->
+  <polyline points="12,108 12,100 380,100 380,108" fill="none" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="196" y="90" text-anchor="middle" fill="#2b6cb0" font-weight="bold">Human-centred comfort (PMV)</text>
+  <polyline points="396,108 396,100 888,100 888,108" fill="none" stroke="#2f855a" stroke-width="2"/>
+  <text x="642" y="90" text-anchor="middle" fill="#2f855a" font-weight="bold">Heat loss (steady state)</text>
+
+  <!-- boxes -->
+  <g stroke="#4a5568" stroke-width="2">
+    <rect x="12"  y="120" width="108" height="120" rx="8" fill="#bee3f8"/>
+    <rect x="140" y="120" width="108" height="120" rx="8" fill="#bee3f8"/>
+    <rect x="268" y="120" width="108" height="120" rx="8" fill="#9ae6b4"/>
+    <rect x="396" y="120" width="108" height="120" rx="8" fill="#c6f6d5"/>
+    <rect x="524" y="120" width="108" height="120" rx="8" fill="#c6f6d5"/>
+    <rect x="652" y="120" width="108" height="120" rx="8" fill="#c6f6d5"/>
+    <rect x="780" y="120" width="108" height="120" rx="8" fill="#9ae6b4"/>
+  </g>
+  <g stroke="#4a5568" stroke-width="2" marker-end="url(#ag)">
+    <line x1="120" y1="180" x2="140" y2="180"/><line x1="248" y1="180" x2="268" y2="180"/><line x1="376" y1="180" x2="396" y2="180"/>
+    <line x1="504" y1="180" x2="524" y2="180"/><line x1="632" y1="180" x2="652" y2="180"/><line x1="760" y1="180" x2="780" y2="180"/>
+  </g>
+  <g text-anchor="middle" fill="#2d3748">
+    <text x="66" y="162" font-weight="bold">Occupant</text><text x="66" y="182">clothing (clo)</text><text x="66" y="202">activity (met)</text>
+    <text x="194" y="162" font-weight="bold">PMV model</text><text x="194" y="182">(ISO 7730)</text><text x="194" y="202">comfort vote</text>
+    <text x="322" y="162" font-weight="bold">Lowest</text><text x="322" y="182" font-weight="bold">setpoint with</text><text x="322" y="202" font-weight="bold">PMV ≥ −0.5</text>
+    <text x="450" y="162" font-weight="bold">Lower indoor</text><text x="450" y="182" font-weight="bold">air temp.</text><text x="450" y="202">t_I,opt</text>
+    <text x="578" y="170" font-weight="bold">Smaller gap</text><text x="578" y="192">t_I − t_E</text>
+    <text x="706" y="170" font-weight="bold">Smaller heat</text><text x="706" y="192">load Q_total</text>
+    <text x="834" y="162" font-weight="bold">Fewer kWh</text><text x="834" y="182">lower cost</text><text x="834" y="202">and CO₂</text>
+  </g>
+
+  <!-- contrast panels -->
+  <rect x="12" y="280" width="420" height="150" rx="10" fill="#f7fafc" stroke="#a0aec0"/>
+  <text x="28" y="308" font-weight="bold" fill="#4a5568">Classic thermostat</text>
+  <text x="28" y="334" fill="#4a5568">Always keeps t_I = 24 °C, whatever the</text>
+  <text x="28" y="354" fill="#4a5568">occupant wears or does. Comfortable, but</text>
+  <text x="28" y="374" fill="#4a5568">it may heat more than the person needs.</text>
+  <text x="28" y="408" fill="#4a5568" font-style="italic">Building-centred control</text>
+
+  <rect x="468" y="280" width="420" height="150" rx="10" fill="#c6f6d5" stroke="#2f855a" stroke-width="2"/>
+  <text x="484" y="308" font-weight="bold" fill="#276749">Core lesson of the sheet</text>
+  <text x="484" y="334" fill="#276749">Lowering the setpoint by a few °C often saves</text>
+  <text x="484" y="354" fill="#276749">10 to 15 % of the heating load, while the</text>
+  <text x="484" y="374" fill="#276749">occupant stays comfortable (−0.5 ≤ PMV ≤ +0.5).</text>
+  <text x="484" y="408" fill="#276749" font-style="italic">Human-centred control</text>
+
+  <text x="450" y="468" text-anchor="middle" fill="#4a5568">Objective: minimise energy, with comfort as a strict constraint</text>
+</svg>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500" width="900" height="500" font-family="Segoe UI, Arial, sans-serif" font-size="14">
+  <defs>
+    <marker id="ar" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#c53030"/></marker>
+  </defs>
+  <rect width="900" height="500" fill="#ffffff"/>
+  <text x="450" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="#4a5568">Heated floor: heat flows down into the soil</text>
+
+  <!-- indoor air -->
+  <rect x="250" y="50" width="270" height="40" fill="#fdecec"/>
+  <text x="385" y="76" text-anchor="middle" fill="#c53030" font-weight="bold">Indoor air t_I = 24 °C</text>
+
+  <!-- layers (soil not to scale) -->
+  <g stroke="#4a5568">
+    <rect x="250" y="90"  width="270" height="20" fill="#d6a76b"/>
+    <rect x="250" y="110" width="270" height="24" fill="#cbd5e0"/>
+    <rect x="250" y="134" width="270" height="40" fill="#c6f6d5"/>
+    <rect x="250" y="174" width="270" height="60" fill="#a0aec0"/>
+    <rect x="250" y="234" width="270" height="60" fill="#d9c4a5"/>
+    <rect x="250" y="294" width="270" height="70" fill="#b08968"/>
+    <rect x="250" y="364" width="270" height="60" fill="#8c6a4f"/>
+  </g>
+  <rect x="250" y="424" width="270" height="16" fill="#bee3f8" stroke="#2b6cb0"/>
+  <text x="385" y="437" text-anchor="middle" fill="#2b6cb0" font-weight="bold" font-size="14">Deep soil, about 11 °C</text>
+
+  <!-- layer labels -->
+  <g fill="#2d3748">
+    <text x="540" y="105"><tspan font-weight="bold">hardwood</tspan>   2 cm,  λ = 0.23</text>
+    <text x="540" y="127"><tspan font-weight="bold">cement screed</tspan>   5 cm,  λ = 0.93</text>
+    <text x="540" y="159"><tspan font-weight="bold">polystyrene XPS</tspan>   10 cm,  λ = 0.025</text>
+    <text x="540" y="209"><tspan font-weight="bold">reinforced concrete</tspan>   20 cm,  λ = 2.03</text>
+    <text x="540" y="269"><tspan font-weight="bold">gravel</tspan>   20 cm,  λ = 0.7</text>
+    <text x="540" y="333"><tspan font-weight="bold">soil 0 to −3 m</tspan>   2.43 m,  λ = 2</text>
+    <text x="540" y="398"><tspan font-weight="bold">soil −3 to −7 m</tspan>   4 m,  λ = 4</text>
+  </g>
+  <text x="540" y="438" fill="#4a5568">(soil layers are not drawn to scale)</text>
+
+  <!-- alpha and flow -->
+  <text x="30" y="76" fill="#4a5568">α_I = 6 W/m²K</text>
+  <text x="30" y="94" fill="#4a5568">(heated floor side)</text>
+  <line x1="215" y1="70" x2="215" y2="420" stroke="#c53030" stroke-width="4" marker-end="url(#ar)"/>
+  <text x="203" y="240" text-anchor="end" fill="#c53030" font-weight="bold">heat flow q</text>
+
+  <!-- result -->
+  <rect x="20" y="290" width="170" height="130" rx="8" fill="#f7fafc" stroke="#a0aec0"/>
+  <text x="32" y="314" fill="#4a5568" font-weight="bold">k = 0.145 W/m²K</text>
+  <text x="32" y="338" fill="#4a5568">Q = k·A·(t_I − t_soil)</text>
+  <text x="32" y="358" fill="#4a5568">= 0.145 × 36 × 13</text>
+  <text x="32" y="384" fill="#c53030" font-weight="bold">≈ 68 W lost</text>
+  <text x="32" y="404" fill="#4a5568">to the soil</text>
+</svg>
