@@ -86,7 +86,7 @@ def build(nb_path, keep, edit):
     tdir = tempfile.mkdtemp()
     thtml, tpdf = os.path.join(tdir, "i.html"), os.path.join(tdir, "o.pdf")   # short paths: the browser fails on very long ones
     shutil.copy(tmp + ".html", thtml)
-    subprocess.run([CHROME, "--headless", "--disable-gpu", "--no-pdf-header-footer", f"--print-to-pdf={tpdf}",
+    subprocess.run([CHROME, "--headless", "--disable-gpu", "--no-pdf-header-footer", "--virtual-time-budget=30000", f"--print-to-pdf={tpdf}",
                     "file:///" + thtml.replace("\\", "/")], capture_output=True)
     shutil.copy(tpdf, os.path.join(out, name + ".pdf"))
     for ext in (".ipynb", ".html"):

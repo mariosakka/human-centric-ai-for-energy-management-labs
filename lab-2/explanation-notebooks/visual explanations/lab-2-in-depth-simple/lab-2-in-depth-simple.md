@@ -1,7 +1,7 @@
 # Both sheets explained simply
 
-- ****1**** (sheet *Psychrometrics challenge*): "How much **water** hides in the air, and how much **energy** does the air carry?" — **Part A**
-- ****2**** (sheet *Lab 2 (PMV = Predicted Mean Vote, PPD = Predicted Percentage of Dissatisfied)*): "Will a **person** feel comfortable in that air?" — **Part B**
+- **1** (sheet *Psychrometrics challenge*): "How much **water** hides in the air, and how much **energy** does the air carry?" — **Part A**
+- **2** (sheet *Lab 2 (PMV = Predicted Mean Vote, PPD = Predicted Percentage of Dissatisfied)*): "Will a **person** feel comfortable in that air?" — **Part B**
 
 **How they connect:** sheet 1 is about the **air**, sheet 2 is about the **person standing in the air**. The water pressure $p_v$ you find in Part A is the same $p_v$ the body needs in Part B.
 
@@ -9,21 +9,21 @@
 
 ## A0. Fancy words → simple words
 
-- ****Moist air****: The air around us. It is **dry air + a little invisible water (water vapour)**. — -
-- ****Psychrometrics****: The science of "how much water is in the air". — -
-- ****Pressure****: How hard the air pushes on things. — Pa (pascal); 1 bar = 100 000 Pa
-- ****Partial vapour pressure** $p_v$**: How hard the **water part alone** pushes. More water → bigger number. It tells us **how much** water is there. — Pa
-- ****Saturation pressure** $p_{sat}$**: The **biggest** $p_v$ the air can have at a temperature. Like a sponge that is completely full. More water than that falls out as drops. — Pa
-- ****Relative humidity** $\varphi$**: **How full the sponge is.** 60 % = 60 out of 100 spoonfuls. $\varphi = p_v / p_{sat}$ — %
-- ****Humidity ratio** $x$**: **Grams of water in every kilogram of dry air.** — g/kg
-- ****Dew point** $t_{dp}$**: The temperature where the air gets so cold its sponge is **full** → drops appear (like on a cold glass of lemonade). — °C
-- ****Enthalpy** $h$**: **How much energy 1 kg of air carries.** Part is warmth you can feel, part is hidden in the water. — kJ/kg
-- ****Sensible heat****: The warmth a thermometer can feel. — kJ/kg
-- ****Latent heat****: Energy **hidden** in water vapour (it took energy to make the water into vapour). You can't feel it, but an air conditioner must remove it. — kJ/kg
-- ****Ideal gas****: A gas simple enough to follow $pV = mRT$. We treat air like this. — -
-- ****Specific heat****: How **stubborn** a material is about warming: the energy to warm 1 kg by 1 degree. Water is very stubborn (4.19), air is easy (1.0). — kJ/(kg·K)
-- ****Condensation****: Invisible water in the air turning into **drops** of liquid (fog, dew, a wet cold glass). — -
-- ****Vapour density****: How many kilograms of water vapour float in each cubic metre of air. — kg/m³
+- **Moist air**: The air around us. It is **dry air + a little invisible water (water vapour)**. — -
+- **Psychrometrics**: The science of "how much water is in the air". — -
+- **Pressure**: How hard the air pushes on things. — Pa (pascal); 1 bar = 100 000 Pa
+- **Partial vapour pressure $p_v$**: How hard the **water part alone** pushes. More water → bigger number. It tells us **how much** water is there. — Pa
+- **Saturation pressure $p_{sat}$**: The **biggest** $p_v$ the air can have at a temperature. Like a sponge that is completely full. More water than that falls out as drops. — Pa
+- **Relative humidity $\varphi$**: **How full the sponge is.** 60 % = 60 out of 100 spoonfuls. $\varphi = p_v / p_{sat}$ — %
+- **Humidity ratio $x$**: **Grams of water in every kilogram of dry air.** — g/kg
+- **Dew point $t_{dp}$**: The temperature where the air gets so cold its sponge is **full** → drops appear (like on a cold glass of lemonade). — °C
+- **Enthalpy $h$**: **How much energy 1 kg of air carries.** Part is warmth you can feel, part is hidden in the water. — kJ/kg
+- **Sensible heat**: The warmth a thermometer can feel. — kJ/kg
+- **Latent heat**: Energy **hidden** in water vapour (it took energy to make the water into vapour). You can't feel it, but an air conditioner must remove it. — kJ/kg
+- **Ideal gas**: A gas simple enough to follow $pV = mRT$. We treat air like this. — -
+- **Specific heat**: How **stubborn** a material is about warming: the energy to warm 1 kg by 1 degree. Water is very stubborn (4.19), air is easy (1.0). — kJ/(kg·K)
+- **Condensation**: Invisible water in the air turning into **drops** of liquid (fog, dew, a wet cold glass). — -
+- **Vapour density**: How many kilograms of water vapour float in each cubic metre of air. — kg/m³
 
 ## A1. How much does the air in a room weigh?
 
@@ -367,17 +367,17 @@ The number that says "how high is the water level" is the **PMV** (Predicted Mea
 
 ## B1. Fancy words → simple words
 
-- ****Metabolic rate** $M$**: How much heat your body makes (your campfire). Sitting still ≈ 1 met. Running makes much more. — met (1 met = 58.15 W/m² of skin)
-- ****Clothing insulation** $I_{clo}$**: How warm your clothes are (a blanket around the bathtub). — clo (0.5 = light summer clothes, 1 = winter suit)
-- ****Air temperature** $t_a$**: What a normal thermometer says. — °C
-- ****Mean radiant temperature** $t_{mr}$**: How warm the **walls and windows** are. You feel a cold window even when the air is warm. — °C
-- ****Operative temperature** $t_o$**: The **"feels-like" temperature**: a mix of air and wall temperature. — °C
-- ****Air speed** $v$**: How strong the breeze is. Wind steals heat. — m/s
-- ****Relative humidity****: How sticky the air is. Sticky air makes it harder to cool down by sweating. (This is Part A's sponge!) — %
-- ****PMV****: The average **vote** of people from −3 (cold) to +3 (hot); 0 = just right. — no unit
-- ****PPD****: The **% of people who are unhappy** (vote beyond ±1). — %
-- ****Heat flux****: How much heat flows through each m² of skin. — W/m²
-- ****Iteration****: Guess → improve the guess → repeat until the answer stops changing. — -
+- **Metabolic rate $M$**: How much heat your body makes (your campfire). Sitting still ≈ 1 met. Running makes much more. — met (1 met = 58.15 W/m² of skin)
+- **Clothing insulation $I_{clo}$**: How warm your clothes are (a blanket around the bathtub). — clo (0.5 = light summer clothes, 1 = winter suit)
+- **Air temperature $t_a$**: What a normal thermometer says. — °C
+- **Mean radiant temperature $t_{mr}$**: How warm the **walls and windows** are. You feel a cold window even when the air is warm. — °C
+- **Operative temperature $t_o$**: The **"feels-like" temperature**: a mix of air and wall temperature. — °C
+- **Air speed $v$**: How strong the breeze is. Wind steals heat. — m/s
+- **Relative humidity**: How sticky the air is. Sticky air makes it harder to cool down by sweating. (This is Part A's sponge!) — %
+- **PMV**: The average **vote** of people from −3 (cold) to +3 (hot); 0 = just right. — no unit
+- **PPD**: The **% of people who are unhappy** (vote beyond ±1). — %
+- **Heat flux**: How much heat flows through each m² of skin. — W/m²
+- **Iteration**: Guess → improve the guess → repeat until the answer stops changing. — -
 
 ## B2. Clothes are a guessing game
 
@@ -404,12 +404,12 @@ The clothes' outer surface has a temperature $t_{cl}$ that we don't know, but we
 
 The body loses heat through six paths (all in W/m² of skin):
 
-- ****RL1****: Water slowly seeping out through the skin
-- ****RL2****: Sweating (only if you make more heat than when resting)
-- ****RL3****: Water vapour you breathe out
-- ****RL4****: Warm air you breathe out
-- ****RL5****: Heat radiating from your clothes to the walls
-- ****RL6****: Air carrying heat away from your clothes (breeze)
+- **RL1**: Water slowly seeping out through the skin
+- **RL2**: Sweating (only if you make more heat than when resting)
+- **RL3**: Water vapour you breathe out
+- **RL4**: Warm air you breathe out
+- **RL5**: Heat radiating from your clothes to the walls
+- **RL6**: Air carrying heat away from your clothes (breeze)
 
 What is left over is the **thermal load** $L = M - RL1 - \dots - RL6$. Then **PMV = (sensitivity) × L**. Positive means heat piles up (hot), negative means too much leaves (cold).
 

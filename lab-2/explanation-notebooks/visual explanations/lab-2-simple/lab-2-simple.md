@@ -29,20 +29,20 @@ The lab asks us to build a calculator that tells us **how warm people will feel*
 
 ## Fancy words → simple words
 
-- ****Air temperature** ($t_a$)**: How warm the air is. What a normal thermometer shows. — °C (degrees Celsius)
-- ****Mean radiant temperature** ($t_{mr}$)**: How warm the **walls, floor, ceiling and windows** are on average. Sitting near a hot oven or a cold window, you feel it even if the air is fine. "Radiant" means "glowing warmth that travels through the air", like the sun on your face. — °C
-- ****Operative temperature** ($t_o$)**: The **"feels-like" temperature of the room**. It mixes the air temperature and the wall temperature into one number. — °C
-- ****Relative humidity** (RH)**: How **wet or sticky** the air is, compared with the most water it could hold. 60 % means "holding 60 out of 100 possible spoonfuls". — %
-- ****Air speed** ($v$)**: How strong the **breeze** is around you. A fan makes it bigger. — m/s (metres per second)
-- ****Clothing insulation** ($I_{clo}$)**: How **thick and warm your clothes** are. — clo (1 clo = a thick winter suit; 0.5 = light summer clothes)
-- ****Metabolism****: Your body's **engine**. It slowly "burns" food to make energy and heat, all the time. — -
-- ****Metabolic rate** ($M_{met}$)**: **How fast the engine runs.** Sitting still = slow. Running = fast. — met (1 met = sitting quietly)
-- ****W/m²** (watts per square metre)**: How much heat leaves **each square metre of skin**, like tiny light bulbs glowing on you. — W/m²
-- ****Heat-loss paths** ($RL_1 ... RL_6$)**: The **six drains** that carry heat away from your body. — W/m²
-- ****Thermal load** ($L$)**: The heat **left over** in your body: made minus lost. — W/m²
-- ****PMV****: **Predicted Mean Vote**: the average vote a big group of people would give when asked "how warm do you feel?" (−3 cold … 0 just right … +3 hot). — no unit
-- ****PPD****: **Predicted Percentage Dissatisfied**: out of 100 people, how many are **unhappy**. — %
-- ****Iteration****: **Guess, check, improve the guess**, and repeat, like the hot/cold guessing game. — count
+- **Air temperature ($t_a$)**: How warm the air is. What a normal thermometer shows. — °C (degrees Celsius)
+- **Mean radiant temperature ($t_{mr}$)**: How warm the **walls, floor, ceiling and windows** are on average. Sitting near a hot oven or a cold window, you feel it even if the air is fine. "Radiant" means "glowing warmth that travels through the air", like the sun on your face. — °C
+- **Operative temperature ($t_o$)**: The **"feels-like" temperature of the room**. It mixes the air temperature and the wall temperature into one number. — °C
+- **Relative humidity (RH)**: How **wet or sticky** the air is, compared with the most water it could hold. 60 % means "holding 60 out of 100 possible spoonfuls". — %
+- **Air speed ($v$)**: How strong the **breeze** is around you. A fan makes it bigger. — m/s (metres per second)
+- **Clothing insulation ($I_{clo}$)**: How **thick and warm your clothes** are. — clo (1 clo = a thick winter suit; 0.5 = light summer clothes)
+- **Metabolism**: Your body's **engine**. It slowly "burns" food to make energy and heat, all the time. — -
+- **Metabolic rate ($M_{met}$)**: **How fast the engine runs.** Sitting still = slow. Running = fast. — met (1 met = sitting quietly)
+- **W/m² (watts per square metre)**: How much heat leaves **each square metre of skin**, like tiny light bulbs glowing on you. — W/m²
+- **Heat-loss paths ($RL_1 ... RL_6$)**: The **six drains** that carry heat away from your body. — W/m²
+- **Thermal load ($L$)**: The heat **left over** in your body: made minus lost. — W/m²
+- **PMV**: **Predicted Mean Vote**: the average vote a big group of people would give when asked "how warm do you feel?" (−3 cold … 0 just right … +3 hot). — no unit
+- **PPD**: **Predicted Percentage Dissatisfied**: out of 100 people, how many are **unhappy**. — %
+- **Iteration**: **Guess, check, improve the guess**, and repeat, like the hot/cold guessing game. — count
 
 Everything is "per square metre of skin" so it works for small and big people alike. An adult has about 1.8 m² of skin.
 

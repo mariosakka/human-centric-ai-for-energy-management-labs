@@ -1,7 +1,7 @@
 # Lab 2 in depth: from the moist-air sheet to the comfort sheet
 
-- ****1**** (sheet *Psychrometrics Study Sheet Challenge*): Describe a summer and a winter day in Romania: $p_{sat}$, $p_v$, $x$, $t_{dp}$, $h$, then the same for a whole day (24 h of Meteonorm data) — **Part A**
-- ****2**** (sheet *AI for Energy Lab 2*): Code that returns PMV (Predicted Mean Vote), PPD (Predicted Percentage of Dissatisfied), operative temperature $t_o$, number of iterations, then find an indoor state with $-0.5<PMV<0.5$ — **Part B**
+- **1** (sheet *Psychrometrics Study Sheet Challenge*): Describe a summer and a winter day in Romania: $p_{sat}$, $p_v$, $x$, $t_{dp}$, $h$, then the same for a whole day (24 h of Meteonorm data) — **Part A**
+- **2** (sheet *AI for Energy Lab 2*): Code that returns PMV (Predicted Mean Vote), PPD (Predicted Percentage of Dissatisfied), operative temperature $t_o$, number of iterations, then find an indoor state with $-0.5<PMV<0.5$ — **Part B**
 
 **How they connect.** Sheet 1 is about the *air* (how much water it holds, how much energy it carries). Sheet 2 is about the *person* in that air. The water-vapour pressure $p_v$ you compute in sheet 1 is exactly the $p_v$ that feeds two of the six body heat-loss paths in sheet 2.
 
@@ -11,22 +11,22 @@ Formulas come from the lecture slides. Added assumptions (for example an emissiv
 
 ## A0. Vocabulary
 
-- ****Moist air****: The air around us: **dry air + water vapour**. We treat it as only these two ingredients. — -
-- ****Psychrometrics****: The study of the properties of moist air. — -
-- ****Ideal gas****: A gas simple enough to follow $pV = mRT$. Dry air, vapour and their mixture are all treated this way. — -
-- ****Dalton's law****: Total pressure = pressure of dry air + pressure of vapour: $p = p_a + p_v$. Each gas pushes as if it were alone. — Pa
-- ****Partial vapour pressure** $p_v$**: The share of the total pressure that is due to water vapour. It measures **how much** water is in the air. — Pa
-- ****Saturation pressure** $p_{sat}(t)$**: The **most** vapour pressure air can have at temperature $t$. Above it, water condenses. Rises quickly with $t$. — Pa
-- ****Relative humidity** $\varphi$**: How full the air is: $\varphi = p_v / p_{sat}(t)$. — % (or fraction)
-- ****Humidity ratio** $x$**: Mass of vapour per mass of **dry** air: $x = m_v/m_a = 0.622\,\dfrac{p_v}{p-p_v}$. — kg/kg (often g/kg)
-- ****Dew point** $t_{dp}$**: The temperature to which you must cool the air, with no water added or removed, for it to become saturated (fog / dew). Defined by $p_{sat}(t_{dp}) = p_v$. — °C
-- ****Dry-bulb temperature****: The ordinary thermometer reading $t$. — °C
-- ****Wet-bulb temperature****: Reading of a thermometer wrapped in a wet cloth: evaporation cools it, more so in dry air. (Not needed for this sheet.) — °C
-- ****Enthalpy** $h$**: Total **heat energy carried by 1 kg of dry air**: warmth (sensible) + energy hidden in the vapour (latent). $h \approx t + x(2500+1.84\,t)$. — kJ/kg
-- ****Specific heat** $c$**: Energy to warm **1 kg** of a substance by **1 K**: $Q = m\,c\,\Delta T$. Dry air 1.006, vapour 1.84, liquid water 4.19. — kJ/(kg·K)
-- ****Latent heat of vaporisation****: Energy to turn 1 kg of liquid water into vapour with no temperature change (about 2500 kJ/kg). Released again when the vapour condenses. — kJ/kg
-- ****Condensation****: Water vapour turning into liquid. Starts when the air is cooled below its dew point ($p_v > p_{sat}$). — -
-- ****Vapour density** $\rho_v$**: Kilograms of vapour per m³ of air, linked to pressure by $p_v = \rho_v R_v T$. — kg/m³
+- **Moist air**: The air around us: **dry air + water vapour**. We treat it as only these two ingredients. — -
+- **Psychrometrics**: The study of the properties of moist air. — -
+- **Ideal gas**: A gas simple enough to follow $pV = mRT$. Dry air, vapour and their mixture are all treated this way. — -
+- **Dalton's law**: Total pressure = pressure of dry air + pressure of vapour: $p = p_a + p_v$. Each gas pushes as if it were alone. — Pa
+- **Partial vapour pressure $p_v$**: The share of the total pressure that is due to water vapour. It measures **how much** water is in the air. — Pa
+- **Saturation pressure $p_{sat}(t)$**: The **most** vapour pressure air can have at temperature $t$. Above it, water condenses. Rises quickly with $t$. — Pa
+- **Relative humidity $\varphi$**: How full the air is: $\varphi = p_v / p_{sat}(t)$. — % (or fraction)
+- **Humidity ratio $x$**: Mass of vapour per mass of **dry** air: $x = m_v/m_a = 0.622\,\dfrac{p_v}{p-p_v}$. — kg/kg (often g/kg)
+- **Dew point $t_{dp}$**: The temperature to which you must cool the air, with no water added or removed, for it to become saturated (fog / dew). Defined by $p_{sat}(t_{dp}) = p_v$. — °C
+- **Dry-bulb temperature**: The ordinary thermometer reading $t$. — °C
+- **Wet-bulb temperature**: Reading of a thermometer wrapped in a wet cloth: evaporation cools it, more so in dry air. (Not needed for this sheet.) — °C
+- **Enthalpy $h$**: Total **heat energy carried by 1 kg of dry air**: warmth (sensible) + energy hidden in the vapour (latent). $h \approx t + x(2500+1.84\,t)$. — kJ/kg
+- **Specific heat $c$**: Energy to warm **1 kg** of a substance by **1 K**: $Q = m\,c\,\Delta T$. Dry air 1.006, vapour 1.84, liquid water 4.19. — kJ/(kg·K)
+- **Latent heat of vaporisation**: Energy to turn 1 kg of liquid water into vapour with no temperature change (about 2500 kJ/kg). Released again when the vapour condenses. — kJ/kg
+- **Condensation**: Water vapour turning into liquid. Starts when the air is cooled below its dew point ($p_v > p_{sat}$). — -
+- **Vapour density $\rho_v$**: Kilograms of vapour per m³ of air, linked to pressure by $p_v = \rho_v R_v T$. — kg/m³
 
 The constant 0.622 is the ratio of molar masses, water (18) / air (29). The 2500 kJ/kg is the energy needed to evaporate 1 kg of water, and 1.84 kJ/(kg·K) is the vapour's specific heat.
 
@@ -478,10 +478,10 @@ Why iterate? $t_{cl}$ sets how much heat leaves by radiation ($\propto T_{cl}^4$
 - **Validity:** the model assumes sweating is small, so PMV is only applicable for $-2 < PMV < +2$. It is **not applicable for hot environments**.
 - **Romanian regulation I5 (the national normative that defines the comfort categories, as named in the lecture)** sorts rooms into four categories:
 
-- ****I** high**: children, elderly, sick — < 6 % — −0.2 … 0.2
-- ****II** medium**: normal for new / renovated buildings — < 10 % — −0.5 … 0.5
-- ****III** moderate**: existing buildings — < 15 % — −0.7 … 0.7
-- ****IV** low**: short periods only — > 15 % — beyond ±0.7
+- **I high**: children, elderly, sick — < 6 % — −0.2 … 0.2
+- **II medium**: normal for new / renovated buildings — < 10 % — −0.5 … 0.5
+- **III moderate**: existing buildings — < 15 % — −0.7 … 0.7
+- **IV low**: short periods only — > 15 % — beyond ±0.7
 
 The lab's target, −0.5 < PMV < 0.5, is category **II**.
 
