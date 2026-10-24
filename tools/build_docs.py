@@ -4,7 +4,7 @@ Run from the repo root inside the conda env:
     conda run -n human-centric-ai-for-energy-labs python tools/build_docs.py lab-2 lab-3 lab-4
     (no argument = all labs)
 
-For each notebook this writes  <lab>/explanation-notebooks/text explanations/<name>/<name>.md  (+ figures/)  and  <name>.pdf.
+For each notebook this writes  <lab>/explanation-notebooks/visual explanations/<name>/<name>.md  (+ figures/)  and  <name>.pdf.
 Code cells, tables-as-code, display equations (lab 2) and the hand-calculation sections are left out.
 Notebooks are NOT executed here: run them first (jupyter nbconvert --to notebook --execute --inplace <nb>).
 """
@@ -19,7 +19,7 @@ BROWSERS = [r"C:\Program Files\Google\Chrome\Application\chrome.exe",
 CHROME = next((b for b in BROWSERS if os.path.exists(b)), None)
 
 JN = "explanation-notebooks/jupyter notebooks"
-TE = "explanation-notebooks/text explanations"
+TE = "explanation-notebooks/visual explanations"
 L2A, L2B = f"lab-2/{JN}/lab-2-plus-lecture-challenge", f"lab-2/{JN}/only-lab-2"
 
 

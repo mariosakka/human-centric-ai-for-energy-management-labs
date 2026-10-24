@@ -15,7 +15,7 @@ lab-N/
   shared/                          reusable Python functions (they only return values, no printing or plotting)
   explanation-notebooks/
     jupyter notebooks/             simple and in-depth notebooks, with images/ (the diagrams they show)
-    text explanations/<name>/      PDF export of a notebook + <name>.md companion + figures/
+    visual explanations/<name>/      PDF export of a notebook + <name>.md companion + figures/
 ```
 
 ## Environment
@@ -44,7 +44,7 @@ jupyter nbconvert --to notebook --execute --inplace lab-3-in-depth.ipynb
 
 ## Building the PDFs and markdown companions
 
-`tools/build_docs.py` rebuilds, for every notebook, the folder `lab-N/explanation-notebooks/text explanations/<name>/` with `<name>.pdf`, `<name>.md` and `figures/`. Execute the notebooks first, then from the repo root:
+`tools/build_docs.py` rebuilds, for every notebook, the folder `lab-N/explanation-notebooks/visual explanations/<name>/` with `<name>.pdf`, `<name>.md` and `figures/`. Execute the notebooks first, then from the repo root:
 
 ```
 conda run -n human-centric-ai-for-energy-labs python tools/build_docs.py lab-2 lab-3 lab-4
