@@ -12,9 +12,10 @@ Each lab has the same layout:
 
 ```
 lab-N/
-  shared/                  reusable Python functions (they only return values, no printing or plotting)
-  explanation-notebooks/   simple and in-depth notebooks (+ images/ with the diagrams they show)
-  pdf/                     PDF exports of the notebooks (code and hand calculations hidden)
+  shared/                          reusable Python functions (they only return values, no printing or plotting)
+  explanation-notebooks/
+    jupyter notebooks/             simple and in-depth notebooks, with images/ (the diagrams they show)
+    text explanations/<name>/      PDF export of a notebook + <name>.md companion + figures/
 ```
 
 ## Environment
@@ -30,20 +31,20 @@ To update an existing environment after the file changed:
 conda env update -n human-centric-ai-for-energy-labs -f environment.yml --prune
 ```
 
-Open a notebook in VS Code or JupyterLab and pick the `human-centric-ai-for-energy-labs` kernel. Notebooks add `../shared` to `sys.path`, so run them from their own folder.
+Open a notebook in VS Code or JupyterLab and pick the `human-centric-ai-for-energy-labs` kernel. Notebooks add the lab's `shared/` folder to `sys.path` with a relative path, so run them from their own folder.
 
 On Windows, run commands that use the environment through `conda run -n human-centric-ai-for-energy-labs ...` (or activate it first). Starting the environment's `python.exe` directly skips the DLL paths and matplotlib crashes.
 
 ## Re-executing a notebook from the terminal
 
 ```
-cd lab-3/explanation-notebooks
+cd "lab-3/explanation-notebooks/jupyter notebooks"
 jupyter nbconvert --to notebook --execute --inplace lab-3-in-depth.ipynb
 ```
 
 ## Building the PDFs and markdown companions
 
-`tools/build_docs.py` rebuilds, for every notebook, the folder `lab-N/pdf/<name>/` with `<name>.pdf`, `<name>.md` and `figures/`. Execute the notebooks first, then from the repo root:
+`tools/build_docs.py` rebuilds, for every notebook, the folder `lab-N/explanation-notebooks/text explanations/<name>/` with `<name>.pdf`, `<name>.md` and `figures/`. Execute the notebooks first, then from the repo root:
 
 ```
 conda run -n human-centric-ai-for-energy-labs python tools/build_docs.py lab-2 lab-3 lab-4

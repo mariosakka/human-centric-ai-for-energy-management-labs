@@ -4,7 +4,7 @@ Run from the repo root inside the conda env:
     conda run -n human-centric-ai-for-energy-labs python tools/build_docs.py lab-2 lab-3 lab-4
     (no argument = all labs)
 
-For each notebook this writes  <lab>/pdf/<name>/<name>.md  (+ figures/)  and  <name>.pdf.
+For each notebook this writes  <lab>/explanation-notebooks/text explanations/<name>/<name>.md  (+ figures/)  and  <name>.pdf.
 Code cells, tables-as-code, display equations (lab 2) and the hand-calculation sections are left out.
 Notebooks are NOT executed here: run them first (jupyter nbconvert --to notebook --execute --inplace <nb>).
 """
@@ -18,7 +18,9 @@ BROWSERS = [r"C:\Program Files\Google\Chrome\Application\chrome.exe",
             "/usr/bin/google-chrome", "/usr/bin/chromium", "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"]
 CHROME = next((b for b in BROWSERS if os.path.exists(b)), None)
 
-L2A, L2B = "lab-2/explanation-notebooks/lab-2-plus-lecture-challenge", "lab-2/explanation-notebooks/only-lab-2"
+JN = "explanation-notebooks/jupyter notebooks"
+TE = "explanation-notebooks/text explanations"
+L2A, L2B = f"lab-2/{JN}/lab-2-plus-lecture-challenge", f"lab-2/{JN}/only-lab-2"
 
 
 def starts(c, prefix):
@@ -42,10 +44,10 @@ JOBS = {
               (f"{L2B}/lab-2-simple.ipynb", no_step4, strip_display_eq),
               (f"{L2A}/lab-2-in-depth.ipynb", no_step4, strip_display_eq),
               (f"{L2A}/lab-2-in-depth-simple.ipynb", no_step4, strip_display_eq)],
-    "lab-3": [("lab-3/explanation-notebooks/lab-3-in-depth.ipynb", no_pmv_maths, lambda c: c),
-              ("lab-3/explanation-notebooks/lab-3-simple.ipynb", keep_all, lambda c: c)],
-    "lab-4": [("lab-4/explanation-notebooks/lab-4-in-depth.ipynb", no_hand, lambda c: c),
-              ("lab-4/explanation-notebooks/lab-4-simple.ipynb", no_hand, lambda c: c)],
+    "lab-3": [(f"lab-3/{JN}/lab-3-in-depth.ipynb", no_pmv_maths, lambda c: c),
+              (f"lab-3/{JN}/lab-3-simple.ipynb", keep_all, lambda c: c)],
+    "lab-4": [(f"lab-4/{JN}/lab-4-in-depth.ipynb", no_hand, lambda c: c),
+              (f"lab-4/{JN}/lab-4-simple.ipynb", no_hand, lambda c: c)],
 }
 
 
@@ -53,7 +55,7 @@ def build(nb_path, keep, edit):
     lab = nb_path.split("/")[0]
     name = os.path.splitext(os.path.basename(nb_path))[0]
     nb_dir = os.path.dirname(nb_path)
-    out = os.path.join(lab, "pdf", name)
+    out = os.path.join(lab, TE, name)
     shutil.rmtree(os.path.join(out, "figures"), ignore_errors=True)
     os.makedirs(os.path.join(out, "figures"), exist_ok=True)
     nb = nbf.read(nb_path, as_version=4)
