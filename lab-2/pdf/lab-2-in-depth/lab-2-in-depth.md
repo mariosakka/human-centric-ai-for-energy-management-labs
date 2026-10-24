@@ -1,30 +1,11 @@
 # Lab 2 in depth: from the moist-air sheet to the comfort sheet
 
-This notebook follows the two sheets in the order you received them, using the lecture slides (*Occupants' Comfort & Health*) as the explanation.
-
 - ****1**** (sheet *Psychrometrics Study Sheet Challenge*): Describe a summer and a winter day in Romania: $p_{sat}$, $p_v$, $x$, $t_{dp}$, $h$, then the same for a whole day (24 h of Meteonorm data) — **Part A**
 - ****2**** (sheet *AI for Energy Lab 2*): Code that returns PMV (Predicted Mean Vote), PPD (Predicted Percentage of Dissatisfied), operative temperature $t_o$, number of iterations, then find an indoor state with $-0.5<PMV<0.5$ — **Part B**
 
 **How they connect.** Sheet 1 is about the *air* (how much water it holds, how much energy it carries). Sheet 2 is about the *person* in that air. The water-vapour pressure $p_v$ you compute in sheet 1 is exactly the $p_v$ that feeds two of the six body heat-loss paths in sheet 2.
 
-Formulas come from the lecture slides. Where I add an assumption (for example an emissivity) it is flagged.
-
-## Abbreviations used in this notebook
-
-- ****PMV****: Predicted Mean Vote — the calculated average comfort vote, scale −3 (cold) to +3 (hot)
-- ****PPD****: Predicted Percentage of Dissatisfied — share of people who would complain, from PMV
-- ****ISO****: International Organization for Standardization — ISO 7730 is the standard behind PMV and PPD
-- ****ASHRAE****: American Society of Heating, Refrigerating and Air-Conditioning Engineers — ASHRAE 55 gives the comfort ranges and the 12 g/kg humidity limit
-- ****UTC****: Coordinated Universal Time — the world reference clock; hours in the weather data. Romania is UTC+2 in winter, UTC+3 in summer
-- ****RH**, $\varphi$**: relative humidity — $p_v/p_{sat}$, how full the air is (A2)
-- ****clo****: clothing unit — 1 clo = 0.155 m²·K/W of clothing insulation
-- ****met****: metabolic equivalent — 1 met = 58.15 W/m², a person sitting at rest
-- ****TS****: thermal sensation (transfer coefficient) — converts the thermal load $L$ into the vote: $PMV = TS\cdot L$
-- ****$RL_1 \dots RL_6$****: the six heat-loss paths (the sheet's labels, L for loss) — skin diffusion, sweating, breathing (2), radiation, convection
-- ****$t_a$, $t_{mr}$, $t_o$, $t_{cl}$, $t_{dp}$****: air, mean radiant, operative, clothing-surface and dew-point temperature — °C
-- ****I5****: the Romanian regulation named I5 in the lecture — comfort categories I to IV
-- ****AI****: artificial intelligence — the course topic
-- ****Pa, kJ, MJ, W****: pascal, kilojoule, megajoule, watt — units of pressure, energy and power
+Formulas come from the lecture slides. Added assumptions (for example an emissivity) are flagged.
 
 # Part A: Sheet 1, the moist-air (psychrometrics) challenge
 
@@ -61,7 +42,7 @@ Room 6 m × 4 m × 3 m, $p$ = 1 bar = 10⁵ Pa, 25 °C. Ideal gas law $pV = mRT$
     
 
     
-![png](figures/output_6_1.png)
+![png](figures/output_5_1.png)
     
 
 **Reading it.** Same pressure, hotter air means the molecules are more spread out, so each m³ weighs less: the density falls from 1.32 kg/m³ at −10 °C to 1.11 kg/m³ at 40 °C. This is why warm air rises. The orange dot is our room: 1.17 kg/m³, which makes about 84 kg of air in the whole 72 m³.
@@ -83,7 +64,7 @@ The sheet gives measured saturation pressures of water. Between table points we 
 *Figure: Saturation curve, relative humidity and dew point on one chart*
 
     
-![png](figures/output_10_0.png)
+![png](figures/output_9_0.png)
     
 
 **Reading it.** Follow the black curve from left to right: it bends upward, so from 0 °C to 30 °C the capacity grows about **7 times** (611 → 4247 Pa). That is why the same percentage means very different amounts of water on a summer and a winter day (A3). The orange arrow at 30 °C shows how much room the sheet's summer air still has and the horizontal arrow shows how far it must cool to close that gap.
@@ -101,7 +82,7 @@ Steps for each day:
 5. $h = t + x(2500 + 1.84\,t)$: energy per kg of dry air.
 
     
-![png](figures/output_13_0.png)
+![png](figures/output_12_0.png)
     
 
 **Reading the chart.**
@@ -124,14 +105,14 @@ with $R_a$ = 287 and $R_v$ = 461.5 J/(kg·K), so $R_a/R_v = 0.622$. Also, $p_v =
 
 **Why we *also* need the kg-based $x$:**
 - $x$ is *conserved*: if you heat or cool air and add or remove no water, $x$ does not change. $p_v$ also stays put at constant total pressure, but the vapour **per m³** (and so $\varphi$) changes because the air expands. Mass balances, humidifying and dehumidifying, and enthalpy ($h$ is "per kg of dry air") all need $x$.
-- $x$ is **directly** $m_v/m_a$, exactly as you said. The code below shows both routes give the same number.
+- $x$ is **directly** $m_v/m_a$, The code below shows both routes give the same number.
 
     vapour : 18.21 g per m3     dry air: 1.120 kg per m3
     x = rho_v/rho_a = 16.26 g/kg      formula 0.622*pv/(p-pv) = 16.26 g/kg   (same thing)
     
 
     
-![png](figures/output_16_1.png)
+![png](figures/output_15_1.png)
     
 
 **Reading it.** In the charts the humidity ratio $x$ and the vapour pressure $p_v$ **do not change** while we heat the air, since nothing was added or removed. But the vapour per m³ falls (air expands), and the relative humidity falls from 80 % (at 25 °C) to 35 % (at 40 °C), because the "full" limit $p_{sat}$ rises quickly. That is why *relative* humidity is a poor measure of the amount of water, while $x$ (kg/kg) and $p_v$ (Pa) tell the truth.
@@ -148,18 +129,16 @@ They do not contradict each other, because **$x$ and $t_{dp}$ never measure "how
 
 **B. An isolated (sealed, rigid) room.** Nothing can leave and the volume cannot grow, so the same molecules now move faster and hit the walls harder. Pressure rises, and not magically: it is the ideal gas law $p=\rho R T$ with $\rho$ fixed, so $p\propto T$. From 30 °C to 40 °C that is a factor $313.15/303.15=1.033$, so 1 bar becomes about 1.033 bar (3.3 kPa more: this is why sealed cans and bottles burst when heated). Each gas's partial pressure rises by the same factor, so $p_v$ rises from 2548 to 2632 Pa. Since the masses of vapour and dry air did not change, **$x$ is exactly unchanged**, but because $p_v$ rose the **dew point rises slightly, from 21.4 °C to 21.9 °C**. So your intuition about a pressure increase is right for a sealed room, but the effect on the dew point is small (+0.55 °C), and it comes from the pressure increase, not from the expansion.
 
-The first figure draws the three situations (the number of dots and the expansion are exaggerated so that you can see them). The second figure compares the quantities for a room started at 30 °C and 60 %.
-
 ![Heating a sealed and a leaky room: what changes and what does not](figures/sealed-vs-leaky-room.svg)
 
 *Figure: Heating a sealed and a leaky room: what changes and what does not*
 
     
-![png](figures/output_20_0.png)
+![png](figures/output_19_0.png)
     
 
     
-![png](figures/output_21_0.png)
+![png](figures/output_20_0.png)
     
 
 ## A4. Dew point on the saturation curve
@@ -187,7 +166,7 @@ The dew point uses the curve, read backwards from $p_v$, and never the air tempe
 *Figure: A simplified psychrometric chart: humidity ratio against temperature*
 
     
-![png](figures/output_25_0.png)
+![png](figures/output_24_0.png)
     
 
 **Reading it.** Circle = the air now. Square = its dew point, always **on the black 100 % curve**. The arrow is the cooling path, a constant-$p_v$ line. Summer air only has to cool by about 8.6 °C before it reaches 100 % and fogs; winter air by about 2.2 °C, even though its relative humidity (85 %) looks closer to full than the summer's 60 %: the arrow is short because both the starting point and the curve are low (small $p_{sat}$).
@@ -219,7 +198,7 @@ Cooling moves the air to the left along the flat line (nothing is removed, so $x
     
 
     
-![png](figures/output_29_1.png)
+![png](figures/output_28_1.png)
     
 
 **Reading it.** Summer air (30 °C, 60 %) has a dew point of 21.4 °C. Cooled to 15 °C it can hold only about 10.8 g/kg instead of 16.3, so about 5.5 g per kg of air turns to liquid. For the 84 kg of air in our room that is roughly **0.46 litres of water** and about **1.1 MJ** of latent heat released. In the chart, the green area is the "too much" water that has to leave the air. The flat orange line is the water the air really carries (constant while cooling), the blue curve is the ceiling $x_{sat}(t)$, and the two arrows mark the two stages: along the flat line down to the dew point, then along the curve while the excess condenses.
@@ -239,7 +218,7 @@ Cooling moves the air to the left along the flat line (nothing is removed, so $x
 The 1 in front of $t$ is the specific heat of dry air, and the 1.84 is the specific heat of water vapour. The 2500 kJ/kg is *not* a specific heat: it is the **latent heat of vaporisation**, the energy to turn 1 kg of liquid into vapour at 0 °C with no temperature change.
 
     
-![png](figures/output_32_0.png)
+![png](figures/output_31_0.png)
     
 
 ![Specific heat: air versus water for the same mass and the same 1 K step](figures/specific-heat.svg)
@@ -266,7 +245,7 @@ $h = \underbrace{t}_{\text{sensible}} + \underbrace{x(2500+1.84\,t)}_{\text{late
 *Figure: Enthalpy split into sensible and latent parts for 30 °C, 60 % air*
 
     
-![png](figures/output_38_0.png)
+![png](figures/output_37_0.png)
     
 
 **Reading it.** In summer, about 42 of the 71.6 kJ/kg are latent, hidden in the humidity. Cooling this air to a comfortable temperature is only half the job: the air also has to be dried. In winter, the latent part (8.1) is the whole enthalpy, because 0 °C contributes no sensible energy.
@@ -276,7 +255,7 @@ $h = \underbrace{t}_{\text{sensible}} + \underbrace{x(2500+1.84\,t)}_{\text{late
 The sheet gives **24 hourly values** of $t$ and $\varphi$ for **August 8th** and **February 1st** (UTC = Coordinated Universal Time, the world reference clock; Romanian local time is UTC+3 in summer, UTC+2 in winter). We apply the same five steps to every hour.
 
     
-![png](figures/output_42_0.png)
+![png](figures/output_41_0.png)
     
 
 **Reading it.**
@@ -284,7 +263,7 @@ The sheet gives **24 hourly values** of $t$ and $\varphi$ for **August 8th** and
 - **Bottom row:** the rings mark the highest and lowest humidity ratio. In summer the orange area is above 12 g/kg, the limit of the ASHRAE 55 comfort standard (the standard used in Part B and named in the lecture), from 01:00 to 09:00 UTC (13.4 to 14.8 g/kg until 08:00, only just above at 09:00) and again at 17:00. Even in the afternoon, when relative humidity is lowest, the air still holds 10 to 12 g/kg, so it is dry only in relative terms. Winter air never exceeds 4.8 g/kg, which is why heated winter rooms often feel too dry.
 
     
-![png](figures/output_44_0.png)
+![png](figures/output_43_0.png)
     
 
 **Reading it.** This is the classic *psychrometric chart*: temperature across, water content up. Each dot is one hour. The black curve is the **100 % relative humidity** (saturation) curve of A2, drawn here in terms of $x$: no hour can lie above it, because that air would already be fog. The grey curves under it are 80, 60, 40 and 20 %: a dot between two curves has the percentage in between.
@@ -295,7 +274,7 @@ The sheet gives **24 hourly values** of $t$ and $\varphi$ for **August 8th** and
 Air conditioning moves summer dots **down** (drying) and **left** (cooling) toward the comfort zone.
 
     
-![png](figures/output_46_0.png)
+![png](figures/output_45_0.png)
     
 
     Summer: h from 40.8 to 60.4 kJ/kg;  winter: 9.9 to 19.5 kJ/kg
@@ -314,22 +293,20 @@ The charts above show a handful of quantities, and they are **computed from each
 - $r$ close to **−1**: mirror images, when one rises the other falls (right plot, arrow slopes down).
 
     
-![png](figures/output_49_0.png)
+![png](figures/output_48_0.png)
     
 
     
-![png](figures/output_49_1.png)
+![png](figures/output_48_1.png)
     
 
-The six correlations measured on the two days are in the heatmap above (each row is a pair of curves). The rest of the section goes through them one by one.
-
-**Map of the links.** Every arrow means "is computed from". The map shows in advance which curves must be related:
+**Map of the links.** Every arrow means "is computed from". 
 1. **Water amount.** $\varphi$ and $t$ give $p_v$, and then both $x$ and $t_{dp}$ come from $p_v$ alone. So $x$ and $t_{dp}$ are *the same information* in g/kg and in °C: their curves must have the same shape (section 3).
 2. **Relative humidity.** $\varphi=p_v/p_{sat}(t)$ uses $t$ again, through the growing $p_{sat}(t)$. If $t$ goes up and the water stays the same, $\varphi$ must go down (section 2). The gap $t-t_{dp}$ measures the same thing in degrees (section 4).
 3. **Energy.** $h$ takes $t$ as its sensible part and $x$ as its latent part, so it follows whichever of the two changes more over the day (section 5).
 
     
-![png](figures/output_51_0.png)
+![png](figures/output_50_0.png)
     
 
 ### 2. Temperature and relative humidity: mirror images
@@ -341,7 +318,7 @@ In the figure the coloured line is $t$ (left axis) and the dashed black line is 
 - **Winter** ($r=-0.89$): $t$ climbs from 1.1 °C (07:00) to 7.9 °C (13:00) while $\varphi$ drops from 85 % to 69 %. The swing is smaller (66 to 87 % all day) because the winter air also gains water as it warms (section 3), which partly refills the bigger $p_{sat}$.
 
     
-![png](figures/output_53_0.png)
+![png](figures/output_52_0.png)
     
 
 ### 3. Dew point and humidity ratio: the same curve
@@ -355,7 +332,7 @@ In the first two panels the dashed line ($x$, right axis) lies on top of the sol
 The right panel plots $x$ against $t_{dp}$. All 48 hours fall on **one curve, the saturation curve of A2** (the 100 % line) written as $x_{sat}$ at the temperature $t_{dp}$. This is the definition of the dew point: air with humidity ratio $x$ is 100 % full exactly at the temperature where $x$ meets the saturation curve. The summer ring sits high on the curve (humid, high dew point), the winter ring low on it (dry, low dew point).
 
     
-![png](figures/output_55_0.png)
+![png](figures/output_54_0.png)
     
 
 ### 4. The gap $t-t_{dp}$ and relative humidity
@@ -368,7 +345,7 @@ The dashed ovals show where the hours sit:
 - **Winter** (all hours): gap 2.0 to 5.9 °C and $\varphi$ 66 to 87 %, never far from fog, even though the absolute water content is small.
 
     
-![png](figures/output_57_0.png)
+![png](figures/output_56_0.png)
     
 
 ### 5. Enthalpy: does it follow the temperature or the water?
@@ -379,7 +356,7 @@ $h=t+x\,(2500+1.84\,t)$ is a sensible part ($t$) plus a latent part (proportiona
 - **The rings in the summer panels** mark two hours. At 08:00 the temperature is only 23.3 °C, yet $h$ is the day's highest (60.4 kJ/kg) because $x$ is 14.6 g/kg. At 24:00 it is the coolest and driest hour, with the lowest $h$ (40.8 kJ/kg).
 
     
-![png](figures/output_59_0.png)
+![png](figures/output_58_0.png)
     
 
 # Part B: Sheet 2, the comfort challenge (PMV, PPD, $t_o$)
@@ -416,7 +393,7 @@ Which factor drives which drain? The heatmap below changes each factor by one ty
 *Figure: How the body gives heat to its surroundings*
 
     
-![png](figures/output_63_0.png)
+![png](figures/output_62_0.png)
     
 
 **Reading it.** Each column is a factor, each row a drain.
@@ -439,7 +416,7 @@ A resting adult produces about **100 W** of heat. Spread over the skin (about 1.
 *Figure: Typical values of clothing insulation (clo) and metabolic rate (met)*
 
     
-![png](figures/output_67_0.png)
+![png](figures/output_66_0.png)
     
 
 **Reading it.** The skin temperature drops about 1 °C between resting and 1.5 met, which is why $t_{cl}$ depends on $M$ in the iteration. Above about 3 met the activity is poorly defined and the values can be off by ±50 %, so PMV is a less reliable number there.
@@ -450,7 +427,7 @@ A resting adult produces about **100 W** of heat. Spread over the skin (about 1.
 - Clothes also **enlarge the surface** that exchanges heat. The *clothing area factor* $f_{cl}$ = clothed surface / nude surface:
 
     
-![png](figures/output_70_0.png)
+![png](figures/output_69_0.png)
     
 
 **Reading it.** At 0.5 clo the insulation is just under the 0.078 threshold, so the **first** branch applies (it differs only slightly from the second). The area factor is about 1.10: a lightly dressed body exchanges heat over a surface 10 % larger than bare skin.
@@ -472,7 +449,7 @@ with $h_c$ convective and $h_r$ radiative coefficient [W/(m²·K)], $\varepsilon
 The **sheet simplifies this to fixed weights** (0.5/0.5, 0.6/0.4, 0.7/0.3 depending on air speed). Let us check that the simplification is reasonable.
 
     
-![png](figures/output_75_0.png)
+![png](figures/output_74_0.png)
     
 
 **Reading it.** The physical curve rises with air speed (more convection, so air counts more), just like the sheet's steps. At the lab's 0.15 m/s the physical weight is about 0.52 against the sheet's 0.50, so the two operative temperatures (30.24 and 30.25 °C) are practically identical. The sheet's version needs no iteration and no emissivity, which makes it easy to code and good enough for control.
@@ -488,7 +465,7 @@ Why iterate? $t_{cl}$ sets how much heat leaves by radiation ($\propto T_{cl}^4$
 *Figure: The t_cl iteration: guess, correct, repeat until the change is below the stop band*
 
     
-![png](figures/output_79_0.png)
+![png](figures/output_78_0.png)
     
 
     -> t_cl = 32.10 degC after 8 iterations;  h_c = 4.69 W/m2K;  f_cl = 1.10
@@ -513,7 +490,7 @@ The lab's target, −0.5 < PMV < 0.5, is category **II**.
 *Figure: The PMV scale from cold to hot and the comfort categories*
 
     
-![png](figures/output_82_0.png)
+![png](figures/output_81_0.png)
     
 
 **Reading it.** Our indoor room (PMV −0.03) sits in the centre, **category I**, the strictest one (|PMV| < 0.2, PPD 5.0 % < 6 %). The outdoor day (+1.77) is in category IV, and its value is just inside the ±2 validity limit, so the number can be trusted but is close to the edge.
@@ -523,7 +500,7 @@ The lab's target, −0.5 < PMV < 0.5, is category **II**.
 The challenge refers to *"the considered day in the previous simulation"*. Here we run the hourly summer data of sheet 1 through the comfort program, assuming (as the sheet does for its single case) $t_{mr}=t_a+0.5$ °C, $v=0.15$ m/s, 0.5 clo, 1.2 met. **This is an extension, not something the sheet asks for**: it shows how the outdoor air would feel to a person dressed for summer.
 
     
-![png](figures/output_85_0.png)
+![png](figures/output_84_0.png)
     
 
     PMV from -1.66 (hour 24) to 0.96 (hour 15)
@@ -540,22 +517,22 @@ The sheet fixes RH, $v$, clothing and activity, and lets us change $t_a$, $t_{mr
     
 
     
-![png](figures/output_88_1.png)
+![png](figures/output_87_1.png)
     
 
-**Reading it.** Light bars = the ASHRAE 55 ranges from the lecture. Solid bars = what our PMV program says (PMV between ±0.5). They overlap well, which is a good sign the code is right: the program reproduces the standard's comfort zone. Winter people wear twice the clothing, so the comfortable air temperature is lower.
+**Reading it.** Light bars = the ASHRAE 55 ranges from the lecture. Solid bars = what our PMV program says (PMV between ±0.5). They overlap well: the program reproduces the standard's comfort zone. Winter people wear twice the clothing, so the comfortable air temperature is lower.
 
 ## B8. Why the comfortable temperature depends on activity
 
 Lecture slide 24: for activity above 70 W/m² the comfortable operative temperature **drops**, because the body makes more heat. Our program shows the same effect (summer clothes, $t_{mr}=t_a+0.5$):
 
     
-![png](figures/output_91_0.png)
+![png](figures/output_90_0.png)
     
 
 **Reading it.** Every extra 0.2 met lowers the comfortable air temperature by about 1.3 °C (the range is 24.6 to 27.1 °C at 1.0 met and 16.8 to 22.0 °C at 2.0 met). So a room that is perfect for a seated student feels hot to someone doing a lab practical on their feet.
 
-## B9. Summary: what to hand in and how the pieces fit
+## B9. Summary
 
 - **Mass / density of air in 6×4×3 m room at 25 °C** (sheet 1): 84.14 kg, 1.17 kg/m³ (slide: 1.16)
 - **Summer 30 °C, 60 %: $p_{sat}$, $p_v$, $x$, $t_{dp}$, $h$** (sheet 1): 4247 Pa, 2548 Pa, 16.26 g/kg, 21.4 °C, 71.6 kJ/kg

@@ -1,25 +1,9 @@
-# Both sheets explained simply (the "like I'm 8" version of `lab-2-in-depth.ipynb`)
-
-Same two sheets, same numbers, but with pictures and everyday words.
+# Both sheets explained simply
 
 - ****1**** (sheet *Psychrometrics challenge*): "How much **water** hides in the air, and how much **energy** does the air carry?" — **Part A**
 - ****2**** (sheet *Lab 2 (PMV = Predicted Mean Vote, PPD = Predicted Percentage of Dissatisfied)*): "Will a **person** feel comfortable in that air?" — **Part B**
 
 **How they connect:** sheet 1 is about the **air**, sheet 2 is about the **person standing in the air**. The water pressure $p_v$ you find in Part A is the same $p_v$ the body needs in Part B.
-
-## Short words used in this notebook
-
-- ****PMV****: Predicted Mean Vote — the average "how warm do I feel" vote of a group, −3 cold … 0 just right … +3 hot
-- ****PPD****: Predicted Percentage of Dissatisfied — how many out of 100 people would complain
-- ****ISO**, **ASHRAE****: International Organization for Standardization; American Society of Heating, Refrigerating and Air-Conditioning Engineers — the groups that wrote the comfort rule-books
-- ****UTC****: Coordinated Universal Time — the clock of the whole world; Romania is 2 hours ahead in winter, 3 in summer
-- ****RH**, $\varphi$**: relative humidity — how full the "sponge" of the air is, in %
-- ****clo****: clothing unit — how warm your clothes are (0.5 = light summer clothes)
-- ****met****: metabolic equivalent — how fast your body's engine runs (1 = sitting quietly)
-- ****TS****: thermal sensation (transfer coefficient) — the number that turns "heat left over" into a vote
-- ****$RL_1 \dots RL_6$****: the six heat-loss paths (L for loss) — the six drains of the bathtub
-- ****$t_a$, $t_{mr}$, $t_o$****: air, mean radiant (walls), operative ("feels-like") temperature — °C
-- ****Pa, kJ, W****: pascal, kilojoule, watt — units of pressure, energy and power
 
 # Part A: Sheet 1, the air and its hidden water
 
@@ -59,7 +43,7 @@ Air feels like nothing, but it has weight. The room is 6 m × 4 m × 3 m, at 25 
     
 
     
-![png](figures/output_6_1.png)
+![png](figures/output_5_1.png)
     
 
 **Reading it.** When air gets warm it spreads out, so each cubic metre holds less stuff and weighs less. That is why warm air rises (hot-air balloons!). Our room's air weighs about **84 kg**.
@@ -81,7 +65,7 @@ The sheet gives a table: for each temperature, the **biggest** water pressure th
 *Figure: The warmer the air, the more water it can hold; cool it and it overflows at the dew point*
 
     
-![png](figures/output_10_0.png)
+![png](figures/output_9_0.png)
     
 
 **Reading it.** At 0 °C the air can hold 611 Pa of water, at 30 °C it can hold 4247 Pa, which is about **7 times more**. The orange arrow shows how much room is left in the summer air and the horizontal arrow shows how far it has to cool to be full. Everything else in Part A comes from this picture.
@@ -97,11 +81,11 @@ The sheet gives a table: for each temperature, the **biggest** water pressure th
 5. **Energy carried:** $h = t + x\,(2500 + 1.84\,t)$ (warmth + hidden energy; 2500 kJ/kg is what it costs to turn 1 kg of water into vapour).
 
     
-![png](figures/output_13_0.png)
+![png](figures/output_12_0.png)
     
 
     
-![png](figures/output_14_0.png)
+![png](figures/output_13_0.png)
     
 
 **Reading it.** Winter feels "85 % wet", but the cup is tiny, so there are only **3.2 g** of water per kg of air. Summer is "only 60 %" but the cup is huge, so there are **16.3 g**, five times more. **Lesson: the percentage alone lies; the grams tell the truth.**
@@ -127,7 +111,7 @@ The formula that links the two is $p_v = \rho_v \cdot R_v \cdot T$: pressure = (
     
 
     
-![png](figures/output_17_1.png)
+![png](figures/output_16_1.png)
     
 
 **Reading it.** While we warm the same air, the water in it ($x$ in g/kg and $p_v$ in Pa) **stays the same**. But the percentage falls from 80 % (at 25 °C) to 35 % (at 40 °C), because warm air has a bigger sponge. So the percentage is a bit of a trickster; grams per kg (and pressure) tell the truth.
@@ -151,11 +135,11 @@ The first picture shows the three rooms (with extra dots so you can see them), t
 *Figure: Heating a room: the water stays, so only the percentage drops*
 
     
-![png](figures/output_21_0.png)
+![png](figures/output_20_0.png)
     
 
     
-![png](figures/output_22_0.png)
+![png](figures/output_21_0.png)
     
 
 ## A4. Dew point: when the sponge gets full
@@ -183,7 +167,7 @@ The dew point reads the table backwards starting from $p_v$, so it never uses th
 *Figure: The air map: up is more water, right is warmer*
 
     
-![png](figures/output_26_0.png)
+![png](figures/output_25_0.png)
     
 
 **Reading it.** Circle = the air now. Square = its dew point, always sitting **on the black 100 % curve**. The arrow is the cooling. In summer the air needs to cool **8.6 °C** (to 21.4 °C) before drops form, so a cold wall or an air-conditioner pipe at 15 °C will **drip**. In winter only 2.2 °C below zero is needed, so you get frost on a cold window. The winter arrow is short even though 85 % sounds wetter than 60 %: the winter sponge is small.
@@ -217,7 +201,7 @@ Cooling the air moves it **left along the flat line** (same water) until the lin
     
 
     
-![png](figures/output_30_1.png)
+![png](figures/output_29_1.png)
     
 
 **Reading it.** Summer air (30 °C, 60 %) has a dew point of 21.4 °C. If it touches something at 15 °C, its sponge only holds 10.8 g per kg instead of 16.3 g, so about 5.5 g per kg turns into drops. For all the air in the room that is about **half a litre of water**, a small bottle! The green area on the chart is the water that has to leave the air. The flat orange line is the water the air really has (it stays the same while cooling), the blue curve is the sponge size at each temperature, and the two arrows are the two stages: along the flat line to the dew point, then along the curve while drops form.
@@ -237,7 +221,7 @@ It is the energy needed to warm **1 kg** of something by **1 degree**. Think of 
 The "1" is the specific heat of dry air, the "1.84" the specific heat of vapour. The 2500 is **not** a specific heat: it is the big chunk of energy needed to turn 1 kg of liquid water into vapour (even without getting any warmer).
 
     
-![png](figures/output_33_0.png)
+![png](figures/output_32_0.png)
     
 
 ![Water needs about 4 times more energy than air to warm up by one degree](figures/specific-heat.svg)
@@ -263,7 +247,7 @@ Think of **two piggy banks**: one holds the warmth you can feel with a thermomet
 *Figure: Hot air carries two kinds of energy: warmth you feel and energy hidden in water*
 
     
-![png](figures/output_39_0.png)
+![png](figures/output_38_0.png)
     
 
 **Reading it.** In summer, 42 of the 71.6 kJ/kg are hidden in the water, so cooling alone is not enough: you must also **dry** the air. In winter (0 °C) there is no warmth to count, so the whole 8.1 kJ/kg is hidden energy.
@@ -273,7 +257,7 @@ Think of **two piggy banks**: one holds the warmth you can feel with a thermomet
 The sheet gives 24 hourly temperatures and humidities (Bucharest, 8 August and 1 February). We repeat the 5 steps for every hour and plot the **grams of water per kg of air**.
 
     
-![png](figures/output_42_0.png)
+![png](figures/output_41_0.png)
     
 
     Summer: water 8.5-14.8 g/kg, energy 41-60 kJ/kg
@@ -284,7 +268,7 @@ The sheet gives 24 hourly temperatures and humidities (Bucharest, 8 August and 1
 
 ## A7. Which curves move together?
 
-All the graphs above show the **same few things**, and they are linked, because most of them are **calculated from each other**. Only the air temperature $t$ and the humidity percentage $\varphi$ are measured. Here we look at the 24 hours of both days and check, one pair at a time, which curves rise and fall together, which are opposites and why. Every figure has arrows and circles on the pattern.
+All the graphs above show the **same few things**, and they are linked, because most of them are **calculated from each other**. Only the air temperature $t$ and the humidity percentage $\varphi$ are measured. Here we look at the 24 hours of both days and check, one pair at a time, which curves rise and fall together, which are opposites and why.
 
 **The "friendship score" (correlation, $r$).** A number from −1 to +1:
 - **+1** = they rise and fall **together** (left plot: dots go up from left to right);
@@ -292,20 +276,20 @@ All the graphs above show the **same few things**, and they are linked, because 
 - **−1** = **opposites**, like a seesaw (right plot: dots go down).
 
     
-![png](figures/output_45_0.png)
+![png](figures/output_44_0.png)
     
 
     
-![png](figures/output_45_1.png)
+![png](figures/output_44_1.png)
     
 
-The heatmap above shows the six scores we measured. Here is the **map of who is calculated from whom** (an arrow means "is calculated from"). It tells us in advance which curves must be friends:
+**Map of who is calculated from whom** (an arrow means "is calculated from"):
 1. **The water amount.** From $t$ and $\varphi$ we get $p_v$, and from $p_v$ alone we get **both** $x$ and the dew point. So $x$ and the dew point are the same information (one in g/kg, one in °C): they must have the same shape (section 3).
 2. **The percentage.** $\varphi=p_v/p_{sat}(t)$ uses the temperature again. Warmer air has a bigger sponge, so with the same water the percentage goes **down** (section 2). The gap $t-t_{dp}$ says the same thing in degrees (section 4).
 3. **The energy.** $h$ adds the warmth ($t$) and the hidden energy (from $x$), so it follows whichever moves more (section 5).
 
     
-![png](figures/output_47_0.png)
+![png](figures/output_46_0.png)
     
 
 ### 2. Temperature and humidity percentage: a seesaw
@@ -317,7 +301,7 @@ In the figure the coloured line is the temperature (left axis) and the dashed bl
 - **Winter** ($r=-0.89$): from 1.1 °C (07:00) to 7.9 °C (13:00) the percentage drops from 85 % to 69 %. It only swings between 66 and 87 %, because the warmer winter air also picks up some water (section 3).
 
     
-![png](figures/output_49_0.png)
+![png](figures/output_48_0.png)
     
 
 ### 3. Dew point and grams of water: the same curve
@@ -329,7 +313,7 @@ The dew point is just the water amount ($p_v$) written as a temperature, and $x$
 The right panel: all 48 hours lie on **one curve, the 100 % curve of A2** (the "full sponge" line). That is what the dew point means: air with this much water is exactly full at the temperature where it meets that curve. Summer is high on the curve (humid), winter low on it (dry).
 
     
-![png](figures/output_51_0.png)
+![png](figures/output_50_0.png)
     
 
 ### 4. The gap to the dew point and the percentage
@@ -340,7 +324,7 @@ The gap $t-t_{dp}$ is how many degrees the air must cool before the sponge is fu
 - **Winter**: gap 2.0 to 5.9 °C, 66 to 87 %: always close to fog, even though there is very little water in the air.
 
     
-![png](figures/output_53_0.png)
+![png](figures/output_52_0.png)
     
 
 ### 5. Energy: does it follow the warmth or the water?
@@ -351,7 +335,7 @@ $h$ = warmth ($t$) + hidden energy (proportional to $x$), so it follows whicheve
 - **The circles in the summer panels:** at 08:00 the air is only 23.3 °C but its energy is the day's highest (60.4 kJ/kg), because it holds 14.6 g/kg of water. At 24:00 it is the coolest and driest hour, with the lowest energy (40.8 kJ/kg).
 
     
-![png](figures/output_55_0.png)
+![png](figures/output_54_0.png)
     
 
 # Part B: Sheet 2, will a person feel comfortable?
@@ -411,7 +395,7 @@ The clothes' outer surface has a temperature $t_{cl}$ that we don't know, but we
     
 
     
-![png](figures/output_62_1.png)
+![png](figures/output_61_1.png)
     
 
 **Reading it.** The first guess is a bit off, then each round gets closer, like finding a hidden toy by being told "warmer, warmer, ...". We stop when the answer moves less than 0.0015 (that is 0.15 °C). The sheet's answer is **8 rounds**.
@@ -434,7 +418,7 @@ What is left over is the **thermal load** $L = M - RL1 - \dots - RL6$. Then **PM
 *Figure: Your body is a little heater that gives its heat away in several ways*
 
     
-![png](figures/output_66_0.png)
+![png](figures/output_65_0.png)
     
 
 **Reading it.** The body makes about 70 W/m² in both cases. Indoors, the drains take away almost exactly that (little is left over → PMV ≈ 0). Outdoors, the radiation and breeze drains (RL5, RL6) nearly vanish because the air is as warm as your clothes, so about 30 W/m² piles up → you feel hot.
@@ -450,7 +434,7 @@ What is left over is the **thermal load** $L = M - RL1 - \dots - RL6$. Then **PM
 *Figure: From cold to hot: the comfort vote*
 
     
-![png](figures/output_70_0.png)
+![png](figures/output_69_0.png)
     
 
 **Reading it.** The curve is a bowl: lowest at 0 (5 %), rising fast on both sides. Outdoors (PMV 1.77) about **65 %** are unhappy; our indoor room (PMV −0.03) is at the bottom of the bowl, **5 %**.
@@ -460,12 +444,12 @@ What is left over is the **thermal load** $L = M - RL1 - \dots - RL6$. Then **PM
 We keep the same person (light clothes 0.5 clo, sitting 1.2 met, 60 % humidity, almost no breeze) and try air temperatures from 18 to 30 °C. In summer the walls are about 0.5 °C warmer than the air ($t_{mr} = t_a + 0.5$). We look for where **PMV stays between −0.5 and +0.5**.
 
     
-![png](figures/output_73_0.png)
+![png](figures/output_72_0.png)
     
 
 **Reading it.** The blue line climbs as the room gets warmer. The green zone is where people say "just right": about **23.0 to 26.1 °C**. We picked **24.5 °C** (air) / **25 °C** (walls): PMV = −0.03, PPD = 5 %, category I. Try clothes of 1.0 clo or activity of 2.0 met in the call above and watch the green zone slide down: **warmer clothes or more movement means you want a cooler room**.
 
-## B6. Cheat-sheet: what to hand in
+## B6. Cheat-sheet
 
 - **Water pressure, grams of water, dew point, energy for summer / winter day** (sheet 1): A3 results: 16.26 / 3.25 g/kg, 21.37 / −2.23 °C, 71.56 / 8.12 kJ/kg
 - **Mass of air in the 6×4×3 m room** (sheet 1): 84.14 kg (1.17 kg/m³)
@@ -473,5 +457,3 @@ We keep the same person (light clothes 0.5 clo, sitting 1.2 met, 60 % humidity, 
 - **Indoor state with −0.5 < PMV < 0.5** (sheet 2): 24.5 / 25 °C → PMV −0.03, PPD 5.0 %, $t_o$ 24.75 °C
 
 **One sentence for each sheet:** *Sheet 1:* "Warm air has a big sponge, so summer air carries far more water and energy than winter air." *Sheet 2:* "Comfort is when the heat your body makes equals the heat the room takes away."
-
-The detailed version of everything is in `lab-2-in-depth.ipynb`; the code version is `calculate_pmv_ppd.py`.

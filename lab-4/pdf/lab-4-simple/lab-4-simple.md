@@ -1,17 +1,8 @@
-# Heat loss of a house explained simply (the "like I'm 8" version of lab 4)
+# Heat loss of a house explained simply
 
-The sheet is **Lab 4: Thermal losses for a house**. It has two halves: first we count how much heat a house loses in winter, then we let a "smart thermostat" lower the temperature as far as people still feel fine.
+**Lab 4: Thermal losses for a house.** First we count how much heat a house loses in winter, then a smart thermostat lowers the temperature as far as people still feel fine.
 
-* **0**: How does heat travel, and why does a wall act like a blanket?
-* **Q1**: How much heat leaks through **one square metre** of wall, and how cold is each layer?
-* **Q2**: How much **electricity** must a radiator use each hour, with and without the polystyrene?
-* **Q3**: What does a **thicker blanket** (insulation) do?
-* **Q4**: Which **mix of materials** makes the best wall?
-* **Q5 to Q9**: What if the heater only warms the house **as much as people need**? How much do we save?
-
-**How it connects to the other labs:** lab 2 and lab 3 gave us a comfort calculator (PMV). Here the calculator tells the heater the **lowest temperature people still like**, and the heat-loss calculation tells us how many kilowatt-hours that saves.
-
-## Short words used in this notebook
+## Words and symbols
 
 * **tE / tI** stands for exterior / interior air temperature. Outside = 5 degC, inside = 24 degC
 * **W, kW, kWh** stands for watt, kilowatt, kilowatt-hour. Power is **how fast** energy flows; **kWh = power x hours**, what the electricity bill counts
@@ -56,9 +47,7 @@ so a **small k** means a warm, cheap house.
 
 *Figure: The house: walls, windows, floor on the soil and the ceiling towards the heated floor above*
 
-# Setup
-
-The helper functions only **return numbers** (they never print or draw). Everything below just asks them questions. Data from the sheet: outside **5 degC**, inside **24 degC**, soil **11 degC**, the house is 6 m x 6 m with 3 m high walls, and we study the ground floor only.
+Data from the sheet: outside **5 degC**, inside **24 degC**, soil **11 degC**; the house is 6 m x 6 m with 3 m high walls and only the ground floor is studied.
 
 # Q1: How much heat leaks through one square metre of wall?
 
@@ -80,7 +69,7 @@ The helper functions only **return numbers** (they never print or draw). Everyth
     
 
     
-![png](figures/output_13_0.png)
+![png](figures/output_12_0.png)
     
 
 **What this means.**
@@ -115,7 +104,7 @@ The helper functions only **return numbers** (they never print or draw). Everyth
     
 
     
-![png](figures/output_19_0.png)
+![png](figures/output_18_0.png)
     
 
 **What this means.**
@@ -127,10 +116,10 @@ The helper functions only **return numbers** (they never print or draw). Everyth
 
 # Q3: What does a thicker blanket do?
 
-**Idea.** Keep the same house and change only the thickness of the polystyrene, from nothing to 20 cm. For each thickness we ask for the wall's k value, the heat flux, the total loss and the hourly electricity.
+**Idea.** Same house, only the polystyrene thickness changes, from nothing to 20 cm.
 
     
-![png](figures/output_22_0.png)
+![png](figures/output_21_0.png)
     
 
 **What this means.**
@@ -153,7 +142,7 @@ All 12 mixes are 36 cm thick, so the comparison is fair.
 *Figure: Conductivity of the materials: small lambda = good insulator, large lambda = lets heat through*
 
     
-![png](figures/output_26_0.png)
+![png](figures/output_25_0.png)
     
 
 **What this means.**
@@ -169,7 +158,7 @@ All 12 mixes are 36 cm thick, so the comparison is fair.
 
 **The smart way:** the heater asks the comfort calculator, *"what is the lowest air temperature where people still feel fine (PMV >= -0.5)?"* and holds exactly that.
 
-**Setup from the sheet:** winter clothes (clo 1.0), RH 40 %, still air (0.1 m/s), and the walls are **2 degrees colder** than the air (tmr = ta - 2). The sheet's starter code says desk work **met = 1.2** but its notes say **met = 1.1**, so we do **both**.
+**Conditions from the sheet:** winter clothes (clo 1.0), RH 40 %, still air (0.1 m/s), and the walls are **2 degrees colder** than the air (tmr = ta - 2). The sheet's starter code says desk work **met = 1.2** but its notes say **met = 1.1**, so we do **both**.
 
 **Recipe:**
 1. Lower the setpoint step by step until the vote reaches **-0.5** (the root finder does this exactly).
@@ -185,7 +174,7 @@ All 12 mixes are 36 cm thick, so the comparison is fair.
     
 
     
-![png](figures/output_31_0.png)
+![png](figures/output_30_0.png)
     
 
 **What this means.**

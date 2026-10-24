@@ -1,19 +1,6 @@
 # Lab 4: Thermal losses of a house and a human-centred setpoint, in depth
 
-This notebook does three jobs:
-
-1. **Explains** the physics behind the sheet (Part 0): how heat leaves a house, what thermal resistance and the k-value are, why windows and the ground matter, and how lab 3's PMV comfort model plugs in.
-2. **Solves** every task of the sheet *Steady-State Heat Transfer Analysis, external thermal load, winter* (Q1 to Q4), then the *Human-Centered AI Control and Dynamic Setpoints* case (Q5 to Q9).
-3. **Interprets every number** the code returns.
-
-* **0** ((background)): How does heat leave a house, and how is it calculated?
-* **Q1** (Heat flux density): How many W/m² leave through the insulated wall at 24 °C inside, 5 °C outside?
-* **Q2** (Hourly electricity): How many kWh does the radiator use in one hour, with and without the EPS layer?
-* **Q3** (Insulation thickness): What does more insulation buy, and when does it stop paying?
-* **Q4** (Materials): Which combination of the listed materials is best?
-* **Q5 to Q9** (AI setpoint): If people wear a sweater, how low can the setpoint go, and how much energy does that save?
-
-All computation goes through the reusable module `../shared/heat_loss.py` (it only returns values). The PMV model is the one from lab 3 (`../shared/calculate_pmv_ppd.py`).
+Sheet: *Steady-State Heat Transfer Analysis, external thermal load, winter* (Q1 to Q4), then *Human-Centered AI Control and Dynamic Setpoints* (Q5 to Q9).
 
 # Part 0: How heat leaves a house
 
@@ -82,7 +69,7 @@ The ground floor sits on gravel and soil. Heat flows downward through hardwood, 
 
 ## 0.5 From heat load to electricity
 
-The studied radiator is an **electric resistance** heater: every watt of electricity becomes one watt of heat (efficiency 1). So a heat load of 363 W needs 363 W of electricity, which over one hour is 0.363 kWh. A heat pump with a COP of 3 would need only a third of that. The functions use `efficiency=1.0` by default.
+The studied radiator is an **electric resistance** heater: every watt of electricity becomes one watt of heat (efficiency 1). So a heat load of 363 W needs 363 W of electricity, which over one hour is 0.363 kWh. A heat pump with a COP of 3 would need only a third of that.
 
 ## 0.6 The link to lab 3
 
@@ -94,26 +81,10 @@ comfort model (PMV) → lowest comfortable $t_I$ → heat load at that $t_I$ →
 
 *Figure: The human-centred chain: occupant data, PMV, optimal setpoint, heat load, energy saved*
 
-## 0.7 The reusable functions
-
-* `layer_table(layers)`: table of layers with $R = \delta/\lambda$
-* `total_resistance`, `k_value`: $R_{tot}$ and $k$ of a layer stack with film coefficients
-* `temperature_profile`: temperature at every interface
-* `wall_flux`, `wall_load`: flux [W/m²] and wall power [W]
-* `window_load(side)`: one window including solar gain [W]
-* `floor_load`, `ceiling_load`: floor to soil, ceiling to the upper floor [W]
-* `total_load`: all parts and their sum [W]
-* `electricity_kwh`: kWh for a given power and time
-* `insulation_sweep`: Q3 results for different EPS thicknesses
-* `wall_options`: Q4 results for all structure × insulation combinations
-* `optimal_setpoint`, `savings`: Q5 to Q9: lowest comfortable $t_I$ and the energy saved
-
-# Setup
-
-**Data from the sheet.** Each chart shows the resistance $R = \delta/\lambda$ of every layer (thickness $\delta$, conductivity $\lambda$) (outside to inside for the wall, inside to deep soil for the floor).
+**Data from the sheet.** Resistance $R = \delta/\lambda$ of every layer (wall from outside to inside, floor from inside to deep soil).
 
     
-![png](figures/output_18_0.png)
+![png](figures/output_16_0.png)
     
 
     T_E = 5.0 C, T_I = 24.0 C, T_soil = 11.0 C; alpha_E = 24.0, alpha_I wall = 8.0, alpha_I floor = 6.0 W/m2K
@@ -136,7 +107,7 @@ comfort model (PMV) → lowest comfortable $t_I$ → heat load at that $t_I$ →
 **Temperature profile.** With the flux known, the temperature falls across each layer by $\Delta T = q\,R_{layer}$. The plot shows the temperature through the wall from the indoor air (left) to the outdoor air (right).
 
     
-![png](figures/output_23_0.png)
+![png](figures/output_21_0.png)
     
 
 ### Interpretation of Q1
@@ -160,7 +131,7 @@ comfort model (PMV) → lowest comfortable $t_I$ → heat load at that $t_I$ →
     
 
     
-![png](figures/output_26_1.png)
+![png](figures/output_24_1.png)
     
 
 ### Interpretation of Q2
@@ -176,8 +147,6 @@ comfort model (PMV) → lowest comfortable $t_I$ → heat load at that $t_I$ →
 
 **Task.** What effect does the thickness of the EPS layer have on heat loss and on electricity consumption?
 
-**Method.** Sweep the EPS thickness from 0 to 20 cm, recompute $k$, the flux and the total load each time, and look at what each extra centimetre buys.
-
     first 5 cm of EPS saves    239.2 W
     5 to 10 cm saves           107.7 W
     10 to 15 cm saves           61.3 W
@@ -185,7 +154,7 @@ comfort model (PMV) → lowest comfortable $t_I$ → heat load at that $t_I$ →
     
 
     
-![png](figures/output_29_1.png)
+![png](figures/output_27_1.png)
     
 
 ### Interpretation of Q3
@@ -207,7 +176,7 @@ comfort model (PMV) → lowest comfortable $t_I$ → heat load at that $t_I$ →
     
 
     
-![png](figures/output_32_1.png)
+![png](figures/output_30_1.png)
     
 
     
@@ -234,7 +203,7 @@ comfort model (PMV) → lowest comfortable $t_I$ → heat load at that $t_I$ →
     
 
     
-![png](figures/output_35_1.png)
+![png](figures/output_33_1.png)
     
 
 ### Interpretation of Q5 to Q8
@@ -249,7 +218,7 @@ comfort model (PMV) → lowest comfortable $t_I$ → heat load at that $t_I$ →
 The sheet says a reduction of a few °C often saves 10 to 15 % of the heating load. Our 22 to 32 % is larger, for two reasons that the next cell makes visible. First, the temperature difference to the outside is not the same everywhere: the wall and windows lose in proportion to $t_I - 5$ (19 K down to 15.2 K, a 20 % drop), the floor in proportion to $t_I - 11$ (13 K down to 9.2 K, a 29 % drop). Second, the **solar gain of the windows (183 W) is a fixed offset** that does not shrink when the setpoint falls. The conduction losses fall by 21 %, but they are reduced from a smaller base (546 W gross, 363 W net after the sun), so the *net* load falls by a larger percentage.
 
     
-![png](figures/output_38_0.png)
+![png](figures/output_36_0.png)
     
 
     gross conduction loss falls by 21.0 %, net load falls by 31.6 %
@@ -262,7 +231,7 @@ The sheet says a reduction of a few °C often saves 10 to 15 % of the heating lo
 * **So both statements are true:** the sheet's 10 to 15 % is typical for a reduction of about 2 K; our 3.8 K reduction gives 21 % even on the gross loss, and the noon sun on the south window lifts the net figure to 31.6 %. On a cloudy day or at night the percentage would be the 21 % gross value.
 
     
-![png](figures/output_40_0.png)
+![png](figures/output_38_0.png)
     
 
 ### Interpretation of the plots

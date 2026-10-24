@@ -1,16 +1,8 @@
-# HVAC setpoint explained simply (the "like I'm 8" version of `lab-3-in-depth.ipynb`)
-
-Same sheet (**App 2.3, Optimization of HVAC setpoint**), same numbers, but with pictures and everyday words.
-
-* **0**: What is an HVAC machine and what does it do?
-* **1**: Can a **fan** let us keep the room a bit warmer and still feel fine?
-* **2**: On a day with **no heating or cooling**, at which hours do people feel bad?
-* **3**: In a freezing winter, what is the **lowest** heating temperature that is still comfy?
-* **4**: Do summer, autumn and winter give the same answer?
+# HVAC setpoint explained simply
 
 **How it connects to the last lab:** lab 2 gave us a "comfort calculator" (PMV). Here we use that calculator again and again, like a thermometer for *feelings*, to decide how much to heat or cool.
 
-## Short words used in this notebook
+## Key terms
 
 * **HVAC** (Heating, Ventilation and Air Conditioning): the machines that warm, cool and refresh the air in a building
 * **PMV** (Predicted Mean Vote): the average "how warm do I feel" vote of a group: -3 cold ... **0 just right** ... +3 hot
@@ -28,9 +20,9 @@ Same sheet (**App 2.3, Optimization of HVAC setpoint**), same numbers, but with 
 
 **HVAC** = **H**eating + **V**entilation + **A**ir **C**onditioning. It is the team of machines that keeps a building pleasant.
 
-* **H**eating: add warmth in winter (everyday picture: a campfire inside a pipe)
-* **V**entilation: swap stale air for fresh air (everyday picture: opening a window, but with a fan)
-* **A**C: remove heat (and water) in summer (everyday picture: a fridge for a whole room)
+* **H**eating: add warmth in winter — like a campfire inside a pipe
+* **V**entilation: swap stale air for fresh air — like opening a window, but with a fan
+* **A**C: remove heat (and water) in summer — like a fridge for a whole room
 
 ## The pieces
 
@@ -84,17 +76,13 @@ Every degree of extra heating costs roughly **6 to 10 %** more energy (a common 
 
 *Figure: From a simple switch to a learning controller*
 
-# Setup
-
-The helper functions only **return numbers** (they never print or draw). `pmv(ta, tmr, ...)` is the comfort calculator, and everything below just asks it questions.
-
 **How to read a PMV number:** -3 cold, -2 cool, -1 slightly cool, **0 just right**, +1 slightly warm, +2 warm, +3 hot. **PPD** never goes below 5 %, because you can never please everybody.
 
 # Part 1: Can a fan let the room be warmer?
 
 **Idea.** Moving air takes heat off your skin, the way you feel cooler when you blow on hot soup. So with a fan we can set the air temperature **higher** and feel the **same**.
 
-**Setup (summer office):** light clothes (clo 0.5), desk work (met 1.2), RH 50 %, walls 1 degree warmer than the air.
+**Assumptions (summer office):** light clothes (clo 0.5), desk work (met 1.2), RH 50 %, walls 1 degree warmer than the air.
 
 **Recipe:**
 1. Still air (0.1 m/s) at **25 degC**: write down the comfort vote.
@@ -109,7 +97,7 @@ The helper functions only **return numbers** (they never print or draw). `pmv(ta
     
 
     
-![png](figures/output_21_0.png)
+![png](figures/output_20_0.png)
     
 
 **What this means.**
@@ -122,7 +110,7 @@ The helper functions only **return numbers** (they never print or draw). `pmv(ta
 
 **Idea.** We have a file with one row for each hour of a spring/autumn day: air temperature, wall temperature and humidity. **No heating or cooling is running.** For each hour we ask the comfort calculator for a vote, then mark the hours outside the "good" zone (-0.5 to +0.5).
 
-**Our guess for the people** (the sheet does not say): light indoor clothes for a transition day, clo 0.7, desk work (met 1.2), still air (0.1 m/s).
+**Assumptions for the people** (the sheet does not say): light indoor clothes for a transition day, clo 0.7, desk work (met 1.2), still air (0.1 m/s).
 
     too cold hours: [0, 1, 2, 3, 4]
     too warm hours: [9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
@@ -130,7 +118,7 @@ The helper functions only **return numbers** (they never print or draw). `pmv(ta
     
 
     
-![png](figures/output_25_0.png)
+![png](figures/output_24_0.png)
     
 
 **What this means.**
@@ -152,7 +140,7 @@ The helper functions only **return numbers** (they never print or draw). `pmv(ta
 
 **Idea.** In a very cold winter the **walls and windows are cold** (here 17 degC) and the heater can only control the **air**. Cold walls steal warmth from you, like standing next to a cold window. We ask: *what is the lowest air temperature that still gives PMV >= -0.5?* Heating more than that is wasted energy.
 
-**Setup:** winter clothes (clo 1.0), desk work (met 1.2), RH 40 %, still air (0.1 m/s), walls at 17 degC.
+**Assumptions:** winter clothes (clo 1.0), desk work (met 1.2), RH 40 %, still air (0.1 m/s), walls at 17 degC.
 
 We solve it in two ways:
 * **While loop** (a simple controller): start cold, raise the temperature in small 0.05 degree steps until the vote reaches -0.5.
@@ -166,7 +154,7 @@ We solve it in two ways:
     
 
     
-![png](figures/output_31_0.png)
+![png](figures/output_30_0.png)
     
 
 **What this means.**
@@ -176,7 +164,7 @@ We solve it in two ways:
 * Real controllers keep a small safety margin (for example aim for -0.4) because sensors are never perfect.
 
     
-![png](figures/output_33_0.png)
+![png](figures/output_32_0.png)
     
 
 **What this means.**
@@ -186,7 +174,7 @@ We solve it in two ways:
 
 # Part 4: The same question in different seasons
 
-People dress differently and the walls behave differently in each season. So we write down a **recipe card for each season** and let the computer do the same two jobs for all of them:
+People dress differently and the walls behave differently in each season. For each season we:
 
 1. Find the **comfort band**: the lowest and highest air temperature that stay inside PMV -0.5 to +0.5.
 2. Count how many hours of our CSV day would feel bad **if people wore that season's clothes**.
@@ -197,7 +185,7 @@ People dress differently and the walls behave differently in each season. So we 
 * winter, heavy clothing: clo 1.2, met 1.2, RH 40 %, v 0.1, walls tmr 16 degC
 
     
-![png](figures/output_36_0.png)
+![png](figures/output_35_0.png)
     
 
 **What this means.**
@@ -209,7 +197,7 @@ People dress differently and the walls behave differently in each season. So we 
 
 # One-page summary
 
-* Part 1: +2.3 K at 0.8 m/s (in one sentence: a fan lets us keep the room about 2 degrees warmer, with smaller and smaller gains)
-* Part 2: 9 of 24 h comfortable (in one sentence: night is slightly cold, afternoon is hot because the walls heat up)
-* Part 3: 21.3 degC instead of 23 degC (in one sentence: the smart setpoint saves about 1.7 degrees of heating)
-* Part 4: band 3.3 K (summer) to 8.5 K (winter) (in one sentence: clothes, season and wall temperature all move the best setpoint)
+* Part 1: +2.3 K at 0.8 m/s: a fan lets us keep the room about 2 degrees warmer, with smaller and smaller gains
+* Part 2: 9 of 24 h comfortable: night is slightly cold, afternoon is hot because the walls heat up
+* Part 3: 21.3 degC instead of 23 degC: the smart setpoint saves about 1.7 degrees of heating
+* Part 4: band 3.3 K (summer) to 8.5 K (winter): clothes, season and wall temperature all move the best setpoint

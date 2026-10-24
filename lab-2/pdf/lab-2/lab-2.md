@@ -25,21 +25,6 @@ All heat flows are per m² of body surface (W/m²).
 
 **ISO 7730** (ISO = International Organization for Standardization) is the international standard that fixes how to calculate PMV and PPD, including the iteration of Step 3. **ASHRAE 55** (ASHRAE = American Society of Heating, Refrigerating and Air-Conditioning Engineers; standard 55, *Thermal Environmental Conditions for Human Occupancy*) uses the same model to define comfort zones.
 
-## Abbreviations used in this notebook
-
-- ****PMV****: Predicted Mean Vote — the calculated average comfort vote, scale −3 (cold) to +3 (hot)
-- ****PPD****: Predicted Percentage of Dissatisfied — share of people who would complain, from PMV
-- ****ISO****: International Organization for Standardization — ISO 7730 is the standard behind PMV and PPD
-- ****ASHRAE****: American Society of Heating, Refrigerating and Air-Conditioning Engineers — ASHRAE 55 gives the comfort ranges
-- ****RH**, $\varphi$**: relative humidity — $p_v/p_{sat}$, how full the air is
-- ****clo****: clothing unit — 1 clo = 0.155 m²·K/W of clothing insulation
-- ****met****: metabolic equivalent — 1 met = 58.15 W/m², a person sitting at rest
-- ****TS****: thermal sensation (transfer coefficient) — converts the thermal load $L$ into the vote: $PMV = TS\cdot L$
-- ****$RL_1 \dots RL_6$****: the six heat-loss paths (the sheet's labels, L for loss) — skin diffusion, sweating, breathing (2), radiation, convection
-- ****$t_a$, $t_{mr}$, $t_o$, $t_{cl}$, $t_{dp}$****: air, mean radiant, operative, clothing-surface and dew-point temperature — °C
-- ****I5****: the Romanian regulation named I5 in the lecture — comfort categories I to IV
-- ****Pa, kJ, MJ, W****: pascal, kilojoule, megajoule, watt — units of pressure, energy and power
-
 ![The six factors that PMV combines](figures/pmv-six-factors.svg)
 
 *Figure: The six factors that PMV combines*
@@ -103,20 +88,20 @@ $t_o = A\,t_a+(1-A)\,t_{mr}$ with $A=0.5$ for $v<0.2$ m/s, $0.6$ for $0.2\le v<0
     n iterations= 8
     
 
-PMV ≈ 1.7 means "warm to hot" and about 62 % of people are dissatisfied.
+PMV ≈ 1.7 means "warm to hot" and about 65 % of people are dissatisfied.
 
 > **Check against the sheet.** The lab sheet gives PMV = 1.767, PPD = 65.3 %, $t_o$ = 30.25 °C, $n$ = 8. The code reproduces all four.
 
 ## Visual guide: how the parameters and terms relate
 
-Each chart below answers one question. Colours: blue = main series, orange = comparison or "too hot", grey = reference. The outdoor summer day is the baseline unless stated.
+The outdoor summer day is the baseline unless stated.
 
 ### 1. Where does the body's heat go? (heat balance)
 
 The body produces $M$ [W/m²]. Six paths carry heat away. What is **left over** is the thermal load $L$. The sensation coefficient $TS$ turns that surplus into a vote: $PMV = TS\cdot L$. In a perfectly comfortable room $L \approx 0$ (production = losses).
 
     
-![png](figures/output_21_0.png)
+![png](figures/output_20_0.png)
     
 
 **Reading it.** Grey = heat produced, blue = heat lost through each path, orange = surplus that is not removed, so the person feels warm. Radiation and convection (the "dry" paths) lose the most. They shrink when the room is as warm as the skin, which is exactly why hot rooms give a positive PMV.
@@ -126,7 +111,7 @@ The body produces $M$ [W/m²]. Six paths carry heat away. What is **left over** 
 $t_{cl}$ appears on both sides of its own equation, so we start from a guess and refine it. Each pass changes it less than the previous one.
 
     
-![png](figures/output_24_0.png)
+![png](figures/output_23_0.png)
     
 
 **Reading it.** Iteration 0 is the initial estimate. The curve flattens: we stop when the change falls below $\epsilon$ (here after 8 passes). The clothes sit between skin (≈ 34–35 °C) and air (30 °C), at about 32 °C.
@@ -136,7 +121,7 @@ $t_{cl}$ appears on both sides of its own equation, so we start from a guess and
 $h_c=\max(h_{c,f},h_{c,n})$. Forced convection grows with air speed $v$; natural convection depends only on the clothes–air temperature difference. At low speed buoyancy wins, above a threshold the moving air wins.
 
     
-![png](figures/output_27_0.png)
+![png](figures/output_26_0.png)
     
 
 **Reading it.** The crossover is at a very low speed (about 0.06 m/s), so for any normal room air speed forced convection is the one used. Higher $h_c$ means more convective loss $RL_6$, so a breeze lowers PMV.
@@ -146,15 +131,14 @@ $h_c=\max(h_{c,f},h_{c,n})$. Forced convection grows with air speed $v$; natural
 Each panel varies **one** parameter and keeps the others at the baseline (dot = outdoor day). The grey band is the comfort zone $-0.5<PMV<0.5$.
 
     
-![png](figures/output_30_0.png)
+![png](figures/output_29_0.png)
     
 
     
-![png](figures/output_30_1.png)
+![png](figures/output_29_1.png)
     
 
-**Reading it.** Look at the sign and size of each line, and at the bar chart of the PMV change for a typical step.
-- Higher $t_a$, $t_{mr}$, humidity, clothing and activity push PMV **up** (more heat kept or produced, or less evaporation). Higher air speed pushes it **down** (more convective loss).
+**Reading it.** - Higher $t_a$, $t_{mr}$, humidity, clothing and activity push PMV **up** (more heat kept or produced, or less evaporation). Higher air speed pushes it **down** (more convective loss).
 - Ranking for a typical step: $t_a$ (+0.19 per °C) > $t_{mr}$ (+0.14 per °C) > humidity (+0.10 per 10 %) > air speed (−0.09 per 0.1 m/s) > clothing (+0.07 per 0.1 clo) > activity (+0.04 per 0.1 met).
 - $t_a$ and $t_{mr}$ both enter through radiation and convection, so they are the main levers. $t_a$ also enters the dry breathing term and the vapour pressure.
 - No single lever brings the outdoor day (PMV 1.77) into the grey band except a large drop in $t_a$ (about 6 °C), which is why the indoor solution cools the air.
@@ -164,7 +148,7 @@ Each panel varies **one** parameter and keeps the others at the baseline (dot = 
 PPD $=100-95\,e^{-0.03353\,PMV^4-0.2179\,PMV^2}$ is symmetric (too cold is as bad as too hot) and **never below 5 %**.
 
     
-![png](figures/output_33_0.png)
+![png](figures/output_32_0.png)
     
 
 ### 6. Comfort map: temperature × humidity
@@ -172,7 +156,7 @@ PPD $=100-95\,e^{-0.03353\,PMV^4-0.2179\,PMV^2}$ is symmetric (too cold is as ba
 Colour = PMV (blue = cool side, grey = neutral, orange = warm side). The black lines are the comfort limits $PMV=\pm0.5$. Here $t_{mr}=t_a+0.5$ as in the lab.
 
     
-![png](figures/output_35_0.png)
+![png](figures/output_34_0.png)
     
 
 **Reading it.** The comfort region is the band between the two black lines. It tilts slightly: when the air is more humid, the same temperature feels warmer, so the comfortable temperature drops a little. Our indoor choice (square) lies inside it, the outdoor day (circle) is far on the warm side.
@@ -182,7 +166,7 @@ Colour = PMV (blue = cool side, grey = neutral, orange = warm side). The black l
 $t_o=A\,t_a+(1-A)\,t_{mr}$. The weight $A$ of the air temperature steps up as air speed rises, because moving air strengthens convection relative to radiation.
 
     
-![png](figures/output_38_0.png)
+![png](figures/output_37_0.png)
     
 
 **Reading it.** The lab case has $v=0.15<0.2$, so $A=0.5$ and $t_o$ is the plain average of $t_a$ and $t_{mr}$ (30.25 °C).
@@ -195,7 +179,7 @@ Same $RH$, $v$, clothing and activity. Only $t_a$ and $t_{mr}$ change. Sweep $t_
     
 
     
-![png](figures/output_41_1.png)
+![png](figures/output_40_1.png)
     
 
     t_a=24.5  t_mr=25

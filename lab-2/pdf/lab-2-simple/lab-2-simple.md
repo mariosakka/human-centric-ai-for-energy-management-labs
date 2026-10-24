@@ -1,7 +1,5 @@
 # Lab 2 explained simply: "Is this room comfortable?"
 
-*(Easy version of `lab-2.ipynb`. Same program, same numbers, simpler words.)*
-
 ## The big idea
 
 Your body is like a **little campfire**. All day and all night it makes heat, even when you sleep. The room around you is always **taking heat away**: through the air, the walls, the wind and your breath.
@@ -28,19 +26,6 @@ The lab asks us to build a calculator that tells us **how warm people will feel*
 **PPD = Predicted Percentage of Dissatisfied.** Even when the *average* person is happy, some people are not. PPD says how many out of 100 would complain, meaning they feel **warm or hot (+2, +3) or cool or cold (−2, −3)**. It is never below 5 %: you can't please everyone.
 
 **ISO 7730** is the official rule-book that says how to calculate PMV and PPD (ISO = International Organization for Standardization). **ASHRAE 55** is a similar rule-book from a club of heating and cooling engineers (American Society of Heating, Refrigerating and Air-Conditioning Engineers).
-
-## Short words used in this notebook
-
-- ****PMV****: Predicted Mean Vote — the average "how warm do I feel" vote of a group, −3 cold … 0 just right … +3 hot
-- ****PPD****: Predicted Percentage of Dissatisfied — how many out of 100 people would complain
-- ****ISO**, **ASHRAE****: International Organization for Standardization; American Society of Heating, Refrigerating and Air-Conditioning Engineers — the groups that wrote the comfort rule-books
-- ****RH**, $\varphi$**: relative humidity — how full the "sponge" of the air is, in %
-- ****clo****: clothing unit — how warm your clothes are (0.5 = light summer clothes)
-- ****met****: metabolic equivalent — how fast your body's engine runs (1 = sitting quietly)
-- ****TS****: thermal sensation (transfer coefficient) — the number that turns "heat left over" into a vote
-- ****$RL_1 \dots RL_6$****: the six heat-loss paths (L for loss) — the six drains of the bathtub
-- ****$t_a$, $t_{mr}$, $t_o$****: air, mean radiant (walls), operative ("feels-like") temperature — °C
-- ****Pa, kJ, W****: pascal, kilojoule, watt — units of pressure, energy and power
 
 ## Fancy words → simple words
 
@@ -78,7 +63,7 @@ Multiply by your skin area (about 1.8 m²) and you get the heat of the whole bod
 *Figure: More clothes or more movement means you feel warmer*
 
     
-![png](figures/output_8_0.png)
+![png](figures/output_7_0.png)
     
 
 **Reading it.** Longer bar = faster engine = more heat to get rid of. That is why you feel warm after running and cosy under a blanket while sleeping. The orange bar is the person in our lab (1.2 met = 69.8 W/m²).
@@ -101,7 +86,7 @@ Your body keeps its inside at about 37 °C. The heat it makes has to leave throu
 *Figure: Your body is a little heater that gives its heat away in several ways*
 
     
-![png](figures/output_12_0.png)
+![png](figures/output_11_0.png)
     
 
 **Reading it.** Start at the top (grey = heat made, 69.8). Each blue bar takes a bite out of it. The orange bar is what is **still inside you** (33.6): your body is piling up heat, so you feel hot.
@@ -111,7 +96,7 @@ Your body keeps its inside at about 37 °C. The heat it makes has to leave throu
 Same person, three rooms. For each room, compare **heat made** (grey) with **heat lost** (blue). The gap is the bathtub level rising or sinking.
 
     
-![png](figures/output_15_0.png)
+![png](figures/output_14_0.png)
     
 
 **Reading it.** In the cozy room the two bars are almost the same height, so the bathtub level stays steady. In the hot room the blue bar is too short. In the chilly room it is too tall.
@@ -129,7 +114,7 @@ $A$ is how much the **air** counts. With a calm room (air speed under 0.2 m/s) t
 *Figure: Cold windows make you feel cold even in warm air*
 
     
-![png](figures/output_19_0.png)
+![png](figures/output_18_0.png)
     
 
     Lab day: air 30, walls 30.5  ->  feels like 30.25 degC
@@ -148,7 +133,7 @@ When the air is already full of water, your **sweat cannot dry**, so you stay ho
 *Figure: The warmer the air, the more water it can hold; cool it and it overflows at the dew point*
 
     
-![png](figures/output_23_0.png)
+![png](figures/output_22_0.png)
     
 
 **Reading it.** The blue line goes up quickly: at 30 °C the air can hold 4243 "units" of water (Pa), at 10 °C only about 1228. At 60 % humidity our hot day has 2546 of them. In the program this number is called $p_v$ (partial vapour pressure).
@@ -171,7 +156,7 @@ Each round counts as **one iteration**. The lab says the hot day needs **8**.
 *Figure: Guess, check, improve, repeat: the clothing-temperature game*
 
     
-![png](figures/output_27_0.png)
+![png](figures/output_26_0.png)
     
 
 **Reading it.** The first guess is a bit off. Every new guess lands closer to the dashed line, and after 8 rounds the guesses stop changing, so we stop.
@@ -183,7 +168,7 @@ People do not feel "watts", they feel warm or cold. So we multiply the heat left
 The vote scale goes from **−3 (cold)** to **+3 (hot)**. **0 means just right.** The lab says a room is **comfortable if PMV is between −0.5 and +0.5**.
 
     
-![png](figures/output_30_0.png)
+![png](figures/output_29_0.png)
     
 
 **Reading it.** Blue side = people feel cool. Orange side = people feel warm. The outlined box in the middle is the comfort zone. The hot day (+1.77) is between "warm" and "hot". The cozy room (about 0) is right in the middle.
@@ -197,7 +182,7 @@ Even in a perfect room, people differ: one likes it warmer, one cooler. **PPD** 
 *Figure: From cold to hot: the comfort vote*
 
     
-![png](figures/output_34_0.png)
+![png](figures/output_33_0.png)
     
 
 **Reading it.** Left: our cozy indoor room, only 5 people complain. Right: the hot day, **65 out of 100** are unhappy.
@@ -207,7 +192,7 @@ Even in a perfect room, people differ: one likes it warmer, one cooler. **PPD** 
 On the hot day PMV is +1.77: too warm. Which small change cools the people down the most? The chart shows how much the **vote changes** for each change we make (negative = cooler = good here).
 
     
-![png](figures/output_37_0.png)
+![png](figures/output_36_0.png)
     
 
 **Reading it.** Each bar shows how far the vote drops for that one change. A fan helps most (−0.23), then drier air, 1 °C cooler air and lighter clothes (about −0.19 each). The hot day starts at +1.77 and we need to get under +0.5, so we need a drop of more than 1.27. Even a fan, lighter clothes, drier air and sitting still **all together** only reach about +0.74. So the real fix is to **cool the air** by several degrees: that is what air conditioning does.
@@ -217,7 +202,7 @@ On the hot day PMV is +1.77: too warm. Which small change cools the people down 
 Side by side: the hot day outside (air 30 °C, walls 30.5 °C) and our cozy room inside (air 24.5 °C, walls 25 °C, which is the summer rule *walls = air + 0.5*). Humidity, air speed, clothes and activity are the same in both (60 %, 0.15 m/s, 0.5 clo, 1.2 met). Both needed **8 iterations** (rounds of guessing).
 
     
-![png](figures/output_40_0.png)
+![png](figures/output_39_0.png)
     
 
 Any air temperature from about **23 °C to 26 °C** (walls = air + 0.5) keeps the vote between −0.5 and +0.5.

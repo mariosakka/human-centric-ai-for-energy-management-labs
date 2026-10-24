@@ -1,18 +1,6 @@
 # App 2.3: Optimization of the HVAC setpoint, in depth
 
-This notebook does three jobs:
-
-1. **Explains** what HVAC is and the ideas around it (Part 0), and the maths behind PMV/PPD.
-2. **Solves** the three stages of the sheet *Dynamic Comfort and Energy Optimization (PMV/PPD)* (Parts 1 to 3), then repeats the analysis for several seasons (Part 4).
-3. **Interprets every number** the code returns.
-
-* Part 0: (background) (question in one line: What is an HVAC system, and how is PMV computed?)
-* Part 1: Sensitivity analysis (question in one line: How much warmer can the air be if we add air movement (ceiling fan)?)
-* Part 2: Meteo file with pandas (question in one line: At which hours does the building leave the comfort zone on its own?)
-* Part 3: Setpoint optimization (question in one line: What is the lowest air temperature the heating may hold in an extreme winter?)
-* Part 4: (extension) (question in one line: How do the answers change with the season, clothing and wall temperature?)
-
-**All the calculations live in reusable functions** (`../shared/hvac_setpoint.py` and `../shared/calculate_pmv_ppd.py`). They only *return* values: no printing, no plotting. This notebook calls them, prints the results and draws the charts.
+Sheet: *Dynamic Comfort and Energy Optimization (PMV/PPD)*.
 
 # Part 0: What is HVAC and everything around it
 
@@ -20,9 +8,9 @@ This notebook does three jobs:
 
 **HVAC = Heating, Ventilation and Air Conditioning.** It is the set of machines that keep the *indoor environment* acceptable for people: temperature, humidity, fresh air and air movement.
 
-* **H**eating: add heat in winter (typical equipment: boiler, heat pump, radiators, floor heating, electric heater)
-* **V**entilation: bring fresh air in, take stale air out (CO$_2$, odours, moisture) (typical equipment: fans, ducts, heat-recovery unit, windows)
-* **A**ir **C**onditioning: remove heat and moisture in summer (typical equipment: chiller, split unit, cooling coil, dehumidifier)
+* **H**eating: add heat in winter — e.g. boiler, heat pump, radiators, floor heating, electric heater
+* **V**entilation: bring fresh air in, take stale air out (CO$_2$, odours, moisture) — e.g. fans, ducts, heat-recovery unit, windows
+* **A**ir **C**onditioning: remove heat and moisture in summer — e.g. chiller, split unit, cooling coil, dehumidifier
 
 ## 0.2 The main parts and how they connect
 
@@ -90,11 +78,11 @@ A classical thermostat controls only $t_a$. But comfort depends on **six factors
 
 ## 0.5 How control logic is built (from simple to smart)
 
-* On/off: switch at a threshold (example: heater on below 20 °C)
-* PID: smooth correction proportional to the error (example: valve opening follows $t_a - t_{set}$)
-* **Rule-based**: if/else on measured conditions (example: **Part 3 of this sheet**)
-* MPC: predict the next hours with a model, optimise (example: pre-cool before the afternoon peak)
-* **RL** (Reinforcement Learning): learn the policy by trial and reward (example: DeepMind data-centre cooling)
+* On/off: switch at a threshold — e.g. heater on below 20 °C
+* PID: smooth correction proportional to the error — e.g. valve opening follows $t_a - t_{set}$
+* **Rule-based**: if/else on measured conditions — e.g. **Part 3 of this sheet**
+* MPC: predict the next hours with a model, optimise — e.g. pre-cool before the afternoon peak
+* **RL** (Reinforcement Learning): learn the policy by trial and reward — e.g. DeepMind data-centre cooling
 
 ![From simple to smart control: where this lab sits](figures/control-levels.svg)
 
@@ -106,9 +94,7 @@ A classical thermostat controls only $t_a$. But comfort depends on **six factors
 * Each °C of **lower cooling setpoint** costs a similar amount of cooling energy.
 * A **ceiling fan** uses 30 to 70 W; an air-conditioner compressor for the same room uses 1000 W or more. Moving air makes you feel cooler without lowering the real temperature, so we can raise the cooling setpoint. That is Part 1.
 
-# Setup
-
-First, a sanity check with the App 2.2 numbers. `show()` prints in the lab-sheet format; the plain `calculate_pmv_ppd()` only returns the tuple.
+**Check with the App 2.2 numbers.**
 
 **Reading a PMV value:** -3 cold, -2 cool, -1 slightly cool, **0 neutral**, +1 slightly warm, +2 warm, +3 hot.
 
@@ -134,7 +120,7 @@ First, a sanity check with the App 2.2 numbers. `show()` prints in the lab-sheet
     
 
     
-![png](figures/output_25_0.png)
+![png](figures/output_24_0.png)
     
 
 ### Interpretation of Part 1
@@ -157,7 +143,7 @@ First, a sanity check with the App 2.2 numbers. `show()` prints in the lab-sheet
     
 
     
-![png](figures/output_29_1.png)
+![png](figures/output_28_1.png)
     
 
     clo=0.5: 16 h outside -> too cold [0, 1, 2, 3, 4, 5, 6, 22, 23], too warm [11, 12, 13, 14, 15, 16, 17]
@@ -191,7 +177,7 @@ PMV rises monotonically with $t_a$, so the lowest comfortable $t_a$ is the **roo
     
 
     
-![png](figures/output_34_0.png)
+![png](figures/output_33_0.png)
     
 
 ### Interpretation of Part 3
@@ -205,17 +191,17 @@ PMV rises monotonically with $t_a$, so the lowest comfortable $t_a$ is the **roo
 
 # Part 4: The same analysis for several seasons
 
-The sheet fixes only some assumptions, so here we compute **the comfortable air-temperature band** and the **free-running day** for several seasonal presets at once. The presets live in `SEASONS` (in `hvac_setpoint.py`).
+Comfort band and free-running day for several seasonal presets.
 
 * summer: clo 0.5, met 1.2, RH 50 %, v 0.1, $t_{mr}$ $t_a + 1$ (sunny walls)
 * autumn / spring: clo 0.7, met 1.2, RH 50 %, v 0.1, $t_{mr}$ $t_a$
 * winter: clo 1.0, met 1.2, RH 40 %, v 0.1, $t_{mr}$ 17 °C (cold windows, sheet example)
 * winter, heavy clothing: clo 1.2, met 1.2, RH 40 %, v 0.1, $t_{mr}$ 16 °C (heavier clothing, colder walls)
 
-For each preset: lowest and highest $t_a$ with $-0.5 \le PMV \le 0.5$ (the **comfort band**), and how many hours of the CSV day would be outside comfort if people wore that clothing. Pass your own dictionary to `seasons_table(df, seasons=...)` to add a case.
+For each preset: lowest and highest $t_a$ with $-0.5 \le PMV \le 0.5$ (the **comfort band**), and how many hours of the CSV day fall outside comfort with that clothing.
 
     
-![png](figures/output_37_0.png)
+![png](figures/output_36_0.png)
     
 
 ### Interpretation of Part 4
@@ -228,7 +214,7 @@ For each preset: lowest and highest $t_a$ with $-0.5 \le PMV \le 0.5$ (the **com
 
 # Summary of the four parts
 
-* Part 1: +2.3 K at 0.8 m/s (meaning: air movement allows a warmer cooling setpoint, with diminishing returns)
-* Part 2: 15 of 24 h uncomfortable (meaning: night slightly cold, afternoon hot (PMV up to 1.35, PPD 43 %), $t_{mr}$ matters)
-* Part 3: 21.3 °C vs 23 °C (meaning: optimizer saves about 1.7 K of heating setpoint at the comfort limit)
-* Part 4: band 3.3 K (summer) to 8.5 K (winter) (meaning: the comfortable air temperature depends on the season, clothing and wall temperature)
+* Part 1: +2.3 K at 0.8 m/s: air movement allows a warmer cooling setpoint, with diminishing returns
+* Part 2: 15 of 24 h uncomfortable: night slightly cold, afternoon hot (PMV up to 1.35, PPD 43 %), $t_{mr}$ matters
+* Part 3: 21.3 °C vs 23 °C: optimizer saves about 1.7 K of heating setpoint at the comfort limit
+* Part 4: band 3.3 K (summer) to 8.5 K (winter): the comfortable air temperature depends on the season, clothing and wall temperature

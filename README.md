@@ -41,13 +41,14 @@ cd lab-3/explanation-notebooks
 jupyter nbconvert --to notebook --execute --inplace lab-3-in-depth.ipynb
 ```
 
-## Exporting a notebook to PDF
+## Building the PDFs and markdown companions
 
-The PDFs are made with nbconvert and a Chromium-based browser (Chrome or Edge), so no LaTeX is needed:
+`tools/build_docs.py` rebuilds, for every notebook, the folder `lab-N/pdf/<name>/` with `<name>.pdf`, `<name>.md` and `figures/`. Execute the notebooks first, then from the repo root:
 
 ```
-jupyter nbconvert --to html --no-input --embed-images lab-3-in-depth.ipynb
-chrome --headless --disable-gpu --no-pdf-header-footer --print-to-pdf=../pdf/lab-3-in-depth.pdf lab-3-in-depth.html
+conda run -n human-centric-ai-for-energy-labs python tools/build_docs.py lab-2 lab-3 lab-4
 ```
 
-`--no-input` hides the code cells and `--embed-images` puts the SVG diagrams inside the HTML. Delete the temporary `.html` afterwards.
+No argument builds all labs. The PDFs use nbconvert and Chrome or Edge (no LaTeX). Code cells, display equations (lab 2) and the hand-calculation sections are left out, and the SVG diagrams are embedded. The cell filters per notebook are at the top of the script.
+
+The `.md` and `figures/` are committed; the `.pdf` files are not.
