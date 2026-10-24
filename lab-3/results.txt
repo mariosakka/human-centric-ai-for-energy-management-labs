@@ -1,0 +1,53 @@
+
+ 
+Exterior air (summer day in Romania):
+PMV= 1.768 PPD= 65.3 t_o= 30.25 n iterations= 8
+Interior air conditions:
+PMV= 0.064 PPD= 5.1 t_o= 25.25 n iterations= 8
+ 
+Part 1: Sensitivity analysis (summer office)
+Reference: ta = 25.0 C, v = 0.1 m/s -> PMV = 0.278
+v [m/s]   ta [C]   delta ta [C]   PMV
+  0.1     25.00      +0.00        0.278
+  0.2     25.78      +0.78        0.278
+  0.3     26.23      +1.23        0.278
+  0.4     26.58      +1.58        0.278
+  0.5     26.81      +1.81        0.278
+  0.6     27.00      +2.00        0.278
+  0.7     27.15      +2.15        0.278
+  0.8     27.28      +2.28        0.278
+ 
+Part 2: Hourly comfort check (date_cladire_24h.csv)
+hour   ta  tmr   rh   PMV  PPD  comfort
+    0 20.5 21.6 62.5 -1.02 26.9 too cold
+    1 20.1 21.1 65.6 -1.14 32.5 too cold
+    2 20.0 20.5 68.0 -1.23 36.5 too cold
+    3 20.1 21.2 69.5 -1.11 30.9 too cold
+    4 20.5 20.3 70.0 -1.15 32.7 too cold
+    5 21.2 21.5 69.5 -0.86 20.7 too cold
+    6 22.0 22.0 68.0 -0.66 14.0 too cold
+    7 23.0 22.7 65.6 -0.40  8.4       OK
+    8 24.0 24.4 62.5 -0.02  5.0       OK
+    9 25.0 25.3 58.9  0.24  6.2       OK
+   10 26.0 25.9 55.0  0.46  9.4       OK
+   11 26.8 26.6 51.1  0.66 14.0 too warm
+   12 27.5 28.1 47.5  0.96 24.3 too warm
+   13 27.9 29.2 44.4  1.16 33.1 too warm
+   14 28.0 29.1 42.0  1.14 32.2 too warm
+   15 27.9 28.7 40.5  1.05 28.2 too warm
+   16 27.5 28.0 40.0  0.88 21.4 too warm
+   17 26.8 27.6 40.5  0.72 15.9 too warm
+   18 26.0 25.9 42.0  0.36  7.7       OK
+   19 25.0 24.6 44.4  0.04  5.0       OK
+   20 24.0 24.0 47.5 -0.18  5.7       OK
+   21 23.0 22.9 51.1 -0.47  9.5       OK
+   22 22.0 22.5 55.0 -0.67 14.3 too cold
+   23 21.2 21.1 58.9 -0.97 25.0 too cold
+Hours outside the comfort zone: [0, 1, 2, 3, 4, 5, 6, 11, 12, 13, 14, 15, 16, 17, 22, 23]
+ 
+Part 3: Lowest air temperature with PMV >= -0.5 (winter)
+tmr = 16.0 C -> optimal setpoint ta = 19.3 C
+PMV= -0.491 PPD= 10.0 t_o= 17.65 n iterations= 6
+Fixed standard setpoint ta = 23 C:
+PMV= -0.103 PPD= 5.2 t_o= 19.5 n iterations= 6
+Overheating avoided: 3.7 C

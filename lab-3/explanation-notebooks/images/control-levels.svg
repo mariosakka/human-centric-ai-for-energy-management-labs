@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="960" height="420" font-family="sans-serif" font-size="14">
+  <defs>
+    <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#4a5568"/></marker>
+  </defs>
+  <rect width="960" height="420" fill="#ffffff"/>
+
+  <text x="480" y="30" text-anchor="middle" fill="#4a5568" font-weight="bold">More intelligence, but also more data and more design effort</text>
+  <line x1="20" y1="52" x2="940" y2="52" stroke="#4a5568" stroke-width="3" marker-end="url(#ag)"/>
+
+  <!-- level 1 -->
+  <rect x="18" y="265" width="178" height="130" rx="10" fill="#ebf8ff" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="107" y="291" text-anchor="middle" fill="#4a5568" font-weight="bold">On/off</text>
+  <text x="107" y="311" text-anchor="middle" fill="#4a5568">level 1</text>
+  <text x="107" y="341" text-anchor="middle" fill="#4a5568">Heater on below 20 C,</text>
+  <text x="107" y="361" text-anchor="middle" fill="#4a5568">off above 22 C</text>
+
+  <!-- level 2 -->
+  <rect x="206" y="225" width="178" height="170" rx="10" fill="#ebf8ff" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="295" y="251" text-anchor="middle" fill="#4a5568" font-weight="bold">PID</text>
+  <text x="295" y="271" text-anchor="middle" fill="#4a5568">level 2</text>
+  <text x="295" y="301" text-anchor="middle" fill="#4a5568">Valve opening follows</text>
+  <text x="295" y="321" text-anchor="middle" fill="#4a5568">the temperature error</text>
+
+  <!-- level 3 (this lab) -->
+  <rect x="394" y="185" width="178" height="210" rx="10" fill="#c6f6d5" stroke="#2f855a" stroke-width="3"/>
+  <text x="483" y="211" text-anchor="middle" fill="#4a5568" font-weight="bold">Rule-based</text>
+  <text x="483" y="231" text-anchor="middle" fill="#2f855a" font-weight="bold">level 3 - this lab</text>
+  <text x="483" y="261" text-anchor="middle" fill="#4a5568">If PMV is below -0.5,</text>
+  <text x="483" y="281" text-anchor="middle" fill="#4a5568">raise the setpoint</text>
+
+  <!-- level 4 -->
+  <rect x="582" y="145" width="178" height="250" rx="10" fill="#ebf8ff" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="671" y="171" text-anchor="middle" fill="#4a5568" font-weight="bold">MPC</text>
+  <text x="671" y="191" text-anchor="middle" fill="#4a5568">level 4</text>
+  <text x="671" y="221" text-anchor="middle" fill="#4a5568">Predicts the next hours,</text>
+  <text x="671" y="241" text-anchor="middle" fill="#4a5568">then optimizes</text>
+
+  <!-- level 5 -->
+  <rect x="770" y="105" width="178" height="290" rx="10" fill="#ebf8ff" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="859" y="131" text-anchor="middle" fill="#4a5568" font-weight="bold">Reinforcement</text>
+  <text x="859" y="149" text-anchor="middle" fill="#4a5568" font-weight="bold">learning</text>
+  <text x="859" y="169" text-anchor="middle" fill="#4a5568">level 5</text>
+  <text x="859" y="199" text-anchor="middle" fill="#4a5568">Learns the best policy</text>
+  <text x="859" y="219" text-anchor="middle" fill="#4a5568">by trial and reward</text>
+</svg>
