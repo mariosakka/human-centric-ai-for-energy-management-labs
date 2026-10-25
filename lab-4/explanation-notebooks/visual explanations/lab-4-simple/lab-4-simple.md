@@ -4,26 +4,39 @@
 
 ## Words and symbols
 
-* **tE / tI** stands for exterior / interior air temperature. Outside = 5 degC, inside = 24 degC
-* **W, kW, kWh** stands for watt, kilowatt, kilowatt-hour. Power is **how fast** energy flows; **kWh = power x hours**, what the electricity bill counts
-* **lambda** stands for thermal conductivity [W/(m K)]. How easily a material **lets heat through** (small = good insulator)
-* **R** stands for thermal resistance [m2 K/W]. How **hard** it is for heat to pass; thickness divided by lambda; bigger = better
-* **k** (or U) stands for overall heat transfer coefficient [W/(m2 K)]. How many watts leak through **one square metre for each degree** of temperature difference; small = good wall
-* **alpha** stands for convection coefficient [W/(m2 K)]. How well the **air next to the surface** takes or gives heat
-* **q** stands for heat flux [W/m2]. Watts leaking through one square metre
-* **EPS / XPS** stands for expanded / extruded polystyrene. White foam boards used as insulation
-* **AAC** stands for autoclaved aerated concrete. Very light concrete full of tiny air bubbles (warm blocks)
-* **PMV / PPD** stands for Predicted Mean Vote / Percentage Dissatisfied. The comfort vote (0 = just right, -0.5 to +0.5 is "good enough") and how many would complain
-* **clo / met** stands for clothing / activity. How warm the clothes are and how fast the body's engine runs
-* **setpoint** stands for the target. The temperature we tell the heater to hold
+> **tE / tI**: exterior / interior air temperature. Outside = 5 degC, inside = 24 degC
+
+> **W, kW, kWh**: watt, kilowatt, kilowatt-hour. Power is **how fast** energy flows; **kWh = power x hours**, what the electricity bill counts
+
+> **lambda**: thermal conductivity [W/(m K)]. How easily a material **lets heat through** (small = good insulator)
+
+> **R**: thermal resistance [m2 K/W]. How **hard** it is for heat to pass; thickness divided by lambda; bigger = better
+
+> **k** (or U): overall heat transfer coefficient [W/(m2 K)]. How many watts leak through **one square metre for each degree** of temperature difference; small = good wall
+
+> **alpha**: convection coefficient [W/(m2 K)]. How well the **air next to the surface** takes or gives heat
+
+> **q**: heat flux [W/m2]. Watts leaking through one square metre
+
+> **EPS / XPS**: expanded / extruded polystyrene. White foam boards used as insulation
+
+> **AAC**: autoclaved aerated concrete. Very light concrete full of tiny air bubbles (warm blocks)
+
+> **PMV / PPD**: Predicted Mean Vote / Percentage Dissatisfied. The comfort vote (0 = just right, -0.5 to +0.5 is "good enough") and how many would complain
+
+> **clo / met**: clothing / activity. How warm the clothes are and how fast the body's engine runs
+
+> **setpoint**: the target. The temperature we tell the heater to hold
 
 # Part 0: How does heat travel?
 
 Heat always moves from **warm to cold**, never the other way round. A house in winter is warm inside and cold outside, so heat keeps trying to **escape**.
 
-* **Conduction**: heat passes **through** a solid (a spoon in hot soup warms up)
-* **Convection**: moving air or water **carries** heat (the breath of air that cools your soup)
-* **Radiation**: warm surfaces **shine** heat at you (warmth of a campfire, or the chill near a cold window)
+> **Conduction**: heat passes **through** a solid (a spoon in hot soup warms up).
+
+> **Convection**: moving air or water **carries** heat (the breath of air that cools your soup).
+
+> **Radiation**: warm surfaces **shine** heat at you (warmth of a campfire, or the chill near a cold window).
 
 **The wall is a sandwich.** Heat leaves the room air (convection), crosses each layer of the wall (conduction) and finally goes into the outside air (convection again).
 
@@ -31,17 +44,17 @@ Heat always moves from **warm to cold**, never the other way round. A house in w
 
 *Figure: Three ways heat moves: conduction, convection and radiation*
 
-**Insulation is a blanket for the house.** Materials with a small *lambda* (foam, mineral wool, air bubbles) let almost no heat pass. A thick layer of them makes heat **very slow**.
+> **Insulation** is a blanket for the house. Materials with a small *lambda* (foam, mineral wool, air bubbles) let almost no heat pass. A thick layer of them makes heat **very slow**.
 
-**Thermal resistance = how hard heat finds it to pass.** Each layer has
-$R = \text{thickness} / \lambda$.
+> **Thermal resistance** = how hard heat finds it to pass. Each layer has $R = \text{thickness} / \lambda$.
+
 Stack the layers and **the resistances add up**, like hurdles in a race. The heat flux is then simply
 
 $$q = k \cdot (t_I - t_E), \qquad k = 1/R_{total}$$
 
 so a **small k** means a warm, cheap house.
 
-**Steady state.** All our numbers assume that nothing changes with time: the temperatures stay constant and the walls store no heat. This keeps the maths simple.
+> **Steady state**: nothing changes with time. All our numbers assume that the temperatures stay constant and the walls store no heat, which keeps the maths simple.
 
 **Windows let the sun in.** A window loses heat to the cold outside, but on a sunny day the sun also pushes heat **in**. At noon on the south side the sun can win, and the window becomes a tiny heater.
 
@@ -55,7 +68,11 @@ Data from the sheet: outside **5 degC**, inside **24 degC**, soil **11 degC**; t
 
 **Idea.** The wall has five layers. We add up the "hardness" (R) of every layer plus the air films on both sides, then multiply by the temperature difference.
 
-**Wall, from outside to inside:** decorative plaster 0.5 cm, polystyrene EPS 10 cm, cement mortar 0.3 cm, AAC blocks 25 cm, cement mortar 0.2 cm. (*Plaster* is a thin coat on the surface; *mortar* is the cement-and-sand layer that glues and smooths the blocks.)
+**Wall, from outside to inside:** decorative plaster 0.5 cm, polystyrene EPS 10 cm, cement mortar 0.3 cm, AAC blocks 25 cm, cement mortar 0.2 cm.
+
+> **Plaster**: a thin coat on the surface.
+
+> **Mortar**: the cement-and-sand layer that glues and smooths the blocks.
 
 ![The five layers of the wall, from outside to inside](figures/wall-layers.svg)
 
@@ -82,15 +99,25 @@ Data from the sheet: outside **5 degC**, inside **24 degC**, soil **11 degC**; t
 
 # Q2: How many kilowatt-hours does the radiator need each hour?
 
-**Idea.** An **electric radiator** (a heater with a hot element) turns every watt of electricity into one watt of heat. To keep the house at 24 degC, it must replace **exactly the heat that leaks out**. So hourly energy = total heat loss in watts x 1 hour.
+> **Electric radiator**: a heater with a hot element that turns every watt of electricity into one watt of heat.
+
+**Idea.** To keep the house at 24 degC, it must replace **exactly the heat that leaks out**. So hourly energy = total heat loss in watts x 1 hour.
 
 **The house has four parts that lose (or gain) heat:**
 * **Walls** (72 m2 gross minus 4 m2 of windows = 68 m2),
-* **Two windows** (east and south, 2 m2 each), where the sun gives some heat back (the sunshine power on one square metre of window, written I_T, is the **solar irradiance**, in W/m2),
-* **Floor** on the ground (its layers include *screed*, a cement-and-sand layer that levels the floor), losing heat to the soil at 11 degC,
+* **Two windows** (east and south, 2 m2 each), where the sun gives some heat back,
+* **Floor** on the ground, losing heat to the soil at 11 degC,
 * **Ceiling**: the floor above is heated to 24 degC too, so **no heat goes through it**.
 
-**Two simplifications from the sheet:** we ignore **infiltration** (cold air leaking in through cracks) and **thermal inertia** (heavy walls storing heat and releasing it later).
+> **Solar irradiance** (I_T) [W/m2]: the sunshine power on one square metre of window.
+
+> **Screed**: a cement-and-sand layer that levels the floor.
+
+> **Infiltration**: cold air leaking in through cracks.
+
+> **Thermal inertia**: heavy walls storing heat and releasing it later.
+
+**Two simplifications from the sheet:** we ignore infiltration and thermal inertia.
 
 **Two cases:** (a) the wall as designed, and (b) the wall **without the polystyrene**.
 
@@ -158,7 +185,9 @@ All 12 mixes are 36 cm thick, so the comparison is fair.
 
 # Q5 to Q9: A thermostat that thinks about people
 
-A **thermostat** is a small box with a thermometer and a switch. You set the temperature you want (the **setpoint**); it keeps comparing the thermometer with the setpoint: too cold → heater ON, warm enough → heater OFF.
+> **Thermostat**: a small box with a thermometer and a switch. You set the temperature you want (the **setpoint**); it keeps comparing the thermometer with the setpoint: too cold → heater ON, warm enough → heater OFF.
+
+> **Heat load**: the heat per second the heater must supply to hold the setpoint; in steady state it equals the heat that leaks out.
 
 **The old way:** the heater always holds **24 degC**, whatever people wear or do.
 
@@ -168,7 +197,7 @@ A **thermostat** is a small box with a thermometer and a switch. You set the tem
 
 **Recipe:**
 1. Lower the setpoint step by step until the vote reaches **-0.5** (the root finder does this exactly).
-2. Recompute the **heat load** of the house at that new temperature (the heat per second the heater must supply to hold the setpoint; in steady state it equals the heat that leaks out).
+2. Recompute the **heat load** of the house at that new temperature.
 3. Compare the kWh per hour with the fixed 24 degC.
 
 ![From clothes and activity to the setpoint, then to the heat load and the electricity saved](figures/ai-setpoint-chain.svg)

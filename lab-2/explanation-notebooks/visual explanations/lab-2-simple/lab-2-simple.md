@@ -18,28 +18,37 @@ The lab asks us to build a calculator that tells us **how warm people will feel*
 
 ### What do PMV and PPD stand for?
 
-**PMV = Predicted Mean Vote.** A scientist called Fanger (Denmark, 1960s) put volunteers in special rooms, changed the temperature, wetness of the air, wind and clothes, and asked everybody to **vote** on a scale: −3 cold, −2 cool, −1 slightly cool, **0 just right**, +1 slightly warm, +2 warm, +3 hot.
-- **Vote** = one person's answer.
-- **Mean** = the *average* of a big group (add all votes, divide by the number of people).
-- **Predicted** = we don't ask anyone. We **calculate** the vote with the body's heat balance (the bathtub: heat made minus heat lost).
+> **PMV = Predicted Mean Vote.** A scientist called Fanger (Denmark, 1960s) put volunteers in special rooms, changed the temperature, wetness of the air, wind and clothes, and asked everybody to **vote** on a scale: −3 cold, −2 cool, −1 slightly cool, **0 just right**, +1 slightly warm, +2 warm, +3 hot.
 
-**PPD = Predicted Percentage of Dissatisfied.** Even when the *average* person is happy, some people are not. PPD says how many out of 100 would complain, meaning they feel **warm or hot (+2, +3) or cool or cold (−2, −3)**. It is never below 5 %: you can't please everyone.
+> **Vote** = one person's answer.
 
-**ISO 7730** is the official rule-book that says how to calculate PMV and PPD (ISO = International Organization for Standardization). **ASHRAE 55** is a similar rule-book from a club of heating and cooling engineers (American Society of Heating, Refrigerating and Air-Conditioning Engineers).
+> **Mean** = the *average* of a big group (add all votes, divide by the number of people).
+
+> **Predicted** = we don't ask anyone. We **calculate** the vote with the body's heat balance (the bathtub: heat made minus heat lost).
+
+> **PPD = Predicted Percentage of Dissatisfied.** Even when the *average* person is happy, some people are not. PPD says how many out of 100 would complain, meaning they feel **warm or hot (+2, +3) or cool or cold (−2, −3)**. It is never below 5 %: you can't please everyone.
+
+> **ISO 7730** is the official rule-book that says how to calculate PMV and PPD (ISO = International Organization for Standardization).
+
+> **ASHRAE 55** is a similar rule-book from a club of heating and cooling engineers (American Society of Heating, Refrigerating and Air-Conditioning Engineers).
 
 ## 1. Your engine: metabolism and metabolic rate
 
-**Metabolism** is your body burning food (the fuel) to keep you alive: heart beating, brain thinking, muscles moving. Burning makes **heat** as a by-product, just like a car engine gets warm.
+> **Metabolism** is your body burning food (the fuel) to keep you alive: heart beating, brain thinking, muscles moving. Burning makes **heat** as a by-product, just like a car engine gets warm.
 
-**Metabolic rate** ($M_{met}$) is how fast that engine is running. We measure it in **met**:
+> **Metabolic rate** ($M_{met}$) is how fast that engine is running. We measure it in **met**:
 
-- **1 met** = sitting quietly. That is the "idle" speed of your engine. By definition, 1 met = **58.15 W/m²**. **W/m²** (watts per square metre) says how much heat leaves each square metre of skin, like tiny light bulbs glowing on you; a watt is energy per second. We count per square metre so it works for small and big people alike.
+- **1 met** = sitting quietly. That is the "idle" speed of your engine. By definition, 1 met = **58.15 W/m²**.
 - **1.2 met** = sitting and doing light desk work (this is our lab's person).
 - More movement means a faster engine and more heat.
 
+> **W/m²** (watts per square metre) says how much heat leaves each square metre of skin, like tiny light bulbs glowing on you; a watt is energy per second. We count per square metre so it works for small and big people alike.
+
 Multiply by your skin area (about 1.8 m²) and you get the heat of the whole body. Sitting quietly gives about 105 W, about **one bright light bulb**!
 
-The picture below also shows clothes. **Clothing insulation** ($I_{clo}$) says how thick and warm your clothes are, in **clo**: 0.5 clo = light summer clothes, 1 clo = a thick winter suit. Thick clothes slow the heat leaving your body.
+The picture below also shows clothes.
+
+> **Clothing insulation** ($I_{clo}$) says how thick and warm your clothes are, in **clo**: 0.5 clo = light summer clothes, 1 clo = a thick winter suit. Thick clothes slow the heat leaving your body.
 
 ![More clothes or more movement means you feel warmer](figures/clothing-and-activity.svg)
 
@@ -55,14 +64,19 @@ The picture below also shows clothes. **Clothing insulation** ($I_{clo}$) says h
 
 Your body keeps its inside at about 37 °C. The heat it makes has to leave through **six drains** (in the formulas they are the *heat-loss paths* $RL_1$ to $RL_6$, each measured in W/m²):
 
-- **$RL_1$**: water slowly **seeping through your skin** (you do not notice it) — dry air
-- **$RL_2$**: **sweat** drying on your skin — working harder than sitting still
-- **$RL_3$**: **wet breath**: water you breathe out — dry air, more activity
-- **$RL_4$**: **warm breath**: you warm the air you breathe in — cold air
-- **$RL_5$**: **radiation**: warmth glowing from your clothes to the walls — cold walls
-- **$RL_6$**: **convection**: moving air carrying warmth away from your clothes — cold air, a breeze or fan
+> **$RL_1$**: water slowly **seeping through your skin** (you do not notice it) — dry air
 
-**Left over** = heat made − heat lost through the six drains. We call it the **thermal load** ($L$).
+> **$RL_2$**: **sweat** drying on your skin — working harder than sitting still
+
+> **$RL_3$**: **wet breath**: water you breathe out — dry air, more activity
+
+> **$RL_4$**: **warm breath**: you warm the air you breathe in — cold air
+
+> **$RL_5$**: **radiation**: warmth glowing from your clothes to the walls — cold walls
+
+> **$RL_6$**: **convection**: moving air carrying warmth away from your clothes — cold air, a breeze or fan
+
+> **Left over** = heat made − heat lost through the six drains. We call it the **thermal load** ($L$).
 
 ![Your body is a little heater that gives its heat away in several ways](figures/body-heat-exchange.svg)
 
@@ -90,11 +104,13 @@ Imagine sitting in a room where the **air is a nice 24 °C**, but you are next t
 
 Three words first:
 
-- **Air temperature** ($t_a$): how warm the air is, what a normal thermometer shows, in °C.
-- **Mean radiant temperature** ($t_{mr}$): how warm the **walls, floor, ceiling and windows** are on average, in °C. "Radiant" means warmth that glows through the air, like the sun on your face.
-- **Air speed** ($v$): how strong the **breeze** around you is, in m/s (metres per second). A fan makes it bigger.
+> **Air temperature** ($t_a$): how warm the air is, what a normal thermometer shows, in °C.
 
-The **operative temperature** ($t_o$) fixes that. It is the room's **feels-like temperature**: a mix of air temperature and wall temperature.
+> **Mean radiant temperature** ($t_{mr}$): how warm the **walls, floor, ceiling and windows** are on average, in °C. "Radiant" means warmth that glows through the air, like the sun on your face.
+
+> **Air speed** ($v$): how strong the **breeze** around you is, in m/s (metres per second). A fan makes it bigger.
+
+> The **operative temperature** ($t_o$) fixes that. It is the room's **feels-like temperature**: a mix of air temperature and wall temperature.
 
 $A$ is how much the **air** counts. With a calm room (air speed under 0.2 m/s) the air and the walls count **equally**: $A = 0.5$. With more wind, the air counts more (0.6, then 0.7).
 
@@ -113,7 +129,9 @@ $A$ is how much the **air** counts. With a calm room (air speed under 0.2 m/s) t
 
 ## 5. Humidity: sticky air
 
-Air can carry **invisible water**. Warm air can carry **much more** than cold air. **Relative humidity** (RH) says how full the air is: 60 % means it holds 60 % of the water it could possibly hold.
+Air can carry **invisible water**. Warm air can carry **much more** than cold air.
+
+> **Relative humidity** (RH) says how full the air is: 60 % means it holds 60 % of the water it could possibly hold.
 
 When the air is already full of water, your **sweat cannot dry**, so you stay hot and sticky. Dry air takes sweat away easily and you feel cooler.
 

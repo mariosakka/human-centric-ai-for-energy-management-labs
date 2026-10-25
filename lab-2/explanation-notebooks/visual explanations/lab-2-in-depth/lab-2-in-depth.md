@@ -9,11 +9,19 @@ Formulas come from the lecture slides. Added assumptions are flagged where they 
 
 # Part A: Sheet 1, the moist-air (psychrometrics) challenge
 
-**Moist air** is the air around us, treated as a mixture of exactly two ingredients: dry air and water vapour. **Psychrometrics** is the study of the properties of moist air: how much water it holds and how much energy it carries.
+> **Moist air**: the air around us, treated as a mixture of exactly two ingredients: dry air and water vapour.
+
+> **Psychrometrics**: the study of the properties of moist air: how much water it holds and how much energy it carries.
 
 ## A1. Lecture challenge: mass and density of the air in a room
 
-Room 6 m × 4 m × 3 m, $p$ = 1 bar = 10⁵ Pa (the **pascal**, Pa, is the unit of pressure, force per square metre; 1 bar = 100 000 Pa), 25 °C. An **ideal gas** is a gas simple enough to follow the law $pV = mRT$ (pressure × volume = mass × specific gas constant × temperature). We treat dry air, water vapour and their mixture this way. Here $R$ = 287 J/(kg·K) for air and $T$ is in **kelvin** (the °C value plus 273.15).
+Room 6 m × 4 m × 3 m, $p$ = 1 bar = 10⁵ Pa, 25 °C.
+
+> **Pascal** (Pa): the unit of pressure, force per square metre; 1 bar = 100 000 Pa.
+
+> **Ideal gas**: a gas simple enough to follow the law $pV = mRT$ (pressure × volume = mass × specific gas constant × temperature). We treat dry air, water vapour and their mixture this way. Here $R$ = 287 J/(kg·K) for air.
+
+> **Kelvin** (K): the temperature scale used in gas formulas, $T$ = the °C value plus 273.15.
 
 ![The air in a 6 × 4 × 3 m room: volume, mass and density](figures/air-parcel-room.svg)
 
@@ -32,13 +40,21 @@ Room 6 m × 4 m × 3 m, $p$ = 1 bar = 10⁵ Pa (the **pascal**, Pa, is the unit 
 
 The sheet gives measured saturation pressures of water. Between table points we interpolate linearly (a straight line between neighbours). Error is under about 1 %, fine for this lab.
 
-**What "100 % humidity" (saturation) means.** At a given temperature $t$, air can carry water vapour only up to a maximum vapour pressure, the **saturation pressure** $p_{sat}(t)$. The real water content of the air is the **partial vapour pressure** $p_v$: the share of the total pressure that is due to the water vapour, in Pa (the more water, the larger it is). It is always at or below the saturation pressure. **Relative humidity** says how close the air is to that maximum:
+**What "100 % humidity" (saturation) means.** At a given temperature $t$, air can carry water vapour only up to a maximum vapour pressure.
+
+> **Saturation pressure** $p_{sat}(t)$ (Pa): the maximum vapour pressure the air can carry at temperature $t$.
+
+> **Partial vapour pressure** $p_v$ (Pa): the share of the total pressure that is due to the water vapour. The more water, the larger it is, and it is always at or below the saturation pressure.
+
+> **Relative humidity** $\varphi$: how close the air is to that maximum, the ratio of $p_v$ to $p_{sat}(t)$:
 
 - $\varphi$ = 100 % means $p_v=p_{sat}(t)$: the air is **full** (saturated) *at its current temperature*. One more drop of vapour would not stay a gas, it would condense (dew, fog, cloud). "100 % humidity", "100 % relative humidity" and "saturated air" are three names for this one state.
 - 100 % does **not** mean "the air is made of water". The air still holds only a few grams of vapour per kg (see $x$ in A3); 100 % just means that, at this temperature, it cannot hold more.
 - $\varphi$ = 60 % means the air carries 60 % of its maximum. $\varphi$ = 0 % is perfectly dry air.
 - The black curve in the chart below is $p_{sat}(t)$, so **it is the set of all states with $\varphi$ = 100 %**. Every other relative humidity is a curve underneath it ($60\,\% = 0.60\cdot p_{sat}(t)$, the dashed line). A point *on* the curve is full air, a point *below* it can still take water, and a point *above* it cannot exist as vapour.
-- The limit moves with temperature, so the same water gives different percentages: the sheet's summer air (30 °C, $p_v$ = 2548 Pa) is only 60 % full, but if it is cooled to 21.4 °C the same 2548 Pa reaches the curve and the air is 100 % full. That temperature is the **dew point** $t_{dp}$: the temperature to which air must be cooled, with no water added or removed, to become saturated (section A4).
+- The limit moves with temperature, so the same water gives different percentages: the sheet's summer air (30 °C, $p_v$ = 2548 Pa) is only 60 % full, but if it is cooled to 21.4 °C the same 2548 Pa reaches the curve and the air is 100 % full. That temperature is the dew point (section A4).
+
+> **Dew point** $t_{dp}$ (°C): the temperature to which air must be cooled, with no water added or removed, to become saturated.
 
 ![Saturation curve, relative humidity and dew point on one chart](figures/vapour-pressure-dew-point.svg)
 
@@ -58,9 +74,17 @@ Steps for each day:
 
 1. $p_{sat}(t)$ from the table.
 2. $p_v = \varphi\cdot p_{sat}(t)$: the real water pressure.
-3. $x = 0.622\,p_v/(p-p_v)$: the **humidity ratio** $x$, the mass of vapour per mass of dry air (kg/kg, usually quoted in g/kg). The constant 0.622 is the ratio of the molar masses, water (18) over air (29).
+3. $x = 0.622\,p_v/(p-p_v)$: the humidity ratio $x$ (defined below). The constant 0.622 is the ratio of the molar masses, water (18) over air (29).
 4. $t_{dp} = t_{sat}(p_v)$: look the value of $p_v$ up in the table **backwards** to get a temperature.
-5. $h = t + x(2500 + 1.84\,t)$: the **enthalpy** $h$, the total heat energy carried by 1 kg of dry air, in kJ/kg (a kilojoule is 1000 joules, a unit of energy). It is the warmth you can feel ($t$, the *sensible* part) plus the energy hidden in the vapour (the *latent* part). The 2500 kJ/kg is the **latent heat of vaporisation**, the energy needed to turn 1 kg of liquid water into vapour with no temperature change (it is released again when the vapour condenses). The 1.84 kJ/(kg·K) is the **specific heat** of water vapour, the energy needed to warm 1 kg of it by 1 K (see the specific-heat section below).
+5. $h = t + x(2500 + 1.84\,t)$: the enthalpy $h$ (defined below), using the constants 2500 kJ/kg and 1.84 kJ/(kg·K).
+
+> **Humidity ratio** $x$ (kg/kg, usually quoted in g/kg): the mass of vapour per mass of dry air.
+
+> **Enthalpy** $h$ (kJ/kg): the total heat energy carried by 1 kg of dry air (a kilojoule, kJ, is 1000 joules, a unit of energy). It is the warmth you can feel ($t$, the *sensible* part) plus the energy hidden in the vapour (the *latent* part).
+
+> **Latent heat of vaporisation** (2500 kJ/kg): the energy needed to turn 1 kg of liquid water into vapour with no temperature change. It is released again when the vapour condenses.
+
+> **Specific heat** of water vapour (1.84 kJ/(kg·K)): the energy needed to warm 1 kg of it by 1 K (see the specific-heat section below).
 
     
 ![png](figures/output_12_0.png)
@@ -75,9 +99,13 @@ Steps for each day:
 
 **Short answer: we use both, and they are the same information in two forms.** $p_v$ and $x$ are tied together by the ideal gas law, and the sheet uses each where it is the more convenient.
 
-**The link.** Each gas in the mixture follows $pV = mRT$ on its own (**Dalton's law**: the total pressure is the sum of the pressures each gas would have alone, $p = p_a + p_v$). For the vapour and the dry air in the same volume $V$ and at the same temperature $T$:
+> **Dalton's law**: the total pressure is the sum of the pressures each gas would have alone, $p = p_a + p_v$.
 
-with $R_a$ = 287 and $R_v$ = 461.5 J/(kg·K), so $R_a/R_v = 0.622$. Also, $p_v = \rho_v R_v T$, where $\rho_v$ is the **vapour density** (kilograms of vapour per m³ of air): **the vapour pressure is just "kilograms of vapour per m³", multiplied by $R_vT$.** Pressure *is* a measure of quantity.
+**The link.** Each gas in the mixture follows $pV = mRT$ on its own. For the vapour and the dry air in the same volume $V$ and at the same temperature $T$:
+
+with $R_a$ = 287 and $R_v$ = 461.5 J/(kg·K), so $R_a/R_v = 0.622$. Also, $p_v = \rho_v R_v T$, where $\rho_v$ is the vapour density (box below): **the vapour pressure is just "kilograms of vapour per m³", multiplied by $R_vT$.** Pressure *is* a measure of quantity.
+
+> **Vapour density** $\rho_v$ (kg/m³): the kilograms of vapour per m³ of air.
 
 **Why pressure is the natural choice for these jobs:**
 1. **Saturation is defined by pressure.** Water vapour can only reach a maximum partial pressure $p_{sat}(t)$ that depends (almost) only on temperature. So "is it full?" is the question $p_v \ge p_{sat}$, and relative humidity is just $\varphi = p_v/p_{sat}$. In kg you would need a different limit for every pressure and temperature.
@@ -154,7 +182,7 @@ The dew point uses the curve, read backwards from $p_v$, and never the air tempe
 
 ## Condensation: what it is and when it happens
 
-**Condensation** is water vapour turning into **liquid** water (the reverse of evaporation). It is what makes dew, fog, clouds, the mist on a bathroom mirror and the drops on a cold glass.
+> **Condensation**: water vapour turning into **liquid** water (the reverse of evaporation). It is what makes dew, fog, clouds, the mist on a bathroom mirror and the drops on a cold glass.
 
 **When:** the air can only carry vapour up to $p_{sat}(t)$. If the air is cooled (or a cold surface touches it) so that $p_v$ would exceed $p_{sat}$, the excess cannot stay a gas and **becomes liquid**. The temperature at which this starts is exactly the **dew point** $t_{dp}$. So:
 
@@ -166,10 +194,11 @@ The dew point uses the curve, read backwards from $p_v$, and never the air tempe
 **Why buildings care:** a winter window or a cold wall corner below the room's dew point collects water, which leads to mould, damaged finishes and (when below 0 °C) frost.
 
 **Two humidity ratios appear in the chart below, and they are different quantities.**
-- **Actual humidity ratio $x$**: the water the air really carries. If no water is added or removed, it **does not change with temperature**, so on the chart it is a flat line.
-- **Saturation humidity ratio $x_{sat}(t)$**: the humidity ratio the air would have if it were 100 % full at temperature $t$. It is the same formula as $x$ with $p_{sat}(t)$ in place of $p_v$:
+> **Actual humidity ratio** $x$: the water the air really carries. If no water is added or removed, it **does not change with temperature**, so on the chart it is a flat line.
 
-It depends only on the temperature. It is the saturation pressure curve of A2 rewritten in g/kg: the **ceiling** for each temperature, not the amount of water that is there.
+> **Saturation humidity ratio** $x_{sat}(t)$: the humidity ratio the air would have if it were 100 % full at temperature $t$. It is the same formula as $x$ with $p_{sat}(t)$ in place of $p_v$ (written out below), it depends only on the temperature, and it is the saturation pressure curve of A2 rewritten in g/kg: the **ceiling** for each temperature, not the amount of water that is there.
+
+Written out:
 
 Cooling moves the air to the left along the flat line (nothing is removed, so $x$ is constant) until the line meets the ceiling: the dew point. Cooling further, the ceiling would drop below $x$, which is impossible, so the excess condenses and $x$ falls, following the curve. **$x$ changes with temperature only after condensation has started.**
 
@@ -186,9 +215,9 @@ Cooling moves the air to the left along the flat line (nothing is removed, so $x
 
 ## Specific heat: how much energy does it take to warm something?
 
-**Definition.** The **specific heat** $c$ of a substance is the energy needed to raise **1 kg** of it by **1 K** (1 °C):
+> **Specific heat** $c$ (kJ/(kg·K)): the energy needed to raise **1 kg** of a substance by **1 K** (1 °C). "Specific" means "per kg". A large $c$ means the material is hard to warm up and stores a lot of heat (water); a small $c$ means it warms quickly (air). For gases it depends on whether the pressure is held fixed ($c_p$, used for open air at constant pressure) or the volume ($c_v$). We use $c_p$.
 
-"Specific" means "per kg". A large $c$ means the material is hard to warm up and stores a lot of heat (water); a small $c$ means it warms quickly (air). For gases it depends on whether the pressure is held fixed ($c_p$, used for open air at constant pressure) or the volume ($c_v$). We use $c_p$.
+The energy follows from the definition:
 
 - **Dry air**: **1.006** (the sheet rounds it to 1, which changes $h$ by only 0.25 %)
 - **Water vapour**: **1.84**
@@ -218,8 +247,9 @@ The 1 in front of $t$ is the specific heat of dry air, and the 1.84 is the speci
 
 $h = \underbrace{t}_{\text{sensible}} + \underbrace{x(2500+1.84\,t)}_{\text{latent}}$
 
-- **Sensible** heat is the warmth you can feel and measure with a thermometer.
-- **Latent** heat is energy stored in the water vapour (what it took to evaporate it). You do not feel it directly, but an air conditioner must remove it to dry the air.
+> **Sensible heat**: the warmth you can feel and measure with a thermometer.
+
+> **Latent heat**: energy stored in the water vapour (what it took to evaporate it). You do not feel it directly, but an air conditioner must remove it to dry the air.
 
 ![Enthalpy split into sensible and latent parts for 30 °C, 60 % air](figures/enthalpy.svg)
 
@@ -233,7 +263,9 @@ $h = \underbrace{t}_{\text{sensible}} + \underbrace{x(2500+1.84\,t)}_{\text{late
 
 ## A6. Individual work: the whole day (Bucharest, Meteonorm data)
 
-The sheet gives **24 hourly values** of $t$ and $\varphi$ for **August 8th** and **February 1st** (UTC = Coordinated Universal Time, the world reference clock; Romanian local time is UTC+3 in summer, UTC+2 in winter). The values come from Meteonorm, a database and software that provides typical-year hourly weather data for any location. We apply the same five steps to every hour.
+The sheet gives **24 hourly values** of $t$ and $\varphi$ for **August 8th** and **February 1st** (UTC = Coordinated Universal Time, the world reference clock; Romanian local time is UTC+3 in summer, UTC+2 in winter). The values come from Meteonorm (box below). We apply the same five steps to every hour.
+
+> **Meteonorm**: a database and software that provides typical-year hourly weather data for any location.
 
     
 ![png](figures/output_41_0.png)
@@ -267,7 +299,9 @@ Air conditioning moves summer dots **down** (drying) and **left** (cooling) towa
 
 The charts above show a handful of quantities, and they are **computed from each other** with the formulas of A3: only the air temperature $t$ and the relative humidity $\varphi$ are measured, and everything else follows. This section uses the 24 hourly values of both days to show **which curves rise and fall together, which are mirror images, and why**, with the pattern marked on each figure.
 
-**How to read a correlation.** The correlation $r$ between two curves is a number from −1 to +1. Hour by hour it asks: when curve A is above its own average, is curve B above its average too?
+> **Correlation** $r$: a number from −1 to +1 that compares two curves. Hour by hour it asks: when curve A is above its own average, is curve B above its average too?
+
+**How to read it.**
 
 - $r$ close to **+1**: they rise and fall together (left plot, orange arrow slopes up);
 - $r$ near **0**: no relation, the dots form a cloud (middle plot);
@@ -346,29 +380,40 @@ Sheet 1 described the air. Now we look at the **person in the air**.
 
 ### What do PMV and PPD stand for, and where do they come from?
 
-**PMV = Predicted Mean Vote.** In the 1960s the Danish professor P. O. Fanger put volunteers in climate chambers, changed the air temperature, humidity, air speed, clothing and activity, and asked them to **vote** on how they felt on the **7-point thermal sensation scale** (the ASHRAE scale): −3 cold, −2 cool, −1 slightly cool, 0 neutral, +1 slightly warm, +2 warm, +3 hot. He published the method in his book *Thermal Comfort* (1970).
-- **Vote**: one person's answer on that 7-point scale.
-- **Mean**: the average vote of a large group of people in the same room.
-- **Predicted**: nobody is asked. The number is *calculated* from six inputs (four properties of the room and two of the person, listed in B0) with the heat balance of the body: heat produced minus heat lost is the thermal load $L$, and $PMV=TS\cdot L$, where $TS$ is the *thermal sensation coefficient*, a factor fitted to Fanger's votes that turns the load into a vote. If heat piles up ($L>0$) people vote warm, if the body loses heat faster than it makes it ($L<0$) they vote cool.
+In the 1960s the Danish professor P. O. Fanger put volunteers in climate chambers, changed the air temperature, humidity, air speed, clothing and activity, and asked them to **vote** on how they felt on the **7-point thermal sensation scale** (the ASHRAE scale): −3 cold, −2 cool, −1 slightly cool, 0 neutral, +1 slightly warm, +2 warm, +3 hot. He published the method in his book *Thermal Comfort* (1970).
+> **PMV (Predicted Mean Vote)**: the average vote of a large group of people in the same room on that 7-point scale (a *vote* is one person's answer). *Predicted* means nobody is asked: the number is *calculated* from six inputs (four properties of the room and two of the person, listed in B0) with the heat balance of the body. Heat produced minus heat lost is the thermal load $L$, and $PMV=TS\cdot L$, where $TS$ is the *thermal sensation coefficient*, a factor fitted to Fanger's votes that turns the load into a vote. If heat piles up ($L>0$) people vote warm, if the body loses heat faster than it makes it ($L<0$) they vote cool.
 
-**PPD = Predicted Percentage of Dissatisfied.** People differ, so even in a room that is right for the average person some are unhappy. PPD is the percentage of a large group who would be *dissatisfied*, which means they would vote **warm or hot (+2, +3) or cool or cold (−2, −3)**. Fanger fitted this curve to the votes: $PPD = 100-95\,e^{-0.03353\,PMV^4-0.2179\,PMV^2}$. It is smallest (5 %) at $PMV=0$ and grows quickly on both sides.
+> **PPD (Predicted Percentage of Dissatisfied)**: the percentage of a large group who would be *dissatisfied*, which means they would vote **warm or hot (+2, +3) or cool or cold (−2, −3)**. People differ, so even in a room that is right for the average person some are unhappy. Fanger fitted this curve to the votes: $PPD = 100-95\,e^{-0.03353\,PMV^4-0.2179\,PMV^2}$. It is smallest (5 %) at $PMV=0$ and grows quickly on both sides.
 
-**ISO 7730** (ISO = International Organization for Standardization) is the international standard that fixes how to calculate PMV and PPD, including the iterative calculation of the clothing temperature (B4). **ASHRAE 55** (ASHRAE = American Society of Heating, Refrigerating and Air-Conditioning Engineers; standard 55, *Thermal Environmental Conditions for Human Occupancy*) uses the same model to define comfort zones.
+> **ISO 7730** (ISO = International Organization for Standardization): the international standard that fixes how to calculate PMV and PPD, including the iterative calculation of the clothing temperature (B4).
+
+> **ASHRAE 55** (ASHRAE = American Society of Heating, Refrigerating and Air-Conditioning Engineers; standard 55, *Thermal Environmental Conditions for Human Occupancy*): uses the same model to define comfort zones.
 
 ## B0. The big picture: six factors, six drains
 
 The lecture says thermal comfort is a **heat balance** between body and environment, controlled by **four environmental** and **two personal** factors:
 
-- **Four environmental factors:**
-  - **air temperature $t_a$**: the reading of an ordinary thermometer, in °C;
-  - **mean radiant temperature $t_{mr}$**: the average temperature of the surrounding surfaces (walls, windows, floor, ceiling), in °C (details in B3);
-  - **air speed $v$**: how fast the air moves past the body, in m/s;
-  - **relative humidity RH**: how full the air is with water vapour, in % (sheet 1).
-- **Two personal factors:**
-  - **metabolic rate $M_{met}$**: the heat the body produces, in met (1 met = 58.15 W/m² of skin; details in B1);
-  - **clothing insulation $I_{clo}$**: how well clothes slow down heat loss, in clo (details in B2).
+**Four environmental factors:**
 
-The body makes heat $M$. Six paths remove it, each measured in W/m² of skin (a **watt**, W, is energy per second): $RL_1$ water vapour diffusing through the skin, $RL_2$ evaporation of sweat, $RL_3$ water vapour breathed out (latent respiration), $RL_4$ warm air breathed out (dry respiration), $RL_5$ radiation from the clothes to the surrounding surfaces and $RL_6$ convection from the clothes to the air. What remains is the load $L$, and $PMV = TS\cdot L$.
+> **Air temperature** $t_a$ (°C): the reading of an ordinary thermometer.
+
+> **Mean radiant temperature** $t_{mr}$ (°C): the average temperature of the surrounding surfaces (walls, windows, floor, ceiling); details in B3.
+
+> **Air speed** $v$ (m/s): how fast the air moves past the body.
+
+> **Relative humidity** RH (%): how full the air is with water vapour (sheet 1).
+
+**Two personal factors:**
+
+> **Metabolic rate** $M_{met}$ (met): the heat the body produces; 1 met = 58.15 W/m² of skin (details in B1).
+
+> **Clothing insulation** $I_{clo}$ (clo): how well clothes slow down heat loss (details in B2).
+
+The body makes heat $M$. Six paths remove it:
+
+> **Heat-loss paths** $RL_1$ to $RL_6$ (W/m² of skin; a *watt*, W, is energy per second): $RL_1$ water vapour diffusing through the skin, $RL_2$ evaporation of sweat, $RL_3$ water vapour breathed out (latent respiration), $RL_4$ warm air breathed out (dry respiration), $RL_5$ radiation from the clothes to the surrounding surfaces and $RL_6$ convection from the clothes to the air.
+
+What remains is the load $L$, and $PMV = TS\cdot L$.
 
 Which factor drives which drain? The heatmap below changes each factor by one typical step and shows how many W/m² each drain moves by (orange = drain grows, blue = shrinks). The hot summer day is the base case.
 
@@ -393,11 +438,17 @@ Which factor drives which drain? The heatmap below changes each factor by one ty
 
 ## B1. Metabolic rate in depth (lecture slides 16 to 20)
 
-A resting adult produces about **100 W** of heat. Spread over the skin (about 1.7 m² on average; 1.8 m² for a European man, 1.6 m² for a woman) this is about 58 W/m², which is what defines **1 met**. The lab uses the exact value 58.15 W/m². The lecture also gives two helpful formulas.
+A resting adult produces about **100 W** of heat. Spread over the skin (about 1.7 m² on average; 1.8 m² for a European man, 1.6 m² for a woman) this is about 58 W/m².
+
+> **met**: the unit of metabolic rate; **1 met** is the heat a resting adult produces per m² of skin, about 58 W/m². The lab uses the exact value 58.15 W/m².
+
+The lecture also gives two helpful formulas.
 
 **Skin temperature** falls as activity rises (more sweat cools the skin): $t_{sk} = 35.7 - 0.0275\,(M - W)$, with $W$ the mechanical work done (zero for desk work). The lab's clothing-balance equation uses $35.7 - 0.028\,M$, the same idea rounded.
 
-**Measuring M from breathing** (Nishi 1981): $M = 21\,(0.23\,RQ+0.77)\,\dfrac{\dot V_{O_2}}{A_D}$, where $RQ$ is the *respiratory quotient* (CO₂ out / O₂ in; it tells which fuel the body burns: about 0.7 for fats, 1.0 for carbohydrates, about 0.83 for a mixed diet), $\dot V_{O_2}$ is oxygen consumption (mL/s) and $A_D$ is skin area (m²).
+**Measuring M from breathing** (Nishi 1981): $M = 21\,(0.23\,RQ+0.77)\,\dfrac{\dot V_{O_2}}{A_D}$, where $RQ$ is the respiratory quotient (box below), $\dot V_{O_2}$ is oxygen consumption (mL/s) and $A_D$ is skin area (m²).
+
+> **Respiratory quotient** $RQ$: CO₂ out divided by O₂ in. It tells which fuel the body burns: about 0.7 for fats, 1.0 for carbohydrates, about 0.83 for a mixed diet.
 
 ![Typical values of clothing insulation (clo) and metabolic rate (met)](figures/clothing-and-activity.svg)
 
@@ -411,8 +462,9 @@ A resting adult produces about **100 W** of heat. Spread over the skin (about 1.
 
 ## B2. Clothing in depth
 
-- **clo** is the unit of clothing insulation. **1 clo = 0.155 m²·K/W**: the thermal resistance of a typical winter business suit. 0.5 clo is light summer clothing.
-- Clothes also **enlarge the surface** that exchanges heat. The *clothing area factor* $f_{cl}$ = clothed surface / nude surface:
+> **clo**: the unit of clothing insulation. **1 clo = 0.155 m²·K/W**, the thermal resistance of a typical winter business suit. 0.5 clo is light summer clothing.
+
+> **Clothing area factor** $f_{cl}$: clothed surface divided by nude surface. Clothes also **enlarge the surface** that exchanges heat, so it is above 1:
 
     
 ![png](figures/output_69_0.png)
@@ -422,7 +474,9 @@ A resting adult produces about **100 W** of heat. Spread over the skin (about 1.
 
 ## B3. Mean radiant temperature and operative temperature, properly
 
-**Mean radiant temperature** $t_{mr}$ is the average temperature of everything the body "sees", weighted by how much of the body faces each surface. The lecture gives weights for a **seated** person (up/down, right/left, front/back):
+> **Mean radiant temperature** $t_{mr}$ (°C): the average temperature of everything the body "sees", weighted by how much of the body faces each surface.
+
+The lecture gives weights for a **seated** person (up/down, right/left, front/back):
 
 (standing: 0.08, 0.23, 0.35). In the lab we are simply **given** $t_{mr}$ = 30.5 °C.
 
@@ -430,7 +484,7 @@ A resting adult produces about **100 W** of heat. Spread over the skin (about 1.
 
 *Figure: Cold surfaces: why operative temperature, not only air temperature, matters*
 
-**Operative temperature.** The lecture's physical definition is a weighted average with the two heat-transfer coefficients as weights:
+> **Operative temperature** $t_o$ (°C): the single temperature that combines air and wall temperature. The lecture's physical definition is a weighted average with the two heat-transfer coefficients as weights (formula below).
 
 with $h_c$ convective and $h_r$ radiative coefficient [W/(m²·K)], $\varepsilon$ emissivity (assumed 0.95 here), $\sigma = 5.67\cdot10^{-8}$ W/(m²K⁴), $A_r/A_D$ = 0.70 sitting or 0.73 standing.
 
@@ -464,12 +518,16 @@ Why iterate? $t_{cl}$ sets how much heat leaves by radiation ($\propto T_{cl}^4$
 - **PMV scale:** +3 hot, +2 warm, +1 slightly warm, 0 neutral, −1 slightly cool, −2 cool, −3 cold.
 - **Even at PMV = 0, at least 5 % of people are dissatisfied.**
 - **Validity:** the model assumes sweating is small, so PMV is only applicable for $-2 < PMV < +2$. It is **not applicable for hot environments**.
-- **Romanian regulation I5 (the national normative that defines the comfort categories, as named in the lecture)** sorts rooms into four categories:
 
-- **I high**: children, elderly, sick — < 6 % — −0.2 … 0.2
-- **II medium**: normal for new / renovated buildings — < 10 % — −0.5 … 0.5
-- **III moderate**: existing buildings — < 15 % — −0.7 … 0.7
-- **IV low**: short periods only — > 15 % — beyond ±0.7
+> **Romanian regulation I5**: the national normative that defines the comfort categories, as named in the lecture. It sorts rooms into four categories (use, PPD limit, PMV range):
+
+> **Category I (high)**: children, elderly, sick — PPD < 6 % — PMV −0.2 … 0.2
+
+> **Category II (medium)**: normal for new / renovated buildings — PPD < 10 % — PMV −0.5 … 0.5
+
+> **Category III (moderate)**: existing buildings — PPD < 15 % — PMV −0.7 … 0.7
+
+> **Category IV (low)**: short periods only — PPD > 15 % — PMV beyond ±0.7
 
 The lab's target, −0.5 < PMV < 0.5, is category **II**.
 

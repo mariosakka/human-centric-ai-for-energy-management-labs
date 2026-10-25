@@ -6,23 +6,63 @@ Sheet: *Dynamic Comfort and Energy Optimization (PMV/PPD)*.
 
 ## 0.1 The name
 
-**HVAC = Heating, Ventilation and Air Conditioning.** It is the set of machines that keep the *indoor environment* acceptable for people: temperature, humidity, fresh air and air movement.
+> **HVAC** (Heating, Ventilation and Air Conditioning): the set of machines that keep the *indoor environment* acceptable for people: temperature, humidity, fresh air and air movement.
 
-* **H**eating: add heat in winter — e.g. a **boiler** (heats water by burning gas or oil, or with electricity), a **heat pump** (moves heat from the outside air or the ground into the building, like an air conditioner running backwards; it delivers 3 to 4 units of heat per unit of electricity), radiators (hot water-filled panels), floor heating, electric heater
-* **V**entilation: bring fresh air in, take stale air out (CO$_2$, the gas people breathe out, which builds up in a closed room; odours; moisture) — e.g. fans, **ducts** (metal tubes that carry air), a **heat-recovery unit** (passes heat from the outgoing stale air to the incoming fresh air without mixing them), windows
-* **A**ir **C**onditioning: remove heat and moisture in summer — e.g. a **chiller** (a large refrigerator that makes cold water), a split unit (an air conditioner with an indoor and an outdoor part), a cooling **coil** (a finned pipe carrying cold water; air blown over it is cooled, and a heating coil does the opposite), a dehumidifier (removes water vapour from the air)
+* **H**eating: add heat in winter — e.g. a boiler, a heat pump, radiators, floor heating, an electric heater
+* **V**entilation: bring fresh air in, take stale air out (CO$_2$, odours, moisture) — e.g. fans, ducts, a heat-recovery unit, windows
+* **A**ir **C**onditioning: remove heat and moisture in summer — e.g. a chiller, a split unit, a cooling coil, a dehumidifier
+
+> **Boiler**: heats water by burning gas or oil, or with electricity.
+
+> **Heat pump**: moves heat from the outside air or the ground into the building, like an air conditioner running backwards; it delivers 3 to 4 units of heat per unit of electricity.
+
+> **Radiator**: a hot water-filled panel that gives heat to the room.
+
+> **CO$_2$** (carbon dioxide): the gas people breathe out, which builds up in a closed room.
+
+> **Duct**: a metal tube that carries air.
+
+> **Heat-recovery unit**: passes heat from the outgoing stale air to the incoming fresh air without mixing them.
+
+> **Chiller**: a large refrigerator that makes cold water.
+
+> **Split unit**: an air conditioner with an indoor and an outdoor part.
+
+> **Coil**: a finned pipe carrying cold or hot water; air blown over a cooling coil is cooled, and a heating coil does the opposite.
+
+> **Dehumidifier**: removes water vapour from the air.
 
 ## 0.2 The main parts and how they connect
 
 A typical commercial building:
 
 1. **Production**: boiler / heat pump (heat) and chiller (cold) make hot or cold water.
-2. **AHU (Air Handling Unit)**: a box with a fan, filter, heating coil, cooling coil, humidifier and heat-recovery exchanger. It prepares the supply air.
-3. **Distribution**: ducts and pipes carry air or water to the rooms. A **VAV box** (Variable Air Volume) has a flap (damper) that throttles how much air each room gets.
-4. **Terminals** (the devices in the room that hand heat or cold to the air): **diffusers** (air outlets in the ceiling), **fan-coil units** (a small coil with a fan), radiators, **chilled beams** (cooled panels under the ceiling) and **ceiling fans**.
-5. **Sensors + controller**: the room **thermostat**, humidity and CO$_2$ sensors (CO$_2$ shows how many people are in the room and how stale the air is) and a **BMS** (Building Management System, the central computer that runs the control logic of the whole building).
+2. **AHU**: prepares the supply air.
+3. **Distribution**: ducts and pipes carry air or water to the rooms; a **VAV box** throttles how much air each room gets.
+4. **Terminals**: the devices in the room that hand heat or cold to the air: diffusers, fan-coil units, radiators, chilled beams and **ceiling fans**.
+5. **Sensors + controller**: the room **thermostat**, humidity and CO$_2$ sensors and a **BMS**.
 
-The **thermostat** is the simplest controller. It has a temperature sensor, a **setpoint** (the temperature you want, set with a dial or an app) and a switch. It keeps comparing the measured air temperature $t_a$ with the setpoint: colder than the setpoint → heating on, warm enough → heating off (the logic is reversed for cooling). A fridge or an oven works the same way. Three roles come back throughout the lab: a **sensor** measures (temperature, relative humidity **RH** = the water vapour in the air as a % of the most it could hold, CO$_2$), a **controller** decides by comparing the measurement with the setpoint (a thermostat, the BMS) and an **actuator** acts on the room (heater, valve, damper, fan).
+> **AHU** (Air Handling Unit): a box with a fan, filter, heating coil, cooling coil, humidifier and heat-recovery exchanger. It prepares the supply air.
+
+> **VAV box** (Variable Air Volume): a box with a flap (damper) that throttles how much air each room gets.
+
+> **Terminal**: a device in the room that hands heat or cold to the air.
+
+> **Diffuser**: an air outlet in the ceiling.
+
+> **Fan-coil unit**: a small coil with a fan.
+
+> **Chilled beam**: a cooled panel under the ceiling.
+
+> **CO$_2$ sensor**: shows how many people are in the room and how stale the air is.
+
+> **BMS** (Building Management System): the central computer that runs the control logic of the whole building.
+
+> **Thermostat**: the simplest controller. It has a temperature sensor, a **setpoint** (the temperature you want, set with a dial or an app) and a switch. It keeps comparing the measured air temperature $t_a$ with the setpoint: colder than the setpoint → heating on, warm enough → heating off (the logic is reversed for cooling). A fridge or an oven works the same way.
+
+> **Relative humidity (RH)**: the water vapour in the air as a % of the most it could hold.
+
+> **Sensor, controller, actuator**: three roles that come back throughout the lab. A **sensor** measures (temperature, relative humidity, CO$_2$), a **controller** decides by comparing the measurement with the setpoint (a thermostat, the BMS) and an **actuator** acts on the room (heater, valve, damper, fan).
 
 ```
  outdoor air --> [AHU: filter, coils, fan] --> ducts --> [VAV box] --> room
@@ -42,13 +82,31 @@ The **thermostat** is the simplest controller. It has a temperature sensor, a **
 
 ## 0.3 Key words you need for the sheet
 
-* **Setpoint**: the target value the controller tries to hold, for example "air temperature = 23 °C".
-* **Deadband**: a gap around the setpoint where nothing switches on. It stops the system from toggling every minute and saves energy.
-* **Setback**: lowering the heating setpoint when nobody needs full comfort (night, weekend).
-* **Sensible vs latent load** (a *load* is the heat per second that the system must add or remove to hold the setpoint, measured in watts, **W**, the unit of power: 1 W = 1 joule per second): *sensible* heat changes the temperature; *latent* heat is the energy in water vapour (humidity). Cooling a humid summer day costs both.
-* **Free running (no HVAC)**: the building follows the weather. Part 2 finds when this is uncomfortable.
-* **Operative temperature** $t_o$: roughly the average of air temperature $t_a$ and mean radiant temperature $t_{mr}$ (the average temperature of the surfaces around you: walls, windows, floor, ceiling; you feel them like the warmth of a stove or the chill of a cold window). The body feels *both*. In a room with cold windows you feel cold even if the air thermostat reads 22 °C.
-* **Comfort categories** (ISO 7730 / EN 16798, the international and European standards that define how thermal comfort is rated; they use the **PMV**, Predicted Mean Vote, the average comfort vote of a group of people on a scale from −3 cold to +3 hot, and the **PPD**, Predicted Percentage of Dissatisfied, the share of people who would complain): **I** $|PMV|<0.2$, **II** $|PMV|<0.5$ (normal new buildings, the target here), **III** $|PMV|<0.7$ (older buildings), outside = unacceptable.
+> **Setpoint**: the target value the controller tries to hold, for example "air temperature = 23 °C".
+
+> **Deadband**: a gap around the setpoint where nothing switches on. It stops the system from toggling every minute and saves energy.
+
+> **Setback**: lowering the heating setpoint when nobody needs full comfort (night, weekend).
+
+> **Load**: the heat per second that the system must add or remove to hold the setpoint, measured in watts.
+
+> **Watt (W)**: the unit of power: 1 W = 1 joule per second.
+
+> **Sensible vs latent load**: *sensible* heat changes the temperature; *latent* heat is the energy in water vapour (humidity). Cooling a humid summer day costs both.
+
+> **Free running (no HVAC)**: the building follows the weather. Part 2 finds when this is uncomfortable.
+
+> **Mean radiant temperature** $t_{mr}$: the average temperature of the surfaces around you: walls, windows, floor, ceiling. You feel them like the warmth of a stove or the chill of a cold window.
+
+> **Operative temperature** $t_o$: roughly the average of air temperature $t_a$ and mean radiant temperature $t_{mr}$. The body feels *both*. In a room with cold windows you feel cold even if the air thermostat reads 22 °C.
+
+> **ISO 7730 / EN 16798**: the international and European standards that define how thermal comfort is rated.
+
+> **PMV** (Predicted Mean Vote): the average comfort vote of a group of people on a scale from −3 cold to +3 hot.
+
+> **PPD** (Predicted Percentage of Dissatisfied): the share of people who would complain.
+
+> **Comfort categories**: **I** $|PMV|<0.2$, **II** $|PMV|<0.5$ (normal new buildings, the target here), **III** $|PMV|<0.7$ (older buildings), outside = unacceptable.
 
 ![A control loop: setpoint, controller, actuator, room and sensor, with disturbances](figures/control-loop.svg)
 
@@ -64,7 +122,11 @@ The **thermostat** is the simplest controller. It has a temperature sensor, a **
 
 ## 0.4 Why the thermostat is not the whole story
 
-A classical thermostat controls only $t_a$. But comfort depends on **six factors**: $t_a$, $t_{mr}$, air speed $v$, humidity RH, clothing (**clo**, how warm the clothes are: 0.5 light summer clothes, 1.0 a winter sweater) and activity (**met**, how much heat the body makes: 1.2 = seated office work). PMV combines all six into one number between -3 (cold) and +3 (hot). An AI controller that *computes PMV* can choose the cheapest setpoint that is still comfortable. That is the whole idea of this application.
+A classical thermostat controls only $t_a$. But comfort depends on **six factors**: $t_a$, $t_{mr}$, air speed $v$, humidity RH, clothing (clo) and activity (met). PMV combines all six into one number between -3 (cold) and +3 (hot). An AI controller that *computes PMV* can choose the cheapest setpoint that is still comfortable. That is the whole idea of this application.
+
+> **clo**: how warm the clothes are: 0.5 light summer clothes, 1.0 a winter sweater.
+
+> **met**: how much heat the body makes: 1.2 = seated office work.
 
 ![The six factors that PMV combines](figures/pmv-six-factors.svg)
 
@@ -80,11 +142,15 @@ A classical thermostat controls only $t_a$. But comfort depends on **six factors
 
 ## 0.5 How control logic is built (from simple to smart)
 
-* On/off: switch at a threshold — e.g. heater on below 20 °C (this is the classical thermostat)
-* PID (Proportional-Integral-Derivative): smooth correction that depends on the error (how far the measurement is from the setpoint), on how long it has lasted and on how fast it changes — e.g. valve opening follows $t_a - t_{set}$
-* **Rule-based**: if/else on measured conditions — e.g. **Part 3 of this sheet**
-* MPC (Model Predictive Control): use a model of the building to predict the next hours and pick the best plan — e.g. pre-cool before the afternoon peak
-* **RL** (Reinforcement Learning): a program learns by trial and reward which action to take in each situation (the *policy*) — e.g. DeepMind data-centre cooling
+> **On/off**: switch at a threshold — e.g. heater on below 20 °C (this is the classical thermostat).
+
+> **PID** (Proportional-Integral-Derivative): smooth correction that depends on the error (how far the measurement is from the setpoint), on how long it has lasted and on how fast it changes — e.g. valve opening follows $t_a - t_{set}$.
+
+> **Rule-based**: if/else on measured conditions — e.g. **Part 3 of this sheet**.
+
+> **MPC** (Model Predictive Control): use a model of the building to predict the next hours and pick the best plan — e.g. pre-cool before the afternoon peak.
+
+> **RL** (Reinforcement Learning): a program learns by trial and reward which action to take in each situation (the *policy*) — e.g. DeepMind data-centre cooling.
 
 ![From simple to smart control: where this lab sits](figures/control-levels.svg)
 
@@ -94,7 +160,9 @@ A classical thermostat controls only $t_a$. But comfort depends on **six factors
 
 * Each °C of **extra heating setpoint** costs roughly **6 to 10 %** more heating energy (common engineering rule of thumb, it depends on the building).
 * Each °C of **lower cooling setpoint** costs a similar amount of cooling energy.
-* A **ceiling fan** uses 30 to 70 W; an air-conditioner **compressor** (the pump that does the cooling work and uses most of its electricity) for the same room uses 1000 W or more. Moving air makes you feel cooler without lowering the real temperature, so we can raise the cooling setpoint. That is Part 1.
+* A **ceiling fan** uses 30 to 70 W; an air-conditioner **compressor** for the same room uses 1000 W or more. Moving air makes you feel cooler without lowering the real temperature, so we can raise the cooling setpoint. That is Part 1.
+
+> **Compressor**: the pump of an air conditioner that does the cooling work and uses most of its electricity.
 
 **Check with the App 2.2 numbers.**
 
@@ -106,13 +174,19 @@ A classical thermostat controls only $t_a$. But comfort depends on **six factors
     PMV= 0.064 PPD= 5.1 t_o= 25.25 n iterations= 8
     
 
-**Interpretation.** Outdoors in summer (30 °C, 60 % RH) PMV = 1.77: people vote between "warm" and "hot" and 65 % are dissatisfied. Indoors at 25 °C and 50 % RH, PMV = 0.06 and PPD = 5.1 %, essentially neutral. The difference of 5 K (kelvin, the unit for temperature differences: a difference of 1 K equals a difference of 1 °C) in air temperature and 10 points of humidity moves the PMV by 1.7 units. Both runs converge in 8 iterations of the clothing temperature.
+**Interpretation.** Outdoors in summer (30 °C, 60 % RH) PMV = 1.77: people vote between "warm" and "hot" and 65 % are dissatisfied. Indoors at 25 °C and 50 % RH, PMV = 0.06 and PPD = 5.1 %, essentially neutral. The difference of 5 K in air temperature and 10 points of humidity moves the PMV by 1.7 units. Both runs converge in 8 iterations of the clothing temperature.
+
+> **K** (kelvin): the unit for temperature differences: a difference of 1 K equals a difference of 1 °C.
 
 # Part 1: Sensitivity analysis (ceiling fans)
 
-**Task.** A *sensitivity analysis* changes one input step by step and records how the output reacts. Standard summer office: clo = 0.5, met = 1.2, RH = 50 %, $t_{mr}=t_a+1$. Loop over $v$ from 0.1 to 0.8 m/s and show how many degrees $t_a$ can rise while the PMV stays the same.
+**Task.** Standard summer office: clo = 0.5, met = 1.2, RH = 50 %, $t_{mr}=t_a+1$. Loop over $v$ from 0.1 to 0.8 m/s and show how many degrees $t_a$ can rise while the PMV stays the same.
 
-**Method.** Fix a reference case (still air, $v=0.1$, $t_a=25$ °C) and record its PMV. For each higher $v$, solve `pmv(ta, ta+1, v) = PMV_ref` for $t_a$ with `brentq`, a *root finder*: a routine that searches the value of $t_a$ at which a function (here PMV minus the reference PMV) equals zero. The difference to 25 °C is the allowed temperature increase.
+**Method.** Fix a reference case (still air, $v=0.1$, $t_a=25$ °C) and record its PMV. For each higher $v$, solve `pmv(ta, ta+1, v) = PMV_ref` for $t_a$ with `brentq`. The difference to 25 °C is the allowed temperature increase.
+
+> **Sensitivity analysis**: changes one input step by step and records how the output reacts.
+
+> **Root finder** (`brentq`): a routine that searches the value of $t_a$ at which a function (here PMV minus the reference PMV) equals zero.
 
 ![Why a fan lets us raise the air temperature at the same comfort (Part 1)](figures/ceiling-fan.svg)
 
@@ -130,12 +204,18 @@ A classical thermostat controls only $t_a$. But comfort depends on **six factors
 * **Reference:** still air at 25 °C gives PMV = 0.278, so the room is already slightly on the warm side but inside Category II.
 * **Gain:** raising $v$ from 0.1 to 0.8 m/s lets $t_a$ rise from 25 °C to about **27.3 °C**, an increase of **+2.3 K** at the same PMV. The upper comfort limit moves from 25.7 °C to 27.8 °C.
 * **Diminishing returns:** the first step (0.1 to 0.2 m/s) buys **+0.8 K**, while the last step (0.7 to 0.8) buys only **+0.13 K**. The curve is concave because the cooling effect of moving air on skin and clothing saturates. This is why ceiling fans are run at moderate speed (0.3 to 0.6 m/s); above that, papers start to fly and the extra gain is small.
-* **Energy meaning:** with the 6 to 10 % per °C rule, +2 K of cooling setpoint is roughly **12 to 20 % less cooling energy**, paid for by a fan that uses a few tens of watts. That justifies the **passive / hybrid cooling strategy**: *passive* means cooling without the compressor, so fans first and compressor only when the fan alone is not enough.
+* **Energy meaning:** with the 6 to 10 % per °C rule, +2 K of cooling setpoint is roughly **12 to 20 % less cooling energy**, paid for by a fan that uses a few tens of watts. That justifies the **passive / hybrid cooling strategy**: fans first, compressor only when the fan alone is not enough.
 * **Third chart:** if the setpoint stays at 25 °C and we add airflow, the PMV falls well below the reference value. That means we would be *over-cooling* and wasting energy.
+
+> **Passive cooling**: cooling without the compressor.
 
 # Part 2: Dynamic data processing with pandas
 
-**Task.** `pandas` is the Python library for working with tables. The file `date_cladire_24h.csv` (a CSV file is a plain-text table, one row per line, values separated by commas) has 24 hourly rows of $t_a$, $t_{mr}$ and RH on a spring/autumn transition day. Apply the PMV function to every row and find the hours where the building leaves the comfort zone **without HVAC**.
+> **pandas**: the Python library for working with tables.
+
+> **CSV file**: a plain-text table, one row per line, values separated by commas.
+
+**Task.** The file `date_cladire_24h.csv` has 24 hourly rows of $t_a$, $t_{mr}$ and RH on a spring/autumn transition day. Apply the PMV function to every row and find the hours where the building leaves the comfort zone **without HVAC**.
 
 **Assumptions** (the sheet does not fix them): light indoor clothing for a transition day **clo = 0.7**, seated office work **met = 1.2**, no fan, still indoor air **v = 0.1 m/s**.
 
@@ -170,7 +250,11 @@ A classical thermostat controls only $t_a$. But comfort depends on **six factors
 
 **Assumptions.** Winter clothing clo = 1.0, met = 1.2, RH = 40 %, v = 0.1 m/s, and $t_{mr} = 17$ °C (about 4 K below a typical room, plausible next to a poorly insulated window).
 
-PMV rises monotonically with $t_a$ (it never goes down when $t_a$ goes up), so the lowest comfortable $t_a$ is the **root** of $PMV(t_a) = -0.5$. Two ways are shown: a `while` loop (repeat a small step until a goal is reached, what a simple controller would do) and `scipy.optimize.brentq`.
+PMV rises monotonically with $t_a$, so the lowest comfortable $t_a$ is the **root** of $PMV(t_a) = -0.5$. Two ways are shown: a `while` loop (what a simple controller would do) and `scipy.optimize.brentq`.
+
+> **Monotonic function**: one that never goes down when its input goes up.
+
+> **`while` loop**: repeats a small step until a goal is reached.
 
     while loop : ta_min = 21.30 C after 226 steps
     brentq     : ta_min = 21.265 C
@@ -193,6 +277,8 @@ PMV rises monotonically with $t_a$ (it never goes down when $t_a$ goes up), so t
 
 # Part 4: The same analysis for several seasons
 
+> **Comfort band**: the lowest and highest $t_a$ with $-0.5 \le PMV \le 0.5$.
+
 Comfort band and free-running day for several seasonal presets.
 
 * summer: clo 0.5, met 1.2, RH 50 %, v 0.1, $t_{mr}$ $t_a + 1$ (sunny walls)
@@ -200,7 +286,7 @@ Comfort band and free-running day for several seasonal presets.
 * winter: clo 1.0, met 1.2, RH 40 %, v 0.1, $t_{mr}$ 17 °C (cold windows, sheet example)
 * winter, heavy clothing: clo 1.2, met 1.2, RH 40 %, v 0.1, $t_{mr}$ 16 °C (heavier clothing, colder walls)
 
-For each preset: lowest and highest $t_a$ with $-0.5 \le PMV \le 0.5$ (the **comfort band**), and how many hours of the CSV day fall outside comfort with that clothing.
+For each preset: lowest and highest $t_a$ with $-0.5 \le PMV \le 0.5$ (the comfort band), and how many hours of the CSV day fall outside comfort with that clothing.
 
     
 ![png](figures/output_36_0.png)

@@ -7,17 +7,25 @@
 
 # Part A: Sheet 1, the air and its hidden water
 
-**Moist air** is the air around us: **dry air plus a little invisible water** (water vapour). **Psychrometrics** is the science of "how much water is in the air".
+> **Moist air**: the air around us: **dry air plus a little invisible water** (water vapour).
+
+> **Psychrometrics**: the science of "how much water is in the air".
 
 ## A1. How much does the air in a room weigh?
 
-Air feels like nothing, but it has weight. The room is 6 m × 4 m × 3 m, at 25 °C and normal pressure. **Pressure** is how hard the air pushes on things. It is measured in **pascals** (Pa), and normal air pressure is 100 000 Pa (1 bar).
+Air feels like nothing, but it has weight. The room is 6 m × 4 m × 3 m, at 25 °C and normal pressure.
 
-**Recipe** (the "ideal gas law": pressure × volume = mass × R × temperature; an *ideal gas* is a gas simple enough to follow it, and we treat air like that):
+> **Pressure** (Pa): how hard the air pushes on things. It is measured in **pascals** (Pa), and normal air pressure is 100 000 Pa (1 bar).
+
+> **Ideal gas**: a gas simple enough to follow the "ideal gas law" (pressure × volume = mass × R × temperature). We treat air like that.
+
+**Recipe** (the ideal gas law):
 
 - $p$ = 100 000 Pa and $V$ is the volume of the room (72 m³)
 - $R$ = 287 J/(kg·K) is a number for air
-- $T$ is the temperature in kelvin (always add 273.15 to the °C value)
+- $T$ is the temperature in kelvin (box below)
+
+> **Kelvin** (K): the temperature scale used in gas formulas; always add 273.15 to the °C value.
 
 ![Even air has weight: this room holds as much air as a person weighs, more than once](figures/air-parcel-room.svg)
 
@@ -34,15 +42,23 @@ Air feels like nothing, but it has weight. The room is 6 m × 4 m × 3 m, at 25 
 
 ## A2. The sponge: warm air holds much more water
 
-The sheet gives a table: for each temperature, the **biggest** water pressure the air can hold, the **saturation pressure** $p_{sat}$. Between table rows we draw a straight line (interpolation).
+The sheet gives a table: for each temperature, the biggest water pressure the air can hold. Between table rows we draw a straight line (*interpolation*).
 
-**What does "100 % humidity" mean?** Think of the air as a sponge that can soak up water vapour. How much it can hold depends on the temperature: that biggest amount is $p_{sat}$. The water that is really in the air is the **partial vapour pressure** $p_v$: how hard the water part alone pushes (in Pa); more water means a bigger number. **Relative humidity** is how full the sponge is:
+> **Saturation pressure** $p_{sat}$ (Pa): the **biggest** water pressure the air can hold at a given temperature.
+
+**What does "100 % humidity" mean?** Think of the air as a sponge that can soak up water vapour. How much it can hold depends on the temperature: that biggest amount is $p_{sat}$.
+
+> **Partial vapour pressure** $p_v$ (Pa): the water that is really in the air, how hard the water part alone pushes. More water means a bigger number.
+
+> **Relative humidity** $\varphi$: how full the sponge is, $p_v$ divided by $p_{sat}$:
 
 - **100 %** = the sponge is **completely full** at this temperature. One more drop would not fit, it turns into liquid (dew, fog, a cloud). "100 % humidity", "100 % relative humidity" and "saturated" all mean this same thing.
 - It does **not** mean the air is made of water. A full sponge at 10 °C only holds a few grams of water per kilogram of air.
 - **60 %** = the sponge is 60 % full. **0 %** = completely dry.
 - The **black curve** in the chart below is the biggest amount the air can hold, so it is the **100 % line**. The dashed lines are 60 % and 30 % full. Above the curve there is no room: the water would have to become liquid. Below the curve there is still space.
-- The sponge changes size with the temperature. The sheet's summer air (30 °C) is only 60 % full. Cool it to 21.4 °C and the same water fills the whole (smaller) sponge: 100 %. That temperature is the **dew point**: the temperature where the air gets so cold that its sponge is full and drops appear (A4).
+- The sponge changes size with the temperature. The sheet's summer air (30 °C) is only 60 % full. Cool it to 21.4 °C and the same water fills the whole (smaller) sponge: 100 %. That temperature is the dew point (A4).
+
+> **Dew point**: the temperature where the air gets so cold that its sponge is full and drops appear.
 
 ![The warmer the air, the more water it can hold; cool it and it overflows at the dew point](figures/vapour-pressure-dew-point.svg)
 
@@ -60,9 +76,17 @@ The sheet gives a table: for each temperature, the **biggest** water pressure th
 
 1. **Sponge size** $p_{sat}$: look it up in the table.
 2. **How much water is really there:** $p_v = \varphi \cdot p_{sat}$ (60 % of the sponge).
-3. **Grams of water per kg of dry air, called the humidity ratio $x$:** $x = 0.622\,\dfrac{p_v}{p - p_v}$ (0.622 because water molecules are lighter than air molecules).
+3. **Humidity ratio $x$ (box below):** $x = 0.622\,\dfrac{p_v}{p - p_v}$ (0.622 because water molecules are lighter than air molecules).
 4. **Dew point:** find the temperature whose sponge size equals $p_v$ (look the table up **backwards**).
-5. **Energy carried, called the enthalpy $h$ (in kJ per kg; a kilojoule is 1000 joules, a unit of energy):** $h = t + x\,(2500 + 1.84\,t)$ (warmth + hidden energy; 2500 kJ/kg is the *latent heat*, what it costs to turn 1 kg of water into vapour, and 1.84 kJ/(kg·K) is how stubborn water vapour is about warming, its *specific heat*, explained below).
+5. **Enthalpy $h$ (box below):** $h = t + x\,(2500 + 1.84\,t)$ (warmth + hidden energy).
+
+> **Humidity ratio** $x$ (g of water per kg of dry air): how many grams of water are mixed into each kilogram of dry air.
+
+> **Enthalpy** $h$ (kJ per kg): the energy the air carries (a kilojoule, kJ, is 1000 joules, a unit of energy).
+
+> **Latent heat** (2500 kJ/kg): what it costs to turn 1 kg of water into vapour.
+
+> **Specific heat** of water vapour (1.84 kJ/(kg·K)): how stubborn water vapour is about warming (explained below).
 
     
 ![png](figures/output_12_0.png)
@@ -80,7 +104,9 @@ The sheet gives a table: for each temperature, the **biggest** water pressure th
 
 Imagine a box of tiny bouncing balls (the water molecules). The more balls, the harder they bump the walls of the box. **That bumping is the pressure.** So *more pressure = more water*. Pressure is just a way to count the water without a scale.
 
-The formula that links the two is $p_v = \rho_v \cdot R_v \cdot T$: pressure = (kg of vapour in each m³, the **vapour density** $\rho_v$) × a fixed number × the temperature. And the **humidity ratio** $x$ is just "kg of water ÷ kg of dry air", exactly the number you described:
+> **Vapour density** $\rho_v$ (kg/m³): the kilograms of vapour in each m³ of air.
+
+The formula that links the two is $p_v = \rho_v \cdot R_v \cdot T$: pressure = ($\rho_v$) × a fixed number × the temperature. And the humidity ratio $x$ is just "kg of water ÷ kg of dry air", exactly the number you described:
 
 **Why use pressure at all?**
 - The "sponge is full" rule is written in pressure: the air is full when $p_v = p_{sat}$, so a look-up table does the job. Relative humidity is simply $p_v / p_{sat}$.
@@ -158,7 +184,7 @@ The dew point reads the table backwards starting from $p_v$, so it never uses th
 
 ## What is condensation?
 
-**Condensation is when invisible water in the air turns into tiny drops of liquid water.**
+> **Condensation**: when invisible water in the air turns into tiny drops of liquid water.
 
 You have seen it:
 - the drops on the **outside of a cold glass** of lemonade,
@@ -174,8 +200,9 @@ You have seen it:
 When water turns from vapour into liquid it **gives out heat** (the hidden energy from before). An air conditioner works like a cold glass: it makes water drip out of the air, which both cools **and dries** the room.
 
 **Two "water in the air" numbers appear in the chart below, and they are different.**
-- **The water the air really has ($x$, orange flat line).** If nobody adds or removes water, it **doesn't change when the temperature changes**.
-- **The most water the air could hold ($x_{sat}(t)$, blue curve).** This is the size of the sponge at each temperature, written in grams per kg of air, so it **does change with temperature**: warm air has a big sponge, cold air a small one. It is the 100 % line of A2 again, not a measure of the water that is there.
+> **Water the air really has** ($x$, orange flat line): if nobody adds or removes water, it **doesn't change when the temperature changes**.
+
+> **Most water the air could hold** ($x_{sat}(t)$, blue curve): the size of the sponge at each temperature, written in grams per kg of air, so it **does change with temperature**: warm air has a big sponge, cold air a small one. It is the 100 % line of A2 again, not a measure of the water that is there.
 
 Cooling the air moves it **left along the flat line** (same water) until the line touches the curve: the dew point, the sponge is full. Cooling further, the sponge becomes smaller than the water inside, so the extra water **squeezes out as drops** and the air's own water now goes down along the curve. **The air's water only changes with temperature after the drops start.**
 
@@ -192,9 +219,9 @@ Cooling the air moves it **left along the flat line** (same water) until the lin
 
 ## What is specific heat?
 
-**Specific heat tells you how "stubborn" a material is about getting warm.**
+> **Specific heat**: how "stubborn" a material is about getting warm. It is the energy needed to warm **1 kg** of something by **1 degree**.
 
-It is the energy needed to warm **1 kg** of something by **1 degree**. Think of two pots on a stove: one with a little oil and one with the same weight of water. The oil gets hot much faster. Water is "stubborn": it needs a lot of energy for every degree, so it also stays warm for a long time.
+Think of two pots on a stove: one with a little oil and one with the same weight of water. The oil gets hot much faster. Water is "stubborn": it needs a lot of energy for every degree, so it also stays warm for a long time.
 
 - **Dry air**: **1.0** (exactly 1.006) — warms up easily
 - **Water vapour**: **1.84** — in between
@@ -254,7 +281,9 @@ The sheet gives 24 hourly temperatures and humidities (Bucharest, 8 August and 1
 
 All the graphs above show the **same few things**, and they are linked, because most of them are **calculated from each other**. Only the air temperature $t$ and the humidity percentage $\varphi$ are measured. Here we look at the 24 hours of both days and check, one pair at a time, which curves rise and fall together, which are opposites and why.
 
-**The "friendship score" (correlation, $r$).** A number from −1 to +1:
+> **Correlation** $r$ (the "friendship score"): a number from −1 to +1 that tells how two curves move together.
+
+How to read it:
 - **+1** = they rise and fall **together** (left plot: dots go up from left to right);
 - **0** = **strangers**, no pattern (middle plot);
 - **−1** = **opposites**, like a seesaw (right plot: dots go down).
@@ -334,7 +363,7 @@ Your body **makes heat** all the time (even asleep). The room **takes heat away*
 
 The number that says "how high is the water level" is the **PMV** (Predicted Mean Vote). We then count how many people out of 100 would complain: the **PPD** (Predicted Percentage of Dissatisfied).
 
-**Metabolic rate** is how much heat your body makes (the tap). It is measured in **met**: 1 met is a person sitting quietly, about 58 W of heat for every square metre of skin (a **watt**, W, is energy per second).
+> **Metabolic rate**: how much heat your body makes (the tap). It is measured in **met**: 1 met is a person sitting quietly, about 58 W of heat for every square metre of skin (a **watt**, W, is energy per second).
 
 ![Six things decide if a person feels comfortable](figures/pmv-six-factors.svg)
 
@@ -342,27 +371,34 @@ The number that says "how high is the water level" is the **PMV** (Predicted Mea
 
 The six factors in the picture:
 
-* **Air temperature $t_a$**: what a normal thermometer says, in °C.
-* **Mean radiant temperature $t_{mr}$**: how warm the **walls and windows** are. You feel a cold window even when the air is warm. In °C.
-* **Air speed $v$**: how strong the breeze is. Wind steals heat. In m/s.
-* **Relative humidity**: how sticky the air is (Part A's sponge). Sticky air makes sweating less effective. In %.
-* **Clothing insulation $I_{clo}$**: how warm your clothes are, like a blanket around the bathtub. Measured in **clo** (0.5 = light summer clothes, 1 = a winter suit).
-* **Activity**: the metabolic rate $M$ from above (sitting ≈ 1 met, running much more).
+> **Air temperature** $t_a$ (°C): what a normal thermometer says.
+
+> **Mean radiant temperature** $t_{mr}$ (°C): how warm the **walls and windows** are. You feel a cold window even when the air is warm.
+
+> **Air speed** $v$ (m/s): how strong the breeze is. Wind steals heat.
+
+> **Relative humidity** (%): how sticky the air is (Part A's sponge). Sticky air makes sweating less effective.
+
+> **Clothing insulation** $I_{clo}$ (clo): how warm your clothes are, like a blanket around the bathtub. Measured in **clo** (0.5 = light summer clothes, 1 = a winter suit).
+
+> **Activity**: the metabolic rate $M$ from above (sitting ≈ 1 met, running much more).
 
 ### What do PMV and PPD stand for?
 
-**PMV = Predicted Mean Vote.** A scientist called Fanger (Denmark, 1960s) put volunteers in special rooms, changed the temperature, wetness of the air, wind and clothes, and asked everybody to **vote** on a scale: −3 cold, −2 cool, −1 slightly cool, **0 just right**, +1 slightly warm, +2 warm, +3 hot.
-- **Vote** = one person's answer.
-- **Mean** = the *average* of a big group (add all votes, divide by the number of people).
-- **Predicted** = we don't ask anyone. We **calculate** the vote with the body's heat balance (the bathtub: heat made minus heat lost).
+A scientist called Fanger (Denmark, 1960s) put volunteers in special rooms, changed the temperature, wetness of the air, wind and clothes, and asked everybody to **vote** on a scale: −3 cold, −2 cool, −1 slightly cool, **0 just right**, +1 slightly warm, +2 warm, +3 hot.
+> **PMV (Predicted Mean Vote)**: the *average* vote of a big group (add all votes, divide by the number of people); a *vote* is one person's answer. *Predicted* means we don't ask anyone: we **calculate** the vote with the body's heat balance (the bathtub: heat made minus heat lost).
 
-**PPD = Predicted Percentage of Dissatisfied.** Even when the *average* person is happy, some people are not. PPD says how many out of 100 would complain, meaning they feel **warm or hot (+2, +3) or cool or cold (−2, −3)**. It is never below 5 %: you can't please everyone.
+> **PPD (Predicted Percentage of Dissatisfied)**: how many out of 100 would complain, meaning they feel **warm or hot (+2, +3) or cool or cold (−2, −3)**. Even when the *average* person is happy, some people are not, so it is never below 5 %: you can't please everyone.
 
-**ISO 7730** is the official rule-book that says how to calculate PMV and PPD (ISO = International Organization for Standardization). **ASHRAE 55** is a similar rule-book from a club of heating and cooling engineers (American Society of Heating, Refrigerating and Air-Conditioning Engineers).
+> **ISO 7730** (ISO = International Organization for Standardization): the official rule-book that says how to calculate PMV and PPD.
+
+> **ASHRAE 55** (American Society of Heating, Refrigerating and Air-Conditioning Engineers): a similar rule-book from a club of heating and cooling engineers.
 
 ## B1. Clothes are a guessing game
 
-The clothes' outer surface has a temperature $t_{cl}$ that we don't know, but we need it to compute the heat that leaves through the clothes. And that heat itself depends on $t_{cl}$! A chicken-and-egg problem. The trick: **guess, improve, repeat** until the guess stops changing (this is called an *iteration*). The sheet asks us to count how many rounds it takes (we stop when the change is below 0.0015).
+The clothes' outer surface has a temperature $t_{cl}$ that we don't know, but we need it to compute the heat that leaves through the clothes. And that heat itself depends on $t_{cl}$! A chicken-and-egg problem. The trick: **guess, improve, repeat** until the guess stops changing. The sheet asks us to count how many rounds it takes (we stop when the change is below 0.0015).
+
+> **Iteration**: guess, improve the guess, repeat until the guess stops changing.
 
 ![More clothes or more movement means you feel warmer](figures/clothing-and-activity.svg)
 
@@ -383,16 +419,25 @@ The clothes' outer surface has a temperature $t_{cl}$ that we don't know, but we
 
 ## B2. Where does the heat go? (the 6 drains)
 
-The body loses heat through six paths. Each one is a **heat flux**, the heat per second flowing through one square metre of skin, in W/m²:
+The body loses heat through six paths. Each one is a heat flux (box below):
 
-- **RL1**: Water slowly seeping out through the skin
-- **RL2**: Sweating (only if you make more heat than when resting)
-- **RL3**: Water vapour you breathe out
-- **RL4**: Warm air you breathe out
-- **RL5**: Heat radiating from your clothes to the walls
-- **RL6**: Air carrying heat away from your clothes (breeze)
+> **Heat flux** (W/m²): the heat per second flowing through one square metre of skin.
 
-What is left over is the **thermal load** $L = M - RL1 - \dots - RL6$. Then **PMV = (sensitivity) × L**, where the *sensitivity* is a fixed number that turns the left-over heat into a vote. Positive means heat piles up (hot), negative means too much leaves (cold).
+> **RL1**: water slowly seeping out through the skin
+
+> **RL2**: sweating (only if you make more heat than when resting)
+
+> **RL3**: water vapour you breathe out
+
+> **RL4**: warm air you breathe out
+
+> **RL5**: heat radiating from your clothes to the walls
+
+> **RL6**: air carrying heat away from your clothes (breeze)
+
+> **Thermal load** $L = M - RL1 - \dots - RL6$: what is left over in the body.
+
+Then **PMV = (sensitivity) × L**, where the *sensitivity* is a fixed number that turns the left-over heat into a vote. Positive means heat piles up (hot), negative means too much leaves (cold).
 
 ![Your body is a little heater that gives its heat away in several ways](figures/body-heat-exchange.svg)
 
@@ -408,8 +453,10 @@ What is left over is the **thermal load** $L = M - RL1 - \dots - RL6$. Then **PM
 
 - **PMV** scale: −3 cold, −2 cool, −1 slightly cool, **0 neutral**, +1 slightly warm, +2 warm, +3 hot.
 - **PPD** is the % unhappy. Even at a perfect PMV = 0, 5 % of people complain (we are all different!).
-- The **operative temperature** $t_o$ printed below is the "feels-like" temperature of the room: a mix of the air temperature and the wall temperature.
-- A room is called **category I** (very good) when PMV is within ±0.2, category II within ±0.5, category III within ±0.7.
+
+> **Operative temperature** $t_o$: the "feels-like" temperature of the room: a mix of the air temperature and the wall temperature. It is printed below.
+
+> **Comfort categories**: a room is called **category I** (very good) when PMV is within ±0.2, category II within ±0.5, category III within ±0.7.
 
 ![From cold to hot: the comfort vote](figures/pmv-scale.svg)
 

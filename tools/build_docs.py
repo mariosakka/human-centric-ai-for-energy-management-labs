@@ -8,7 +8,7 @@ For each notebook this writes  <lab>/explanation-notebooks/visual explanations/<
 Code cells, tables-as-code, display equations (lab 2) and the hand-calculation sections are left out.
 Notebooks are NOT executed here: run them first (jupyter nbconvert --to notebook --execute --inplace <nb>).
 """
-import os, re, shutil, subprocess, sys, tempfile
+import base64, os, re, shutil, subprocess, sys, tempfile
 import nbformat as nbf
 from nbconvert import MarkdownExporter
 
@@ -21,6 +21,11 @@ CHROME = next((b for b in BROWSERS if os.path.exists(b)), None)
 JN = "explanation-notebooks/jupyter notebooks"
 TE = "explanation-notebooks/visual explanations"
 L2A, L2B = f"lab-2/{JN}/lab-2-plus-lecture-challenge", f"lab-2/{JN}/only-lab-2"
+
+
+BOX_CSS = ("<style>blockquote{border:1.5px solid #4a6fa5 !important;background:#eef3fa;border-radius:4px;"
+           "padding:6px 14px !important;margin:10px 0;color:#1b2733;page-break-inside:avoid}"
+           "blockquote p{margin:4px 0}</style>")
 
 
 def starts(c, prefix):
@@ -83,6 +88,14 @@ def build(nb_path, keep, edit):
     nbf.write(nb, tmp + ".ipynb")
     subprocess.run([sys.executable, "-m", "jupyter", "nbconvert", "--to", "html", "--no-input", "--embed-images", tmp + ".ipynb"],
                    check=True, capture_output=True)
+    html = open(tmp + ".html", encoding="utf8").read()
+
+    def inline_svg(m):   # nbconvert --embed-images skips SVG: inline it so the browser finds it from the temp folder
+        path = os.path.normpath(os.path.join(nb_dir, m.group(1)))
+        return 'src="data:image/svg+xml;base64,' + base64.b64encode(open(path, "rb").read()).decode() + '"'
+    html = re.sub(r'src="([^":]+\.svg)"', inline_svg, html)
+    html = html.replace("</head>", BOX_CSS + "</head>", 1)    # definitions are markdown blockquotes: draw them as boxes
+    open(tmp + ".html", "w", encoding="utf8").write(html)
     tdir = tempfile.mkdtemp()
     thtml, tpdf = os.path.join(tdir, "i.html"), os.path.join(tdir, "o.pdf")   # short paths: the browser fails on very long ones
     shutil.copy(tmp + ".html", thtml)

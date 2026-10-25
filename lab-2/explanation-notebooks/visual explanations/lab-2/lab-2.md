@@ -16,14 +16,19 @@ All heat flows are per m² of body surface, in W/m² (watts per square metre; a 
 
 ### What do PMV and PPD stand for, and where do they come from?
 
-**PMV = Predicted Mean Vote.** In the 1960s the Danish professor P. O. Fanger put volunteers in climate chambers, changed the air temperature, humidity, air speed, clothing and activity, and asked them to **vote** on how they felt on the **7-point thermal sensation scale** (the ASHRAE scale, named after the American Society of Heating, Refrigerating and Air-Conditioning Engineers): −3 cold, −2 cool, −1 slightly cool, 0 neutral, +1 slightly warm, +2 warm, +3 hot. He published the method in his book *Thermal Comfort* (1970).
-- **Vote**: one person's answer on that 7-point scale.
-- **Mean**: the average vote of a large group of people in the same room.
-- **Predicted**: nobody is asked. The number is *calculated* from the six inputs ($t_a$, $t_{mr}$, $v$, relative humidity, clothing, activity) with the heat balance of the body: heat produced minus heat lost is the thermal load $L$, and $PMV=TS\cdot L$, where $TS$ is a conversion factor from watts per m² to a vote (Step 5). If heat piles up ($L>0$) people vote warm, if the body loses heat faster than it makes it ($L<0$) they vote cool.
+> **PMV = Predicted Mean Vote.** In the 1960s the Danish professor P. O. Fanger put volunteers in climate chambers, changed the air temperature, humidity, air speed, clothing and activity, and asked them to **vote** on how they felt on the **7-point thermal sensation scale** (the ASHRAE scale, named after the American Society of Heating, Refrigerating and Air-Conditioning Engineers): −3 cold, −2 cool, −1 slightly cool, 0 neutral, +1 slightly warm, +2 warm, +3 hot. He published the method in his book *Thermal Comfort* (1970).
 
-**PPD = Predicted Percentage of Dissatisfied.** People differ, so even in a room that is right for the average person some are unhappy. PPD is the percentage of a large group who would be *dissatisfied*, which means they would vote **warm or hot (+2, +3) or cool or cold (−2, −3)**. Fanger fitted this curve to the votes: $PPD = 100-95\,e^{-0.03353\,PMV^4-0.2179\,PMV^2}$. It is smallest (5 %) at $PMV=0$ and grows quickly on both sides.
+> **Vote**: one person's answer on that 7-point scale.
 
-**ISO 7730** (ISO = International Organization for Standardization) is the international standard that fixes how to calculate PMV and PPD, including how the clothing temperature is found in Step 3. **ASHRAE 55** (the society's standard 55, *Thermal Environmental Conditions for Human Occupancy*) uses the same model to define comfort zones.
+> **Mean**: the average vote of a large group of people in the same room.
+
+> **Predicted**: nobody is asked. The number is *calculated* from the six inputs ($t_a$, $t_{mr}$, $v$, relative humidity, clothing, activity) with the heat balance of the body: heat produced minus heat lost is the thermal load $L$, and $PMV=TS\cdot L$, where $TS$ is a conversion factor from watts per m² to a vote (Step 5). If heat piles up ($L>0$) people vote warm, if the body loses heat faster than it makes it ($L<0$) they vote cool.
+
+> **PPD = Predicted Percentage of Dissatisfied.** People differ, so even in a room that is right for the average person some are unhappy. PPD is the percentage of a large group who would be *dissatisfied*, which means they would vote **warm or hot (+2, +3) or cool or cold (−2, −3)**. Fanger fitted this curve to the votes: $PPD = 100-95\,e^{-0.03353\,PMV^4-0.2179\,PMV^2}$. It is smallest (5 %) at $PMV=0$ and grows quickly on both sides.
+
+> **ISO 7730** (ISO = International Organization for Standardization) is the international standard that fixes how to calculate PMV and PPD, including how the clothing temperature is found in Step 3.
+
+> **ASHRAE 55** (the society's standard 55, *Thermal Environmental Conditions for Human Occupancy*) uses the same model to define comfort zones.
 
 ![The six factors that PMV combines](figures/pmv-six-factors.svg)
 
@@ -31,11 +36,15 @@ All heat flows are per m² of body surface, in W/m² (watts per square metre; a 
 
 ## Step 2: unit conversions
 
-- $M = M_{met}\cdot 58.15$ [W/m²]: metabolic heat produced per m² of skin.
-- $I_{cl} = 0.155\cdot I_{clo}$ [m²·K/W]: thermal resistance of the clothes.
-- $p_{sat}(t_a) = e^{16.6536-\frac{4030.183}{t_a+235}}$ [kPa] (Antoine equation, a fitted formula): the maximum water-vapour pressure air can hold at $t_a$.
-- $p_v = \frac{RH}{100}\cdot p_{sat}\cdot 1000$ [Pa]: the actual vapour pressure. Humid air ($p_v$ high) slows sweat evaporation, so you feel warmer.
-- $f_{cl}=1+1.29\,I_{cl}$ if $I_{cl}<0.078$, else $1.05+0.645\,I_{cl}$ [–]: clothed area / nude area. Clothes enlarge the surface that exchanges heat.
+> $M = M_{met}\cdot 58.15$ [W/m²]: metabolic heat produced per m² of skin.
+
+> $I_{cl} = 0.155\cdot I_{clo}$ [m²·K/W]: thermal resistance of the clothes.
+
+> $p_{sat}(t_a) = e^{16.6536-\frac{4030.183}{t_a+235}}$ [kPa] (Antoine equation, a fitted formula): the maximum water-vapour pressure air can hold at $t_a$.
+
+> $p_v = \frac{RH}{100}\cdot p_{sat}\cdot 1000$ [Pa]: the actual vapour pressure. Humid air ($p_v$ high) slows sweat evaporation, so you feel warmer.
+
+> $f_{cl}=1+1.29\,I_{cl}$ if $I_{cl}<0.078$, else $1.05+0.645\,I_{cl}$ [–]: clothed area / nude area. Clothes enlarge the surface that exchanges heat.
 
 ![Typical values of clothing insulation (clo) and metabolic rate (met)](figures/clothing-and-activity.svg)
 
@@ -48,9 +57,11 @@ All heat flows are per m² of body surface, in W/m² (watts per square metre; a 
 
 The clothes pass heat from the skin (≈ 35.7 °C minus a term for the work done by the body) to the room. In steady state (temperatures no longer change in time):
 
-but $RL_5$ and $RL_6$ (the heat the clothes lose by **radiation**, as warmth glowing towards the walls, and by **convection**, as warmth carried off by moving air; all six loss paths are listed in Step 4) themselves depend on $t_{cl}$, so we guess, recompute and repeat; one such pass is an **iteration** (ISO 7730 scheme, working with $x=T_{cl}/100$ in K/100). We stop when the old and new $x$ differ by less than the stop band $\epsilon = 0.0015$, i.e. 0.15 K. Averaging old and new value keeps the iteration stable. **Kelvin** (K) is the absolute temperature scale used in the radiation term: K = °C + 273.15, and a difference of 1 K equals a difference of 1 °C.
+but $RL_5$ and $RL_6$ (the heat the clothes lose by **radiation**, as warmth glowing towards the walls, and by **convection**, as warmth carried off by moving air; all six loss paths are listed in Step 4) themselves depend on $t_{cl}$, so we guess, recompute and repeat; one such pass is an **iteration** (ISO 7730 scheme, working with $x=T_{cl}/100$ in K/100). We stop when the old and new $x$ differ by less than the stop band $\epsilon = 0.0015$, i.e. 0.15 K. Averaging old and new value keeps the iteration stable.
 
-**Convection** is heat carried away by moving air, and the convection coefficient [W/(m²·K)] says how well it does so: $h_c=\max(h_{c,f},h_{c,n})$ with forced $h_{c,f}=12.1\sqrt v$ (driven by air speed, from a fan or a draught) and natural $h_{c,n}=2.38\,|t_{cl}-t_a|^{0.25}$ (driven by the temperature difference: warm air rises).
+> **Kelvin** (K) is the absolute temperature scale used in the radiation term: K = °C + 273.15, and a difference of 1 K equals a difference of 1 °C.
+
+> **Convection** is heat carried away by moving air, and the convection coefficient [W/(m²·K)] says how well it does so: $h_c=\max(h_{c,f},h_{c,n})$ with forced $h_{c,f}=12.1\sqrt v$ (driven by air speed, from a fan or a draught) and natural $h_{c,n}=2.38\,|t_{cl}-t_a|^{0.25}$ (driven by the temperature difference: warm air rises).
 
 ![The t_cl iteration: guess, correct, repeat until the change is below the stop band](figures/tcl-iteration.svg)
 
@@ -62,9 +73,9 @@ but $RL_5$ and $RL_6$ (the heat the clothes lose by **radiation**, as warmth glo
 
 ## Step 5: PMV and PPD
 
-$TS$ is the *thermal sensation* transfer coefficient: it converts the thermal load $L$ into a vote.
+> **Thermal sensation coefficient** $TS$: it converts the thermal load $L$ into a vote.
 
-The thermal load $L$ is the heat produced minus the sum of the six heat-loss paths $RL_1\dots RL_6$ (vapour diffusing through the skin, sweating, moisture and warmth lost by breathing, radiation and convection from the clothes).
+> **Thermal load** $L$: the heat produced minus the sum of the six heat-loss paths $RL_1\dots RL_6$ (vapour diffusing through the skin, sweating, moisture and warmth lost by breathing, radiation and convection from the clothes).
 
 $L>0$: the body produces more heat than it loses, so it feels warm (PMV > 0). $L<0$: it feels cold.
 
@@ -74,13 +85,13 @@ PPD never drops below 5 %: even at PMV = 0 some people are unhappy.
 
 *Figure: The PMV scale from cold to hot and the comfort categories*
 
-The standard sorts rooms into **comfort categories** by how far PMV stays from 0: **I** $|PMV|<0.2$ (strictest, for example for children or the sick), **II** $|PMV|<0.5$ (normal new or renovated buildings, the target of this lab), **III** $|PMV|<0.7$ (existing buildings) and **IV** beyond that (acceptable for short periods only).
+> **Comfort categories**: the standard sorts rooms by how far PMV stays from 0: **I** $|PMV|<0.2$ (strictest, for example for children or the sick), **II** $|PMV|<0.5$ (normal new or renovated buildings, the target of this lab), **III** $|PMV|<0.7$ (existing buildings) and **IV** beyond that (acceptable for short periods only).
 
 ## Step 6: operative temperature
 
-**Operative temperature** is the single temperature that combines how warm the air and the surrounding surfaces are: the temperature of an imaginary uniform room in which a person would lose the same heat as in the real one. It is a weighted average of $t_a$ and $t_{mr}$:
-
-$t_o = A\,t_a+(1-A)\,t_{mr}$ with $A=0.5$ for $v<0.2$ m/s, $0.6$ for $0.2\le v<0.6$, $0.7$ for $v\ge0.6$. More air movement gives air temperature more weight.
+> **Operative temperature** is the single temperature that combines how warm the air and the surrounding surfaces are: the temperature of an imaginary uniform room in which a person would lose the same heat as in the real one. It is a weighted average of $t_a$ and $t_{mr}$:
+>
+> $t_o = A\,t_a+(1-A)\,t_{mr}$ with $A=0.5$ for $v<0.2$ m/s, $0.6$ for $0.2\le v<0.6$, $0.7$ for $v\ge0.6$. More air movement gives air temperature more weight.
 
 ![Cold surfaces: why operative temperature, not only air temperature, matters](figures/radiant-cold-window.svg)
 

@@ -4,17 +4,27 @@
 
 ## Key terms
 
-* **HVAC** (Heating, Ventilation and Air Conditioning): the machines that warm, cool and refresh the air in a building
-* **PMV** (Predicted Mean Vote): the average "how warm do I feel" vote of a group: -3 cold ... **0 just right** ... +3 hot
-* **PPD** (Predicted Percentage of Dissatisfied): how many out of 100 people would complain
-* **Category II** (comfort class of the standard): the "good enough" zone: PMV between **-0.5 and +0.5**
-* **ta** (air temperature): what the thermometer on the wall says
-* **tmr** (mean radiant temperature): how warm the **walls and windows** are (you feel them like a campfire or a cold window)
-* **v** (air speed): how fast the air moves past you; a fan makes it bigger
-* **RH** (relative humidity): how "wet" the air is, in %
-* **clo** (clothing unit): how warm your clothes are (0.5 = light summer clothes, 1.0 = winter sweater)
-* **met** (metabolic rate): how fast your body's engine runs (1.2 = sitting at a desk)
-* **setpoint** (the target): the temperature you tell the heater to hold
+> **HVAC** (Heating, Ventilation and Air Conditioning): the machines that warm, cool and refresh the air in a building.
+
+> **PMV** (Predicted Mean Vote): the average "how warm do I feel" vote of a group: -3 cold ... **0 just right** ... +3 hot.
+
+> **PPD** (Predicted Percentage of Dissatisfied): how many out of 100 people would complain.
+
+> **Category II** (comfort class of the standard): the "good enough" zone: PMV between **-0.5 and +0.5**.
+
+> **ta** (air temperature): what the thermometer on the wall says.
+
+> **tmr** (mean radiant temperature): how warm the **walls and windows** are (you feel them like a campfire or a cold window).
+
+> **v** (air speed): how fast the air moves past you; a fan makes it bigger.
+
+> **RH** (relative humidity): how "wet" the air is, in %.
+
+> **clo** (clothing unit): how warm your clothes are (0.5 = light summer clothes, 1.0 = winter sweater).
+
+> **met** (metabolic rate): how fast your body's engine runs (1.2 = sitting at a desk).
+
+> **setpoint** (the target): the temperature you tell the heater to hold.
 
 # Part 0: What is HVAC?
 
@@ -26,9 +36,19 @@
 
 ## The pieces
 
-* **Boiler** = heats water (with gas, oil or electricity). **Heat pump** = moves heat from the outside air into the building, like a fridge running backwards. **Chiller** = a big fridge that makes cold water. Together they make the hot or cold water or air.
-* **Ducts and pipes** carry it around, like the veins in a body (ducts are metal tubes for air).
-* **The thermostat** decides when to switch things on. It is the little box on the wall (or an app) with a dial: inside are a thermometer and a switch. You turn the dial to the temperature you want (the setpoint, say 21 degC) and it keeps checking the thermometer: **too cold** → heater ON, **warm enough** → heater OFF. A fridge and an oven work the same way. It plays three roles: the **sensor** (the thermometer that measures), the **controller** (the brain that compares the measurement with your wish) and the **actuator** (the part that acts: the heater, a valve, a fan). A normal thermostat looks at only **one** thing, the air temperature.
+> **Boiler**: heats water (with gas, oil or electricity).
+
+> **Heat pump**: moves heat from the outside air into the building, like a fridge running backwards.
+
+> **Chiller**: a big fridge that makes cold water.
+
+> **Ducts and pipes**: carry the hot or cold water or air around, like the veins in a body (ducts are metal tubes for air).
+
+> **Thermostat**: decides when to switch things on. It is the little box on the wall (or an app) with a dial: inside are a thermometer and a switch. You turn the dial to the temperature you want (the setpoint, say 21 degC) and it keeps checking the thermometer: **too cold** → heater ON, **warm enough** → heater OFF. A fridge and an oven work the same way.
+
+> **Sensor, controller, actuator**: the three roles of a thermostat. The **sensor** is the thermometer that measures, the **controller** is the brain that compares the measurement with your wish and the **actuator** is the part that acts: the heater, a valve, a fan.
+
+The boiler, the heat pump and the chiller together make the hot or cold water or air. A normal thermostat looks at only **one** thing, the air temperature.
 
 ![How heat and cold travel from the machines to the room](figures/hvac-system.svg)
 
@@ -40,8 +60,10 @@
 
 ## Words you will see
 
-* **Setpoint** = the number you wish for, "keep it at 23 degC".
-* **Deadband** = a small gap where nothing switches on. Like not putting on and taking off your jacket every minute.
+> **Setpoint**: the number you wish for, "keep it at 23 degC".
+
+> **Deadband**: a small gap where nothing switches on. Like not putting on and taking off your jacket every minute.
+
 * **Thermostat vs PMV:** a normal thermostat looks at **one** thing, the air temperature. But **you** feel six things: air temperature, wall temperature, air speed, wetness, clothes and activity. PMV is one number that mixes all six. A smart controller uses PMV to find the **cheapest** setting that people still like.
 
 ![The thermostat idea: measure, compare with the target, act](figures/control-loop.svg)
@@ -103,12 +125,16 @@ Every degree of extra heating costs roughly **6 to 10 %** more energy (a common 
 **What this means.**
 * With the fan at 0.8 m/s the room can be **27.3 degC instead of 25 degC**, that is **2.3 degrees warmer** for the same feeling.
 * The first push of air (0.1 to 0.2 m/s) buys **0.78 degrees**. The last push (0.7 to 0.8) buys only **0.13**. The fan has less and less to give, like the first bite of a cake tasting best. That is why ceiling fans run gently (0.3 to 0.6 m/s).
-* **Energy:** 2 degrees warmer cooling target is roughly **12 to 20 % less cooling energy** (rule of thumb), and a ceiling fan only uses a few tens of watts (**W**, watts, measure how fast energy is used).
+* **Energy:** 2 degrees warmer cooling target is roughly **12 to 20 % less cooling energy** (rule of thumb), and a ceiling fan only uses a few tens of watts.
 * The third chart warns us: if we turn the fan on **and keep 25 degC**, the vote drops to **-0.65**, which means people get a bit chilly. We would waste energy over-cooling.
+
+> **W** (watt): measures how fast energy is used.
 
 # Part 2: When does the building feel bad on its own?
 
-**Idea.** We have a CSV file (a plain table of numbers saved as text) with one row for each hour of a spring/autumn day: air temperature, wall temperature and humidity. **No heating or cooling is running.** For each hour we ask the comfort calculator for a vote, then mark the hours outside the "good" zone (-0.5 to +0.5).
+> **CSV file**: a plain table of numbers saved as text.
+
+**Idea.** We have a CSV file with one row for each hour of a spring/autumn day: air temperature, wall temperature and humidity. **No heating or cooling is running.** For each hour we ask the comfort calculator for a vote, then mark the hours outside the "good" zone (-0.5 to +0.5).
 
 **Assumptions for the people** (the sheet does not say): light indoor clothes for a transition day, clo 0.7, desk work (met 1.2), still air (0.1 m/s).
 
@@ -142,9 +168,13 @@ Every degree of extra heating costs roughly **6 to 10 %** more energy (a common 
 
 **Assumptions:** winter clothes (clo 1.0), desk work (met 1.2), RH 40 %, still air (0.1 m/s), walls at 17 degC.
 
-We solve it in two ways (temperature steps are written in **K**, kelvin: a step of 1 K is the same as a step of 1 degC):
-* **While loop** (a simple controller): start cold, raise the temperature in small 0.05 degree steps until the vote reaches -0.5.
-* **Root finder** (`brentq`): jumps straight to the exact answer, like guessing a number with "higher / lower" hints but smartly.
+We solve it in two ways: a simple controller (the while loop) and a smart one (the root finder).
+
+> **K** (kelvin): a step of 1 K is the same as a step of 1 degC; temperature steps are written in K.
+
+> **While loop** (a simple controller): start cold, raise the temperature in small 0.05 degree steps until the vote reaches -0.5.
+
+> **Root finder** (`brentq`): jumps straight to the exact answer, like guessing a number with "higher / lower" hints but smartly.
 
     while loop : 21.30 degC after 226 small steps
     root finder: 21.265 degC
@@ -174,9 +204,11 @@ We solve it in two ways (temperature steps are written in **K**, kelvin: a step 
 
 # Part 4: The same question in different seasons
 
+> **Comfort band**: the lowest and highest air temperature that stay inside PMV -0.5 to +0.5.
+
 People dress differently and the walls behave differently in each season. For each season we:
 
-1. Find the **comfort band**: the lowest and highest air temperature that stay inside PMV -0.5 to +0.5.
+1. Find the comfort band.
 2. Count how many hours of our CSV day would feel bad **if people wore that season's clothes**.
 
 * summer: clo 0.5, met 1.2, RH 50 %, v 0.1, walls tmr air + 1 degree (sunny walls)
