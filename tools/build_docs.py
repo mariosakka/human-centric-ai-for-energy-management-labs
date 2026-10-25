@@ -1,31 +1,31 @@
-"""Rebuild the PDF and the companion markdown folder of every notebook of a lab.
+"""Rebuild the markdown companion and the PDF of every notebook of a lab.
 
 Run from the repo root inside the conda env:
     conda run -n human-centric-ai-for-energy-labs python tools/build_docs.py lab-2 lab-3 lab-4
     (no argument = all labs)
 
 For each notebook this writes  <lab>/explanation-notebooks/visual explanations/<name>/<name>.md  (+ figures/)  and  <name>.pdf.
-Code cells, tables-as-code, display equations (lab 2) and the hand-calculation sections are left out.
+Code cells, display equations (lab 2) and the hand-calculation sections are left out.
+The PDF is rendered from the markdown by the `report-to-pdf` skill (SVG figures, definition boxes, captions, math).
+Set REPORT_TO_PDF_SCRIPT to its build_report_pdf.py if it is not found under ~/.claude/plugins.
 Notebooks are NOT executed here: run them first (jupyter nbconvert --to notebook --execute --inplace <nb>).
 """
-import base64, os, re, shutil, subprocess, sys, tempfile
+import glob, os, re, shutil, subprocess, sys
 import nbformat as nbf
 from nbconvert import MarkdownExporter
-
-BROWSERS = [r"C:\Program Files\Google\Chrome\Application\chrome.exe",
-            r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe",
-            r"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe",
-            "/usr/bin/google-chrome", "/usr/bin/chromium", "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"]
-CHROME = next((b for b in BROWSERS if os.path.exists(b)), None)
 
 JN = "explanation-notebooks/jupyter notebooks"
 TE = "explanation-notebooks/visual explanations"
 L2A, L2B = f"lab-2/{JN}/lab-2-plus-lecture-challenge", f"lab-2/{JN}/only-lab-2"
 
 
-BOX_CSS = ("<style>blockquote{border:1.5px solid #4a6fa5 !important;background:#eef3fa;border-radius:4px;"
-           "padding:6px 14px !important;margin:10px 0;color:#1b2733;page-break-inside:avoid}"
-           "blockquote p{margin:4px 0}</style>")
+def find_renderer():
+    env = os.environ.get("REPORT_TO_PDF_SCRIPT")
+    if env and os.path.exists(env):
+        return env
+    pattern = os.path.expanduser("~/.claude/plugins/**/report-to-pdf/scripts/build_report_pdf.py")
+    hits = sorted(glob.glob(pattern, recursive=True), key=os.path.getmtime, reverse=True)
+    return hits[0] if hits else None
 
 
 def starts(c, prefix):
@@ -56,7 +56,7 @@ JOBS = {
 }
 
 
-def build(nb_path, keep, edit):
+def build(nb_path, keep, edit, renderer):
     lab = nb_path.split("/")[0]
     name = os.path.splitext(os.path.basename(nb_path))[0]
     nb_dir = os.path.dirname(nb_path)
@@ -83,34 +83,29 @@ def build(nb_path, keep, edit):
     with open(os.path.join(out, name + ".md"), "w", encoding="utf8", newline="\n") as f:
         f.write(body)
 
-    # PDF: temp notebook next to the original (relative image paths resolve), html with embedded images, browser print
-    tmp = os.path.join(nb_dir, "tmp-" + name)
-    nbf.write(nb, tmp + ".ipynb")
-    subprocess.run([sys.executable, "-m", "jupyter", "nbconvert", "--to", "html", "--no-input", "--embed-images", tmp + ".ipynb"],
-                   check=True, capture_output=True)
-    html = open(tmp + ".html", encoding="utf8").read()
-
-    def inline_svg(m):   # nbconvert --embed-images skips SVG: inline it so the browser finds it from the temp folder
-        path = os.path.normpath(os.path.join(nb_dir, m.group(1)))
-        return 'src="data:image/svg+xml;base64,' + base64.b64encode(open(path, "rb").read()).decode() + '"'
-    html = re.sub(r'src="([^":]+\.svg)"', inline_svg, html)
-    html = html.replace("</head>", BOX_CSS + "</head>", 1)    # definitions are markdown blockquotes: draw them as boxes
-    open(tmp + ".html", "w", encoding="utf8").write(html)
-    tdir = tempfile.mkdtemp()
-    thtml, tpdf = os.path.join(tdir, "i.html"), os.path.join(tdir, "o.pdf")   # short paths: the browser fails on very long ones
-    shutil.copy(tmp + ".html", thtml)
-    subprocess.run([CHROME, "--headless", "--disable-gpu", "--no-pdf-header-footer", "--virtual-time-budget=30000", f"--print-to-pdf={tpdf}",
-                    "file:///" + thtml.replace("\\", "/")], capture_output=True)
-    shutil.copy(tpdf, os.path.join(out, name + ".pdf"))
-    for ext in (".ipynb", ".html"):
-        os.remove(tmp + ext)
-    shutil.rmtree(tdir, ignore_errors=True)
-    print(name, "md", len(body), "chars; pdf", os.path.getsize(os.path.join(out, name + ".pdf")) // 1024, "KB")
+    # PDF: report-to-pdf reads the same markdown, plus a frontmatter title for the cover page
+    title = re.match(r"#\s+(.+)", body).group(1).strip()
+    rest = re.sub(r"\A#\s+.+\n\s*", "", body)
+    intro = re.match(r"([^#\-*>`!\n][^\n]{0,240})\n\s*\n(?=#)", rest)    # one short line before the first heading becomes the cover subtitle
+    subtitle = ""
+    if intro:
+        subtitle = "subtitle: " + intro.group(1).replace("*", "").replace(":", " -") + "\n"
+        rest = rest[intro.end():]
+    src_md = os.path.join(out, name + ".pdf-source.md")
+    with open(src_md, "w", encoding="utf8", newline="\n") as f:
+        f.write(f"---\ntitle: {title}\n{subtitle}---\n\n" + rest)
+    pdf = os.path.join(out, name + ".pdf")
+    try:
+        subprocess.run([sys.executable, renderer, src_md, "-o", pdf], check=True, capture_output=True)
+    finally:
+        os.remove(src_md)
+    print(name, "md", len(body), "chars; pdf", os.path.getsize(pdf) // 1024, "KB")
 
 
 if __name__ == "__main__":
-    if CHROME is None:
-        sys.exit("No Chrome/Edge found: edit BROWSERS in tools/build_docs.py")
+    renderer = find_renderer()
+    if renderer is None:
+        sys.exit("report-to-pdf not found: install the skill or set REPORT_TO_PDF_SCRIPT to its scripts/build_report_pdf.py")
     for lab in sys.argv[1:] or JOBS:
         for job in JOBS[lab]:
-            build(*job)
+            build(*job, renderer)

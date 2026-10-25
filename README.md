@@ -50,6 +50,6 @@ jupyter nbconvert --to notebook --execute --inplace lab-3-in-depth.ipynb
 conda run -n human-centric-ai-for-energy-labs python tools/build_docs.py lab-2 lab-3 lab-4
 ```
 
-No argument builds all labs. The PDFs use nbconvert and Chrome or Edge (no LaTeX). SVG diagrams are inlined as data URIs before printing (nbconvert's `--embed-images` skips SVG, which left empty figures), and definitions, written as markdown blockquotes in the notebooks, are drawn as boxes. Code cells, display equations (lab 2) and the hand-calculation sections are left out, and the SVG diagrams are embedded. The cell filters per notebook are at the top of the script.
+No argument builds all labs. The PDF is rendered from the markdown by the `report-to-pdf` skill (fpdf2; SVG diagrams, definition boxes, captions and maths), which `tools/build_docs.py` finds under `~/.claude/plugins` or through the `REPORT_TO_PDF_SCRIPT` environment variable (path of its `scripts/build_report_pdf.py`). It rasterises SVGs with headless Chrome or Edge, which takes a few minutes for all labs. Code cells, display equations (lab 2) and the hand-calculation sections are left out. The cell filters per notebook are at the top of the script.
 
 The `.md` and `figures/` are committed; the `.pdf` files are not.

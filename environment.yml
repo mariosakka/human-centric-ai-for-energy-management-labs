@@ -13,3 +13,7 @@ dependencies:
   - pandas
   - scipy
   - scikit-learn
+  - fpdf2
+  - pillow
+  - pygments
+  - pymupdf
