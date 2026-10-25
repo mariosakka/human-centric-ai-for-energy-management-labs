@@ -6,11 +6,13 @@ Sheet: *Steady-State Heat Transfer Analysis, external thermal load, winter* (Q1 
 
 ## 0.1 The three ways heat moves
 
-* **Conduction**: heat flows through a solid, from the hot side to the cold side. Governed by the material's **thermal conductivity** $\lambda$ [W/(m·K)]. Low $\lambda$ means a good insulator.
+* **Conduction**: heat flows through a solid, from the hot side to the cold side. Governed by the material's **thermal conductivity** $\lambda$ [W/(m·K)]. Low $\lambda$ means a good insulator: **insulation** is any material with a low conductivity, such as foam boards, that slows heat flow. (K is the kelvin; a temperature difference of 1 K is the same as a difference of 1 °C.)
 * **Convection**: heat is carried by moving air (or water) along a surface. Governed by a **convection coefficient** $\alpha$ [W/(m²·K)]. Wind outside makes $\alpha_E$ large (24); calm indoor air makes $\alpha_I$ smaller (8 on walls, 6 on the floor).
 * **Radiation**: surfaces exchange heat as infrared light, even through empty space. Indoors this is part of why a cold window feels cold (lab 3's mean radiant temperature $t_{mr}$).
 
 In the sheet's wall all three act in a chain: indoor air → (convection) → inner surface → (conduction through five layers) → outer surface → (convection) → outdoor air.
+
+The **envelope** is the shell of the building that separates inside from outside (walls, windows, floor, roof). This lab studies the heat lost through the envelope of one ground floor. All calculations assume **steady state**: every temperature and heat flow is constant in time, so the walls are not storing or releasing heat.
 
 ![Conduction, convection and radiation: the three ways heat moves](figures/heat-transfer-modes.svg)
 
@@ -26,18 +28,20 @@ Each layer resists heat flow by $R = \delta/\lambda$ [m²K/W] ($\delta$ = thickn
 
 $$R_{tot} = \frac{1}{\alpha_I} + \sum_i \frac{\delta_i}{\lambda_i} + \frac{1}{\alpha_E}, \qquad k = \frac{1}{R_{tot}} \quad [\text{W/(m}^2\text{K)}]$$
 
-The **k-value** (also called U-value) is how many watts leak through each m² of wall for each kelvin of temperature difference. The steady-state heat flow is then
+The **k-value** (also called U-value) is how many watts (W, the unit of power: how fast energy flows) leak through each m² of wall for each kelvin of temperature difference. The steady-state heat flow is then
 
 $$\dot Q = k \, A \, (T_I - T_E).$$
 
 Two consequences matter for the whole lab:
 
-* the layer with the **largest R dominates**. A 10 cm EPS layer has $R = 0.1/0.04 = 2.5$ m²K/W, more than half of the entire wall;
+* the layer with the **largest R dominates**. A 10 cm EPS layer (**EPS** = expanded polystyrene, a white foam insulation board) has $R = 0.1/0.04 = 2.5$ m²K/W, more than half of the entire wall;
 * the **temperature drop is proportional to R**: the insulation layer carries most of the 19 K difference (Q1 plots this).
 
 ![The five layers of the exterior wall, from outside to inside, with their thickness and conductivity](figures/wall-layers.svg)
 
 *Figure: The five layers of the exterior wall, from outside to inside, with their thickness and conductivity*
+
+The five wall layers, from outside to inside, are: *decorative plaster* (a thin finishing coat), *EPS* insulation, *exterior mortar* (a thin cement-and-sand layer that smooths and binds), *AAC* masonry (autoclaved aerated concrete: a very light concrete full of tiny air bubbles, used as building blocks) and *interior mortar*.
 
 ![Heat flow as an electrical network: films and layers are resistances in series](figures/resistance-network.svg)
 
@@ -47,13 +51,15 @@ Two consequences matter for the whole lab:
 
 *Figure: Thermal conductivity of building materials: concrete conducts about 80 times more than XPS*
 
+(*XPS* = extruded polystyrene, a denser and more moisture-resistant foam insulation board than EPS.)
+
 ## 0.3 Windows: they lose heat, but the sun gives some back
 
 A window has a high k-value (2.56 W/m²K, about 12 times the wall) so it loses a lot per m². But glass lets solar radiation in. The sheet's balance for one window is
 
 $$\dot Q_{window} = -\,c_1 c_2 c_3\, m\, A\, I_T \;+\; k_{GS}\, A\,(T_I - T_E)$$
 
-with $c_1 = 0.9$ (double glazing), $c_2 = 0.6$ (light blinds), $c_3 = 0.6$ (metallic frame), $m$ = a window-orientation factor (0.3 east, 0.7 south) and $I_T$ = solar irradiance on the vertical surface (55 W/m² east, 380 W/m² south, at noon). A **negative** result means the window gives net heat to the room.
+with $c_1 = 0.9$ (double glazing), $c_2 = 0.6$ (light blinds), $c_3 = 0.6$ (metallic frame), $m$ = a window-orientation factor (0.3 east, 0.7 south) and $I_T$ = solar irradiance (the solar power arriving on one m² of a surface, in W/m²) on the vertical surface (55 W/m² east, 380 W/m² south, at noon). A **negative** result means the window gives net heat to the room.
 
 ![A window loses heat by conduction and gains heat from the sun: the balance can be negative](figures/window-heat-balance.svg)
 
@@ -61,7 +67,7 @@ with $c_1 = 0.9$ (double glazing), $c_2 = 0.6$ (light blinds), $c_3 = 0.6$ (meta
 
 ## 0.4 The floor and the ground
 
-The ground floor sits on gravel and soil. Heat flows downward through hardwood, screed, XPS insulation, concrete, gravel and then **7 m of soil** (treated as two soil layers) until it reaches the deep soil temperature (about 11 °C, the sheet suggests 10 to 12 °C). Soil is a poor insulator but 7 m of it is a lot of resistance, so the floor loss is small. The ceiling touches another heated floor at the same 24 °C, so $T_I - T_{above} = 0$ and **no heat flows through it**.
+The ground floor sits on gravel and soil. Heat flows downward through hardwood, *screed* (a cement-and-sand layer that levels the floor), XPS insulation, reinforced concrete (concrete with steel bars), gravel and then **7 m of soil** (treated as two soil layers) until it reaches the deep soil temperature (about 11 °C, the sheet suggests 10 to 12 °C). Soil is a poor insulator but 7 m of it is a lot of resistance, so the floor loss is small. The ceiling touches another heated floor at the same 24 °C, so $T_I - T_{above} = 0$ and **no heat flows through it**.
 
 ![Heat flowing down through the floor layers and 7 m of soil to the deep ground temperature](figures/floor-to-soil.svg)
 
@@ -69,7 +75,7 @@ The ground floor sits on gravel and soil. Heat flows downward through hardwood, 
 
 ## 0.5 From heat load to electricity
 
-The studied radiator is an **electric resistance** heater: every watt of electricity becomes one watt of heat (efficiency 1). So a heat load of 363 W needs 363 W of electricity, which over one hour is 0.363 kWh. A heat pump with a COP of 3 would need only a third of that.
+The **heat load** is the heat per second (in watts) that the heater must supply to hold the inside at its target temperature, the **setpoint**; at steady state it equals the heat that leaks out through the envelope. The studied radiator is an **electric resistance** heater: every watt of electricity becomes one watt of heat (efficiency 1). So a heat load of 363 W needs 363 W of electricity. Power is how fast energy flows (1 kW = 1000 W); energy is power × time, and the electricity bill counts **kilowatt-hours (kWh)**, so 363 W over one hour is 0.363 kWh. A heat pump with a COP (coefficient of performance: heat delivered divided by electricity used) of 3 would need only a third of that, because it moves heat from outside instead of making it.
 
 ## 0.6 The link to lab 3
 
@@ -84,7 +90,7 @@ comfort model (PMV) → lowest comfortable $t_I$ → heat load at that $t_I$ →
 **Data from the sheet.** Resistance $R = \delta/\lambda$ of every layer (wall from outside to inside, floor from inside to deep soil).
 
     
-![png](figures/output_16_0.png)
+![png](figures/output_17_0.png)
     
 
     T_E = 5.0 C, T_I = 24.0 C, T_soil = 11.0 C; alpha_E = 24.0, alpha_I wall = 8.0, alpha_I floor = 6.0 W/m2K
@@ -107,7 +113,7 @@ comfort model (PMV) → lowest comfortable $t_I$ → heat load at that $t_I$ →
 **Temperature profile.** With the flux known, the temperature falls across each layer by $\Delta T = q\,R_{layer}$. The plot shows the temperature through the wall from the indoor air (left) to the outdoor air (right).
 
     
-![png](figures/output_21_0.png)
+![png](figures/output_22_0.png)
     
 
 ### Interpretation of Q1
@@ -131,7 +137,7 @@ comfort model (PMV) → lowest comfortable $t_I$ → heat load at that $t_I$ →
     
 
     
-![png](figures/output_24_1.png)
+![png](figures/output_25_1.png)
     
 
 ### Interpretation of Q2
@@ -141,7 +147,7 @@ comfort model (PMV) → lowest comfortable $t_I$ → heat load at that $t_I$ →
 * **The wall dominates:** it is 78 % of the load with EPS and 89 % without. That is why insulation of the opaque wall is the first measure to look at.
 * **The south window is a net heater at noon:** its solar gain (172 W) exceeds its conduction loss (97 W), giving -75 W. The east window, with weak winter sun (55 W/m²), is a net loss (+87 W). The windows together have a small net effect (+11.5 W), but only because it is noon; at night both are pure losses.
 * **The floor loses little (68 W)** thanks to the XPS layer and the thick soil, and **the ceiling loses nothing** because the room above is at the same temperature.
-* **Caveat:** this is one steady-state hour at noon, with no infiltration and no thermal inertia, exactly as the sheet says. A real day has no solar gain at night, so the average load would be higher.
+* **Caveat:** this is one steady-state hour at noon, with no infiltration (air leaking through cracks) and no thermal inertia (walls storing heat), exactly as the sheet says. A real day has no solar gain at night, so the average load would be higher.
 
 # Q3: Effect of the insulation thickness
 
@@ -154,7 +160,7 @@ comfort model (PMV) → lowest comfortable $t_I$ → heat load at that $t_I$ →
     
 
     
-![png](figures/output_27_1.png)
+![png](figures/output_28_1.png)
     
 
 ### Interpretation of Q3
@@ -166,7 +172,7 @@ comfort model (PMV) → lowest comfortable $t_I$ → heat load at that $t_I$ →
 
 # Q4: Comparing materials and choosing the optimal combination
 
-**Task.** With the listed materials (cement plaster 0.80, reinforced concrete 2.03, solid brick 0.70, hollow brick 0.35, AAC 0.15, mineral wool 0.036, EPS 0.04, XPS 0.025 W/mK), pick the best wall.
+**Task.** With the listed materials (cement plaster 0.80, reinforced concrete 2.03, solid brick 0.70, hollow brick 0.35, AAC 0.15, mineral wool 0.036, EPS 0.04, XPS 0.025 W/mK), pick the best wall. (Solid brick is a fired-clay brick without holes, hollow brick has air-filled holes so it conducts less, and mineral wool is an insulating mat of glass or stone fibres.)
 
 **Method.** Build every wall from the same pattern: cement plaster (0.5 cm) outside, an insulation layer (10 cm), a structural layer (25 cm) and cement plaster (0.5 cm) inside. That gives 4 structures × 3 insulations = 12 walls of equal 36 cm thickness, so they are compared fairly. Rank by $k$ (lowest is best).
 
@@ -176,7 +182,7 @@ comfort model (PMV) → lowest comfortable $t_I$ → heat load at that $t_I$ →
     
 
     
-![png](figures/output_30_1.png)
+![png](figures/output_31_1.png)
     
 
     
@@ -194,7 +200,7 @@ comfort model (PMV) → lowest comfortable $t_I$ → heat load at that $t_I$ →
 
 # Q5 to Q9: Human-centred control and dynamic setpoints
 
-**The idea.** Q1 to Q4 assumed a rigid indoor temperature of 24 °C. But a person in a winter sweater (clo = 1.0) is comfortable at a lower air temperature (lab 3). So instead of a fixed number, an "AI agent" computes the **lowest air temperature with PMV ≥ -0.5** and the heating follows that.
+**The idea.** A **thermostat** is a device with a temperature sensor and a switch: it compares the measured air temperature with the setpoint and switches the heating on when the room is too cold and off when it is warm enough. Q1 to Q4 assumed a rigid setpoint of 24 °C. But a person in a winter sweater (clo = 1.0) is comfortable at a lower air temperature (lab 3). So instead of a fixed number, an "AI agent" (a program that measures, decides and acts on its own) computes the **lowest air temperature with PMV ≥ -0.5** and the heating follows that.
 
 **Conditions from the sheet:** clo = 1.0, RH = 40 %, air speed 0.1 m/s, $t_{mr} = t_a - 2$. The sheet's notes say **MET = 1.1** but its starter code says **MET = 1.2**, so both are computed.
 
@@ -203,7 +209,7 @@ comfort model (PMV) → lowest comfortable $t_I$ → heat load at that $t_I$ →
     
 
     
-![png](figures/output_33_1.png)
+![png](figures/output_34_1.png)
     
 
 ### Interpretation of Q5 to Q8
@@ -218,7 +224,7 @@ comfort model (PMV) → lowest comfortable $t_I$ → heat load at that $t_I$ →
 The sheet says a reduction of a few °C often saves 10 to 15 % of the heating load. Our 22 to 32 % is larger, for two reasons that the next cell makes visible. First, the temperature difference to the outside is not the same everywhere: the wall and windows lose in proportion to $t_I - 5$ (19 K down to 15.2 K, a 20 % drop), the floor in proportion to $t_I - 11$ (13 K down to 9.2 K, a 29 % drop). Second, the **solar gain of the windows (183 W) is a fixed offset** that does not shrink when the setpoint falls. The conduction losses fall by 21 %, but they are reduced from a smaller base (546 W gross, 363 W net after the sun), so the *net* load falls by a larger percentage.
 
     
-![png](figures/output_36_0.png)
+![png](figures/output_37_0.png)
     
 
     gross conduction loss falls by 21.0 %, net load falls by 31.6 %
@@ -231,7 +237,7 @@ The sheet says a reduction of a few °C often saves 10 to 15 % of the heating lo
 * **So both statements are true:** the sheet's 10 to 15 % is typical for a reduction of about 2 K; our 3.8 K reduction gives 21 % even on the gross loss, and the noon sun on the south window lifts the net figure to 31.6 %. On a cloudy day or at night the percentage would be the 21 % gross value.
 
     
-![png](figures/output_38_0.png)
+![png](figures/output_39_0.png)
     
 
 ### Interpretation of the plots

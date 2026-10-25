@@ -1,38 +1,19 @@
 # Lab 2 in depth: from the moist-air sheet to the comfort sheet
 
-- **1** (sheet *Psychrometrics Study Sheet Challenge*): Describe a summer and a winter day in Romania: $p_{sat}$, $p_v$, $x$, $t_{dp}$, $h$, then the same for a whole day (24 h of Meteonorm data) — **Part A**
-- **2** (sheet *AI for Energy Lab 2*): Code that returns PMV (Predicted Mean Vote), PPD (Predicted Percentage of Dissatisfied), operative temperature $t_o$, number of iterations, then find an indoor state with $-0.5<PMV<0.5$ — **Part B**
+- **1** (sheet *Psychrometrics Study Sheet Challenge*): Describe a summer and a winter day in Romania in terms of the water the air holds and the energy it carries, then the same for a whole day (24 hourly weather values) — **Part A**
+- **2** (sheet *AI for Energy Lab 2*): Code that predicts how comfortable people feel in a room and how many of them would complain, then find an indoor state that is comfortable for almost everyone — **Part B**
 
-**How they connect.** Sheet 1 is about the *air* (how much water it holds, how much energy it carries). Sheet 2 is about the *person* in that air. The water-vapour pressure $p_v$ you compute in sheet 1 is exactly the $p_v$ that feeds two of the six body heat-loss paths in sheet 2.
+**How they connect.** Sheet 1 is about the *air* (how much water it holds, how much energy it carries). Sheet 2 is about the *person* in that air. The amount of water in the air that you compute in sheet 1 also decides how much heat the body loses through two of its six heat-loss paths in sheet 2.
 
-Formulas come from the lecture slides. Added assumptions (for example an emissivity) are flagged.
+Formulas come from the lecture slides. Added assumptions are flagged where they are made.
 
 # Part A: Sheet 1, the moist-air (psychrometrics) challenge
 
-## A0. Vocabulary
-
-- **Moist air**: The air around us: **dry air + water vapour**. We treat it as only these two ingredients. — -
-- **Psychrometrics**: The study of the properties of moist air. — -
-- **Ideal gas**: A gas simple enough to follow $pV = mRT$. Dry air, vapour and their mixture are all treated this way. — -
-- **Dalton's law**: Total pressure = pressure of dry air + pressure of vapour: $p = p_a + p_v$. Each gas pushes as if it were alone. — Pa
-- **Partial vapour pressure $p_v$**: The share of the total pressure that is due to water vapour. It measures **how much** water is in the air. — Pa
-- **Saturation pressure $p_{sat}(t)$**: The **most** vapour pressure air can have at temperature $t$. Above it, water condenses. Rises quickly with $t$. — Pa
-- **Relative humidity $\varphi$**: How full the air is: $\varphi = p_v / p_{sat}(t)$. — % (or fraction)
-- **Humidity ratio $x$**: Mass of vapour per mass of **dry** air: $x = m_v/m_a = 0.622\,\dfrac{p_v}{p-p_v}$. — kg/kg (often g/kg)
-- **Dew point $t_{dp}$**: The temperature to which you must cool the air, with no water added or removed, for it to become saturated (fog / dew). Defined by $p_{sat}(t_{dp}) = p_v$. — °C
-- **Dry-bulb temperature**: The ordinary thermometer reading $t$. — °C
-- **Wet-bulb temperature**: Reading of a thermometer wrapped in a wet cloth: evaporation cools it, more so in dry air. (Not needed for this sheet.) — °C
-- **Enthalpy $h$**: Total **heat energy carried by 1 kg of dry air**: warmth (sensible) + energy hidden in the vapour (latent). $h \approx t + x(2500+1.84\,t)$. — kJ/kg
-- **Specific heat $c$**: Energy to warm **1 kg** of a substance by **1 K**: $Q = m\,c\,\Delta T$. Dry air 1.006, vapour 1.84, liquid water 4.19. — kJ/(kg·K)
-- **Latent heat of vaporisation**: Energy to turn 1 kg of liquid water into vapour with no temperature change (about 2500 kJ/kg). Released again when the vapour condenses. — kJ/kg
-- **Condensation**: Water vapour turning into liquid. Starts when the air is cooled below its dew point ($p_v > p_{sat}$). — -
-- **Vapour density $\rho_v$**: Kilograms of vapour per m³ of air, linked to pressure by $p_v = \rho_v R_v T$. — kg/m³
-
-The constant 0.622 is the ratio of molar masses, water (18) / air (29). The 2500 kJ/kg is the energy needed to evaporate 1 kg of water, and 1.84 kJ/(kg·K) is the vapour's specific heat.
+**Moist air** is the air around us, treated as a mixture of exactly two ingredients: dry air and water vapour. **Psychrometrics** is the study of the properties of moist air: how much water it holds and how much energy it carries.
 
 ## A1. Lecture challenge: mass and density of the air in a room
 
-Room 6 m × 4 m × 3 m, $p$ = 1 bar = 10⁵ Pa, 25 °C. Ideal gas law $pV = mRT$ with $R$ = 287 J/(kg·K) for air, $T$ in kelvin (the °C value plus 273.15).
+Room 6 m × 4 m × 3 m, $p$ = 1 bar = 10⁵ Pa (the **pascal**, Pa, is the unit of pressure, force per square metre; 1 bar = 100 000 Pa), 25 °C. An **ideal gas** is a gas simple enough to follow the law $pV = mRT$ (pressure × volume = mass × specific gas constant × temperature). We treat dry air, water vapour and their mixture this way. Here $R$ = 287 J/(kg·K) for air and $T$ is in **kelvin** (the °C value plus 273.15).
 
 ![The air in a 6 × 4 × 3 m room: volume, mass and density](figures/air-parcel-room.svg)
 
@@ -51,13 +32,13 @@ Room 6 m × 4 m × 3 m, $p$ = 1 bar = 10⁵ Pa, 25 °C. Ideal gas law $pV = mRT$
 
 The sheet gives measured saturation pressures of water. Between table points we interpolate linearly (a straight line between neighbours). Error is under about 1 %, fine for this lab.
 
-**What "100 % humidity" (saturation) means.** At a given temperature $t$, air can carry water vapour only up to a maximum vapour pressure, the **saturation pressure** $p_{sat}(t)$. The real vapour pressure in the air, $p_v$, is always at or below it. **Relative humidity** says how close the air is to that maximum:
+**What "100 % humidity" (saturation) means.** At a given temperature $t$, air can carry water vapour only up to a maximum vapour pressure, the **saturation pressure** $p_{sat}(t)$. The real water content of the air is the **partial vapour pressure** $p_v$: the share of the total pressure that is due to the water vapour, in Pa (the more water, the larger it is). It is always at or below the saturation pressure. **Relative humidity** says how close the air is to that maximum:
 
 - $\varphi$ = 100 % means $p_v=p_{sat}(t)$: the air is **full** (saturated) *at its current temperature*. One more drop of vapour would not stay a gas, it would condense (dew, fog, cloud). "100 % humidity", "100 % relative humidity" and "saturated air" are three names for this one state.
 - 100 % does **not** mean "the air is made of water". The air still holds only a few grams of vapour per kg (see $x$ in A3); 100 % just means that, at this temperature, it cannot hold more.
 - $\varphi$ = 60 % means the air carries 60 % of its maximum. $\varphi$ = 0 % is perfectly dry air.
 - The black curve in the chart below is $p_{sat}(t)$, so **it is the set of all states with $\varphi$ = 100 %**. Every other relative humidity is a curve underneath it ($60\,\% = 0.60\cdot p_{sat}(t)$, the dashed line). A point *on* the curve is full air, a point *below* it can still take water, and a point *above* it cannot exist as vapour.
-- The limit moves with temperature, so the same water gives different percentages: the sheet's summer air (30 °C, $p_v$ = 2548 Pa) is only 60 % full, but if it is cooled to 21.4 °C the same 2548 Pa reaches the curve and the air is 100 % full. That temperature is the **dew point** (A4).
+- The limit moves with temperature, so the same water gives different percentages: the sheet's summer air (30 °C, $p_v$ = 2548 Pa) is only 60 % full, but if it is cooled to 21.4 °C the same 2548 Pa reaches the curve and the air is 100 % full. That temperature is the **dew point** $t_{dp}$: the temperature to which air must be cooled, with no water added or removed, to become saturated (section A4).
 
 ![Saturation curve, relative humidity and dew point on one chart](figures/vapour-pressure-dew-point.svg)
 
@@ -77,9 +58,9 @@ Steps for each day:
 
 1. $p_{sat}(t)$ from the table.
 2. $p_v = \varphi\cdot p_{sat}(t)$: the real water pressure.
-3. $x = 0.622\,p_v/(p-p_v)$: grams of water per kg of dry air.
+3. $x = 0.622\,p_v/(p-p_v)$: the **humidity ratio** $x$, the mass of vapour per mass of dry air (kg/kg, usually quoted in g/kg). The constant 0.622 is the ratio of the molar masses, water (18) over air (29).
 4. $t_{dp} = t_{sat}(p_v)$: look the value of $p_v$ up in the table **backwards** to get a temperature.
-5. $h = t + x(2500 + 1.84\,t)$: energy per kg of dry air.
+5. $h = t + x(2500 + 1.84\,t)$: the **enthalpy** $h$, the total heat energy carried by 1 kg of dry air, in kJ/kg (a kilojoule is 1000 joules, a unit of energy). It is the warmth you can feel ($t$, the *sensible* part) plus the energy hidden in the vapour (the *latent* part). The 2500 kJ/kg is the **latent heat of vaporisation**, the energy needed to turn 1 kg of liquid water into vapour with no temperature change (it is released again when the vapour condenses). The 1.84 kJ/(kg·K) is the **specific heat** of water vapour, the energy needed to warm 1 kg of it by 1 K (see the specific-heat section below).
 
     
 ![png](figures/output_12_0.png)
@@ -94,14 +75,14 @@ Steps for each day:
 
 **Short answer: we use both, and they are the same information in two forms.** $p_v$ and $x$ are tied together by the ideal gas law, and the sheet uses each where it is the more convenient.
 
-**The link.** Each gas in the mixture follows $pV = mRT$ on its own (Dalton's law). For the vapour and the dry air in the same volume $V$ and at the same temperature $T$:
+**The link.** Each gas in the mixture follows $pV = mRT$ on its own (**Dalton's law**: the total pressure is the sum of the pressures each gas would have alone, $p = p_a + p_v$). For the vapour and the dry air in the same volume $V$ and at the same temperature $T$:
 
-with $R_a$ = 287 and $R_v$ = 461.5 J/(kg·K), so $R_a/R_v = 0.622$. Also, $p_v = \rho_v R_v T$: **the vapour pressure is just "kilograms of vapour per m³", multiplied by $R_vT$.** Pressure *is* a measure of quantity.
+with $R_a$ = 287 and $R_v$ = 461.5 J/(kg·K), so $R_a/R_v = 0.622$. Also, $p_v = \rho_v R_v T$, where $\rho_v$ is the **vapour density** (kilograms of vapour per m³ of air): **the vapour pressure is just "kilograms of vapour per m³", multiplied by $R_vT$.** Pressure *is* a measure of quantity.
 
 **Why pressure is the natural choice for these jobs:**
 1. **Saturation is defined by pressure.** Water vapour can only reach a maximum partial pressure $p_{sat}(t)$ that depends (almost) only on temperature. So "is it full?" is the question $p_v \ge p_{sat}$, and relative humidity is just $\varphi = p_v/p_{sat}$. In kg you would need a different limit for every pressure and temperature.
 2. **Dew point** is the temperature where $p_{sat}(t_{dp}) = p_v$, a single table look-up.
-3. **Physical measurements** (hygrometers, the evaporation/condensation balance at a surface) respond to the vapour pressure.
+3. **Physical measurements** (hygrometers, which are humidity meters, and the balance between evaporation and condensation at a surface) respond to the vapour pressure.
 
 **Why we *also* need the kg-based $x$:**
 - $x$ is *conserved*: if you heat or cool air and add or remove no water, $x$ does not change. $p_v$ also stays put at constant total pressure, but the vapour **per m³** (and so $\varphi$) changes because the air expands. Mass balances, humidifying and dehumidifying, and enthalpy ($h$ is "per kg of dry air") all need $x$.
@@ -252,7 +233,7 @@ $h = \underbrace{t}_{\text{sensible}} + \underbrace{x(2500+1.84\,t)}_{\text{late
 
 ## A6. Individual work: the whole day (Bucharest, Meteonorm data)
 
-The sheet gives **24 hourly values** of $t$ and $\varphi$ for **August 8th** and **February 1st** (UTC = Coordinated Universal Time, the world reference clock; Romanian local time is UTC+3 in summer, UTC+2 in winter). We apply the same five steps to every hour.
+The sheet gives **24 hourly values** of $t$ and $\varphi$ for **August 8th** and **February 1st** (UTC = Coordinated Universal Time, the world reference clock; Romanian local time is UTC+3 in summer, UTC+2 in winter). The values come from Meteonorm, a database and software that provides typical-year hourly weather data for any location. We apply the same five steps to every hour.
 
     
 ![png](figures/output_41_0.png)
@@ -368,19 +349,26 @@ Sheet 1 described the air. Now we look at the **person in the air**.
 **PMV = Predicted Mean Vote.** In the 1960s the Danish professor P. O. Fanger put volunteers in climate chambers, changed the air temperature, humidity, air speed, clothing and activity, and asked them to **vote** on how they felt on the **7-point thermal sensation scale** (the ASHRAE scale): −3 cold, −2 cool, −1 slightly cool, 0 neutral, +1 slightly warm, +2 warm, +3 hot. He published the method in his book *Thermal Comfort* (1970).
 - **Vote**: one person's answer on that 7-point scale.
 - **Mean**: the average vote of a large group of people in the same room.
-- **Predicted**: nobody is asked. The number is *calculated* from the six inputs ($t_a$, $t_{mr}$, $v$, relative humidity, clothing, activity) with the heat balance of the body: heat produced minus heat lost is the thermal load $L$, and $PMV=TS\cdot L$. If heat piles up ($L>0$) people vote warm, if the body loses heat faster than it makes it ($L<0$) they vote cool.
+- **Predicted**: nobody is asked. The number is *calculated* from six inputs (four properties of the room and two of the person, listed in B0) with the heat balance of the body: heat produced minus heat lost is the thermal load $L$, and $PMV=TS\cdot L$, where $TS$ is the *thermal sensation coefficient*, a factor fitted to Fanger's votes that turns the load into a vote. If heat piles up ($L>0$) people vote warm, if the body loses heat faster than it makes it ($L<0$) they vote cool.
 
 **PPD = Predicted Percentage of Dissatisfied.** People differ, so even in a room that is right for the average person some are unhappy. PPD is the percentage of a large group who would be *dissatisfied*, which means they would vote **warm or hot (+2, +3) or cool or cold (−2, −3)**. Fanger fitted this curve to the votes: $PPD = 100-95\,e^{-0.03353\,PMV^4-0.2179\,PMV^2}$. It is smallest (5 %) at $PMV=0$ and grows quickly on both sides.
 
-**ISO 7730** (ISO = International Organization for Standardization) is the international standard that fixes how to calculate PMV and PPD, including the iteration of Step 3. **ASHRAE 55** (ASHRAE = American Society of Heating, Refrigerating and Air-Conditioning Engineers; standard 55, *Thermal Environmental Conditions for Human Occupancy*) uses the same model to define comfort zones.
+**ISO 7730** (ISO = International Organization for Standardization) is the international standard that fixes how to calculate PMV and PPD, including the iterative calculation of the clothing temperature (B4). **ASHRAE 55** (ASHRAE = American Society of Heating, Refrigerating and Air-Conditioning Engineers; standard 55, *Thermal Environmental Conditions for Human Occupancy*) uses the same model to define comfort zones.
 
 ## B0. The big picture: six factors, six drains
 
 The lecture says thermal comfort is a **heat balance** between body and environment, controlled by **four environmental** and **two personal** factors:
 
-- **air temperature $t_a$, mean radiant temperature $t_{mr}$, air speed $v$, humidity RH**: metabolic rate $M_{met}$, clothing $I_{clo}$
+- **Four environmental factors:**
+  - **air temperature $t_a$**: the reading of an ordinary thermometer, in °C;
+  - **mean radiant temperature $t_{mr}$**: the average temperature of the surrounding surfaces (walls, windows, floor, ceiling), in °C (details in B3);
+  - **air speed $v$**: how fast the air moves past the body, in m/s;
+  - **relative humidity RH**: how full the air is with water vapour, in % (sheet 1).
+- **Two personal factors:**
+  - **metabolic rate $M_{met}$**: the heat the body produces, in met (1 met = 58.15 W/m² of skin; details in B1);
+  - **clothing insulation $I_{clo}$**: how well clothes slow down heat loss, in clo (details in B2).
 
-The body makes heat $M$. Six paths remove it ($RL_1$ to $RL_6$). What remains is the load $L$, and $PMV = TS\cdot L$.
+The body makes heat $M$. Six paths remove it, each measured in W/m² of skin (a **watt**, W, is energy per second): $RL_1$ water vapour diffusing through the skin, $RL_2$ evaporation of sweat, $RL_3$ water vapour breathed out (latent respiration), $RL_4$ warm air breathed out (dry respiration), $RL_5$ radiation from the clothes to the surrounding surfaces and $RL_6$ convection from the clothes to the air. What remains is the load $L$, and $PMV = TS\cdot L$.
 
 Which factor drives which drain? The heatmap below changes each factor by one typical step and shows how many W/m² each drain moves by (orange = drain grows, blue = shrinks). The hot summer day is the base case.
 
@@ -419,7 +407,7 @@ A resting adult produces about **100 W** of heat. Spread over the skin (about 1.
 ![png](figures/output_66_0.png)
     
 
-**Reading it.** The skin temperature drops about 1 °C between resting and 1.5 met, which is why $t_{cl}$ depends on $M$ in the iteration. Above about 3 met the activity is poorly defined and the values can be off by ±50 %, so PMV is a less reliable number there.
+**Reading it.** The skin temperature drops about 1 °C between resting and 1.5 met, which is why the clothing surface temperature $t_{cl}$ depends on $M$ in the iteration of B4. Above about 3 met the activity is poorly defined and the values can be off by ±50 %, so PMV is a less reliable number there.
 
 ## B2. Clothing in depth
 

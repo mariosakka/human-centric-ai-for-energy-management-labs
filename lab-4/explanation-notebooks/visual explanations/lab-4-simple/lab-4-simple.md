@@ -1,6 +1,6 @@
 # Heat loss of a house explained simply
 
-**Lab 4: Thermal losses for a house.** First we count how much heat a house loses in winter, then a smart thermostat lowers the temperature as far as people still feel fine.
+**Lab 4: Thermal losses for a house.** First we count how much heat a house loses in winter, then we lower the indoor temperature as far as people still feel fine.
 
 ## Words and symbols
 
@@ -41,6 +41,8 @@ $$q = k \cdot (t_I - t_E), \qquad k = 1/R_{total}$$
 
 so a **small k** means a warm, cheap house.
 
+**Steady state.** All our numbers assume that nothing changes with time: the temperatures stay constant and the walls store no heat. This keeps the maths simple.
+
 **Windows let the sun in.** A window loses heat to the cold outside, but on a sunny day the sun also pushes heat **in**. At noon on the south side the sun can win, and the window becomes a tiny heater.
 
 ![The house: walls, windows, floor on the soil and the ceiling towards the heated floor above](figures/house-envelope.svg)
@@ -53,7 +55,7 @@ Data from the sheet: outside **5 degC**, inside **24 degC**, soil **11 degC**; t
 
 **Idea.** The wall has five layers. We add up the "hardness" (R) of every layer plus the air films on both sides, then multiply by the temperature difference.
 
-**Wall, from outside to inside:** decorative plaster 0.5 cm, polystyrene EPS 10 cm, cement mortar 0.3 cm, AAC blocks 25 cm, cement mortar 0.2 cm.
+**Wall, from outside to inside:** decorative plaster 0.5 cm, polystyrene EPS 10 cm, cement mortar 0.3 cm, AAC blocks 25 cm, cement mortar 0.2 cm. (*Plaster* is a thin coat on the surface; *mortar* is the cement-and-sand layer that glues and smooths the blocks.)
 
 ![The five layers of the wall, from outside to inside](figures/wall-layers.svg)
 
@@ -80,13 +82,15 @@ Data from the sheet: outside **5 degC**, inside **24 degC**, soil **11 degC**; t
 
 # Q2: How many kilowatt-hours does the radiator need each hour?
 
-**Idea.** An electric radiator turns every watt of electricity into one watt of heat. To keep the house at 24 degC, it must replace **exactly the heat that leaks out**. So hourly energy = total heat loss in watts x 1 hour.
+**Idea.** An **electric radiator** (a heater with a hot element) turns every watt of electricity into one watt of heat. To keep the house at 24 degC, it must replace **exactly the heat that leaks out**. So hourly energy = total heat loss in watts x 1 hour.
 
 **The house has four parts that lose (or gain) heat:**
 * **Walls** (72 m2 gross minus 4 m2 of windows = 68 m2),
-* **Two windows** (east and south, 2 m2 each), where the sun gives some heat back,
-* **Floor** on the ground, losing heat to the soil at 11 degC,
+* **Two windows** (east and south, 2 m2 each), where the sun gives some heat back (the sunshine power on one square metre of window, written I_T, is the **solar irradiance**, in W/m2),
+* **Floor** on the ground (its layers include *screed*, a cement-and-sand layer that levels the floor), losing heat to the soil at 11 degC,
 * **Ceiling**: the floor above is heated to 24 degC too, so **no heat goes through it**.
+
+**Two simplifications from the sheet:** we ignore **infiltration** (cold air leaking in through cracks) and **thermal inertia** (heavy walls storing heat and releasing it later).
 
 **Two cases:** (a) the wall as designed, and (b) the wall **without the polystyrene**.
 
@@ -154,6 +158,8 @@ All 12 mixes are 36 cm thick, so the comparison is fair.
 
 # Q5 to Q9: A thermostat that thinks about people
 
+A **thermostat** is a small box with a thermometer and a switch. You set the temperature you want (the **setpoint**); it keeps comparing the thermometer with the setpoint: too cold → heater ON, warm enough → heater OFF.
+
 **The old way:** the heater always holds **24 degC**, whatever people wear or do.
 
 **The smart way:** the heater asks the comfort calculator, *"what is the lowest air temperature where people still feel fine (PMV >= -0.5)?"* and holds exactly that.
@@ -162,7 +168,7 @@ All 12 mixes are 36 cm thick, so the comparison is fair.
 
 **Recipe:**
 1. Lower the setpoint step by step until the vote reaches **-0.5** (the root finder does this exactly).
-2. Recompute the heat load of the house at that new temperature.
+2. Recompute the **heat load** of the house at that new temperature (the heat per second the heater must supply to hold the setpoint; in steady state it equals the heat that leaks out).
 3. Compare the kWh per hour with the fixed 24 degC.
 
 ![From clothes and activity to the setpoint, then to the heat load and the electricity saved](figures/ai-setpoint-chain.svg)

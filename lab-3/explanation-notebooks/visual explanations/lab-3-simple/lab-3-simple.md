@@ -26,9 +26,9 @@
 
 ## The pieces
 
-* **Boiler / heat pump / chiller** make the hot or cold water or air.
-* **Ducts and pipes** carry it around, like the veins in a body.
-* **The thermostat** (a sensor plus a brain) decides when to switch things on.
+* **Boiler** = heats water (with gas, oil or electricity). **Heat pump** = moves heat from the outside air into the building, like a fridge running backwards. **Chiller** = a big fridge that makes cold water. Together they make the hot or cold water or air.
+* **Ducts and pipes** carry it around, like the veins in a body (ducts are metal tubes for air).
+* **The thermostat** decides when to switch things on. It is the little box on the wall (or an app) with a dial: inside are a thermometer and a switch. You turn the dial to the temperature you want (the setpoint, say 21 degC) and it keeps checking the thermometer: **too cold** → heater ON, **warm enough** → heater OFF. A fridge and an oven work the same way. It plays three roles: the **sensor** (the thermometer that measures), the **controller** (the brain that compares the measurement with your wish) and the **actuator** (the part that acts: the heater, a valve, a fan). A normal thermostat looks at only **one** thing, the air temperature.
 
 ![How heat and cold travel from the machines to the room](figures/hvac-system.svg)
 
@@ -103,12 +103,12 @@ Every degree of extra heating costs roughly **6 to 10 %** more energy (a common 
 **What this means.**
 * With the fan at 0.8 m/s the room can be **27.3 degC instead of 25 degC**, that is **2.3 degrees warmer** for the same feeling.
 * The first push of air (0.1 to 0.2 m/s) buys **0.78 degrees**. The last push (0.7 to 0.8) buys only **0.13**. The fan has less and less to give, like the first bite of a cake tasting best. That is why ceiling fans run gently (0.3 to 0.6 m/s).
-* **Energy:** 2 degrees warmer cooling target is roughly **12 to 20 % less cooling energy** (rule of thumb), and a ceiling fan only uses a few tens of watts.
+* **Energy:** 2 degrees warmer cooling target is roughly **12 to 20 % less cooling energy** (rule of thumb), and a ceiling fan only uses a few tens of watts (**W**, watts, measure how fast energy is used).
 * The third chart warns us: if we turn the fan on **and keep 25 degC**, the vote drops to **-0.65**, which means people get a bit chilly. We would waste energy over-cooling.
 
 # Part 2: When does the building feel bad on its own?
 
-**Idea.** We have a file with one row for each hour of a spring/autumn day: air temperature, wall temperature and humidity. **No heating or cooling is running.** For each hour we ask the comfort calculator for a vote, then mark the hours outside the "good" zone (-0.5 to +0.5).
+**Idea.** We have a CSV file (a plain table of numbers saved as text) with one row for each hour of a spring/autumn day: air temperature, wall temperature and humidity. **No heating or cooling is running.** For each hour we ask the comfort calculator for a vote, then mark the hours outside the "good" zone (-0.5 to +0.5).
 
 **Assumptions for the people** (the sheet does not say): light indoor clothes for a transition day, clo 0.7, desk work (met 1.2), still air (0.1 m/s).
 
@@ -142,7 +142,7 @@ Every degree of extra heating costs roughly **6 to 10 %** more energy (a common 
 
 **Assumptions:** winter clothes (clo 1.0), desk work (met 1.2), RH 40 %, still air (0.1 m/s), walls at 17 degC.
 
-We solve it in two ways:
+We solve it in two ways (temperature steps are written in **K**, kelvin: a step of 1 K is the same as a step of 1 degC):
 * **While loop** (a simple controller): start cold, raise the temperature in small 0.05 degree steps until the vote reaches -0.5.
 * **Root finder** (`brentq`): jumps straight to the exact answer, like guessing a number with "higher / lower" hints but smartly.
 
