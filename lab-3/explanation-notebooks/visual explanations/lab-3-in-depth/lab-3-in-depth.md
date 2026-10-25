@@ -64,14 +64,6 @@ A typical commercial building:
 
 > **Sensor, controller, actuator**: three roles that come back throughout the lab. A **sensor** measures (temperature, relative humidity, CO$_2$), a **controller** decides by comparing the measurement with the setpoint (a thermostat, the BMS) and an **actuator** acts on the room (heater, valve, damper, fan).
 
-```
- outdoor air --> [AHU: filter, coils, fan] --> ducts --> [VAV box] --> room
-                      ^                                              |
-                 boiler / chiller                                    v
-                      ^                                      sensors (t_a, RH, CO2)
-                      +----------------- controller (BMS) <----------+
-```
-
 ![The whole HVAC chain from production to the room, with sensors and the BMS closing the loop](figures/hvac-system.svg)
 
 *Figure: The whole HVAC chain from production to the room, with sensors and the BMS closing the loop*
