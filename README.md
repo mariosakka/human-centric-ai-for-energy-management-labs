@@ -7,6 +7,8 @@ Labs for *Human-Centric Artificial Intelligence for Energy Management*.
 | 2 | Psychrometrics and thermal comfort (PMV / PPD) | `lab-2/` |
 | 3 | HVAC setpoint optimization (App 2.3) | `lab-3/` |
 | 4 | Steady-state heat loss of a house and a human-centred setpoint | `lab-4/` |
+| 5 | Solar thermal collector efficiency (App 3.2) | `lab-5/` |
+| 6 | Photovoltaic module under real conditions (App 3.3) | `lab-6/` |
 
 Each lab has the same layout:
 
@@ -47,7 +49,7 @@ jupyter nbconvert --to notebook --execute --inplace lab-3-in-depth.ipynb
 `tools/build_docs.py` rebuilds, for every notebook, the folder `lab-N/explanation-notebooks/visual explanations/<name>/` with `<name>.pdf`, `<name>.md` and `figures/`. Execute the notebooks first, then from the repo root:
 
 ```
-conda run -n human-centric-ai-for-energy-labs python tools/build_docs.py lab-2 lab-3 lab-4
+conda run -n human-centric-ai-for-energy-labs python tools/build_docs.py lab-2 lab-3 lab-4 lab-5 lab-6
 ```
 
 No argument builds all labs. The PDF is rendered from the markdown by the `report-to-pdf` skill (fpdf2; SVG diagrams, definition boxes, captions and maths), which `tools/build_docs.py` finds under `~/.claude/plugins` or through the `REPORT_TO_PDF_SCRIPT` environment variable (path of its `scripts/build_report_pdf.py`). It rasterises SVGs with headless Chrome or Edge, which takes a few minutes for all labs. Code cells, display equations (lab 2) and the hand-calculation sections are left out. The cell filters per notebook are at the top of the script.

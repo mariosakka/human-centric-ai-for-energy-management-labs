@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 380" width="900" height="380" font-family="Segoe UI, Arial, sans-serif" font-size="14">
+  <defs>
+    <marker id="ar" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#4a5568"/></marker>
+  </defs>
+  <rect width="900" height="380" fill="#ffffff"/>
+  <text x="450" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="#4a5568">Where the sunlight goes: the two terms of the efficiency line</text>
+
+  <rect x="30" y="120" width="190" height="110" rx="8" fill="#fefcbf" stroke="#d69e2e" stroke-width="2"/>
+  <text x="125" y="160" text-anchor="middle" font-weight="bold" fill="#744210">Sunlight on the glass</text>
+  <text x="125" y="185" text-anchor="middle" fill="#744210">G_T = 100 %</text>
+
+  <line x1="220" y1="175" x2="300" y2="175" stroke="#4a5568" stroke-width="3" marker-end="url(#ar)"/>
+
+  <rect x="300" y="100" width="230" height="150" rx="8" fill="#fed7aa" stroke="#dd6b20" stroke-width="2"/>
+  <text x="415" y="135" text-anchor="middle" font-weight="bold" fill="#7b341e">Absorbed by the plate</text>
+  <text x="415" y="162" text-anchor="middle" fill="#7b341e">F_R(τα) of the sunlight</text>
+  <text x="415" y="188" text-anchor="middle" fill="#7b341e" font-size="12">= the intercept: the most the</text>
+  <text x="415" y="205" text-anchor="middle" fill="#7b341e" font-size="12">collector could give, with</text>
+  <text x="415" y="222" text-anchor="middle" fill="#7b341e" font-size="12">no losses at all (x = 0)</text>
+
+  <line x1="530" y1="140" x2="620" y2="95" stroke="#c53030" stroke-width="3" marker-end="url(#ar)"/>
+  <line x1="530" y1="210" x2="620" y2="255" stroke="#2f855a" stroke-width="3" marker-end="url(#ar)"/>
+
+  <rect x="620" y="50" width="260" height="90" rx="8" fill="#fed7d7" stroke="#c53030" stroke-width="2"/>
+  <text x="750" y="80" text-anchor="middle" font-weight="bold" fill="#822727">Lost to the cold air</text>
+  <text x="750" y="104" text-anchor="middle" fill="#822727">F_R U_L · x of the sunlight</text>
+  <text x="750" y="124" text-anchor="middle" fill="#822727" font-size="12">grows when it is cold or dim</text>
+
+  <rect x="620" y="215" width="260" height="90" rx="8" fill="#c6f6d5" stroke="#2f855a" stroke-width="2"/>
+  <text x="750" y="245" text-anchor="middle" font-weight="bold" fill="#22543d">Useful heat in the fluid</text>
+  <text x="750" y="269" text-anchor="middle" fill="#22543d">η = F_R(τα) − F_R U_L · x</text>
+  <text x="750" y="289" text-anchor="middle" fill="#22543d" font-size="12">q_u = η · G_T</text>
+
+  <text x="450" y="350" text-anchor="middle" fill="#4a5568">The intercept is what a perfect day gives; the slope is how fast a cold, dim day takes it away.</text>
+</svg>

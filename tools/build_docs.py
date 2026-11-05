@@ -53,6 +53,10 @@ JOBS = {
               (f"lab-3/{JN}/lab-3-simple.ipynb", keep_all, lambda c: c)],
     "lab-4": [(f"lab-4/{JN}/lab-4-in-depth.ipynb", no_hand, lambda c: c),
               (f"lab-4/{JN}/lab-4-simple.ipynb", no_hand, lambda c: c)],
+    "lab-5": [(f"lab-5/{JN}/lab-5-in-depth.ipynb", no_hand, lambda c: c),
+              (f"lab-5/{JN}/lab-5-simple.ipynb", no_hand, lambda c: c)],
+    "lab-6": [(f"lab-6/{JN}/lab-6-in-depth.ipynb", no_hand, lambda c: c),
+              (f"lab-6/{JN}/lab-6-simple.ipynb", no_hand, lambda c: c)],
 }
 
 
