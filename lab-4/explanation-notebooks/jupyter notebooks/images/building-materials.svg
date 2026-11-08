@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" width="900" height="400" font-family="Segoe UI, Arial, sans-serif" font-size="14">
+  <rect width="900" height="400" fill="#ffffff"/>
+  <text x="450" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="#4a5568">The wall blocks and insulation boards compared in Q4</text>
+
+  <!-- solid brick -->
+  <rect x="25" y="70" width="150" height="90" rx="3" fill="#c05621" stroke="#7b341e" stroke-width="2"/>
+  <text x="100" y="188" text-anchor="middle" font-weight="bold" fill="#4a5568">solid brick</text>
+  <text x="100" y="208" text-anchor="middle" fill="#4a5568">fired clay, no holes</text>
+  <text x="100" y="228" text-anchor="middle" fill="#4a5568">λ = 0.70 W/(m·K)</text>
+
+  <!-- hollow brick -->
+  <rect x="195" y="70" width="150" height="90" rx="3" fill="#dd6b20" stroke="#7b341e" stroke-width="2"/>
+  <g fill="#ffffff" stroke="#7b341e">
+    <rect x="207" y="82" width="26" height="28"/><rect x="245" y="82" width="26" height="28"/><rect x="283" y="82" width="26" height="28"/>
+    <rect x="207" y="120" width="26" height="28"/><rect x="245" y="120" width="26" height="28"/><rect x="283" y="120" width="26" height="28"/>
+  </g>
+  <text x="270" y="188" text-anchor="middle" font-weight="bold" fill="#4a5568">hollow brick</text>
+  <text x="270" y="208" text-anchor="middle" fill="#4a5568">air-filled holes</text>
+  <text x="270" y="228" text-anchor="middle" fill="#4a5568">λ = 0.35 W/(m·K)</text>
+
+  <!-- AAC -->
+  <rect x="365" y="70" width="150" height="90" rx="3" fill="#e2e8f0" stroke="#4a5568" stroke-width="2"/>
+  <g fill="#ffffff" stroke="#a0aec0">
+    <circle cx="390" cy="95" r="5"/><circle cx="420" cy="115" r="4"/><circle cx="450" cy="90" r="6"/><circle cx="480" cy="120" r="5"/>
+    <circle cx="400" cy="140" r="4"/><circle cx="440" cy="145" r="5"/><circle cx="490" cy="90" r="3"/><circle cx="465" cy="135" r="3"/>
+    <circle cx="380" cy="120" r="3"/><circle cx="500" cy="145" r="4"/>
+  </g>
+  <text x="440" y="188" text-anchor="middle" font-weight="bold" fill="#4a5568">AAC block</text>
+  <text x="440" y="208" text-anchor="middle" fill="#4a5568">light concrete full of</text>
+  <text x="440" y="226" text-anchor="middle" fill="#4a5568">tiny air bubbles</text>
+  <text x="440" y="246" text-anchor="middle" fill="#4a5568">λ = 0.15 W/(m·K)</text>
+
+  <!-- foam board -->
+  <rect x="535" y="70" width="150" height="90" rx="3" fill="#f7fafc" stroke="#2b6cb0" stroke-width="2"/>
+  <g stroke="#bee3f8" stroke-width="2"><line x1="535" y1="100" x2="685" y2="100"/><line x1="535" y1="130" x2="685" y2="130"/></g>
+  <text x="610" y="188" text-anchor="middle" font-weight="bold" fill="#2b6cb0">EPS / XPS board</text>
+  <text x="610" y="208" text-anchor="middle" fill="#4a5568">white or blue foam panel</text>
+  <text x="610" y="228" text-anchor="middle" fill="#4a5568">EPS 0.040, XPS 0.025</text>
+  <text x="610" y="246" text-anchor="middle" fill="#4a5568">W/(m·K)</text>
+
+  <!-- mineral wool -->
+  <rect x="705" y="70" width="170" height="90" rx="3" fill="#fefcbf" stroke="#b7791f" stroke-width="2"/>
+  <g stroke="#b7791f" stroke-width="1.5" fill="none">
+    <path d="M715,90 q20,-12 40,0 t40,0 t40,0 t30,0"/><path d="M715,110 q20,12 40,0 t40,0 t40,0 t30,0"/>
+    <path d="M715,130 q20,-12 40,0 t40,0 t40,0 t30,0"/><path d="M715,148 q20,12 40,0 t40,0 t40,0 t30,0"/>
+  </g>
+  <text x="790" y="188" text-anchor="middle" font-weight="bold" fill="#4a5568">mineral wool</text>
+  <text x="790" y="208" text-anchor="middle" fill="#4a5568">mat of glass or stone fibres</text>
+  <text x="790" y="228" text-anchor="middle" fill="#4a5568">λ = 0.036 W/(m·K)</text>
+
+  <!-- group labels -->
+  <line x1="25" y1="300" x2="515" y2="300" stroke="#c05621" stroke-width="3"/>
+  <text x="270" y="326" text-anchor="middle" fill="#c05621" font-weight="bold">wall blocks (carry the load)</text>
+  <line x1="535" y1="300" x2="875" y2="300" stroke="#2b6cb0" stroke-width="3"/>
+  <text x="705" y="326" text-anchor="middle" fill="#2b6cb0" font-weight="bold">insulation (a blanket on the wall)</text>
+  <text x="450" y="372" text-anchor="middle" fill="#4a5568">smaller λ = harder for heat to pass</text>
+</svg>

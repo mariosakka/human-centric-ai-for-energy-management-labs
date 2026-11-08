@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 325" width="800" height="325" font-family="sans-serif" font-size="14">
+  <defs><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#4a5568"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#c53030"/></marker><marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2b6cb0"/></marker><marker id="an" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2f855a"/></marker><marker id="ay" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#b7791f"/></marker></defs>
+  <rect width="800" height="325" fill="#ffffff"/>
+  <rect x="20" y="50" width="260" height="200" rx="10" fill="#edf2f7" stroke="#4a5568" stroke-width="3"/>
+  <text x="150" y="76" text-anchor="middle" fill="#4a5568" font-weight="bold" font-size="13">BMS: central computer</text>
+  <rect x="38" y="90" width="224" height="120" rx="4" fill="#ffffff" stroke="#4a5568" stroke-width="2"/>
+  <rect x="52" y="155" width="22" height="35" rx="2" fill="#bee3f8" stroke="#2b6cb0" stroke-width="2"/>
+  <rect x="88" y="130" width="22" height="60" rx="2" fill="#bee3f8" stroke="#2b6cb0" stroke-width="2"/>
+  <rect x="124" y="145" width="22" height="45" rx="2" fill="#bee3f8" stroke="#2b6cb0" stroke-width="2"/>
+  <rect x="160" y="120" width="22" height="70" rx="2" fill="#bee3f8" stroke="#2b6cb0" stroke-width="2"/>
+  <rect x="196" y="140" width="22" height="50" rx="2" fill="#bee3f8" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="150" y="108" text-anchor="middle" fill="#4a5568" font-size="11">readings, schedules, alarms</text>
+  <rect x="110" y="252" width="80" height="10" rx="2" fill="#a0aec0" stroke="#4a5568" stroke-width="2"/>
+  <rect x="80" y="262" width="140" height="10" rx="2" fill="#edf2f7" stroke="#4a5568" stroke-width="2"/>
+  <line x1="280" y1="150" x2="330" y2="150" stroke="#4a5568" stroke-width="3"/>
+  <line x1="330" y1="50" x2="330" y2="290" stroke="#4a5568" stroke-width="3"/>
+  <text x="330" y="310" text-anchor="middle" fill="#4a5568" font-size="13">building network</text>
+  <line x1="330" y1="65" x2="380" y2="65" stroke="#4a5568" stroke-width="3"/>
+  <rect x="380" y="40" width="230" height="50" rx="8" fill="#bee3f8" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="495" y="61" text-anchor="middle" fill="#4a5568" font-weight="bold" font-size="13">Sensors</text>
+  <text x="495" y="79" text-anchor="middle" fill="#4a5568" font-size="12">temperature, humidity, CO₂</text>
+  <line x1="330" y1="130" x2="380" y2="130" stroke="#4a5568" stroke-width="3"/>
+  <rect x="380" y="105" width="230" height="50" rx="8" fill="#fed7d7" stroke="#c53030" stroke-width="2"/>
+  <text x="495" y="126" text-anchor="middle" fill="#4a5568" font-weight="bold" font-size="13">Boiler and chiller</text>
+  <text x="495" y="144" text-anchor="middle" fill="#4a5568" font-size="12">make the hot / cold water</text>
+  <line x1="330" y1="195" x2="380" y2="195" stroke="#4a5568" stroke-width="3"/>
+  <rect x="380" y="170" width="230" height="50" rx="8" fill="#c6f6d5" stroke="#2f855a" stroke-width="2"/>
+  <text x="495" y="191" text-anchor="middle" fill="#4a5568" font-weight="bold" font-size="13">AHU</text>
+  <text x="495" y="209" text-anchor="middle" fill="#4a5568" font-size="12">prepares the air</text>
+  <line x1="330" y1="260" x2="380" y2="260" stroke="#4a5568" stroke-width="3"/>
+  <rect x="380" y="235" width="230" height="50" rx="8" fill="#fefcbf" stroke="#b7791f" stroke-width="2"/>
+  <text x="495" y="256" text-anchor="middle" fill="#4a5568" font-weight="bold" font-size="13">VAV boxes</text>
+  <text x="495" y="274" text-anchor="middle" fill="#4a5568" font-size="12">air for each room</text>
+  <line x1="630" y1="65" x2="760" y2="65" stroke="#2b6cb0" stroke-width="2" marker-end="url(#ab)"/>
+  <text x="695" y="50" text-anchor="middle" fill="#2b6cb0" font-size="13">readings in</text>
+  <line x1="760" y1="250" x2="630" y2="250" stroke="#c53030" stroke-width="2" marker-end="url(#ar)"/>
+  <text x="695" y="276" text-anchor="middle" fill="#c53030" font-size="13">commands out</text>
+</svg>

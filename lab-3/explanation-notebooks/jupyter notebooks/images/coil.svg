@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 340" width="800" height="340" font-family="sans-serif" font-size="14">
+  <defs><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#4a5568"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#c53030"/></marker><marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2b6cb0"/></marker><marker id="an" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2f855a"/></marker><marker id="ay" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#b7791f"/></marker></defs>
+  <rect width="800" height="340" fill="#ffffff"/>
+  <text x="200" y="40" text-anchor="middle" fill="#2b6cb0" font-weight="bold">Cooling coil</text>
+  <rect x="115" y="60" width="170" height="190" rx="6" fill="#edf2f7" stroke="#4a5568" stroke-width="2" stroke-dasharray="6 4"/>
+  <rect x="130" y="68" width="6" height="174" rx="1" fill="#a0aec0" stroke="#a0aec0" stroke-width="1"/>
+  <rect x="162" y="68" width="6" height="174" rx="1" fill="#a0aec0" stroke="#a0aec0" stroke-width="1"/>
+  <rect x="194" y="68" width="6" height="174" rx="1" fill="#a0aec0" stroke="#a0aec0" stroke-width="1"/>
+  <rect x="226" y="68" width="6" height="174" rx="1" fill="#a0aec0" stroke="#a0aec0" stroke-width="1"/>
+  <rect x="258" y="68" width="6" height="174" rx="1" fill="#a0aec0" stroke="#a0aec0" stroke-width="1"/>
+  <path d="M90,95 H245 q25,0 25,25 q0,25 -25,25 H155 q-25,0 -25,25 q0,25 25,25 H90" fill="none" stroke="#2b6cb0" stroke-width="4" marker-end="url(#ab)"/>
+  <line x1="5" y1="155" x2="110" y2="155" stroke="#4a5568" stroke-width="3" marker-end="url(#ag)"/>
+  <line x1="290" y1="155" x2="395" y2="155" stroke="#4a5568" stroke-width="3" marker-end="url(#ag)"/>
+  <text x="55" y="135" text-anchor="middle" fill="#4a5568" font-size="13">warm air in</text>
+  <text x="345" y="135" text-anchor="middle" fill="#4a5568" font-size="13">cooler air out</text>
+  <text x="200" y="272" text-anchor="middle" fill="#2b6cb0" font-size="13">water in the finned pipe</text>
+  <text x="72" y="90" text-anchor="middle" fill="#2b6cb0" font-size="12">in</text>
+  <text x="72" y="262" text-anchor="middle" fill="#2b6cb0" font-size="12">out</text>
+  <text x="600" y="40" text-anchor="middle" fill="#c53030" font-weight="bold">Heating coil</text>
+  <rect x="515" y="60" width="170" height="190" rx="6" fill="#edf2f7" stroke="#4a5568" stroke-width="2" stroke-dasharray="6 4"/>
+  <rect x="530" y="68" width="6" height="174" rx="1" fill="#a0aec0" stroke="#a0aec0" stroke-width="1"/>
+  <rect x="562" y="68" width="6" height="174" rx="1" fill="#a0aec0" stroke="#a0aec0" stroke-width="1"/>
+  <rect x="594" y="68" width="6" height="174" rx="1" fill="#a0aec0" stroke="#a0aec0" stroke-width="1"/>
+  <rect x="626" y="68" width="6" height="174" rx="1" fill="#a0aec0" stroke="#a0aec0" stroke-width="1"/>
+  <rect x="658" y="68" width="6" height="174" rx="1" fill="#a0aec0" stroke="#a0aec0" stroke-width="1"/>
+  <path d="M490,95 H645 q25,0 25,25 q0,25 -25,25 H555 q-25,0 -25,25 q0,25 25,25 H490" fill="none" stroke="#c53030" stroke-width="4" marker-end="url(#ar)"/>
+  <line x1="405" y1="155" x2="510" y2="155" stroke="#4a5568" stroke-width="3" marker-end="url(#ag)"/>
+  <line x1="690" y1="155" x2="795" y2="155" stroke="#4a5568" stroke-width="3" marker-end="url(#ag)"/>
+  <text x="455" y="135" text-anchor="middle" fill="#4a5568" font-size="13">cold air in</text>
+  <text x="745" y="135" text-anchor="middle" fill="#4a5568" font-size="13">warmed air out</text>
+  <text x="600" y="272" text-anchor="middle" fill="#c53030" font-size="13">water in the finned pipe</text>
+  <text x="472" y="90" text-anchor="middle" fill="#c53030" font-size="12">in</text>
+  <text x="472" y="262" text-anchor="middle" fill="#c53030" font-size="12">out</text>
+  <text x="400" y="320" text-anchor="middle" fill="#4a5568" font-size="13">a pipe with metal fins: the fins give the air a large surface to touch</text>
+</svg>

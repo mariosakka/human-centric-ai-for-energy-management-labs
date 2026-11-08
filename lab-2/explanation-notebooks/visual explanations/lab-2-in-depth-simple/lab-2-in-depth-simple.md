@@ -199,6 +199,12 @@ You have seen it:
 
 When water turns from vapour into liquid it **gives out heat** (the hidden energy from before). An air conditioner works like a cold glass: it makes water drip out of the air, which both cools **and dries** the room.
 
+> **Air conditioner**: a machine that blows room air over a very cold coil, like the cold glass of lemonade. Water drips out of the air, so the air leaves both cooler and drier.
+
+![An air conditioner: a cold coil cools the air and the water vapour drips out](figures/air-conditioner.svg)
+
+*Figure: An air conditioner: a cold coil cools the air and the water vapour drips out*
+
 **Two "water in the air" numbers appear in the chart below, and they are different.**
 > **Water the air really has** ($x$, orange flat line): if nobody adds or removes water, it **doesn't change when the temperature changes**.
 
@@ -249,9 +255,17 @@ The "1" is the specific heat of dry air, the "1.84" the specific heat of vapour.
 
 ## A5. Enthalpy: the energy you can't feel
 
-$h = \underbrace{t}_{\text{warmth (sensible)}} + \underbrace{x\,(2500 + 1.84\,t)}_{\text{hidden in water (latent)}}$
+$h = t + x\,(2500 + 1.84\,t)$
+
+The first term, $t$, is the warmth you can feel; the second, $x\,(2500 + 1.84\,t)$, is the energy hidden in the water.
 
 Think of **two piggy banks**: one holds the warmth you can feel with a thermometer, the other holds energy hidden in the water. An air conditioner has to empty **both**.
+
+> **Thermometer**: the instrument that tells you the temperature. A thin glass tube with a bulb of liquid at the bottom: when the bulb warms up, the liquid expands and climbs the tube, and you read the height on the scale.
+
+![A thermometer: the liquid in the bulb expands when it is warmer and climbs the tube](figures/thermometer.svg)
+
+*Figure: A thermometer: the liquid in the bulb expands when it is warmer and climbs the tube*
 
 ![Hot air carries two kinds of energy: warmth you feel and energy hidden in water](figures/enthalpy.svg)
 
@@ -385,7 +399,14 @@ The six factors in the picture:
 
 ### What do PMV and PPD stand for?
 
-A scientist called Fanger (Denmark, 1960s) put volunteers in special rooms, changed the temperature, wetness of the air, wind and clothes, and asked everybody to **vote** on a scale: −3 cold, −2 cool, −1 slightly cool, **0 just right**, +1 slightly warm, +2 warm, +3 hot.
+A scientist called Fanger (Denmark, 1960s) put volunteers in special test rooms called climate chambers, changed the temperature, wetness of the air, wind and clothes, and asked everybody to **vote** on a scale: −3 cold, −2 cool, −1 slightly cool, **0 just right**, +1 slightly warm, +2 warm, +3 hot.
+
+> **Climate chamber**: a special test room where the temperature, the wetness of the air and the wind can be set exactly, so everybody sits in known conditions and says how they feel.
+
+![A climate chamber: volunteers sit in conditions that are set and measured, then vote how they feel](figures/climate-chamber.svg)
+
+*Figure: A climate chamber: volunteers sit in conditions that are set and measured, then vote how they feel*
+
 > **PMV (Predicted Mean Vote)**: the *average* vote of a big group (add all votes, divide by the number of people); a *vote* is one person's answer. *Predicted* means we don't ask anyone: we **calculate** the vote with the body's heat balance (the bathtub: heat made minus heat lost).
 
 > **PPD (Predicted Percentage of Dissatisfied)**: how many out of 100 would complain, meaning they feel **warm or hot (+2, +3) or cool or cold (−2, −3)**. Even when the *average* person is happy, some people are not, so it is never below 5 %: you can't please everyone.

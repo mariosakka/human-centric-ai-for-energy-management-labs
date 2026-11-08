@@ -26,6 +26,10 @@ The most common type is the **flat-plate collector**, a flat insulated box with 
 
 > **Inlet temperature** $T_i$ (°C): the temperature of the liquid when it enters the collector, set by what the liquid has just come from (a warm tank, for example).
 
+![A solar heating loop: the pump drives the fluid from the storage tank to the collector, where it is heated, and back to the tank, where it gives its heat away](figures/collector-loop.svg)
+
+*Figure: A solar heating loop: the pump drives the fluid from the storage tank to the collector, where it is heated, and back to the tank, where it gives its heat away*
+
 > **Outside air temperature** $T_a$ (°C): the temperature of the air around the collector, called the "ambient" temperature. The collector loses heat to it.
 
 > **Useful power** $q_u$ (W/m²): the heat that really ends up in the liquid, for each square metre of collector. It is what we want to know.

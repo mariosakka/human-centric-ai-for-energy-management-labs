@@ -6,7 +6,15 @@ Sheet: *Apl. 3.3*, questions (a) to (e) on a solar panel.
 
 > **Photovoltaic (PV) cell**: a thin slice of silicon that turns light directly into electricity. It is a tiny battery that only works while light falls on it.
 
+![Inside one PV cell: light frees an electron, the boundary between the two silicon layers pushes it out through the front fingers, and it returns through the load to the back contact](figures/pv-cell.svg)
+
+*Figure: Inside one PV cell: light frees an electron, the boundary between the two silicon layers pushes it out through the front fingers, and it returns through the load to the back contact*
+
 > **PV module** (solar panel): many cells wired one after the other inside a frame, so that their small voltages add up. The module of the sheet is the Kyocera KD230GX-LPB (a model name, made by the company Kyocera).
+
+![A PV module: about 60 cells in a snake-like series string, the output cables in the junction box, and the layers of the module seen from the side](figures/pv-module.svg)
+
+*Figure: A PV module: about 60 cells in a snake-like series string, the output cables in the junction box, and the layers of the module seen from the side*
 
 > **Direct current (DC)**: electricity that flows steadily in one direction, like the current of a battery. A solar panel produces DC.
 
@@ -92,6 +100,10 @@ A real day differs from the test in two ways: the sun is weaker or stronger, and
 > **Current-voltage (I-V) curve**: the graph of the current the panel gives at each voltage. It starts at $I_{sc}$ with zero voltage and falls to zero current at $U_0$.
 
 > **Maximum power point (MPP)**: the spot on the I-V curve where voltage times current is the largest. Electronics connected to a panel keep it working there.
+
+![The power electronics between the module and the grid: the MPP tracker keeps the module at its maximum power point and the inverter turns its DC into AC](figures/mpp-tracker.svg)
+
+*Figure: The power electronics between the module and the grid: the MPP tracker keeps the module at its maximum power point and the inverter turns its DC into AC*
 
 > **Maximum power** $P_M$ (W): the power at the MPP, the number that counts.
 

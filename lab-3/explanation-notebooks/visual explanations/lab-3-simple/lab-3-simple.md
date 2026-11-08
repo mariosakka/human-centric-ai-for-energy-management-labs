@@ -38,13 +38,33 @@
 
 > **Boiler**: heats water (with gas, oil or electricity).
 
+![A boiler: a burner heats the water that goes to the building](figures/boiler.svg)
+
+*Figure: A boiler: a burner heats the water that goes to the building*
+
 > **Heat pump**: moves heat from the outside air into the building, like a fridge running backwards.
+
+![A heat pump: it collects heat from the cold outside air and passes it to the building's water](figures/heat-pump.svg)
+
+*Figure: A heat pump: it collects heat from the cold outside air and passes it to the building's water*
 
 > **Chiller**: a big fridge that makes cold water.
 
+![A chiller: it makes cold water and releases the heat to the outside air](figures/chiller.svg)
+
+*Figure: A chiller: it makes cold water and releases the heat to the outside air*
+
 > **Ducts and pipes**: carry the hot or cold water or air around, like the veins in a body (ducts are metal tubes for air).
 
+![A duct: a metal tube that carries air, with a branch to a room](figures/duct.svg)
+
+*Figure: A duct: a metal tube that carries air, with a branch to a room*
+
 > **Thermostat**: decides when to switch things on. It is the little box on the wall (or an app) with a dial: inside are a thermometer and a switch. You turn the dial to the temperature you want (the setpoint, say 21 degC) and it keeps checking the thermometer: **too cold** → heater ON, **warm enough** → heater OFF. A fridge and an oven work the same way.
+
+![A thermostat: it compares the thermometer reading with the setpoint and switches the heater](figures/thermostat.svg)
+
+*Figure: A thermostat: it compares the thermometer reading with the setpoint and switches the heater*
 
 > **Sensor, controller, actuator**: the three roles of a thermostat. The **sensor** is the thermometer that measures, the **controller** is the brain that compares the measurement with your wish and the **actuator** is the part that acts: the heater, a valve, a fan.
 

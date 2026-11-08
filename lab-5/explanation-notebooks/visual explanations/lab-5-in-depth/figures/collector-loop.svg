@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 450" width="900" height="450" font-family="Segoe UI, Arial, sans-serif" font-size="14">
+  <defs>
+    <marker id="ag" markerUnits="userSpaceOnUse" markerWidth="13" markerHeight="10" refX="12" refY="5" orient="auto"><path d="M0,0 L13,5 L0,10 z" fill="#4a5568"/></marker>
+    <marker id="ry" markerUnits="userSpaceOnUse" markerWidth="13" markerHeight="10" refX="12" refY="5" orient="auto"><path d="M0,0 L13,5 L0,10 z" fill="#d69e2e"/></marker>
+    <marker id="rr" markerUnits="userSpaceOnUse" markerWidth="13" markerHeight="10" refX="12" refY="5" orient="auto"><path d="M0,0 L13,5 L0,10 z" fill="#c53030"/></marker>
+    <marker id="rb" markerUnits="userSpaceOnUse" markerWidth="13" markerHeight="10" refX="12" refY="5" orient="auto"><path d="M0,0 L13,5 L0,10 z" fill="#2b6cb0"/></marker>
+    <marker id="rg" markerUnits="userSpaceOnUse" markerWidth="13" markerHeight="10" refX="12" refY="5" orient="auto"><path d="M0,0 L13,5 L0,10 z" fill="#2f855a"/></marker>
+    <linearGradient id="coil" gradientUnits="userSpaceOnUse" x1="0" y1="150" x2="0" y2="330"><stop offset="0" stop-color="#c53030"/><stop offset="1" stop-color="#2b6cb0"/></linearGradient>
+  </defs>
+  <rect width="900" height="450" fill="#ffffff"/>
+  <text x="450" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="#4a5568">A solar heating loop: collector, pump and storage tank</text>
+  <g stroke="#d69e2e" stroke-width="3"><line x1="90" y1="52" x2="90" y2="42"/><line x1="90" y1="108" x2="90" y2="118"/><line x1="62" y1="80" x2="52" y2="80"/><line x1="118" y1="80" x2="128" y2="80"/><line x1="110" y1="60" x2="117" y2="53"/><line x1="70" y1="60" x2="63" y2="53"/><line x1="110" y1="100" x2="117" y2="107"/><line x1="70" y1="100" x2="63" y2="107"/></g>
+  <circle cx="90" cy="80" r="22" fill="#f6e05e" stroke="#d69e2e" stroke-width="2"/>
+  <g stroke="#d69e2e" stroke-width="3" marker-end="url(#ry)"><line x1="190" y1="78" x2="220" y2="124"/><line x1="250" y1="78" x2="280" y2="124"/><line x1="310" y1="78" x2="340" y2="124"/></g>
+  <text x="150" y="60" fill="#b7791f" font-weight="bold">sunlight</text>
+  <rect x="130" y="130" width="250" height="110" fill="#edf2f7" stroke="#4a5568" stroke-width="2"/>
+  <rect x="130" y="130" width="250" height="8" fill="#bee3f8" stroke="#2b6cb0"/>
+  <rect x="142" y="180" width="226" height="8" fill="#2d3748"/>
+  <g fill="#bee3f8" stroke="#2b6cb0" stroke-width="2"><circle cx="175" cy="204" r="9"/><circle cx="225" cy="204" r="9"/><circle cx="275" cy="204" r="9"/><circle cx="325" cy="204" r="9"/></g>
+  <rect x="132" y="218" width="246" height="20" fill="#fefcbf" stroke="#d69e2e"/>
+  <text x="255" y="262" text-anchor="middle" fill="#4a5568" font-weight="bold">flat-plate collector</text>
+  <path d="M610,330 H250 M250,330 H90 V204 H128" fill="none" stroke="#2b6cb0" stroke-width="6"/>
+  <line x1="470" y1="330" x2="440" y2="330" stroke="#2b6cb0" stroke-width="6" marker-end="url(#rb)"/>
+  <line x1="90" y1="260" x2="90" y2="215" stroke="#2b6cb0" stroke-width="6" marker-end="url(#rb)"/>
+  <path d="M382,204 H520 V150 H608" fill="none" stroke="#c53030" stroke-width="6"/>
+  <line x1="560" y1="150" x2="590" y2="150" stroke="#c53030" stroke-width="6" marker-end="url(#rr)"/>
+  <text x="105" y="290" fill="#2b6cb0" font-weight="bold">fluid enters the</text>
+  <text x="105" y="308" fill="#2b6cb0" font-weight="bold">collector at T_i</text>
+  <text x="395" y="190" fill="#c53030" font-weight="bold">hotter fluid leaves</text>
+  <circle cx="330" cy="330" r="26" fill="#ffffff" stroke="#4a5568" stroke-width="3"/>
+  <path d="M320,316 L344,330 L320,344 z" fill="#4a5568"/>
+  <text x="330" y="378" text-anchor="middle" fill="#4a5568" font-weight="bold">pump</text>
+  <text x="330" y="396" text-anchor="middle" fill="#4a5568" font-size="12">keeps the fluid circulating</text>
+  <rect x="610" y="110" width="170" height="250" rx="22" fill="#ebf8ff" stroke="#2b6cb0" stroke-width="3"/>
+  <path d="M610,150 H755 V185 H635 V220 H755 V255 H635 V290 H755 V330 H610" fill="none" stroke="url(#coil)" stroke-width="6" stroke-linejoin="round"/>
+  <text x="695" y="98" text-anchor="middle" fill="#2b6cb0" font-weight="bold">storage tank</text>
+  <text x="695" y="380" text-anchor="middle" fill="#4a5568" font-size="12">the coil gives its heat to the water in the tank</text>
+  <line x1="782" y1="240" x2="850" y2="240" stroke="#c05621" stroke-width="4" marker-end="url(#ry)"/>
+  <text x="816" y="226" text-anchor="middle" fill="#c05621" font-weight="bold">hot water</text>
+  <text x="816" y="262" text-anchor="middle" fill="#c05621" font-size="12">for use</text>
+  <text x="450" y="436" text-anchor="middle" fill="#4a5568">The fluid goes round and round: collector (picks up heat) → tank (gives it away) → pump → collector.</text>
+</svg>

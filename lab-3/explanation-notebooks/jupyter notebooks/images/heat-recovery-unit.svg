@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 305" width="800" height="305" font-family="sans-serif" font-size="14">
+  <defs><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#4a5568"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#c53030"/></marker><marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2b6cb0"/></marker><marker id="an" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2f855a"/></marker><marker id="ay" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#b7791f"/></marker></defs>
+  <rect width="800" height="305" fill="#ffffff"/>
+  <rect x="200" y="70" width="400" height="190" rx="12" fill="#edf2f7" stroke="#4a5568" stroke-width="2.5"/>
+  <text x="400" y="290" text-anchor="middle" fill="#4a5568" font-weight="bold">Heat-recovery unit</text>
+  <rect x="235" y="90" width="12" height="150" rx="2" fill="#a0aec0" stroke="#4a5568" stroke-width="2"/>
+  <rect x="295" y="90" width="12" height="150" rx="2" fill="#a0aec0" stroke="#4a5568" stroke-width="2"/>
+  <rect x="355" y="90" width="12" height="150" rx="2" fill="#a0aec0" stroke="#4a5568" stroke-width="2"/>
+  <rect x="415" y="90" width="12" height="150" rx="2" fill="#a0aec0" stroke="#4a5568" stroke-width="2"/>
+  <rect x="475" y="90" width="12" height="150" rx="2" fill="#a0aec0" stroke="#4a5568" stroke-width="2"/>
+  <rect x="535" y="90" width="12" height="150" rx="2" fill="#a0aec0" stroke="#4a5568" stroke-width="2"/>
+  <line x1="10" y1="125" x2="198" y2="125" stroke="#c53030" stroke-width="3" marker-end="url(#ar)"/>
+  <text x="105" y="85" text-anchor="middle" fill="#c53030" font-size="13">stale indoor air</text>
+  <text x="105" y="104" text-anchor="middle" fill="#c53030" font-size="13">in (e.g. 22 °C)</text>
+  <line x1="602" y1="125" x2="790" y2="125" stroke="#c53030" stroke-width="3" marker-end="url(#ar)"/>
+  <text x="695" y="85" text-anchor="middle" fill="#c53030" font-size="13">exhaust out</text>
+  <text x="695" y="104" text-anchor="middle" fill="#c53030" font-size="13">(e.g. 8 °C)</text>
+  <line x1="790" y1="205" x2="602" y2="205" stroke="#2b6cb0" stroke-width="3" marker-end="url(#ab)"/>
+  <text x="695" y="232" text-anchor="middle" fill="#2b6cb0" font-size="13">fresh outdoor air</text>
+  <text x="695" y="251" text-anchor="middle" fill="#2b6cb0" font-size="13">in (e.g. 0 °C)</text>
+  <line x1="198" y1="205" x2="10" y2="205" stroke="#2b6cb0" stroke-width="3" marker-end="url(#ab)"/>
+  <text x="105" y="232" text-anchor="middle" fill="#2b6cb0" font-size="13">fresh air to the</text>
+  <text x="105" y="251" text-anchor="middle" fill="#2b6cb0" font-size="13">rooms (e.g. 14 °C)</text>
+  <rect x="255" y="140" width="290" height="50" rx="6" fill="#ffffff" stroke="#ffffff" stroke-width="1"/>
+  <text x="400" y="160" text-anchor="middle" fill="#1a202c" font-size="13">heat passes through the thin plates,</text>
+  <text x="400" y="179" text-anchor="middle" fill="#1a202c" font-size="13">the two air streams never mix</text>
+</svg>

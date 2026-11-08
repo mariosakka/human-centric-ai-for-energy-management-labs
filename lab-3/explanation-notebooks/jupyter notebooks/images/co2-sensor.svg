@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 330" width="800" height="330" font-family="sans-serif" font-size="14">
+  <defs><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#4a5568"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#c53030"/></marker><marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2b6cb0"/></marker><marker id="an" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2f855a"/></marker><marker id="ay" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#b7791f"/></marker></defs>
+  <rect width="800" height="330" fill="#ffffff"/>
+  <rect x="30" y="40" width="500" height="250" rx="8" fill="#f7fafc" stroke="#4a5568" stroke-width="2"/>
+  <text x="280" y="62" text-anchor="middle" fill="#4a5568" font-weight="bold">room</text>
+  <circle cx="100" cy="235" r="12" fill="#c6f6d5" stroke="#2f855a" stroke-width="2"/>
+  <line x1="100" y1="247" x2="100" y2="272" stroke="#2f855a" stroke-width="3"/>
+  <circle cx="170" cy="235" r="12" fill="#c6f6d5" stroke="#2f855a" stroke-width="2"/>
+  <line x1="170" y1="247" x2="170" y2="272" stroke="#2f855a" stroke-width="3"/>
+  <circle cx="240" cy="235" r="12" fill="#c6f6d5" stroke="#2f855a" stroke-width="2"/>
+  <line x1="240" y1="247" x2="240" y2="272" stroke="#2f855a" stroke-width="3"/>
+  <text x="170" y="305" text-anchor="middle" fill="#2f855a" font-size="13">people breathe out CO₂</text>
+  <circle cx="110" cy="200" r="5" fill="#fefcbf" stroke="#b7791f"/>
+  <circle cx="150" cy="175" r="5" fill="#fefcbf" stroke="#b7791f"/>
+  <circle cx="195" cy="195" r="5" fill="#fefcbf" stroke="#b7791f"/>
+  <circle cx="225" cy="160" r="5" fill="#fefcbf" stroke="#b7791f"/>
+  <circle cx="270" cy="190" r="5" fill="#fefcbf" stroke="#b7791f"/>
+  <circle cx="300" cy="150" r="5" fill="#fefcbf" stroke="#b7791f"/>
+  <circle cx="330" cy="175" r="5" fill="#fefcbf" stroke="#b7791f"/>
+  <rect x="410" y="90" width="100" height="112" rx="8" fill="#edf2f7" stroke="#4a5568" stroke-width="2"/>
+  <text x="460" y="112" text-anchor="middle" fill="#4a5568" font-weight="bold" font-size="13">CO₂ sensor</text>
+  <rect x="425" y="128" width="70" height="28" rx="4" fill="#ffffff" stroke="#4a5568" stroke-width="2"/>
+  <text x="460" y="148" text-anchor="middle" fill="#4a5568" font-size="13">850 ppm</text>
+  <text x="460" y="175" text-anchor="middle" fill="#4a5568" font-size="11">ppm = parts</text>
+  <text x="460" y="188" text-anchor="middle" fill="#4a5568" font-size="11">per million</text>
+  <path d="M340,160 H408" fill="none" stroke="#b7791f" stroke-width="3" marker-end="url(#ay)"/>
+  <text x="375" y="150" text-anchor="middle" fill="#4a5568" font-size="12">air</text>
+  <line x1="532" y1="140" x2="590" y2="140" stroke="#4a5568" stroke-width="3" marker-end="url(#ag)"/>
+  <rect x="592" y="100" width="190" height="80" rx="10" fill="#c6f6d5" stroke="#2f855a" stroke-width="2"/>
+  <text x="687" y="128" text-anchor="middle" fill="#2f855a" font-weight="bold" font-size="13">controller</text>
+  <text x="687" y="150" text-anchor="middle" fill="#4a5568" font-size="12">if the CO₂ is too</text>
+  <text x="687" y="166" text-anchor="middle" fill="#4a5568" font-size="12">high: more fresh air</text>
+  <line x1="687" y1="182" x2="687" y2="232" stroke="#2b6cb0" stroke-width="3" marker-end="url(#ab)"/>
+  <rect x="592" y="234" width="190" height="50" rx="10" fill="#bee3f8" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="687" y="256" text-anchor="middle" fill="#2b6cb0" font-size="13">AHU and VAV boxes</text>
+  <text x="687" y="273" text-anchor="middle" fill="#2b6cb0" font-size="12">bring in fresh air</text>
+</svg>

@@ -31,6 +31,7 @@ Add the lab to the table in `README.md` and to `JOBS` in `tools/build_docs.py`.
 
 - Use that skill; read its `references/shared-rules.md` plus `simplified-rules.md` or `detailed-rules.md` before writing.
 - Define every domain concept in the chapter where it is first used, in one blockquote box: `> **Term** (unit): definition.` No opening glossary; nothing defined before the chapter that needs it; expand acronyms at first use; explain what a device or quantity is before using it (e.g. a thermostat, irradiance, a fill factor).
+- Every device, instrument, sensor or piece of equipment that is defined (a thermostat, a VAV box, a pyranometer, a PV cell) gets its own labelled SVG diagram right after its definition box (what it looks like, its parts, how it works), in both the simple and the in-depth version. Abstract concepts do not need one.
 - Interpret values ("the collector turns 52 % of the sunlight into heat") instead of narrating how they were computed.
 - No tables (use graphs or short bullet lists), no meta-comments about the document or the build, no hand calculations, UI widgets or code in the markdown and PDF.
 - Check with `first_use.py NOTEBOOK "term1,term2"` that each term's first hit is its definition.
@@ -47,3 +48,9 @@ conda run -n human-centric-ai-for-energy-labs python tools/build_docs.py lab-N
 - Commit the notebooks, `shared/`, `images/`, the `.md` and `figures/`. Never commit PDFs (the assignment PDFs and the built ones). Commit and push only when asked.
 - Every git command prints a harmless `bad object refs/desktop.ini` / repack error (Google Drive); the commit and push still succeed.
 - Labs are independent: parallel agents can solve different labs at the same time, as long as only one of them edits `tools/build_docs.py`, `README.md` and AGENTS.md.
+
+## Moodle submissions
+
+- Each lab's submission source is `lab-N/moodle-submission/lab-N-moodle-submission.md` plus `solve_lab_N.py` (a runner that imports `shared/` and prints the answers). Build with `python tools/build_submission.py <md> -o lab-N/moodle-submission/Lab-N-Moodle-Submission-<Topic>.pdf` (via `conda run`); the `.pdf` and `.docx` are never committed.
+- Style of labs 2 to 4: Letter page, Calibri, no cover page. Written in the team's voice ("we"), plain: title and team line, Members, 1. Objective, 2. Input data (table), one numbered section per sub-question with the code snippet and its output, Conclusions, Annex with the full code. Maths in plain Unicode, never LaTeX.
+- Syntax is documented at the top of `tools/build_submission.py`; look at the rendered pages before finishing.

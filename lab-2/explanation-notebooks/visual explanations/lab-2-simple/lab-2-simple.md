@@ -18,7 +18,13 @@ The lab asks us to build a calculator that tells us **how warm people will feel*
 
 ### What do PMV and PPD stand for?
 
-> **PMV = Predicted Mean Vote.** A scientist called Fanger (Denmark, 1960s) put volunteers in special rooms, changed the temperature, wetness of the air, wind and clothes, and asked everybody to **vote** on a scale: −3 cold, −2 cool, −1 slightly cool, **0 just right**, +1 slightly warm, +2 warm, +3 hot.
+> **PMV = Predicted Mean Vote.** A scientist called Fanger (Denmark, 1960s) put volunteers in special test rooms called climate chambers, changed the temperature, wetness of the air, wind and clothes, and asked everybody to **vote** on a scale: −3 cold, −2 cool, −1 slightly cool, **0 just right**, +1 slightly warm, +2 warm, +3 hot.
+
+> **Climate chamber**: a special test room where the temperature, the wetness of the air and the wind can be set exactly, so everybody sits in known conditions and says how they feel.
+
+![A climate chamber: volunteers sit in conditions that are set and measured, then vote how they feel](figures/climate-chamber.svg)
+
+*Figure: A climate chamber: volunteers sit in conditions that are set and measured, then vote how they feel*
 
 > **Vote** = one person's answer.
 
@@ -109,6 +115,12 @@ Three words first:
 > **Mean radiant temperature** ($t_{mr}$): how warm the **walls, floor, ceiling and windows** are on average, in °C. "Radiant" means warmth that glows through the air, like the sun on your face.
 
 > **Air speed** ($v$): how strong the **breeze** around you is, in m/s (metres per second). A fan makes it bigger.
+
+> **Thermometer**: the instrument that tells you the temperature. A thin glass tube with a bulb of liquid at the bottom: when the bulb warms up, the liquid expands and climbs the tube, and you read the height on the scale.
+
+![A thermometer: the liquid in the bulb expands when it is warmer and climbs the tube](figures/thermometer.svg)
+
+*Figure: A thermometer: the liquid in the bulb expands when it is warmer and climbs the tube*
 
 > The **operative temperature** ($t_o$) fixes that. It is the room's **feels-like temperature**: a mix of air temperature and wall temperature.
 

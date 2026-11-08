@@ -24,6 +24,10 @@ Sheet: *Apl. 3.2 Thermal Collector Exercise*. A panel that heats a liquid with s
 
 > **Inlet temperature** $T_i$ (°C): the temperature of the working fluid where it enters the collector. It is fixed by the system the collector feeds: a tank at 50 °C needs a fluid that enters at about 50 °C.
 
+![A solar heating loop: the pump drives the fluid from the storage tank to the collector, where it is heated, and back to the tank, where it gives its heat away](figures/collector-loop.svg)
+
+*Figure: A solar heating loop: the pump drives the fluid from the storage tank to the collector, where it is heated, and back to the tank, where it gives its heat away*
+
 > **Ambient temperature** $T_a$ (°C): the temperature of the outside air around the collector. The collector loses heat to it.
 
 > **Useful power** $q_u$ (W/m²): the heat power that ends up in the working fluid, per square metre of collector area. It is the quantity the exercise wants.

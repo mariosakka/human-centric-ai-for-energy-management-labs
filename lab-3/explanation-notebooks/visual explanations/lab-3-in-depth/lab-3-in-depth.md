@@ -14,23 +14,59 @@ Sheet: *Dynamic Comfort and Energy Optimization (PMV/PPD)*.
 
 > **Boiler**: heats water by burning gas or oil, or with electricity.
 
+![A boiler: a burner heats the water that goes to the building](figures/boiler.svg)
+
+*Figure: A boiler: a burner heats the water that goes to the building*
+
 > **Heat pump**: moves heat from the outside air or the ground into the building, like an air conditioner running backwards; it delivers 3 to 4 units of heat per unit of electricity.
 
+![A heat pump: it collects heat from the cold outside air and passes it to the building's water](figures/heat-pump.svg)
+
+*Figure: A heat pump: it collects heat from the cold outside air and passes it to the building's water*
+
 > **Radiator**: a hot water-filled panel that gives heat to the room.
+
+![A radiator: hot water inside a panel warms the room](figures/radiator.svg)
+
+*Figure: A radiator: hot water inside a panel warms the room*
 
 > **CO$_2$** (carbon dioxide): the gas people breathe out, which builds up in a closed room.
 
 > **Duct**: a metal tube that carries air.
 
+![A duct: a metal tube that carries air, with a branch to a room](figures/duct.svg)
+
+*Figure: A duct: a metal tube that carries air, with a branch to a room*
+
 > **Heat-recovery unit**: passes heat from the outgoing stale air to the incoming fresh air without mixing them.
+
+![A heat-recovery unit: stale outgoing air warms the fresh incoming air through thin plates](figures/heat-recovery-unit.svg)
+
+*Figure: A heat-recovery unit: stale outgoing air warms the fresh incoming air through thin plates*
 
 > **Chiller**: a large refrigerator that makes cold water.
 
+![A chiller: it makes cold water and releases the heat to the outside air](figures/chiller.svg)
+
+*Figure: A chiller: it makes cold water and releases the heat to the outside air*
+
 > **Split unit**: an air conditioner with an indoor and an outdoor part.
+
+![A split unit: an indoor part cools the room and an outdoor part throws the heat out](figures/split-unit.svg)
+
+*Figure: A split unit: an indoor part cools the room and an outdoor part throws the heat out*
 
 > **Coil**: a finned pipe carrying cold or hot water; air blown over a cooling coil is cooled, and a heating coil does the opposite.
 
+![A coil: a finned pipe with cold water cools the air, with hot water it warms the air](figures/coil.svg)
+
+*Figure: A coil: a finned pipe with cold water cools the air, with hot water it warms the air*
+
 > **Dehumidifier**: removes water vapour from the air.
+
+![A dehumidifier: air passes a cold surface and its vapour condenses into water](figures/dehumidifier.svg)
+
+*Figure: A dehumidifier: air passes a cold surface and its vapour condenses into water*
 
 ## 0.2 The main parts and how they connect
 
@@ -46,19 +82,47 @@ A typical commercial building:
 
 > **VAV box** (Variable Air Volume): a box with a flap (damper) that throttles how much air each room gets.
 
+![A VAV box: a motor-driven flap sets how much air reaches the room](figures/vav-box.svg)
+
+*Figure: A VAV box: a motor-driven flap sets how much air reaches the room*
+
 > **Terminal**: a device in the room that hands heat or cold to the air.
 
 > **Diffuser**: an air outlet in the ceiling.
 
+![A diffuser: the ceiling outlet that spreads the supply air gently](figures/diffuser.svg)
+
+*Figure: A diffuser: the ceiling outlet that spreads the supply air gently*
+
 > **Fan-coil unit**: a small coil with a fan.
+
+![A fan-coil unit: a fan blows room air through a coil](figures/fan-coil-unit.svg)
+
+*Figure: A fan-coil unit: a fan blows room air through a coil*
 
 > **Chilled beam**: a cooled panel under the ceiling.
 
+![A chilled beam: a cooled panel under the ceiling that cools the air passing it](figures/chilled-beam.svg)
+
+*Figure: A chilled beam: a cooled panel under the ceiling that cools the air passing it*
+
 > **CO$_2$ sensor**: shows how many people are in the room and how stale the air is.
+
+![A CO2 sensor: it measures the air and asks for fresh air when the CO2 is high](figures/co2-sensor.svg)
+
+*Figure: A CO2 sensor: it measures the air and asks for fresh air when the CO2 is high*
 
 > **BMS** (Building Management System): the central computer that runs the control logic of the whole building.
 
+![A BMS: the central computer that reads the sensors and commands the equipment](figures/bms.svg)
+
+*Figure: A BMS: the central computer that reads the sensors and commands the equipment*
+
 > **Thermostat**: the simplest controller. It has a temperature sensor, a **setpoint** (the temperature you want, set with a dial or an app) and a switch. It keeps comparing the measured air temperature $t_a$ with the setpoint: colder than the setpoint → heating on, warm enough → heating off (the logic is reversed for cooling). A fridge or an oven works the same way.
+
+![A thermostat: it compares the thermometer reading with the setpoint and switches the heater](figures/thermostat.svg)
+
+*Figure: A thermostat: it compares the thermometer reading with the setpoint and switches the heater*
 
 > **Relative humidity (RH)**: the water vapour in the air as a % of the most it could hold.
 
@@ -155,6 +219,10 @@ A classical thermostat controls only $t_a$. But comfort depends on **six factors
 * A **ceiling fan** uses 30 to 70 W; an air-conditioner **compressor** for the same room uses 1000 W or more. Moving air makes you feel cooler without lowering the real temperature, so we can raise the cooling setpoint. That is Part 1.
 
 > **Compressor**: the pump of an air conditioner that does the cooling work and uses most of its electricity.
+
+![The compressor inside an air-conditioning cycle](figures/compressor.svg)
+
+*Figure: The compressor inside an air-conditioning cycle*
 
 **Check with the App 2.2 numbers.**
 

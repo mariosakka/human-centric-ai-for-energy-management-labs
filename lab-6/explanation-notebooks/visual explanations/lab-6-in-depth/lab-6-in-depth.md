@@ -12,7 +12,15 @@ Sheet: *Apl. 3.3*, questions (a) to (e) on a solar panel.
 
 > **PV cell**: one slice of silicon that makes this effect. A single silicon cell gives only about 0.6 V.
 
+![Inside one PV cell: light frees an electron, the boundary between the two silicon layers pushes it out through the front fingers, and it returns through the load to the back contact](figures/pv-cell.svg)
+
+*Figure: Inside one PV cell: light frees an electron, the boundary between the two silicon layers pushes it out through the front fingers, and it returns through the load to the back contact*
+
 > **PV module** (solar panel): a frame of cells wired **in series**, so the voltages add up while the same current flows through all of them. The module of the sheet is the Kyocera KD230GX-LPB (model name; Kyocera is the manufacturer).
+
+![A PV module: about 60 cells in a snake-like series string, the output cables in the junction box, and the layers of the module seen from the side](figures/pv-module.svg)
+
+*Figure: A PV module: about 60 cells in a snake-like series string, the output cables in the junction box, and the layers of the module seen from the side*
 
 ## 0.2 Electrical quantities
 
@@ -120,6 +128,10 @@ A module does not deliver $U_0$ and $I_{sc}$ at the same time: at zero voltage t
 > **Current-voltage (I-V) curve**: the graph of the current the module delivers at each voltage; it starts at $(0, I_{sc})$ and ends at $(U_0, 0)$.
 
 > **Maximum power point (MPP)**: the point of the I-V curve where $U \cdot I$ is largest, the best operating point. A power electronic converter (MPP tracker) holds the module there.
+
+![The power electronics between the module and the grid: the MPP tracker keeps the module at its maximum power point and the inverter turns its DC into AC](figures/mpp-tracker.svg)
+
+*Figure: The power electronics between the module and the grid: the MPP tracker keeps the module at its maximum power point and the inverter turns its DC into AC*
 
 > **Maximum power** $P_M$ (W): the power at the MPP, $P_M = U_{MPP} \cdot I_{MPP}$.
 

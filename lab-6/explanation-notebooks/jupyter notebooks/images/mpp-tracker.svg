@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 350" width="900" height="350" font-family="Segoe UI, Arial, sans-serif" font-size="14">
+  <defs>
+    <marker id="ag" markerUnits="userSpaceOnUse" markerWidth="13" markerHeight="10" refX="12" refY="5" orient="auto"><path d="M0,0 L13,5 L0,10 z" fill="#4a5568"/></marker>
+    <marker id="ry" markerUnits="userSpaceOnUse" markerWidth="13" markerHeight="10" refX="12" refY="5" orient="auto"><path d="M0,0 L13,5 L0,10 z" fill="#d69e2e"/></marker>
+    <marker id="rr" markerUnits="userSpaceOnUse" markerWidth="13" markerHeight="10" refX="12" refY="5" orient="auto"><path d="M0,0 L13,5 L0,10 z" fill="#c53030"/></marker>
+    <marker id="rb" markerUnits="userSpaceOnUse" markerWidth="13" markerHeight="10" refX="12" refY="5" orient="auto"><path d="M0,0 L13,5 L0,10 z" fill="#2b6cb0"/></marker>
+    <marker id="rg" markerUnits="userSpaceOnUse" markerWidth="13" markerHeight="10" refX="12" refY="5" orient="auto"><path d="M0,0 L13,5 L0,10 z" fill="#2f855a"/></marker>
+  </defs>
+  <rect width="900" height="350" fill="#ffffff"/>
+  <text x="450" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="#4a5568">What sits between the module and the grid</text>
+  <rect x="40" y="110" width="170" height="120" rx="8" fill="#cbd5e0" stroke="#4a5568" stroke-width="2.5"/>
+  <g fill="#2c5282" stroke="#1a365d"><rect x="52" y="122" width="32" height="26"/><rect x="90" y="122" width="32" height="26"/><rect x="128" y="122" width="32" height="26"/><rect x="166" y="122" width="32" height="26"/><rect x="52" y="154" width="32" height="26"/><rect x="90" y="154" width="32" height="26"/><rect x="128" y="154" width="32" height="26"/><rect x="166" y="154" width="32" height="26"/><rect x="52" y="186" width="32" height="26"/><rect x="90" y="186" width="32" height="26"/><rect x="128" y="186" width="32" height="26"/><rect x="166" y="186" width="32" height="26"/></g>
+  <text x="125" y="258" text-anchor="middle" fill="#4a5568" font-weight="bold">PV module</text>
+  <line x1="215" y1="170" x2="290" y2="170" stroke="#4a5568" stroke-width="3" marker-end="url(#ag)"/>
+  <text x="252" y="152" text-anchor="middle" fill="#4a5568" font-size="12">DC: U, I</text>
+  <rect x="295" y="80" width="330" height="180" rx="10" fill="#fefcbf" stroke="#d69e2e" stroke-width="2.5"/>
+  <text x="460" y="102" text-anchor="middle" fill="#744210" font-weight="bold">power electronics</text>
+  <rect x="310" y="120" width="140" height="120" rx="6" fill="#ffffff" stroke="#d69e2e"/>
+  <text x="380" y="144" text-anchor="middle" fill="#744210" font-weight="bold">MPP tracker</text>
+  <text x="380" y="166" text-anchor="middle" fill="#744210" font-size="12">measures U and I,</text>
+  <text x="380" y="182" text-anchor="middle" fill="#744210" font-size="12">adjusts the load so</text>
+  <text x="380" y="198" text-anchor="middle" fill="#744210" font-size="12">U · I stays at its</text>
+  <text x="380" y="214" text-anchor="middle" fill="#744210" font-size="12">largest</text>
+  <line x1="454" y1="180" x2="476" y2="180" stroke="#4a5568" stroke-width="2.5" marker-end="url(#ag)"/>
+  <rect x="480" y="120" width="130" height="120" rx="6" fill="#ffffff" stroke="#d69e2e"/>
+  <text x="545" y="144" text-anchor="middle" fill="#744210" font-weight="bold">inverter</text>
+  <text x="545" y="170" text-anchor="middle" fill="#744210" font-size="12">turns the DC of the</text>
+  <text x="545" y="186" text-anchor="middle" fill="#744210" font-size="12">module into alternating</text>
+  <text x="545" y="202" text-anchor="middle" fill="#744210" font-size="12">current (AC) for the grid</text>
+  <line x1="630" y1="170" x2="700" y2="170" stroke="#4a5568" stroke-width="3" marker-end="url(#ag)"/>
+  <text x="665" y="152" text-anchor="middle" fill="#4a5568" font-size="12">AC</text>
+  <rect x="705" y="110" width="160" height="120" rx="8" fill="#c6f6d5" stroke="#2f855a" stroke-width="2"/>
+  <text x="785" y="162" text-anchor="middle" fill="#276749" font-weight="bold">grid and</text>
+  <text x="785" y="182" text-anchor="middle" fill="#276749" font-weight="bold">appliances</text>
+  <path d="M380,244 V300 H125 V270" fill="none" stroke="#2f855a" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#rg)"/>
+  <text x="250" y="320" text-anchor="middle" fill="#276749" font-size="12">the tracker reads U and I of the module and keeps it at its best operating point</text>
+</svg>

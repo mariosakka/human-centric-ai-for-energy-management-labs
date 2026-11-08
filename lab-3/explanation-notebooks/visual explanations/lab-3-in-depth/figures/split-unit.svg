@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 330" width="800" height="330" font-family="sans-serif" font-size="14">
+  <defs><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#4a5568"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#c53030"/></marker><marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2b6cb0"/></marker><marker id="an" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2f855a"/></marker><marker id="ay" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#b7791f"/></marker></defs>
+  <rect width="800" height="330" fill="#ffffff"/>
+  <rect x="30" y="50" width="330" height="240" rx="6" fill="#f7fafc" stroke="#4a5568" stroke-width="2"/>
+  <text x="195" y="72" text-anchor="middle" fill="#4a5568" font-weight="bold">inside the room</text>
+  <rect x="360" y="50" width="24" height="240" rx="2" fill="#a0aec0" stroke="#4a5568" stroke-width="2"/>
+  <text x="372" y="312" text-anchor="middle" fill="#4a5568" font-size="13">wall</text>
+  <rect x="384" y="50" width="386" height="240" rx="6" fill="#f0fff4" stroke="#2f855a" stroke-width="2"/>
+  <text x="577" y="72" text-anchor="middle" fill="#2f855a" font-weight="bold">outside</text>
+  <rect x="60" y="95" width="250" height="60" rx="10" fill="#bee3f8" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="185" y="122" text-anchor="middle" fill="#2b6cb0" font-weight="bold">indoor part</text>
+  <text x="185" y="142" text-anchor="middle" fill="#4a5568" font-size="13">cools the room air</text>
+  <path d="M105,160 C95,190 105,205 115,225" fill="none" stroke="#2b6cb0" stroke-width="3" marker-end="url(#ab)"/>
+  <path d="M185,160 V225" fill="none" stroke="#2b6cb0" stroke-width="3" marker-end="url(#ab)"/>
+  <path d="M265,160 C275,190 265,205 255,225" fill="none" stroke="#2b6cb0" stroke-width="3" marker-end="url(#ab)"/>
+  <text x="185" y="250" text-anchor="middle" fill="#2b6cb0" font-size="13">cooled air blown into the room</text>
+  <rect x="540" y="95" width="200" height="100" rx="10" fill="#fed7d7" stroke="#c53030" stroke-width="2"/>
+  <text x="640" y="130" text-anchor="middle" fill="#c53030" font-weight="bold">outdoor part</text>
+  <text x="640" y="152" text-anchor="middle" fill="#4a5568" font-size="13">throws the heat</text>
+  <text x="640" y="170" text-anchor="middle" fill="#4a5568" font-size="13">out into the air</text>
+  <line x1="312" y1="115" x2="538" y2="115" stroke="#c53030" stroke-width="3" marker-end="url(#ar)"/>
+  <text x="425" y="104" text-anchor="middle" fill="#c53030" font-size="12">heat out</text>
+  <line x1="538" y1="140" x2="312" y2="140" stroke="#2b6cb0" stroke-width="3" stroke-dasharray="8 5" marker-end="url(#ab)"/>
+  <text x="425" y="160" text-anchor="middle" fill="#2b6cb0" font-size="12">cooled return</text>
+  <text x="448" y="215" text-anchor="middle" fill="#4a5568" font-size="13">two pipes carry the</text>
+  <text x="448" y="232" text-anchor="middle" fill="#4a5568" font-size="13">heat through the wall</text>
+</svg>

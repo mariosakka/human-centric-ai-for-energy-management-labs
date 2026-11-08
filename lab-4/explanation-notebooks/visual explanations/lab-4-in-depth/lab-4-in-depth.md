@@ -113,6 +113,10 @@ Heat flows downward through hardwood, screed, XPS insulation, reinforced concret
 
 > **Electric resistance heater** (the studied radiator): every watt of electricity becomes one watt of heat (efficiency 1).
 
+![Electric resistance heater: a resistive element turns every watt of electricity into a watt of heat, and its fins hand that heat to the room air](figures/electric-heater.svg)
+
+*Figure: Electric resistance heater: a resistive element turns every watt of electricity into a watt of heat, and its fins hand that heat to the room air*
+
 So a heat load of 363 W needs 363 W of electricity.
 
 > **Power and energy**: power is how fast energy flows (1 kW = 1000 W); energy is power × time. The electricity bill counts **kilowatt-hours (kWh)**, so 363 W over one hour is 0.363 kWh.
@@ -220,6 +224,10 @@ So a heat load of 363 W needs 363 W of electricity.
 
 > **Mineral wool**: an insulating mat of glass or stone fibres.
 
+![The wall blocks and insulation boards compared in the material question, with their conductivity](figures/building-materials.svg)
+
+*Figure: The wall blocks and insulation boards compared in the material question, with their conductivity*
+
 **Method.** Build every wall from the same pattern: cement plaster (0.5 cm) outside, an insulation layer (10 cm), a structural layer (25 cm) and cement plaster (0.5 cm) inside. That gives 4 structures × 3 insulations = 12 walls of equal 36 cm thickness, so they are compared fairly. Rank by $k$ (lowest is best).
 
     given wall: k = 0.220
@@ -247,6 +255,10 @@ So a heat load of 363 W needs 363 W of electricity.
 # Q5 to Q9: Human-centred control and dynamic setpoints
 
 > **Thermostat**: a device with a temperature sensor and a switch. It compares the measured air temperature with the setpoint and switches the heating on when the room is too cold and off when it is warm enough.
+
+![Thermostat: a sensor, a comparison with the setpoint and a switch that turns the heating on or off](figures/thermostat.svg)
+
+*Figure: Thermostat: a sensor, a comparison with the setpoint and a switch that turns the heating on or off*
 
 > **AI agent**: a program that measures, decides and acts on its own.
 

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" width="900" height="460" font-family="Segoe UI, Arial, sans-serif" font-size="14">
+  <defs>
+    <marker id="ar" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#c53030"/></marker>
+    <marker id="ao" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#c05621"/></marker>
+    <marker id="ab" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#2b6cb0"/></marker>
+  </defs>
+  <rect width="900" height="460" fill="#ffffff"/>
+  <text x="450" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="#4a5568">Electric resistance heater (radiator): every watt in comes out as a watt of heat</text>
+
+  <!-- wall -->
+  <rect x="20" y="40" width="40" height="390" fill="#a0aec0" stroke="#4a5568"/>
+  <text x="40" y="445" text-anchor="middle" fill="#4a5568">wall</text>
+
+  <!-- casing with fins, seen from the side -->
+  <rect x="60" y="120" width="60" height="230" rx="6" fill="#edf2f7" stroke="#4a5568" stroke-width="2"/>
+  <g stroke="#4a5568" stroke-width="2" fill="#e2e8f0">
+    <rect x="120" y="130" width="70" height="14"/><rect x="120" y="156" width="70" height="14"/><rect x="120" y="182" width="70" height="14"/>
+    <rect x="120" y="208" width="70" height="14"/><rect x="120" y="234" width="70" height="14"/><rect x="120" y="260" width="70" height="14"/>
+    <rect x="120" y="286" width="70" height="14"/><rect x="120" y="312" width="70" height="14"/>
+  </g>
+  <!-- heating element inside the casing -->
+  <polyline points="90,140 105,150 75,162 105,174 75,186 105,198 75,210 105,222 75,234 105,246 75,258 105,270 75,282 105,294 75,306 105,318 90,330" fill="none" stroke="#c53030" stroke-width="3"/>
+  <text x="104" y="372" fill="#c53030" font-weight="bold">resistive element</text>
+  <text x="155" y="112" text-anchor="middle" fill="#4a5568" font-weight="bold">metal fins</text>
+
+  <!-- electricity in -->
+  <line x1="90" y1="330" x2="90" y2="415" stroke="#2b6cb0" stroke-width="4"/>
+  <line x1="90" y1="415" x2="340" y2="415" stroke="#2b6cb0" stroke-width="4" marker-end="url(#ab)"/>
+  <text x="215" y="405" text-anchor="middle" fill="#2b6cb0" font-weight="bold">electricity in: 1000 W</text>
+  <text x="215" y="440" text-anchor="middle" fill="#2b6cb0">cable to the socket</text>
+
+  <!-- heat out -->
+  <g stroke-width="4" fill="none">
+    <line x1="200" y1="160" x2="470" y2="140" stroke="#c53030" marker-end="url(#ar)"/>
+    <line x1="200" y1="205" x2="470" y2="205" stroke="#c53030" marker-end="url(#ar)"/>
+    <line x1="200" y1="250" x2="470" y2="270" stroke="#c53030" marker-end="url(#ar)"/>
+  </g>
+  <text x="335" y="124" fill="#c53030" font-weight="bold">heat out: 1000 W</text>
+  <text x="335" y="318" text-anchor="middle" fill="#c53030">warm air rises from the fins (convection)</text>
+  <text x="335" y="338" text-anchor="middle" fill="#c53030">and the hot surface shines on you (radiation)</text>
+
+  <!-- efficiency panel -->
+  <rect x="590" y="60" width="295" height="190" rx="8" fill="#f7fafc" stroke="#a0aec0"/>
+  <text x="602" y="84" font-weight="bold" fill="#4a5568">How it works</text>
+  <text x="602" y="110" fill="#4a5568">1. Current flows through a wire</text>
+  <text x="602" y="130" fill="#4a5568">    that resists it, so the wire heats up.</text>
+  <text x="602" y="154" fill="#4a5568">2. The fins pass that heat to the air.</text>
+  <text x="602" y="178" fill="#4a5568">3. Nothing is lost: efficiency = 1,</text>
+  <text x="602" y="198" fill="#4a5568">    1 kWh of electricity gives 1 kWh</text>
+  <text x="602" y="218" fill="#4a5568">    of heat in the room.</text>
+</svg>

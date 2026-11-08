@@ -101,6 +101,10 @@ Data from the sheet: outside **5 degC**, inside **24 degC**, soil **11 degC**; t
 
 > **Electric radiator**: a heater with a hot element that turns every watt of electricity into one watt of heat.
 
+![Electric resistance heater: a resistive element turns every watt of electricity into a watt of heat, and its fins hand that heat to the room air](figures/electric-heater.svg)
+
+*Figure: Electric resistance heater: a resistive element turns every watt of electricity into a watt of heat, and its fins hand that heat to the room air*
+
 **Idea.** To keep the house at 24 degC, it must replace **exactly the heat that leaks out**. So hourly energy = total heat loss in watts x 1 hour.
 
 **The house has four parts that lose (or gain) heat:**
@@ -186,6 +190,10 @@ All 12 mixes are 36 cm thick, so the comparison is fair.
 # Q5 to Q9: A thermostat that thinks about people
 
 > **Thermostat**: a small box with a thermometer and a switch. You set the temperature you want (the **setpoint**); it keeps comparing the thermometer with the setpoint: too cold → heater ON, warm enough → heater OFF.
+
+![Thermostat: a sensor, a comparison with the setpoint and a switch that turns the heating on or off](figures/thermostat.svg)
+
+*Figure: Thermostat: a sensor, a comparison with the setpoint and a switch that turns the heating on or off*
 
 > **Heat load**: the heat per second the heater must supply to hold the setpoint; in steady state it equals the heat that leaks out.
 

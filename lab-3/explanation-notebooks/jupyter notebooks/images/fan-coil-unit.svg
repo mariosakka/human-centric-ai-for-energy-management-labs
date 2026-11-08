@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 335" width="800" height="335" font-family="sans-serif" font-size="14">
+  <defs><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#4a5568"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#c53030"/></marker><marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2b6cb0"/></marker><marker id="an" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2f855a"/></marker><marker id="ay" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#b7791f"/></marker></defs>
+  <rect width="800" height="335" fill="#ffffff"/>
+  <rect x="250" y="40" width="300" height="250" rx="12" fill="#edf2f7" stroke="#4a5568" stroke-width="2.5"/>
+  <text x="400" y="315" text-anchor="middle" fill="#4a5568" font-weight="bold">Fan-coil unit</text>
+  <rect x="270" y="60" width="260" height="45" rx="4" fill="#a0aec0" stroke="#4a5568" stroke-width="2"/>
+  <text x="400" y="88" text-anchor="middle" fill="#4a5568" font-size="13">filter</text>
+  <rect x="270" y="120" width="260" height="70" rx="4" fill="#bee3f8" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="400" y="150" text-anchor="middle" fill="#2b6cb0" font-weight="bold" font-size="13">coil</text>
+  <text x="400" y="170" text-anchor="middle" fill="#2b6cb0" font-size="12">(hot or cold water inside)</text>
+  <circle cx="400" cy="240" r="30" fill="#ffffff" stroke="#4a5568" stroke-width="3"/>
+  <line x1="400" y1="240" x2="400" y2="216" stroke="#4a5568" stroke-width="3"/>
+  <line x1="400" y1="240" x2="420.88" y2="252.0" stroke="#4a5568" stroke-width="3"/>
+  <line x1="400" y1="240" x2="379.12" y2="252.0" stroke="#4a5568" stroke-width="3"/>
+  <text x="400" y="285" text-anchor="middle" fill="#4a5568" font-size="12">fan</text>
+  <line x1="10" y1="250" x2="248" y2="250" stroke="#4a5568" stroke-width="3" marker-end="url(#ag)"/>
+  <text x="125" y="215" text-anchor="middle" fill="#4a5568" font-size="13">room air in</text>
+  <line x1="552" y1="90" x2="790" y2="90" stroke="#4a5568" stroke-width="3" marker-end="url(#ag)"/>
+  <text x="670" y="55" text-anchor="middle" fill="#4a5568" font-size="13">air out, warmed or</text>
+  <text x="670" y="74" text-anchor="middle" fill="#4a5568" font-size="13">cooled, into the room</text>
+  <line x1="10" y1="155" x2="268" y2="155" stroke="#2b6cb0" stroke-width="3" marker-end="url(#ab)"/>
+  <text x="120" y="120" text-anchor="middle" fill="#2b6cb0" font-size="13">pipes bring hot or</text>
+  <text x="120" y="139" text-anchor="middle" fill="#2b6cb0" font-size="13">cold water</text>
+</svg>

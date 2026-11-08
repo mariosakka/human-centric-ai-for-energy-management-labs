@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 310" width="800" height="310" font-family="sans-serif" font-size="14">
+  <defs><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#4a5568"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#c53030"/></marker><marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2b6cb0"/></marker><marker id="an" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2f855a"/></marker><marker id="ay" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#b7791f"/></marker></defs>
+  <rect width="800" height="310" fill="#ffffff"/>
+  <rect x="20" y="45" width="760" height="22" rx="2" fill="#a0aec0" stroke="#4a5568" stroke-width="2"/>
+  <text x="60" y="37" text-anchor="start" fill="#4a5568" font-size="13">ceiling</text>
+  <path d="M290,67 V92" fill="none" stroke="#2b6cb0" stroke-width="5"/>
+  <path d="M510,67 V92" fill="none" stroke="#2b6cb0" stroke-width="5"/>
+  <text x="180" y="100" text-anchor="middle" fill="#2b6cb0" font-size="13">cold water</text>
+  <text x="180" y="119" text-anchor="middle" fill="#2b6cb0" font-size="13">pipes</text>
+  <rect x="260" y="92" width="280" height="36" rx="6" fill="#bee3f8" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="400" y="115" text-anchor="middle" fill="#2b6cb0" font-weight="bold" font-size="13">chilled beam (cooled panel)</text>
+  <line x1="280" y1="128" x2="280" y2="142" stroke="#2b6cb0" stroke-width="3"/>
+  <line x1="300" y1="128" x2="300" y2="142" stroke="#2b6cb0" stroke-width="3"/>
+  <line x1="320" y1="128" x2="320" y2="142" stroke="#2b6cb0" stroke-width="3"/>
+  <line x1="340" y1="128" x2="340" y2="142" stroke="#2b6cb0" stroke-width="3"/>
+  <line x1="360" y1="128" x2="360" y2="142" stroke="#2b6cb0" stroke-width="3"/>
+  <line x1="380" y1="128" x2="380" y2="142" stroke="#2b6cb0" stroke-width="3"/>
+  <line x1="400" y1="128" x2="400" y2="142" stroke="#2b6cb0" stroke-width="3"/>
+  <line x1="420" y1="128" x2="420" y2="142" stroke="#2b6cb0" stroke-width="3"/>
+  <line x1="440" y1="128" x2="440" y2="142" stroke="#2b6cb0" stroke-width="3"/>
+  <line x1="460" y1="128" x2="460" y2="142" stroke="#2b6cb0" stroke-width="3"/>
+  <line x1="480" y1="128" x2="480" y2="142" stroke="#2b6cb0" stroke-width="3"/>
+  <line x1="500" y1="128" x2="500" y2="142" stroke="#2b6cb0" stroke-width="3"/>
+  <line x1="520" y1="128" x2="520" y2="142" stroke="#2b6cb0" stroke-width="3"/>
+  <path d="M120,230 C120,190 190,170 255,135" fill="none" stroke="#c53030" stroke-width="3" marker-end="url(#ar)"/>
+  <path d="M680,230 C680,190 610,170 545,135" fill="none" stroke="#c53030" stroke-width="3" marker-end="url(#ar)"/>
+  <text x="120" y="262" text-anchor="middle" fill="#c53030" font-size="13">warm room air</text>
+  <text x="120" y="281" text-anchor="middle" fill="#c53030" font-size="13">rises to the beam</text>
+  <text x="680" y="262" text-anchor="middle" fill="#c53030" font-size="13">warm room air</text>
+  <text x="680" y="281" text-anchor="middle" fill="#c53030" font-size="13">rises to the beam</text>
+  <path d="M320,150 V250" fill="none" stroke="#2b6cb0" stroke-width="3" marker-end="url(#ab)"/>
+  <path d="M400,150 V250" fill="none" stroke="#2b6cb0" stroke-width="3" marker-end="url(#ab)"/>
+  <path d="M480,150 V250" fill="none" stroke="#2b6cb0" stroke-width="3" marker-end="url(#ab)"/>
+  <text x="400" y="275" text-anchor="middle" fill="#2b6cb0" font-size="13">the cooled air sinks gently</text>
+  <text x="400" y="294" text-anchor="middle" fill="#2b6cb0" font-size="13">(no fan, no noise)</text>
+</svg>

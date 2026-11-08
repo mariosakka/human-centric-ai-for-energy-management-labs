@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" width="800" height="300" font-family="sans-serif" font-size="14">
+  <defs><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#4a5568"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#c53030"/></marker><marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2b6cb0"/></marker><marker id="an" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2f855a"/></marker><marker id="ay" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#b7791f"/></marker></defs>
+  <rect width="800" height="300" fill="#ffffff"/>
+  <rect x="250" y="50" width="300" height="200" rx="14" fill="#edf2f7" stroke="#4a5568" stroke-width="2.5"/>
+  <text x="400" y="280" text-anchor="middle" fill="#4a5568" font-weight="bold">Chiller</text>
+  <rect x="268" y="75" width="120" height="150" rx="10" fill="#bee3f8" stroke="#2b6cb0" stroke-width="2"/>
+  <text x="328" y="125" text-anchor="middle" fill="#2b6cb0" font-size="13">cooling side:</text>
+  <text x="328" y="144" text-anchor="middle" fill="#2b6cb0" font-size="13">chills the</text>
+  <text x="328" y="163" text-anchor="middle" fill="#2b6cb0" font-size="13">water</text>
+  <rect x="412" y="75" width="120" height="150" rx="10" fill="#fed7d7" stroke="#c53030" stroke-width="2"/>
+  <text x="472" y="125" text-anchor="middle" fill="#c53030" font-size="13">hot side:</text>
+  <text x="472" y="144" text-anchor="middle" fill="#c53030" font-size="13">gets rid of</text>
+  <text x="472" y="163" text-anchor="middle" fill="#c53030" font-size="13">the heat</text>
+  <line x1="390" y1="150" x2="410" y2="150" stroke="#4a5568" stroke-width="3" marker-end="url(#ag)"/>
+  <line x1="248" y1="100" x2="10" y2="100" stroke="#2b6cb0" stroke-width="3" marker-end="url(#ab)"/>
+  <text x="130" y="52" text-anchor="middle" fill="#2b6cb0" font-size="13">cold water out</text>
+  <text x="130" y="71" text-anchor="middle" fill="#2b6cb0" font-size="13">to the building (e.g. 7 °C)</text>
+  <line x1="10" y1="200" x2="248" y2="200" stroke="#2b6cb0" stroke-width="3" marker-end="url(#ab)"/>
+  <text x="130" y="225" text-anchor="middle" fill="#2b6cb0" font-size="13">warmer water back</text>
+  <text x="130" y="244" text-anchor="middle" fill="#2b6cb0" font-size="13">(e.g. 12 °C)</text>
+  <line x1="552" y1="120" x2="790" y2="120" stroke="#c53030" stroke-width="3" marker-end="url(#ar)"/>
+  <text x="670" y="72" text-anchor="middle" fill="#c53030" font-size="13">heat released</text>
+  <text x="670" y="91" text-anchor="middle" fill="#c53030" font-size="13">to the outside air</text>
+  <line x1="790" y1="200" x2="552" y2="200" stroke="#4a5568" stroke-width="3" marker-end="url(#ag)"/>
+  <text x="670" y="225" text-anchor="middle" fill="#4a5568" font-size="13">electricity in</text>
+</svg>

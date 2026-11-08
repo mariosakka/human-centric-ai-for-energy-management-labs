@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 335" width="800" height="335" font-family="sans-serif" font-size="14">
+  <defs><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#4a5568"/></marker><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#c53030"/></marker><marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2b6cb0"/></marker><marker id="an" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2f855a"/></marker><marker id="ay" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#b7791f"/></marker></defs>
+  <rect width="800" height="335" fill="#ffffff"/>
+  <rect x="40" y="40" width="400" height="270" rx="6" fill="#f7fafc" stroke="#4a5568" stroke-width="2"/>
+  <text x="240" y="62" text-anchor="middle" fill="#4a5568" font-weight="bold">room</text>
+  <rect x="60" y="80" width="24" height="220" rx="3" fill="#a0aec0" stroke="#4a5568" stroke-width="2"/>
+  <text x="72" y="322" text-anchor="middle" fill="#4a5568" font-size="12">wall</text>
+  <rect x="190" y="120" width="170" height="160" rx="10" fill="#fed7d7" stroke="#c53030" stroke-width="2"/>
+  <line x1="225" y1="130" x2="225" y2="270" stroke="#c53030" stroke-width="2"/>
+  <line x1="260" y1="130" x2="260" y2="270" stroke="#c53030" stroke-width="2"/>
+  <line x1="295" y1="130" x2="295" y2="270" stroke="#c53030" stroke-width="2"/>
+  <line x1="330" y1="130" x2="330" y2="270" stroke="#c53030" stroke-width="2"/>
+  <text x="265" y="108" text-anchor="middle" fill="#c53030" font-weight="bold">radiator panel</text>
+  <path d="M520,150 H362" fill="none" stroke="#c53030" stroke-width="3" marker-end="url(#ar)"/>
+  <text x="620" y="120" text-anchor="middle" fill="#c53030">hot water in</text>
+  <text x="620" y="139" text-anchor="middle" fill="#c53030">from the boiler</text>
+  <path d="M522,250 H362" fill="none" stroke="#2b6cb0" stroke-width="3" marker-end="url(#ab)"/>
+  <text x="620" y="232" text-anchor="middle" fill="#2b6cb0">cooler water</text>
+  <text x="620" y="251" text-anchor="middle" fill="#2b6cb0">back to the boiler</text>
+  <rect x="440" y="130" width="70" height="40" rx="8" fill="#fefcbf" stroke="#b7791f" stroke-width="2"/>
+  <text x="475" y="155" text-anchor="middle" fill="#4a5568" font-weight="bold" font-size="13">valve</text>
+  <line x1="186" y1="150" x2="96" y2="150" stroke="#c53030" stroke-width="3" marker-end="url(#ar)"/>
+  <line x1="186" y1="250" x2="96" y2="250" stroke="#c53030" stroke-width="3" marker-end="url(#ar)"/>
+  <text x="96" y="198" text-anchor="start" fill="#c53030" font-size="12">heat radiates</text>
+  <text x="96" y="215" text-anchor="start" fill="#c53030" font-size="12">into the room</text>
+  <path d="M360,110 C380,80 395,70 415,70" fill="none" stroke="#c53030" stroke-width="3" marker-end="url(#ar)"/>
+  <text x="425" y="75" text-anchor="start" fill="#c53030" font-size="13">rising warm air</text>
+</svg>

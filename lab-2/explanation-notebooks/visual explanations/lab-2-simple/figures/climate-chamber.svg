@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-90 0 1080 470" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#4a5568"/></marker>
+    <marker id="ah-blue" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto"><path d="M0 0L10 5L0 10z" fill="#2b6cb0"/></marker>
+    <g id="sitter" fill="none" stroke="#4a5568" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="0" cy="-60" r="16" fill="#ffffff"/>
+      <line x1="0" y1="-44" x2="0" y2="0"/>
+      <polyline points="0,0 38,0 38,48"/>
+      <polyline points="0,-30 26,-12 42,-12"/>
+      <polyline points="-12,12 -12,52" stroke="#a0aec0" stroke-width="4"/>
+    </g>
+  </defs>
+  <rect x="-90" width="1080" height="470" fill="#ffffff"/>
+  <text x="450" y="34" font-size="22" font-weight="bold" fill="#1a202c" text-anchor="middle">Climate chamber: a test room where every condition is set and measured</text>
+
+  <!-- chamber -->
+  <rect x="150" y="70" width="560" height="290" fill="#fffaf0" stroke="#4a5568" stroke-width="3.5"/>
+  <line x1="150" y1="360" x2="710" y2="360" stroke="#4a5568" stroke-width="6"/>
+
+  <!-- controlled walls -->
+  <rect x="150" y="70" width="14" height="290" fill="#fed7aa" stroke="#c05621" stroke-width="2"/>
+  <rect x="696" y="70" width="14" height="290" fill="#fed7aa" stroke="#c05621" stroke-width="2"/>
+  <text x="157" y="388" font-size="13" fill="#c05621" text-anchor="start">heated / cooled walls</text>
+
+  <!-- air supply vent on the ceiling -->
+  <rect x="300" y="70" width="140" height="18" fill="#bee3f8" stroke="#2b6cb0" stroke-width="2.5"/>
+  <g stroke="#2b6cb0" stroke-width="3" fill="none">
+    <line x1="322" y1="92" x2="322" y2="140" marker-end="url(#ah-blue)"/>
+    <line x1="370" y1="92" x2="370" y2="140" marker-end="url(#ah-blue)"/>
+    <line x1="418" y1="92" x2="418" y2="140" marker-end="url(#ah-blue)"/>
+  </g>
+
+  <!-- two volunteers on chairs -->
+  <use href="#sitter" transform="translate(300,300)"/>
+  <use href="#sitter" transform="translate(520,300)"/>
+
+  <!-- sensor stand: thermometer-like column with a small fan-cup and a dial -->
+  <rect x="608" y="205" width="6" height="150" fill="#4a5568"/>
+  <circle cx="611" cy="190" r="16" fill="#ffffff" stroke="#4a5568" stroke-width="3"/>
+  <line x1="611" y1="190" x2="621" y2="182" stroke="#c53030" stroke-width="3"/>
+  <rect x="596" y="224" width="30" height="22" rx="4" fill="#ebf8ff" stroke="#2b6cb0" stroke-width="2"/>
+  <rect x="601" y="256" width="20" height="40" rx="10" fill="#ffffff" stroke="#4a5568" stroke-width="2"/>
+  <rect x="609" y="272" width="4" height="22" fill="#c53030"/>
+
+  <!-- labels outside, with leader lines -->
+  <g stroke="#4a5568" stroke-width="2" fill="none">
+    <line x1="768" y1="110" x2="696" y2="110" marker-end="url(#ah)"/>
+    <line x1="738" y1="165" x2="640" y2="195" marker-end="url(#ah)"/>
+    <line x1="108" y1="125" x2="296" y2="85" marker-end="url(#ah)"/>
+    <line x1="108" y1="280" x2="268" y2="290" marker-end="url(#ah)"/>
+  </g>
+  <text x="776" y="106" font-size="15" font-weight="bold" fill="#1a202c">Wall panels</text>
+  <text x="776" y="124" font-size="13" fill="#4a5568">set the wall temperature</text>
+  <text x="746" y="162" font-size="15" font-weight="bold" fill="#1a202c">Sensors</text>
+  <text x="746" y="180" font-size="13" fill="#4a5568">record the real</text>
+  <text x="746" y="196" font-size="13" fill="#4a5568">temperature, wind</text>
+  <text x="746" y="212" font-size="13" fill="#4a5568">and humidity</text>
+  <text x="104" y="118" font-size="15" font-weight="bold" fill="#1a202c" text-anchor="end">Air supply</text>
+  <text x="104" y="136" font-size="13" fill="#4a5568" text-anchor="end">sets air temperature,</text>
+  <text x="104" y="152" font-size="13" fill="#4a5568" text-anchor="end">humidity and air speed</text>
+  <text x="104" y="276" font-size="15" font-weight="bold" fill="#1a202c" text-anchor="end">Volunteers</text>
+  <text x="104" y="294" font-size="13" fill="#4a5568" text-anchor="end">in chosen clothes,</text>
+  <text x="104" y="310" font-size="13" fill="#4a5568" text-anchor="end">doing a set activity</text>
+
+  <!-- vote card -->
+  <rect x="190" y="400" width="480" height="54" rx="10" fill="#ffffff" stroke="#4a5568" stroke-width="2.5"/>
+  <text x="430" y="422" font-size="14" font-weight="bold" fill="#1a202c" text-anchor="middle">Each volunteer votes on the 7-point scale</text>
+  <text x="430" y="443" font-size="14" fill="#4a5568" text-anchor="middle">−3 cold   −2   −1   0 neutral   +1   +2   +3 hot</text>
+</svg>

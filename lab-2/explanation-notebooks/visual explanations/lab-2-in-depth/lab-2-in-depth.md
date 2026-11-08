@@ -112,6 +112,12 @@ with $R_a$ = 287 and $R_v$ = 461.5 J/(kg·K), so $R_a/R_v = 0.622$. Also, $p_v =
 2. **Dew point** is the temperature where $p_{sat}(t_{dp}) = p_v$, a single table look-up.
 3. **Physical measurements** (hygrometers, which are humidity meters, and the balance between evaporation and condensation at a surface) respond to the vapour pressure.
 
+> **Hygrometer**: an instrument that measures humidity. A common type has an element (a hair or a polymer strip) that swells in humid air and shrinks in dry air; a lever turns this movement into a needle on a dial marked in relative humidity.
+
+![A hygrometer: a humidity-sensitive element moves a needle over a relative-humidity dial](figures/hygrometer.svg)
+
+*Figure: A hygrometer: a humidity-sensitive element moves a needle over a relative-humidity dial*
+
 **Why we *also* need the kg-based $x$:**
 - $x$ is *conserved*: if you heat or cool air and add or remove no water, $x$ does not change. $p_v$ also stays put at constant total pressure, but the vapour **per m³** (and so $\varphi$) changes because the air expands. Mass balances, humidifying and dehumidifying, and enthalpy ($h$ is "per kg of dry air") all need $x$.
 - $x$ is **directly** $m_v/m_a$, The code below shows both routes give the same number.
@@ -245,11 +251,25 @@ The 1 in front of $t$ is the specific heat of dry air, and the 1.84 is the speci
 
 ## A5. Enthalpy: where is the energy hiding?
 
-$h = \underbrace{t}_{\text{sensible}} + \underbrace{x(2500+1.84\,t)}_{\text{latent}}$
+$h = t + x\,(2500 + 1.84\,t)$
+
+The first term, $t$, is the warmth of the air; the second, $x\,(2500 + 1.84\,t)$, is the energy carried by the water vapour in it.
 
 > **Sensible heat**: the warmth you can feel and measure with a thermometer.
 
+> **Thermometer**: an instrument that measures temperature. In a classic thermometer a thin glass tube ends in a bulb of liquid; when the bulb warms, the liquid expands and climbs the tube, and the height is read on a scale in °C.
+
+![A thermometer: the liquid in the bulb expands when it is warmer and climbs the tube](figures/thermometer.svg)
+
+*Figure: A thermometer: the liquid in the bulb expands when it is warmer and climbs the tube*
+
 > **Latent heat**: energy stored in the water vapour (what it took to evaporate it). You do not feel it directly, but an air conditioner must remove it to dry the air.
+
+> **Air conditioner**: a machine that blows room air over a coil colder than the dew point of that air. Water vapour condenses on the coil and drips into a tray, so the air leaves both cooler and drier.
+
+![An air conditioner: a cold coil cools the air and the water vapour drips out](figures/air-conditioner.svg)
+
+*Figure: An air conditioner: a cold coil cools the air and the water vapour drips out*
 
 ![Enthalpy split into sensible and latent parts for 30 °C, 60 % air](figures/enthalpy.svg)
 
@@ -381,6 +401,13 @@ Sheet 1 described the air. Now we look at the **person in the air**.
 ### What do PMV and PPD stand for, and where do they come from?
 
 In the 1960s the Danish professor P. O. Fanger put volunteers in climate chambers, changed the air temperature, humidity, air speed, clothing and activity, and asked them to **vote** on how they felt on the **7-point thermal sensation scale** (the ASHRAE scale): −3 cold, −2 cool, −1 slightly cool, 0 neutral, +1 slightly warm, +2 warm, +3 hot. He published the method in his book *Thermal Comfort* (1970).
+
+> **Climate chamber**: a test room in which the air temperature, humidity and air speed are set and measured, so that volunteers sit in exactly known conditions and say how they feel.
+
+![A climate chamber: volunteers sit in conditions that are set and measured, then vote how they feel](figures/climate-chamber.svg)
+
+*Figure: A climate chamber: volunteers sit in conditions that are set and measured, then vote how they feel*
+
 > **PMV (Predicted Mean Vote)**: the average vote of a large group of people in the same room on that 7-point scale (a *vote* is one person's answer). *Predicted* means nobody is asked: the number is *calculated* from six inputs (four properties of the room and two of the person, listed in B0) with the heat balance of the body. Heat produced minus heat lost is the thermal load $L$, and $PMV=TS\cdot L$, where $TS$ is the *thermal sensation coefficient*, a factor fitted to Fanger's votes that turns the load into a vote. If heat piles up ($L>0$) people vote warm, if the body loses heat faster than it makes it ($L<0$) they vote cool.
 
 > **PPD (Predicted Percentage of Dissatisfied)**: the percentage of a large group who would be *dissatisfied*, which means they would vote **warm or hot (+2, +3) or cool or cold (−2, −3)**. People differ, so even in a room that is right for the average person some are unhappy. Fanger fitted this curve to the votes: $PPD = 100-95\,e^{-0.03353\,PMV^4-0.2179\,PMV^2}$. It is smallest (5 %) at $PMV=0$ and grows quickly on both sides.

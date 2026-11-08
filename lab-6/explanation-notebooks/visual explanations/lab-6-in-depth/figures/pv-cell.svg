@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" width="900" height="400" font-family="Segoe UI, Arial, sans-serif" font-size="14">
+  <defs>
+    <marker id="ag" markerUnits="userSpaceOnUse" markerWidth="13" markerHeight="10" refX="12" refY="5" orient="auto"><path d="M0,0 L13,5 L0,10 z" fill="#4a5568"/></marker>
+    <marker id="ry" markerUnits="userSpaceOnUse" markerWidth="13" markerHeight="10" refX="12" refY="5" orient="auto"><path d="M0,0 L13,5 L0,10 z" fill="#d69e2e"/></marker>
+    <marker id="rr" markerUnits="userSpaceOnUse" markerWidth="13" markerHeight="10" refX="12" refY="5" orient="auto"><path d="M0,0 L13,5 L0,10 z" fill="#c53030"/></marker>
+    <marker id="rb" markerUnits="userSpaceOnUse" markerWidth="13" markerHeight="10" refX="12" refY="5" orient="auto"><path d="M0,0 L13,5 L0,10 z" fill="#2b6cb0"/></marker>
+    <marker id="rg" markerUnits="userSpaceOnUse" markerWidth="13" markerHeight="10" refX="12" refY="5" orient="auto"><path d="M0,0 L13,5 L0,10 z" fill="#2f855a"/></marker>
+  </defs>
+  <rect width="900" height="400" fill="#ffffff"/>
+  <text x="450" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="#4a5568">Inside one PV cell, seen from the side</text>
+  <g stroke="#d69e2e" stroke-width="3" marker-end="url(#ry)"><line x1="330" y1="64" x2="340" y2="118"/><line x1="430" y1="64" x2="440" y2="118"/><line x1="530" y1="64" x2="540" y2="118"/></g>
+  <text x="200" y="92" text-anchor="end" fill="#b7791f" font-weight="bold">sunlight</text>
+  <rect x="300" y="130" width="12" height="20" fill="#4a5568"/>
+  <rect x="400" y="130" width="12" height="20" fill="#4a5568"/>
+  <rect x="500" y="130" width="12" height="20" fill="#4a5568"/>
+  <rect x="600" y="130" width="12" height="20" fill="#4a5568"/>
+  <rect x="250" y="140" width="400" height="10" fill="#90cdf4" stroke="#2b6cb0"/>
+  <rect x="250" y="150" width="400" height="40" fill="#bee3f8" stroke="#2b6cb0"/>
+  <rect x="250" y="190" width="400" height="100" fill="#fed7d7" stroke="#c53030"/>
+  <line x1="250" y1="190" x2="650" y2="190" stroke="#4a5568" stroke-width="2.5" stroke-dasharray="8 4"/>
+  <rect x="250" y="290" width="400" height="12" fill="#a0aec0" stroke="#4a5568"/>
+  <circle cx="340" cy="168" r="8" fill="#2b6cb0"/><text x="340" y="173" text-anchor="middle" fill="#fff" font-weight="bold">−</text>
+  <line x1="340" y1="215" x2="340" y2="182" stroke="#2b6cb0" stroke-width="2" marker-end="url(#rb)"/>
+  <circle cx="340" cy="246" r="8" fill="#c53030"/><text x="340" y="251" text-anchor="middle" fill="#fff" font-weight="bold">+</text>
+  <circle cx="450" cy="168" r="8" fill="#2b6cb0"/><text x="450" y="173" text-anchor="middle" fill="#fff" font-weight="bold">−</text>
+  <line x1="450" y1="215" x2="450" y2="182" stroke="#2b6cb0" stroke-width="2" marker-end="url(#rb)"/>
+  <circle cx="450" cy="246" r="8" fill="#c53030"/><text x="450" y="251" text-anchor="middle" fill="#fff" font-weight="bold">+</text>
+  <circle cx="560" cy="168" r="8" fill="#2b6cb0"/><text x="560" y="173" text-anchor="middle" fill="#fff" font-weight="bold">−</text>
+  <line x1="560" y1="215" x2="560" y2="182" stroke="#2b6cb0" stroke-width="2" marker-end="url(#rb)"/>
+  <circle cx="560" cy="246" r="8" fill="#c53030"/><text x="560" y="251" text-anchor="middle" fill="#fff" font-weight="bold">+</text>
+  <text x="240" y="150" text-anchor="end" fill="#2b6cb0" font-weight="bold">anti-reflective coating</text>
+  <text x="240" y="168" text-anchor="end" fill="#4a5568">top silicon layer</text>
+  <text x="240" y="185" text-anchor="end" fill="#4a5568" font-size="12">(extra electrons)</text>
+  <text x="240" y="210" text-anchor="end" fill="#4a5568" font-weight="bold">boundary with a built-in</text>
+  <text x="240" y="227" text-anchor="end" fill="#4a5568" font-weight="bold">electric field</text>
+  <text x="240" y="256" text-anchor="end" fill="#4a5568">bottom silicon layer</text>
+  <text x="240" y="273" text-anchor="end" fill="#4a5568" font-size="12">(missing electrons)</text>
+  <text x="240" y="301" text-anchor="end" fill="#4a5568" font-weight="bold">back metal contact</text>
+  <text x="292" y="126" text-anchor="end" fill="#4a5568" font-size="12">front metal fingers</text>
+  <path d="M606,130 V104 H780 V190" fill="none" stroke="#2b6cb0" stroke-width="3"/>
+  <line x1="780" y1="150" x2="780" y2="174" stroke="#2b6cb0" stroke-width="3" marker-end="url(#rb)"/>
+  <rect x="745" y="190" width="70" height="60" rx="6" fill="#c6f6d5" stroke="#2f855a" stroke-width="2"/>
+  <text x="780" y="226" text-anchor="middle" fill="#276749" font-weight="bold">load</text>
+  <path d="M780,250 V296 H652" fill="none" stroke="#2b6cb0" stroke-width="3" marker-end="url(#rb)"/>
+  <text x="824" y="224" fill="#276749" font-size="12">about</text><text x="824" y="240" fill="#276749" font-size="12">0.6 V</text>
+  <text x="800" y="124" fill="#2b6cb0" font-size="12" font-weight="bold">electrons flow</text>
+  <text x="800" y="140" fill="#2b6cb0" font-size="12" font-weight="bold">out as a current</text>
+  <text x="450" y="352" text-anchor="middle" fill="#4a5568">1. A particle of light frees an electron.   2. The field at the boundary pushes it up into the top layer.</text>
+  <text x="450" y="376" text-anchor="middle" fill="#4a5568">3. It leaves through the metal fingers, does work in the load and returns to the bottom contact.</text>
+</svg>
