@@ -1,5 +1,6 @@
 """Reusable building blocks for Lab 4 (steady-state heat loss of a house + human-centred setpoint).
 Every function only returns values: no printing, no plots."""
+import numpy as np
 import pandas as pd
 from scipy.optimize import brentq
 
@@ -51,6 +52,51 @@ def total_resistance(layers, alpha_i, alpha_e=None):
 def k_value(layers, alpha_i, alpha_e=None):
     """Overall heat transfer coefficient k [W/m2K]."""
     return 1 / total_resistance(layers, alpha_i, alpha_e)
+
+
+LAMBDA_AIR = 0.026   # conductivity of still air [W/mK]
+
+
+def conduction_flux(lam, thickness, delta_t):
+    """Heat flux through a layer [W/m2]: q = lambda * dT / thickness."""
+    return lam * delta_t / thickness
+
+
+def convection_flux(alpha, t_surface, t_air):
+    """Heat flux between a surface and the air [W/m2]: q = alpha * (t_surface - t_air)."""
+    return alpha * (t_surface - t_air)
+
+
+def film_resistance(alpha):
+    """Resistance of an air film [m2K/W]: R = 1 / alpha."""
+    return 1 / alpha
+
+
+def film_thickness(alpha, lam_air=LAMBDA_AIR):
+    """Thickness of still air [m] that resists as much as a film with coefficient alpha: lambda_air / alpha."""
+    return lam_air / alpha
+
+
+def alpha_forced(speed):
+    """Forced-convection coefficient [W/m2K] for an air speed in m/s: 12.1 sqrt(v), the rule of the PMV code (laminar flow)."""
+    return 12.1 * np.sqrt(speed)
+
+
+def alpha_natural(delta_t):
+    """Natural-convection coefficient [W/m2K] for a surface-to-air difference in K: 2.38 |dT|^0.25, the rule of the PMV code."""
+    return 2.38 * np.abs(delta_t) ** 0.25
+
+
+def wind_for_alpha(alpha):
+    """Air speed [m/s] whose forced-convection coefficient is alpha."""
+    return (alpha / 12.1) ** 2
+
+
+def resistance_breakdown(layers, alpha_i, alpha_e=None):
+    """Resistance of the inside film, the layers and the outside film (0 if alpha_e is None) and their total [m2K/W]."""
+    r_in, r_layers = film_resistance(alpha_i), layer_table(layers).R_m2K_W.sum()
+    r_out = film_resistance(alpha_e) if alpha_e else 0.0
+    return dict(film_in=r_in, layers=r_layers, film_out=r_out, total=r_in + r_layers + r_out)
 
 
 def temperature_profile(layers, alpha_i, alpha_e, t_in, t_out):

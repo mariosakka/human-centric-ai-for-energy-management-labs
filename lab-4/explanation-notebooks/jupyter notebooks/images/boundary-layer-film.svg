@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 540" width="900" height="540" font-family="Segoe UI, Arial, sans-serif" font-size="14">
+  <defs>
+    <marker id="hr" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="10" refX="11" refY="5" orient="auto"><path d="M0,0 L12,5 L0,10 z" fill="#c53030"/></marker>
+    <marker id="wb" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="10" refX="11" refY="5" orient="auto"><path d="M0,0 L12,5 L0,10 z" fill="#2b6cb0"/></marker>
+    <marker id="gr" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="10" refX="11" refY="5" orient="auto"><path d="M0,0 L12,5 L0,10 z" fill="#718096"/></marker>
+  </defs>
+  <rect width="900" height="540" fill="#ffffff"/>
+  <text x="450" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="#4a5568">The air film on a warm wall: thick without wind, thin with wind</text>
+
+  <!-- ============ left panel: calm air ============ -->
+  <text x="235" y="62" text-anchor="middle" font-weight="bold" fill="#2d3748" font-size="16">Calm air: small α</text>
+  <rect x="50" y="85" width="60" height="250" fill="#fed7d7" stroke="#4a5568" stroke-width="2"/>
+  <text x="80" y="215" text-anchor="middle" fill="#9b2c2c" font-weight="bold" transform="rotate(-90 80 215)">warm wall surface</text>
+  <rect x="110" y="85" width="130" height="250" fill="#ebf8ff" stroke="#2b6cb0" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="175" y="106" text-anchor="middle" fill="#2b6cb0" font-weight="bold">air film</text>
+  <text x="175" y="124" text-anchor="middle" fill="#2b6cb0" font-size="12">almost still, thick</text>
+  <g stroke="#c53030" stroke-width="3.5" fill="none" marker-end="url(#hr)">
+    <line x1="116" y1="170" x2="262" y2="170"/>
+    <line x1="116" y1="230" x2="262" y2="230"/>
+    <line x1="116" y1="290" x2="262" y2="290"/>
+  </g>
+  <text x="176" y="160" text-anchor="middle" fill="#c53030" font-size="12">heat by conduction</text>
+  <!-- slow air beyond the film -->
+  <g stroke="#718096" stroke-width="1.5" fill="none" marker-end="url(#gr)">
+    <path d="M300,130 C310,150 310,170 300,185"/>
+    <path d="M350,215 C360,235 360,255 350,270"/>
+    <path d="M310,285 C320,300 320,315 310,325"/>
+  </g>
+  <text x="340" y="106" text-anchor="middle" fill="#4a5568" font-size="13">air in the room</text>
+  <text x="340" y="124" text-anchor="middle" fill="#4a5568" font-size="12">slow drift, no wind</text>
+
+  <!-- left temperature profile -->
+  <line x1="50" y1="470" x2="420" y2="470" stroke="#4a5568" stroke-width="2"/>
+  <line x1="50" y1="365" x2="50" y2="470" stroke="#4a5568" stroke-width="2"/>
+  <text x="44" y="372" text-anchor="end" fill="#c53030" font-size="12">surface</text>
+  <text x="44" y="468" text-anchor="end" fill="#2b6cb0" font-size="12">air</text>
+  <polyline points="50,380 110,380 240,450 420,450" fill="none" stroke="#2d3748" stroke-width="3"/>
+  <line x1="110" y1="365" x2="110" y2="470" stroke="#a0aec0" stroke-width="1" stroke-dasharray="4 3"/>
+  <line x1="240" y1="365" x2="240" y2="470" stroke="#a0aec0" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="235" y="494" text-anchor="middle" fill="#4a5568">temperature: it drops over a long distance, the film resists a lot</text>
+
+  <!-- ============ right panel: wind ============ -->
+  <text x="665" y="62" text-anchor="middle" font-weight="bold" fill="#2d3748" font-size="16">Wind: large α</text>
+  <rect x="480" y="85" width="60" height="250" fill="#fed7d7" stroke="#4a5568" stroke-width="2"/>
+  <text x="510" y="215" text-anchor="middle" fill="#9b2c2c" font-weight="bold" transform="rotate(-90 510 215)">warm wall surface</text>
+  <rect x="540" y="85" width="34" height="250" fill="#ebf8ff" stroke="#2b6cb0" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="628" y="106" text-anchor="middle" fill="#2b6cb0" font-weight="bold">thin air film</text>
+  <line x1="590" y1="112" x2="560" y2="128" stroke="#2b6cb0" stroke-width="1.5"/>
+  <g stroke="#c53030" stroke-width="3.5" fill="none" marker-end="url(#hr)">
+    <line x1="546" y1="170" x2="640" y2="170"/>
+    <line x1="546" y1="230" x2="640" y2="230"/>
+    <line x1="546" y1="290" x2="640" y2="290"/>
+  </g>
+  <text x="584" y="196" fill="#c53030" font-size="12">swept away</text>
+  <!-- wind arrows along the wall -->
+  <g stroke="#2b6cb0" stroke-width="3" fill="none" marker-end="url(#wb)">
+    <line x1="660" y1="125" x2="660" y2="215"/>
+    <line x1="720" y1="125" x2="720" y2="215"/>
+    <line x1="780" y1="125" x2="780" y2="215"/>
+    <line x1="690" y1="235" x2="690" y2="325"/>
+    <line x1="750" y1="235" x2="750" y2="325"/>
+    <line x1="810" y1="235" x2="810" y2="325"/>
+  </g>
+  <text x="800" y="106" text-anchor="middle" fill="#2b6cb0" font-weight="bold">wind along the surface</text>
+
+  <!-- right temperature profile -->
+  <line x1="480" y1="470" x2="850" y2="470" stroke="#4a5568" stroke-width="2"/>
+  <line x1="480" y1="365" x2="480" y2="470" stroke="#4a5568" stroke-width="2"/>
+  <text x="474" y="372" text-anchor="end" fill="#c53030" font-size="12">surface</text>
+  <text x="474" y="468" text-anchor="end" fill="#2b6cb0" font-size="12">air</text>
+  <polyline points="480,380 540,380 574,450 850,450" fill="none" stroke="#2d3748" stroke-width="3"/>
+  <line x1="540" y1="365" x2="540" y2="470" stroke="#a0aec0" stroke-width="1" stroke-dasharray="4 3"/>
+  <line x1="574" y1="365" x2="574" y2="470" stroke="#a0aec0" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="665" y="494" text-anchor="middle" fill="#4a5568">temperature: it drops over a short distance, the film resists little</text>
+
+  <text x="450" y="522" text-anchor="middle" fill="#4a5568" font-size="13">The film is the thin layer of air that clings to the surface. Wind thins it, so more heat leaves for each kelvin of difference.</text>
+</svg>

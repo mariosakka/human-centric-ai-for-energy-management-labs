@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" width="900" height="480" font-family="Segoe UI, Arial, sans-serif" font-size="14">
+  <defs>
+    <marker id="wb" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="10" refX="11" refY="5" orient="auto"><path d="M0,0 L12,5 L0,10 z" fill="#2b6cb0"/></marker>
+    <marker id="rd" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="10" refX="11" refY="5" orient="auto"><path d="M0,0 L12,5 L0,10 z" fill="#c53030"/></marker>
+  </defs>
+  <rect width="900" height="480" fill="#ffffff"/>
+  <text x="450" y="28" text-anchor="middle" font-size="18" font-weight="bold" fill="#4a5568">What moves the air: a push from outside, or the heat itself</text>
+
+  <!-- left: forced -->
+  <text x="225" y="62" text-anchor="middle" font-weight="bold" fill="#2d3748" font-size="16">Forced convection</text>
+  <text x="225" y="82" text-anchor="middle" fill="#4a5568" font-size="13">wind or a fan pushes the air</text>
+  <rect x="40" y="100" width="70" height="250" fill="#fed7d7" stroke="#4a5568" stroke-width="2"/>
+  <text x="75" y="232" text-anchor="middle" fill="#9b2c2c" font-weight="bold" transform="rotate(-90 75 232)">wall</text>
+  <g stroke="#2b6cb0" stroke-width="3.5" fill="none" marker-end="url(#wb)">
+    <line x1="140" y1="115" x2="140" y2="335"/>
+    <line x1="200" y1="115" x2="200" y2="335"/>
+    <line x1="260" y1="115" x2="260" y2="335"/>
+    <line x1="320" y1="115" x2="320" y2="335"/>
+    <line x1="380" y1="115" x2="380" y2="335"/>
+  </g>
+  <text x="350" y="372" text-anchor="middle" fill="#2b6cb0" font-weight="bold">air speed v</text>
+  <text x="225" y="410" text-anchor="middle" fill="#2d3748">faster air, thinner film, larger α</text>
+  <text x="225" y="432" text-anchor="middle" fill="#2d3748">α grows roughly like √v</text>
+  <text x="225" y="454" text-anchor="middle" fill="#4a5568" font-size="12">(four times the speed doubles α)</text>
+
+  <line x1="450" y1="55" x2="450" y2="460" stroke="#cbd5e0" stroke-width="2" stroke-dasharray="6 5"/>
+
+  <!-- right: natural -->
+  <text x="675" y="62" text-anchor="middle" font-weight="bold" fill="#2d3748" font-size="16">Natural convection</text>
+  <text x="675" y="82" text-anchor="middle" fill="#4a5568" font-size="13">no push: the air moves only because it is warmed</text>
+  <rect x="490" y="100" width="70" height="250" fill="#fed7d7" stroke="#4a5568" stroke-width="2"/>
+  <text x="525" y="232" text-anchor="middle" fill="#9b2c2c" font-weight="bold" transform="rotate(-90 525 232)">hot surface</text>
+  <g stroke="#c53030" stroke-width="2.5" fill="none" marker-end="url(#rd)">
+    <path d="M575,330 C590,280 590,200 585,130"/>
+    <path d="M600,330 C625,280 625,200 615,130"/>
+  </g>
+  <text x="575" y="116" fill="#c53030" font-size="12">warm air rises</text>
+  <g stroke="#2b6cb0" stroke-width="2.5" fill="none" marker-end="url(#wb)">
+    <path d="M800,130 C790,200 770,270 700,320"/>
+    <path d="M840,160 C830,230 800,290 730,335"/>
+  </g>
+  <text x="800" y="116" text-anchor="middle" fill="#2b6cb0" font-size="12">cool air sinks</text>
+  <text x="675" y="372" text-anchor="middle" fill="#4a5568" font-size="13">the temperature difference ΔT drives the flow</text>
+  <text x="675" y="410" text-anchor="middle" fill="#2d3748">bigger ΔT, faster flow, larger α</text>
+  <text x="675" y="432" text-anchor="middle" fill="#2d3748">α grows roughly like ΔT^0.25</text>
+  <text x="675" y="454" text-anchor="middle" fill="#4a5568" font-size="12">(sixteen times the difference doubles α)</text>
+</svg>

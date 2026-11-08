@@ -6,13 +6,15 @@ Sheet: *Steady-State Heat Transfer Analysis, external thermal load, winter* (Q1 
 
 ## 0.1 The three ways heat moves
 
-> **Conduction**: heat flows through a solid, from the hot side to the cold side. Governed by the material's **thermal conductivity** $\lambda$ [W/(m·K)]. Low $\lambda$ means a good insulator.
+> **Heat flux** $q$ [W/m²]: the heat power, in watts (W, one joule of energy per second), that crosses one square metre of a surface. A flux of 4 W/m² means 4 watts of heat flow through every square metre.
+
+> **Conduction**: heat flows through a solid, from the hot side to the cold side. Through a flat layer of thickness $\delta$ [m] whose two faces differ in temperature by $\Delta T$, the flux is $q = \lambda\,\Delta T/\delta$. The material enters through its **thermal conductivity** $\lambda$ [W/(m·K)]: the flux it passes when its faces differ by 1 K per metre of thickness. Metals have a large $\lambda$ and pass heat easily; foam and wool have a small one (a few hundredths), so a low $\lambda$ means a good insulator.
 
 > **Insulation**: any material with a low conductivity, such as foam boards, that slows heat flow.
 
 > **K (kelvin)**: the unit of temperature; a temperature difference of 1 K is the same as a difference of 1 °C.
 
-> **Convection**: heat is carried by moving air (or water) along a surface. Governed by a **convection coefficient** $\alpha$ [W/(m²·K)]. Wind outside makes $\alpha_E$ large (24); calm indoor air makes $\alpha_I$ smaller (8 on walls, 6 on the floor).
+> **Convection**: heat carried to or from a surface by moving air (or water). It is described by a **convection coefficient** $\alpha$ [W/(m²·K)]: the heat flux between the surface and the air for each kelvin of difference between them, $q = \alpha\,(T_{surface} - T_{air})$ (Newton's law of cooling). A large $\alpha$ means the air takes heat from the surface, or gives it, easily. The sheet uses $\alpha_E = 24$ outside, where there is wind, and $\alpha_I = 8$ on walls and ceiling and 6 on the floor, where the indoor air is calm.
 
 > **Radiation**: surfaces exchange heat as infrared light, even through empty space. Indoors this is part of why a cold window feels cold (lab 3's mean radiant temperature $t_{mr}$).
 
@@ -28,19 +30,51 @@ This lab studies the heat lost through the envelope of one ground floor, and eve
 
 *Figure: Conduction, convection and radiation: the three ways heat moves*
 
+### Where the convection coefficient comes from
+
+> **Air film (boundary layer)**: the thin layer of air, a few millimetres thick, that clings to a surface. Friction slows it almost to a standstill, so heat crosses it mainly by conduction through nearly still air; beyond it, the moving air carries the heat away.
+
+Take a warm wall in cold air. The heat first has to cross the film by conduction, and air conducts poorly ($\lambda_{air} \approx 0.026$ W/(m·K)), so the film acts like a thin blanket on the surface. Wind blowing along the surface thins this film, so the same temperature difference pushes more heat through it. That is what a bigger $\alpha$ means: a thinner film and a faster removal of the heat. On a cold wall it works the other way round: the film is the layer through which the wall takes heat from the air.
+
+![The air film on a warm wall: thick without wind, thin with wind](figures/boundary-layer-film.svg)
+
+*Figure: The air film on a warm wall: thick without wind, thin with wind*
+
+> **Forced convection**: the air is pushed by something external, wind outdoors or a fan indoors. A faster flow thins the film, so $\alpha$ rises with the air speed $v$, roughly like $\sqrt v$ for a smooth, laminar flow.
+
+> **Natural convection**: nothing pushes the air; it moves because heat changes its density. The air next to a warm surface heats up, becomes lighter and rises, and cooler air sinks to replace it. The driving force is the temperature difference itself, so a larger $\Delta T$ makes the flow faster and $\alpha$ larger, roughly like $\Delta T^{0.25}$: doubling $\Delta T$ raises $\alpha$ by only 19 %.
+
+![What moves the air: a push from outside, or the heat itself](figures/forced-vs-natural-convection.svg)
+
+*Figure: What moves the air: a push from outside, or the heat itself*
+
+The two rules are the ones the PMV code of lab 3 uses for a clothed body ($\alpha = 12.1\sqrt v$ for forced and $\alpha = 2.38\,\Delta T^{0.25}$ for natural convection, in W/(m²·K), with $v$ in m/s and $\Delta T$ in K). For a wall they only fix the shape of the dependence: the real numbers also depend on the size, orientation and roughness of the surface.
+
+**Why the sheet's three values differ.**
+
+* **$\alpha_E = 24$ outside:** there is wind, so the convection is forced. By the $12.1\sqrt v$ rule it corresponds to a wind of about 4 m/s (see the numbers below).
+* **$\alpha_I = 8$ on walls and ceiling:** the indoor air is almost calm, so convection alone would give only about 2 to 3 W/(m²·K). The standard building values are larger because they also include the heat the surface exchanges by radiation with the other surfaces of the room (roughly 5 W/(m²·K)): one number covers both. These conventional values are the ones of building standards (ISO 6946 gives film resistances of 0.13 m²K/W on a wall, 0.17 on a floor and 0.04 outside, that is $\alpha$ = 7.7, 5.9 and 25 W/(m²·K)).
+* **$\alpha_I = 6$ on the floor:** the heat goes downward. The air touching a surface that is cooler than the room air is the coldest and heaviest, so it stays in place and exchanges little.
+
+**Assumption that drives it.** The sheet keeps each $\alpha$ fixed. In reality $\alpha$ changes with the wind and with $\Delta T$; the numbers below show why this barely matters for the wall: its films are small next to the insulation.
+
 ![The studied ground floor: four walls, two windows, floor on the soil and a ceiling below a heated floor](figures/house-envelope.svg)
 
 *Figure: The studied ground floor: four walls, two windows, floor on the soil and a ceiling below a heated floor*
 
 ## 0.2 Thermal resistance, in series like electrical resistors
 
-> **Thermal resistance** $R = \delta/\lambda$ [m²K/W] ($\delta$ = thickness in metres): how strongly a layer resists heat flow. A convection film resists by $R = 1/\alpha$.
+> **Thermal resistance** $R$ [m²K/W]: how strongly a layer resists heat flow. For a layer of thickness $\delta$ and conductivity $\lambda$, $R = \delta/\lambda$. An air film resists like a layer of still air, $R = 1/\alpha$ (derived next).
+
+**Why $R = \delta/\lambda$.** Conduction gives $q = \lambda\,\Delta T/\delta = \Delta T\,/\,(\delta/\lambda)$: the flux is the temperature difference divided by a number that depends only on the layer. That number is the resistance. It has the shape of Ohm's law, $I = V/R$, with the flux playing the current and the temperature difference the voltage: a thicker layer or a smaller $\lambda$ raises $R$ and lowers the flux for the same $\Delta T$.
+
+**Why $R = 1/\alpha$.** Newton's law for the film, $q = \alpha\,\Delta T = \Delta T\,/\,(1/\alpha)$, has exactly the same shape, so the film behaves like a layer whose resistance is $1/\alpha$. Equivalently it is a layer of still air of thickness $\delta_{eq} = \lambda_{air}/\alpha$, because then $\delta_{eq}/\lambda_{air} = 1/\alpha$. A strong wind means a large $\alpha$, a thin equivalent layer and a small resistance; calm air means a small $\alpha$ and a thicker blanket (the numbers are below).
 
 Layers in series simply **add**, exactly like resistors in series:
 
 $$R_{tot} = \frac{1}{\alpha_I} + \sum_i \frac{\delta_i}{\lambda_i} + \frac{1}{\alpha_E}, \qquad k = \frac{1}{R_{tot}} \quad [\text{W/(m}^2\text{K)}]$$
 
-> **k-value** (also called U-value) [W/(m²·K)]: how many watts (W, the unit of power: how fast energy flows) leak through each m² of wall for each kelvin of temperature difference.
+> **k-value** (also called U-value) [W/(m²·K)]: how many watts of heat power leak through each m² of wall for each kelvin of temperature difference.
 
 The steady-state heat flow is then
 
@@ -130,7 +164,7 @@ So a heat load of 363 W needs 363 W of electricity.
 **Data from the sheet.** Resistance $R = \delta/\lambda$ of every layer (wall from outside to inside, floor from inside to deep soil).
 
     
-![png](figures/output_17_0.png)
+![png](figures/output_22_0.png)
     
 
     T_E = 5.0 C, T_I = 24.0 C, T_soil = 11.0 C; alpha_E = 24.0, alpha_I wall = 8.0, alpha_I floor = 6.0 W/m2K
@@ -138,6 +172,29 @@ So a heat load of 363 W needs 363 W of electricity.
     
 
 **Interpretation of the data.** The EPS layer ($R=2.5$ m²K/W) and the AAC layer ($R=1.67$) make up almost the whole wall resistance; plasters and mortars are thin and conduct relatively well, so they hardly matter. In the floor the XPS layer ($R=4.0$) and the two soil layers (1.2 and 1.0) dominate. The ceiling is the opposite, a thin conductive stack ($k \approx 2.45$ W/m²K), which is fine only because there is no temperature difference across it.
+
+**The air films in numbers.** Conduction through a 10 cm layer, the equivalent still-air thickness of each film, the winds and temperature differences behind the sheet's coefficients and the share of the films in the wall's resistance.
+
+    
+![png](figures/output_25_0.png)
+    
+
+    Conduction, 10 cm layer with 10 K across: EPS 4.0 W/m2, concrete 203 W/m2
+    film outside     : alpha =   24 -> R = 1/alpha = 0.042 m2K/W = 1.1 mm of still air
+    film inside wall : alpha =    8 -> R = 1/alpha = 0.125 m2K/W = 3.2 mm of still air
+    film inside floor: alpha =    6 -> R = 1/alpha = 0.167 m2K/W = 4.3 mm of still air
+    Natural convection at the inner wall surface (dT = 0.5 K): alpha = 2.0 W/m2K, the sheet uses 8.0
+    Wall resistance: 0.125 (inside film) + 4.381 (layers) + 0.042 (outside film) = 4.547 m2K/W; the films are 3.7 % of it
+    k with the sheet's alphas 0.220; with alpha_E halved (calmer day) 0.218; with both halved 0.212 W/m2K
+    
+
+**Interpretation of the air films.**
+
+* **Conduction at work:** with the same 10 cm and the same 10 K across it, EPS passes 4 W/m² and concrete 203 W/m², about 50 times more, exactly the ratio of their conductivities (0.040 against 2.03 W/(m·K)).
+* **The film as a blanket of still air:** the outside film ($1/lpha_E = 0.042$ m²K/W) is as resistant as 1.1 mm of still air, the inside wall film (0.125) as 3.2 mm and the floor film (0.167) as 4.3 mm. Wind makes the outside blanket about three times thinner than the indoor one.
+* **Where 24 and 8 come from:** $lpha_E = 24$ corresponds to a wind of about 3.9 m/s. Indoors, natural convection at the inner wall surface (0.5 K below the air) gives only about 2.0 W/(m²·K), so most of the sheet's 8 W/(m²·K) is the radiation exchange with the room that the standard value includes.
+* **How much the films matter:** the two films add only 0.167 of the wall's 4.547 m²K/W, 3.7 %; the layers carry the rest. They are small but not zero.
+* **Why a fixed $lpha$ is acceptable here:** halving $lpha_E$ (a calmer day) moves $k$ from 0.220 to 0.218 W/(m²·K), and halving both coefficients to 0.212, about 4 % lower. The error from keeping $lpha$ fixed is small for an insulated wall; it would weigh more on a thin, poorly insulated element, whose films make up a larger share of the resistance.
 
 # Q1: Heat flux density through the wall
 
@@ -153,7 +210,7 @@ So a heat load of 363 W needs 363 W of electricity.
 **Temperature profile.** With the flux known, the temperature falls across each layer by $\Delta T = q\,R_{layer}$. The plot shows the temperature through the wall from the indoor air (left) to the outdoor air (right).
 
     
-![png](figures/output_22_0.png)
+![png](figures/output_30_0.png)
     
 
 ### Interpretation of Q1
@@ -177,7 +234,7 @@ So a heat load of 363 W needs 363 W of electricity.
     
 
     
-![png](figures/output_25_1.png)
+![png](figures/output_33_1.png)
     
 
 ### Interpretation of Q2
@@ -204,7 +261,7 @@ So a heat load of 363 W needs 363 W of electricity.
     
 
     
-![png](figures/output_28_1.png)
+![png](figures/output_36_1.png)
     
 
 ### Interpretation of Q3
@@ -236,7 +293,7 @@ So a heat load of 363 W needs 363 W of electricity.
     
 
     
-![png](figures/output_31_1.png)
+![png](figures/output_39_1.png)
     
 
     
@@ -271,7 +328,7 @@ So a heat load of 363 W needs 363 W of electricity.
     
 
     
-![png](figures/output_34_1.png)
+![png](figures/output_42_1.png)
     
 
 ### Interpretation of Q5 to Q8
@@ -286,7 +343,7 @@ So a heat load of 363 W needs 363 W of electricity.
 The sheet says a reduction of a few °C often saves 10 to 15 % of the heating load. Our 22 to 32 % is larger, for two reasons that the next cell makes visible. First, the temperature difference to the outside is not the same everywhere: the wall and windows lose in proportion to $t_I - 5$ (19 K down to 15.2 K, a 20 % drop), the floor in proportion to $t_I - 11$ (13 K down to 9.2 K, a 29 % drop). Second, the **solar gain of the windows (183 W) is a fixed offset** that does not shrink when the setpoint falls. The conduction losses fall by 21 %, but they are reduced from a smaller base (546 W gross, 363 W net after the sun), so the *net* load falls by a larger percentage.
 
     
-![png](figures/output_37_0.png)
+![png](figures/output_45_0.png)
     
 
     gross conduction loss falls by 21.0 %, net load falls by 31.6 %
@@ -299,7 +356,7 @@ The sheet says a reduction of a few °C often saves 10 to 15 % of the heating lo
 * **So both statements are true:** the sheet's 10 to 15 % is typical for a reduction of about 2 K; our 3.8 K reduction gives 21 % even on the gross loss, and the noon sun on the south window lifts the net figure to 31.6 %. On a cloudy day or at night the percentage would be the 21 % gross value.
 
     
-![png](figures/output_39_0.png)
+![png](figures/output_47_0.png)
     
 
 ### Interpretation of the plots
