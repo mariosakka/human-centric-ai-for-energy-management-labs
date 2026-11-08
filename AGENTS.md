@@ -19,6 +19,7 @@ Add the lab to the table in `README.md` and to `JOBS` in `tools/build_docs.py`.
 
 1. Read the assignment PDF as an image too (`pdftotext` garbles Greek letters and subscripts): render pages with PyMuPDF and look at them.
 2. Put the sheet's data and the formulas in `lab-N/shared/<topic>.py` as functions that only return values, with an assert-based or pytest test next to it. Compute every number by running code, and check the key results independently.
+   Every algorithm, formula, data table and sheet constant lives in `shared/`: notebooks import them and never define their own `def` or lambda for a computation (inline definitions are only allowed for drawing helpers such as annotations and plot styling). A new calculation a notebook needs goes into `shared/` first, with a test. Before finishing a lab, check each notebook's code cells for inline computation.
 3. Write two executed notebooks that answer every sub-question, including the optional extension:
    - `*-simple`: plain words, analogies, minimal maths.
    - `*-in-depth`: precise definitions, formulas, assumptions, limits.
