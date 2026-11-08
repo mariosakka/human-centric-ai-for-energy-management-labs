@@ -12,7 +12,7 @@ Sheet: *Apl. 3.2 Thermal Collector Exercise*. A panel that heats a liquid with s
 
 > **Absorber plate**: the metal plate that absorbs the radiation. It is dark and thin so that it heats up quickly and passes the heat to the pipes.
 
-> **Working fluid**: the fluid (water, or water with antifreeze) that circulates through the pipes and carries the heat to where it is used (a storage tank, for example).
+> **Working fluid**: the fluid (water, or water with antifreeze) that circulates through the pipes and carries the heat to where it is used (a storage tank, for example). "Fluid" is the general word for anything that flows, liquid or gas; here the working fluid is a liquid (some collectors use air, which is a fluid but not a liquid).
 
 > **Glazing**: the transparent cover. It lets most sunlight in (short-wave radiation) and slows heat loss: the hot plate gives off long-wave (infrared) radiation, which glass mostly blocks, and the air layer between the panes reduces the heat carried away by moving air. A **single-glazed** collector has one pane and a **double-glazed** collector two. A second pane adds one more air layer against heat loss but also absorbs and reflects a few percent more of the incoming sunlight.
 
@@ -22,7 +22,9 @@ Sheet: *Apl. 3.2 Thermal Collector Exercise*. A panel that heats a liquid with s
 
 > **Irradiance** $G_T$ (W/m²): the solar power that arrives on one square metre of the collector's surface. The subscript T means that it is measured in the **tilted plane** of the collector, not on the horizontal ground. Typical values: about 1000 W/m² on a clear noon, a few hundred W/m² on a grey winter day.
 
-> **Inlet temperature** $T_i$ (°C): the temperature of the working fluid where it enters the collector. It is fixed by the system the collector feeds: a tank at 50 °C needs a fluid that enters at about 50 °C.
+> **Inlet temperature** $T_i$ (°C): the temperature of the working fluid where it enters the collector. In a solar heating loop this is the fluid coming back from the storage tank, after it has given its heat away, so it arrives about as warm as the tank itself (a tank at 50 °C sends it back at about 50 °C).
+
+The tank does not ask the collector for a temperature. The collector adds heat to whatever fluid arrives, and the pump sends the warmer fluid to the tank, where it hands its heat over. The fluid comes back colder, about as warm as the tank, and the loop starts again. So the inlet temperature is set by the tank, not by the collector, and a warmer tank means a warmer inlet and a harder job for the collector (a larger $x$, defined below).
 
 ![A solar heating loop: the pump drives the fluid from the storage tank to the collector, where it is heated, and back to the tank, where it gives its heat away](figures/collector-loop.svg)
 

@@ -14,7 +14,7 @@ The most common type is the **flat-plate collector**, a flat insulated box with 
 
 > **Absorber plate**: the dark metal plate inside the box that soaks up the sunlight, like a black T-shirt in summer.
 
-> **Working fluid**: the liquid (water or water with antifreeze) that flows through the pipes and carries the heat away.
+> **Working fluid**: the liquid (water or water with antifreeze) that flows through the pipes and carries the heat away. "Fluid" is the general word for anything that flows, liquid or gas; here it is always a liquid, so "fluid" and "liquid" mean the same thing in these notes.
 
 > **Glazing**: the glass lid. It lets sunlight in and slows the heat down on its way out, like a greenhouse roof. A **double-glazed** collector has two glass sheets, a **single-glazed** one has one.
 
@@ -24,7 +24,9 @@ The most common type is the **flat-plate collector**, a flat insulated box with 
 
 > **Irradiance** $G_T$ (W/m²): how much sunlight power lands on one square metre of the glass. A bright summer noon is about 1000 W/m², a grey winter day well below 300. Watts per square metre means "power for each square metre".
 
-> **Inlet temperature** $T_i$ (°C): the temperature of the liquid when it enters the collector, set by what the liquid has just come from (a warm tank, for example).
+> **Inlet temperature** $T_i$ (°C): the temperature of the liquid when it enters the collector, the liquid comes back from the storage tank after giving its heat away, so it arrives about as warm as the tank water (a tank at 50 °C sends it back at about 50 °C).
+
+The tank does not ask the collector for a temperature. The collector just adds heat to whatever liquid arrives, the pump carries the warmer liquid to the tank, and the tank takes the heat. The liquid comes back colder, about as warm as the tank, and goes round again. So the tank decides the inlet temperature, not the collector, and a warmer tank makes the collector's job harder.
 
 ![A solar heating loop: the pump drives the fluid from the storage tank to the collector, where it is heated, and back to the tank, where it gives its heat away](figures/collector-loop.svg)
 
