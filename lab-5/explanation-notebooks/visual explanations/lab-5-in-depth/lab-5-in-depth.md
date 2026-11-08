@@ -60,6 +60,8 @@ $$\eta = F_R(\tau\alpha) - F_R U_L \cdot x, \qquad x = \frac{T_i - T_a}{G_T}, \q
 
 **Assumptions.** The losses are linear in $T_i - T_a$ (the real curve bends slightly, so the sheet's straight line is a first-order model), the fluid flow is constant and the collector is in steady state (nothing changes with time, so no heat is stored in the plate and the fluid).
 
+Why a warmer inlet lowers the efficiency. The collector loses heat to the air roughly in proportion to its own temperature minus the air temperature, and the collector's temperature follows the fluid's, so a higher $T_i$ means a larger loss. On the sheet's winter afternoon ($T_a$ = 5 °C), an inlet at 50 °C gives a gap of 45 K and one at 20 °C a gap of 15 K, so the first leaks about three times more. The sunlight absorbed, $F_R(\tau\alpha)\,G_T$, does not depend on $T_i$, so a larger loss leaves less useful heat. In the characteristic line this is the term $F_R U_L\,x$: a higher $T_i$ raises $x$ and lowers $\eta$.
+
 ![Where the sunlight goes: the plate absorbs a share (the intercept) and loses a share that grows with x (the slope term)](figures/sun-to-heat-balance.svg)
 
 *Figure: Where the sunlight goes: the plate absorbs a share (the intercept) and loses a share that grows with x (the slope term)*

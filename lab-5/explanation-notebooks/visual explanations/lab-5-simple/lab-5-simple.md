@@ -60,6 +60,8 @@ With these, the efficiency is a **straight line**, the *characteristic curve*:
 
 In words: *useful power = sunlight × (best possible share − losses)*.
 
+Why does a warmer inlet hurt? The collector leaks heat to the outside air, and the leak grows with how much hotter the collector is than the air. Liquid entering at 50 °C keeps the glass and the plate warm, so on a 5 °C day heat escapes across a 45 degree gap. Liquid entering at 20 °C would face a gap of only 15 degrees and leak about three times less. The sunlight the collector catches is the same in both cases, so the warmer the inlet, the less of it is left as useful heat. That is what $x$ measures: a warmer inlet makes $x$ bigger and the efficiency smaller.
+
 ![Where the sunlight goes: the intercept is what the plate absorbs, the slope term is what leaks away](figures/sun-to-heat-balance.svg)
 
 *Figure: Where the sunlight goes: the intercept is what the plate absorbs, the slope term is what leaks away*
